@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faceless Forge + 6 Exclusive Bonuses — Launch Week</title>
+<style>
+  :root{
+    --bg-void:#0d0b16;
+    --bg-panel:#161320;
+    --bg-panel-raised:#1c1828;
+    --ember:#f7941d;
+    --ember-hot:#ffab3d;
+    --forge-blue:#8b5cf6;
+    --steel:#9b96b0;
+    --steel-light:#c9c5da;
+    --white:#f6f4fb;
+    --line:#2a2438;
+    --danger:#ff4d4d;
+    --success:#3ecf8e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(1px 1px at 8% 12%, rgba(247,148,29,0.5), transparent),
+      radial-gradient(1px 1px at 22% 30%, rgba(139,92,246,0.5), transparent),
+      radial-gradient(1px 1px at 68% 8%, rgba(247,148,29,0.4), transparent),
+      radial-gradient(1px 1px at 84% 22%, rgba(139,92,246,0.4), transparent),
+      radial-gradient(1px 1px at 40% 60%, rgba(255,255,255,0.25), transparent),
+      radial-gradient(1px 1px at 92% 70%, rgba(247,148,29,0.35), transparent),
+      radial-gradient(ellipse 900px 500px at 15% -10%, rgba(247,148,29,0.10), transparent),
+      radial-gradient(ellipse 900px 600px at 85% 10%, rgba(139,92,246,0.10), transparent),
+      var(--bg-void);
+    color:var(--white);
+    font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,sans-serif;
+    line-height:1.5;
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+  .display{font-family:'Georgia',serif;font-weight:700;letter-spacing:-0.02em;}
+  a.cta-btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    text-decoration:none;
+    background:linear-gradient(135deg,var(--ember) 0%, #d9540a 100%);
+    color:#0a0b0f;
+    font-weight:800;
+    font-size:1.05rem;
+    padding:18px 34px;
+    border-radius:6px;
+    box-shadow:0 8px 24px rgba(255,123,31,0.35), inset 0 1px 0 rgba(255,255,255,0.25);
+    border:1px solid rgba(255,180,71,0.5);
+    transition:transform .15s ease, box-shadow .15s ease;
+    cursor:pointer;
+  }
+  a.cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(255,123,31,0.45), inset 0 1px 0 rgba(255,255,255,0.3);}
+  a.cta-btn:focus-visible{outline:3px solid var(--forge-blue);outline-offset:3px;}
+  a.cta-btn.small{padding:12px 22px;font-size:0.9rem;}
+
+  /* ===== STICKY TOP BAR ===== */
+  .sticky-bar{
+    position:sticky;top:0;left:0;right:0;z-index:100;
+    background:rgba(13,11,22,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .sticky-bar-inner{
+    max-width:960px;margin:0 auto;
+    padding:10px 16px;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:12px;
+  }
+  .sticky-trust{
+    color:var(--steel-light);
+    font-size:0.78rem;
+    font-weight:600;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    max-width:960px;margin:0 auto;padding:44px 24px 40px;text-align:center;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    color:var(--ember-hot);font-size:0.8rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;
+    border:1px solid rgba(255,123,31,0.4);padding:6px 14px;border-radius:999px;
+    background:rgba(255,123,31,0.08);
+    margin-bottom:22px;
+  }
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--ember-hot);box-shadow:0 0 8px var(--ember-hot);animation:pulse 1.6s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+  h1.hero-title{
+    font-size:clamp(2.1rem,5vw,3.4rem);
+    line-height:1.08;
+    margin-bottom:18px;
+  }
+  h1.hero-title .accent{color:var(--ember-hot);}
+  .hero-sub{
+    color:var(--steel-light);
+    font-size:1.15rem;
+    max-width:640px;margin:0 auto 34px;
+  }
+
+  /* ===== COUNTDOWN ===== */
+  .countdown-wrap{
+    display:flex;justify-content:center;gap:14px;margin-bottom:34px;flex-wrap:wrap;
+  }
+  .cd-box{
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:14px 18px;
+    min-width:78px;
+    text-align:center;
+    position:relative;
+  }
+  .cd-box::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,var(--ember),var(--forge-blue));
+    border-radius:8px 8px 0 0;
+  }
+  .cd-num{font-size:1.9rem;font-weight:800;font-variant-numeric:tabular-nums;color:var(--white);}
+  .cd-label{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--steel);margin-top:4px;}
+
+  .hero-cta-row{display:flex;flex-direction:column;align-items:center;gap:10px;}
+  .micro-trust{color:var(--steel);font-size:0.82rem;margin-top:6px;}
+
+  /* ===== SECTION LABELS ===== */
+  .section{max-width:960px;margin:0 auto;padding:52px 24px;}
+  .section-head{text-align:center;margin-bottom:36px;}
+  .section-eyebrow{color:var(--forge-blue);font-size:0.78rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:10px;}
+  .section-title{font-size:clamp(1.6rem,3.5vw,2.2rem);}
+
+  /* ===== BONUS STACK ===== */
+  .bonus-list{display:flex;flex-direction:column;gap:16px;}
+  .bonus-card{
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:22px;
+    display:flex;
+    gap:18px;
+    align-items:flex-start;
+    position:relative;
+    overflow:hidden;
+    transition:border-color .2s ease;
+  }
+  .bonus-card:hover{border-color:rgba(255,123,31,0.4);}
+  .bonus-card.top{border-color:rgba(255,180,71,0.5);background:linear-gradient(135deg, rgba(255,123,31,0.07), var(--bg-panel));}
+  .bonus-num{
+    flex-shrink:0;
+    width:52px;height:52px;border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:1.3rem;
+    background:var(--bg-panel-raised);
+    border:1px solid var(--line);
+    color:var(--ember-hot);
+  }
+  .bonus-icon{
+    flex-shrink:0;
+    width:52px;height:52px;border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(circle at 30% 30%, rgba(62,166,255,0.25), rgba(255,123,31,0.15));
+    border:1px solid var(--line);
+  }
+  .bonus-icon svg{width:26px;height:26px;}
+  .bonus-body{flex:1;}
+  .bonus-head-row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .bonus-name{font-size:1.15rem;font-weight:700;color:var(--white);}
+  .bonus-value{font-size:0.85rem;color:var(--success);font-weight:700;white-space:nowrap;display:flex;align-items:baseline;gap:7px;}
+  .bonus-value .crossed{
+    color:var(--ember-hot);
+    font-weight:700;
+    text-decoration:line-through;
+    text-decoration-color:var(--danger);
+    text-decoration-thickness:2px;
+  }
+  .bonus-value .free-word{color:var(--success);font-weight:800;}
+  .bonus-desc{color:var(--steel-light);font-size:0.95rem;margin-top:6px;}
+  .bonus-badge{
+    position:absolute;top:0;right:0;
+    background:var(--ember);color:#0d0b16;font-size:0.68rem;font-weight:800;
+    padding:4px 12px;border-radius:0 10px 0 10px;letter-spacing:0.05em;
+  }
+  .bonus-badge.subtle{
+    background:var(--bg-panel-raised);
+    color:var(--steel-light);
+    border:1px solid var(--line);
+    border-top:none;border-right:none;
+  }
+
+  .stack-total{
+    margin-top:22px;
+    display:flex;justify-content:space-between;align-items:center;
+    background:var(--bg-panel-raised);
+    border:1px dashed rgba(255,180,71,0.4);
+    border-radius:10px;
+    padding:18px 22px;
+    flex-wrap:wrap;gap:10px;
+  }
+  .stack-total .label{color:var(--steel-light);font-size:0.95rem;}
+  .stack-total .amount{font-size:1.6rem;font-weight:800;color:var(--ember-hot);display:flex;align-items:baseline;gap:10px;}
+  .stack-total .amount .crossed{
+    color:var(--ember-hot);
+    font-weight:700;
+    font-size:1.3rem;
+    text-decoration:line-through;
+    text-decoration-color:var(--danger);
+    text-decoration-thickness:2.5px;
+  }
+  .stack-total .free-tag{color:var(--success);font-weight:700;font-size:0.9rem;}
+  .bonus-window-note{
+    text-align:center;
+    margin-top:16px;
+    color:var(--steel);
+    font-size:0.85rem;
+  }
+
+  /* ===== GUARANTEE ===== */
+  .guarantee-box{
+    display:flex;gap:20px;align-items:flex-start;
+    background:var(--bg-panel);border:1px solid var(--line);border-radius:12px;padding:28px;
+  }
+  .guarantee-icon{flex-shrink:0;width:60px;height:60px;border-radius:50%;
+    background:radial-gradient(circle at 30% 30%, rgba(62,166,255,0.3), rgba(255,123,31,0.15));
+    display:flex;align-items:center;justify-content:center;border:1px solid var(--line);}
+  .guarantee-title{font-weight:800;font-size:1.15rem;margin-bottom:6px;}
+  .guarantee-text{color:var(--steel-light);font-size:0.95rem;}
+
+  /* ===== FINAL CTA ===== */
+  .final-cta{
+    text-align:center;
+    background:linear-gradient(180deg, transparent, rgba(255,123,31,0.06));
+    padding:60px 24px 70px;
+  }
+  .final-cta .section-title{margin-bottom:14px;}
+  .final-cta .hero-sub{margin-bottom:30px;}
+  .scarcity-note{
+    display:inline-block;margin-top:18px;color:var(--steel);font-size:0.85rem;
+    border-top:1px solid var(--line);padding-top:14px;
+  }
+  .scarcity-note strong{color:var(--danger);}
+
+  footer{
+    padding:44px 24px 60px;
+    border-top:1px solid var(--line);
+    margin-top:20px;
+  }
+  .footer-inner{
+    max-width:760px;margin:0 auto;
+    color:var(--steel);
+    font-size:0.78rem;
+    line-height:1.65;
+    text-align:center;
+  }
+  .footer-inner p{margin-bottom:14px;}
+  .affiliate-disclosure{color:var(--steel-light);}
+  .platform-disclaimer{
+    font-size:0.72rem;
+    letter-spacing:0.01em;
+    color:var(--steel);
+  }
+  .platform-disclaimer pudd{
+    font-size:0.72rem;
+    letter-spacing:0.01em;
+    color:var(--steel);
+  }
+  .ip-disclaimer{font-size:0.72rem;}
+  .footer-links{
+    margin:20px 0 14px;
+    display:flex;justify-content:center;gap:10px;flex-wrap:wrap;
+    font-size:0.82rem;
+  }
+  .footer-links a{
+    color:var(--steel-light);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+  }
+  .footer-links a:hover{border-bottom-color:var(--ember-hot);color:var(--white);}
+  .footer-links .sep{color:var(--line);}
+  .copyright{font-size:0.72rem;color:var(--steel);opacity:0.8;}
+
+  @media (max-width:600px){
+    .bonus-card{flex-direction:column;}
+    .bonus-head-row{flex-direction:column;align-items:flex-start;gap:2px;}
+  }
+  @media (max-width:400px){
+    .sticky-trust{display:none;}
+    .sticky-bar-inner{justify-content:flex-end;}
+  }
+</style>
+</head>
+<body>
+
+<div class="sticky-bar">
+  <div class="sticky-bar-inner">
+    <span class="sticky-trust">6 free bonuses · Closes July 24</span>
+    <a class="cta-btn small" href="https://jvz4.com/c/3597797/445367/" target="_blank" rel="noopener">Get Access →</a>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="eyebrow"><span class="dot"></span>Launch Week Bonus Offer — Ends July 24</div>
+  <h1 class="hero-title display">Get Faceless Forge<br><span class="accent">+ 6 Exclusive Bonuses</span></h1>
+  <p class="hero-sub">The AI agent that builds, edits and posts faceless YouTube videos for you — no camera, no editing, no guesswork. Claim it during launch week and unlock six additional tools, free.</p>
+
+  <div class="countdown-wrap" id="countdown">
+    <div class="cd-box"><div class="cd-num" id="cd-days">--</div><div class="cd-label">Days</div></div>
+    <div class="cd-box"><div class="cd-num" id="cd-hours">--</div><div class="cd-label">Hours</div></div>
+    <div class="cd-box"><div class="cd-num" id="cd-mins">--</div><div class="cd-label">Mins</div></div>
+    <div class="cd-box"><div class="cd-num" id="cd-secs">--</div><div class="cd-label">Secs</div></div>
+  </div>
+  <div class="micro-trust" style="margin-bottom:22px;">Bonus stack closes Friday, July 24, 2026 · 11:59 PM ET</div>
+
+  <div class="hero-cta-row">
+    <a class="cta-btn" href="https://jvz4.com/c/3597797/445367/" target="_blank" rel="noopener">Get Instant Access + All Bonuses →</a>
+    <div class="micro-trust">This launch pricing won't be found again with all 6 bonuses once the timer ends · 30-day money-back guarantee either way</div>
+  </div>
+</section>
+
+<section class="section" id="bonuses">
+  <div class="section-head">
+    <div class="section-eyebrow">What You Get Free</div>
+    <h2 class="section-title display">The Complete Bonus Stack</h2>
+  </div>
+
+  <div class="bonus-list">
+
+    <div class="bonus-card top">
+      <div class="bonus-badge">Bonus #1 · Most Requested</div>
+      <div class="bonus-num">01</div>
+      <div class="bonus-body">
+        <div class="bonus-head-row">
+          <div class="bonus-name">RankMyAnswer — AI Answer Engine Optimizer</div>
+          <div class="bonus-value"><span class="crossed">$97</span><span class="free-word">FREE</span></div>
+        </div>
+        <div class="bonus-desc">Helps your content get surfaced by AI answer engines and search overviews, so the videos you automate with Faceless Forge get found by more of the right viewers.</div>
+      </div>
+    </div>
+
+    <div class="bonus-card">
+      <div class="bonus-badge subtle">Bonus #2</div>
+      <div class="bonus-num">02</div>
+      <div class="bonus-body">
+        <div class="bonus-head-row">
+          <div class="bonus-name">Launchdio — Automated Launch Sequencing Tool</div>
+          <div class="bonus-value"><span class="crossed">$67</span><span class="free-word">FREE</span></div>
+        </div>
+        <div class="bonus-desc">Sets up and schedules your content and promo sequences automatically, so your channel keeps running on autopilot after the initial setup.</div>
+      </div>
+    </div>
+
+    <div class="bonus-card">
+      <div class="bonus-badge subtle">Bonus #3</div>
+      <div class="bonus-num">03</div>
+      <div class="bonus-body">
+        <div class="bonus-head-row">
+          <div class="bonus-name">Shorts Factory AI — Short-Form Video Generator</div>
+          <div class="bonus-value"><span class="crossed">$77</span><span class="free-word">FREE</span></div>
+        </div>
+        <div class="bonus-desc">Turns long-form output into short-form clips automatically, so one video becomes several without extra editing work on your end.</div>
+      </div>
+    </div>
+
+    <div class="bonus-card">
+      <div class="bonus-badge subtle">Bonus #4</div>
+      <div class="bonus-num">04</div>
+      <div class="bonus-body">
+        <div class="bonus-head-row">
+          <div class="bonus-name">Speedlir — Rapid Content Assembly Engine</div>
+          <div class="bonus-value"><span class="crossed">$47</span><span class="free-word">FREE</span></div>
+        </div>
+        <div class="bonus-desc">Speeds up the assembly stage of video production, cutting the time between raw footage/script and a finished, postable video.</div>
+      </div>
+    </div>
+
+    <div class="bonus-card">
+      <div class="bonus-badge subtle">Bonus #5</div>
+      <div class="bonus-num">05</div>
+      <div class="bonus-body">
+        <div class="bonus-head-row">
+          <div class="bonus-name">LinkSeam — Link Tracking &amp; Attribution Tool</div>
+          <div class="bonus-value"><span class="crossed">$47</span><span class="free-word">FREE</span></div>
+        </div>
+        <div class="bonus-desc">Tracks clicks and attribution across the links you place in your video descriptions, so you can see what's actually driving traffic.</div>
+      </div>
+    </div>
+
+    <div class="bonus-card top">
+      <div class="bonus-badge">Bonus #6 · Grand Finale</div>
+      <div class="bonus-num">06</div>
+      <div class="bonus-body">
+        <div class="bonus-head-row">
+          <div class="bonus-name">1 Page Commission — Simple Funnel Template</div>
+          <div class="bonus-value"><span class="crossed">$67</span><span class="free-word">FREE</span></div>
+        </div>
+        <div class="bonus-desc">A ready-to-adapt single-page layout you can use to present offers cleanly, without building a funnel from scratch.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="stack-total">
+    <div>
+      <div class="label">Total bonus value</div>
+      <div class="amount"><span class="crossed">$402</span><span>FREE</span></div>
+    </div>
+    <div class="free-tag">Included FREE during launch week</div>
+  </div>
+  <p class="bonus-window-note">These bonuses are offered only during launch week — they will not continue to be available after this window closes.</p>
+</section>
+
+<section class="section">
+  <div class="guarantee-box">
+    <div class="guarantee-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffb347" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+    </div>
+    <div>
+      <div class="guarantee-title">Backed by a 30-day money-back guarantee</div>
+      <div class="guarantee-text">Faceless Forge comes with the producer's 30-day money-back guarantee — one email inside that window and you get a full refund, no hoops.</div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="section-eyebrow">Launch Week — Ends July 24</div>
+  <h2 class="section-title display">Claim Faceless Forge + All 6 Bonuses</h2>
+  <p class="hero-sub">This bonus stack is tied to the current launch window and comes down when the cart closes — Friday, July 24 at 11:59 PM ET. Once the timer hits zero, these 6 bonuses will no longer be available, and Faceless Forge won't be found again at this same offer with all of them included.</p>
+  <a class="cta-btn" href="https://jvz4.com/c/3597797/445367/" target="_blank" rel="noopener">Get Instant Access + All Bonuses →</a>
+  <div class="scarcity-note">These bonuses are offered <strong>only</strong> during launch week — they will not continue to be available after this window closes · Friday, July 24, 2026 · 11:59 PM ET</div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p class="affiliate-disclosure">
+      <strong>Affiliate Disclosure:</strong> This page contains affiliate links. If you purchase Faceless Forge through the links or buttons on this page, we may earn a commission at no additional cost to you. We are an independent affiliate promoter and are not the creator, owner, or official representative of Faceless Forge, Hermes, or any of the bonus products listed above. Faceless Forge does not provide any guarantee of income or success, and no earnings, views, or subscriber outcomes are promised or implied by this page.
+    </p>
+
+    <p class="platform-disclaimer">
+      THIS SITE IS NOT A PART OF THE FACEBOOK WEBSITE OR FACEBOOK, INC. ADDITIONALLY, THIS SITE IS NOT ENDORSED BY FACEBOOK IN ANY WAY. FACEBOOK IS A TRADEMARK OF FACEBOOK, INC.
+    </p>
+    <p class="platform-disclaimer">
+      THIS SITE IS NOT A PART OF THE GOOGLE WEBSITE OR GOOGLE, INC. ADDITIONALLY, THIS SITE IS NOT ENDORSED BY GOOGLE IN ANY WAY. GOOGLE IS A TRADEMARK OF GOOGLE, INC.
+    </p>
+
+    <p class="ip-disclaimer">
+      All product names, logos, and brands mentioned on this page (including RankMyAnswer, Launchdio, Shorts Factory AI, Speedlir, LinkSeam, and 1 Page Commission) are trademarks of their respective owners and are used here for identification purposes only. Use of these names does not imply endorsement.
+    </p>
+
+    <nav class="footer-links">
+      <a href="https://marketro.com/tos.html" target="_blank" rel="noopener">Terms</a>
+      <span class="sep">·</span>
+      <a href="https://marketro.com/earningsdisclaimer.html" target="_blank" rel="noopener">Earnings Disclaimer</a>
+      <span class="sep">·</span>
+      <a href="https://marketro.com/privacy_policy.pdf" target="_blank" rel="noopener">Privacy Policy</a>
+    </nav>
+
+    <p class="copyright">© 2026 · This is an independent affiliate promotion for Faceless Forge, a Marketro product sold via JVZoo.</p>
+  </div>
+</footer>
+
+<script>
+  const target = new Date("2026-07-25T03:59:00Z");
+
+  function updateCountdown(){
+    const now = new Date();
+    let diff = target - now;
+    const els = {
+      d: document.getElementById('cd-days'),
+      h: document.getElementById('cd-hours'),
+      m: document.getElementById('cd-mins'),
+      s: document.getElementById('cd-secs')
+    };
+    if(diff <= 0){
+      els.d.textContent = '00';
+      els.h.textContent = '00';
+      els.m.textContent = '00';
+      els.s.textContent = '00';
+      return;
+    }
+    const days = Math.floor(diff / (1000*60*60*24));
+    diff -= days * (1000*60*60*24);
+    const hours = Math.floor(diff / (1000*60*60));
+    diff -= hours * (1000*60*60);
+    const mins = Math.floor(diff / (1000*60));
+    diff -= mins * (1000*60);
+    const secs = Math.floor(diff / 1000);
+
+    els.d.textContent = String(days).padStart(2,'0');
+    els.h.textContent = String(hours).padStart(2,'0');
+    els.m.textContent = String(mins).padStart(2,'0');
+    els.s.textContent = String(secs).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
