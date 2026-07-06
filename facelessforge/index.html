@@ -235,12 +235,15 @@
     text-align:center;
     background:linear-gradient(180deg, transparent, rgba(255,123,31,0.06));
     padding:60px 24px 70px;
+    max-width:960px;
+    margin:0 auto;
   }
   .final-cta .section-title{margin-bottom:14px;}
   .final-cta .hero-sub{margin-bottom:30px;}
   .scarcity-note{
-    display:inline-block;margin-top:18px;color:var(--steel);font-size:0.85rem;
+    display:block;margin-top:18px;color:var(--steel);font-size:0.85rem;
     border-top:1px solid var(--line);padding-top:14px;
+    text-align:center;
   }
   .scarcity-note strong{color:var(--danger);}
 
@@ -259,6 +262,11 @@
   .footer-inner p{margin-bottom:14px;}
   .affiliate-disclosure{color:var(--steel-light);}
   .platform-disclaimer{
+    font-size:0.72rem;
+    letter-spacing:0.01em;
+    color:var(--steel);
+  }
+  .platform-disclaimer pudd{
     font-size:0.72rem;
     letter-spacing:0.01em;
     color:var(--steel);
@@ -290,7 +298,6 @@
 </head>
 <body>
 
-<!-- STICKY TOP BAR — keeps a CTA in the first fold on every screen size -->
 <div class="sticky-bar">
   <div class="sticky-bar-inner">
     <span class="sticky-trust">6 free bonuses · Closes July 24</span>
@@ -298,7 +305,6 @@
   </div>
 </div>
 
-<!-- HERO -->
 <section class="hero">
   <div class="eyebrow"><span class="dot"></span>Launch Week Bonus Offer — Ends July 24</div>
   <h1 class="hero-title display">Get Faceless Forge<br><span class="accent">+ 6 Exclusive Bonuses</span></h1>
@@ -318,7 +324,6 @@
   </div>
 </section>
 
-<!-- BONUS STACK -->
 <section class="section" id="bonuses">
   <div class="section-head">
     <div class="section-eyebrow">What You Get Free</div>
@@ -411,7 +416,6 @@
   <p class="bonus-window-note">These bonuses are offered only during launch week — they will not continue to be available after this window closes.</p>
 </section>
 
-<!-- GUARANTEE -->
 <section class="section">
   <div class="guarantee-box">
     <div class="guarantee-icon">
@@ -424,12 +428,15 @@
   </div>
 </section>
 
-<!-- FINAL CTA -->
 <section class="final-cta">
   <div class="section-eyebrow">Launch Week — Ends July 24</div>
   <h2 class="section-title display">Claim Faceless Forge + All 6 Bonuses</h2>
   <p class="hero-sub">This bonus stack is tied to the current launch window and comes down when the cart closes — Friday, July 24 at 11:59 PM ET. Once the timer hits zero, these 6 bonuses will no longer be available, and Faceless Forge won't be found again at this same offer with all of them included.</p>
-  <a class="cta-btn" href="https://jvz4.com/c/3597797/445367/" target="_blank" rel="noopener">Get Instant Access + All Bonuses →</a>
+  
+  <div>
+    <a class="cta-btn" href="https://jvz4.com/c/3597797/445367/" target="_blank" rel="noopener">Get Instant Access + All Bonuses →</a>
+  </div>
+  
   <div class="scarcity-note">These bonuses are offered <strong>only</strong> during launch week — they will not continue to be available after this window closes · Friday, July 24, 2026 · 11:59 PM ET</div>
 </section>
 
@@ -463,9 +470,6 @@
 </footer>
 
 <script>
-  // Real countdown — fixed to US Eastern Time (ET), NOT the visitor's local timezone.
-  // JV Cash Contest / cart close: Friday, July 24, 2026, 11:59 PM ET.
-  // In July, ET = EDT = UTC-4, so 23:59 ET on July 24 = 03:59 UTC on July 25.
   const target = new Date("2026-07-25T03:59:00Z");
 
   function updateCountdown(){
