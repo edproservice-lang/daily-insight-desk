@@ -516,5 +516,32 @@
   setInterval(updateCountdown, 1000);
 </script>
 
+<!-- ===== GCLID CAPTURE + AUTO-INJEÇÃO NOS LINKS DE AFILIADO (JVZoo) ===== -->
+<script>
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const gclid = params.get('gclid');
+
+    if (gclid) {
+      // salva pra não perder se a pessoa navegar dentro do site antes de clicar
+      sessionStorage.setItem('gclid', gclid);
+    }
+
+    const savedGclid = gclid || sessionStorage.getItem('gclid');
+
+    if (savedGclid) {
+      document.querySelectorAll('a[href*="jvz4.com"]').forEach(function(link) {
+        try {
+          const url = new URL(link.href);
+          url.searchParams.set('tid', savedGclid);
+          link.href = url.toString();
+        } catch (e) {
+          console.warn('Erro ao ajustar link de afiliado:', e);
+        }
+      });
+    }
+  })();
+</script>
+
 </body>
 </html>
