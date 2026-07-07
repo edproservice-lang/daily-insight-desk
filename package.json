@@ -2,7 +2,5 @@
   "name": "daily-insight-desk",
   "version": "1.0.0",
   "private": true,
-  "dependencies": {
-    "google-ads-api": "^18.0.0"
-  }
+  "type": "module"
 }
