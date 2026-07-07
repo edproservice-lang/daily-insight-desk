@@ -1,52 +1,87 @@
-import { GoogleAdsApi } from 'google-ads-api';
-
 export default async function handler(req, res) {
-  // O JVZoo manda os dados via GET (parâmetros na própria URL do postback)
   const { gclid, value, currency, transaction_id, type } = req.query;
 
   console.log('Postback recebido:', { gclid, value, currency, transaction_id, type });
 
-  // Sem gclid não tem o que enviar pro Google Ads (venda não veio de anúncio, ou perdeu o parâmetro)
   if (!gclid) {
     console.log('Sem gclid — ignorando conversão.');
     return res.status(200).send('No gclid, ignored');
   }
 
   try {
-    const client = new GoogleAdsApi({
-      client_id: process.env.GOOGLE_CLIENT_ID,
-      client_secret: process.env.GOOGLE_CLIENT_SECRET,
-      developer_token: process.env.GOOGLE_DEV_TOKEN,
+    // 1. Pega um access token novo usando o refresh token
+    const tokenResponse = await fetch('https://oauth2.googleapis.com/token', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        client_id: process.env.GOOGLE_CLIENT_ID,
+        client_secret: process.env.GOOGLE_CLIENT_SECRET,
+        refresh_token: process.env.GOOGLE_REFRESH_TOKEN,
+        grant_type: 'refresh_token',
+      }),
     });
 
-    const customer = client.Customer({
-      customer_id: process.env.GOOGLE_CUSTOMER_ID,
-      refresh_token: process.env.GOOGLE_REFRESH_TOKEN,
-    });
+    const tokenData = await tokenResponse.json();
 
+    if (!tokenResponse.ok) {
+      console.error('Erro ao renovar o access token:', tokenData);
+      return res.status(200).send('Token error logged');
+    }
+
+    const accessToken = tokenData.access_token;
+
+    // 2. Monta o payload da Data Manager API
     const now = new Date();
-    const conversionDateTime =
-      now.toISOString().slice(0, 19).replace('T', ' ') + '+00:00';
 
-    await customer.conversionUploads.uploadClickConversions({
-      conversions: [
+    const body = {
+      destinations: [
         {
-          gclid,
-          conversion_action: `customers/${process.env.GOOGLE_CUSTOMER_ID}/conversionActions/${process.env.CONVERSION_ACTION_ID}`,
-          conversion_date_time: conversionDateTime,
-          conversion_value: parseFloat(value) || 0,
-          currency_code: currency || 'USD',
-          order_id: transaction_id || undefined,
+          operatingAccount: {
+            accountType: 'GOOGLE_ADS',
+            accountId: process.env.GOOGLE_CUSTOMER_ID,
+          },
+          productDestinationId: process.env.CONVERSION_ACTION_ID,
         },
       ],
-      partial_failure: true,
+      encoding: 'HEX',
+      events: [
+        {
+          adIdentifiers: { gclid },
+          conversionValue: parseFloat(value) || 0,
+          currency: currency || 'USD',
+          eventTimestamp: now.toISOString(),
+          transactionId: transaction_id || undefined,
+          eventSource: 'WEB',
+        },
+      ],
+      validateOnly: false,
+      consent: {
+        adUserData: 'GRANTED',
+        adPersonalization: 'GRANTED',
+      },
+    };
+
+    // 3. Envia pra Data Manager API
+    const dmResponse = await fetch('https://datamanager.googleapis.com/v1/events:ingest', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
     });
 
-    console.log('Conversão enviada com sucesso pro Google Ads.');
+    const dmData = await dmResponse.json();
+
+    if (!dmResponse.ok) {
+      console.error('Erro da Data Manager API:', dmData);
+      return res.status(200).send('Data Manager API error logged');
+    }
+
+    console.log('Conversão enviada com sucesso:', dmData);
     return res.status(200).send('OK');
   } catch (err) {
-    console.error('Erro ao enviar conversão pro Google Ads:', err);
-    // Retorna 200 mesmo assim, pra não fazer o JVZoo ficar reenviando o mesmo postback
+    console.error('Erro inesperado:', err);
     return res.status(200).send('Error logged');
   }
 }
