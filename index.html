@@ -1,53 +1,332 @@
+Aqui está o código atualizado com as alterações nos links do rodapé, conforme solicitado:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Insight Desk | Top Offers</title>
-    <style>
-        body { font-family: sans-serif; line-height: 1.6; color: #333; max-width: 1000px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; }
-        header { text-align: center; padding: 50px 0; background-color: #fff; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        header h1 { color: #0070f3; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .product-card { background-color: #fff; border: 1px solid #ddd; padding: 15px; border-radius: 8px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; justify-content: space-between;}
-        .product-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-        .product-card img { width: 100%; height: 200px; /* Altura fixa para todas as imagens */ object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */ border-radius: 4px; margin-bottom: 10px; }
-        .product-card h3 { margin: 10px 0; }
-        .product-card p { flex-grow: 1; color: #666; }
-        .btn { display: inline-block; background: #0070f3; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; margin-top: 15px; font-weight: bold; transition: background 0.2s;}
-        .btn:hover { background: #0056b3; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Insight Desk — Today's Briefing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#13151b;
+    --ink-raised:#1b1e26;
+    --parchment:#efe8d8;
+    --parchment-dim:#d9d0ba;
+    --brass:#c08a3e;
+    --brass-bright:#e0aa5e;
+    --stamp-red:#b8433a;
+    --line:#2c2f3a;
+    --text-hi:#f3efe4;
+    --text-body:#b8b4ab;
+    --text-body-dark:#3a362c;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--text-hi);
+    font-family:'Inter',-apple-system,sans-serif;
+    line-height:1.55;
+    min-height:100vh;
+  }
+  .mono{font-family:'JetBrains Mono',monospace;}
+  .serif{font-family:'Fraunces',serif;}
+
+  /* ===== MASTHEAD ===== */
+  .masthead{
+    border-bottom:1px solid var(--line);
+    padding:22px 24px;
+  }
+  .masthead-inner{
+    max-width:920px;margin:0 auto;
+    display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;
+  }
+  .wordmark{
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    font-size:1.4rem;
+    letter-spacing:-0.01em;
+    color:var(--text-hi);
+  }
+  .wordmark span{color:var(--brass-bright);}
+  .dateline{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--text-body);
+  }
+
+  /* ===== HERO / INTRO ===== */
+  .intro{
+    max-width:720px;margin:0 auto;
+    padding:56px 24px 40px;
+  }
+  .issue-tag{
+    display:inline-block;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.7rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--brass-bright);
+    border:1px solid rgba(224,170,94,0.35);
+    padding:5px 12px;
+    border-radius:2px;
+    margin-bottom:20px;
+  }
+  h1.headline{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-style:italic;
+    font-size:clamp(1.9rem,4.5vw,2.6rem);
+    line-height:1.2;
+    color:var(--text-hi);
+    margin-bottom:16px;
+    max-width:600px;
+  }
+  .intro-sub{
+    color:var(--text-body);
+    font-size:1.02rem;
+    max-width:560px;
+  }
+
+  /* ===== BRIEFING LIST ===== */
+  .briefing{
+    max-width:920px;margin:0 auto;
+    padding:20px 24px 70px;
+  }
+  .entry{
+    position:relative;
+    display:grid;
+    grid-template-columns:96px 1fr auto;
+    gap:22px;
+    align-items:center;
+    padding:26px 8px;
+    border-top:1px solid var(--line);
+  }
+  .entry:last-child{border-bottom:1px solid var(--line);}
+  .entry-thumb{
+    width:96px;height:96px;
+    border-radius:6px;
+    overflow:hidden;
+    background:var(--ink-raised);
+    border:1px solid var(--line);
+    flex-shrink:0;
+  }
+  .entry-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+  .entry-body{min-width:0;}
+  .entry-eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.68rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--text-body);
+    margin-bottom:6px;
+  }
+  .entry-title{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:1.25rem;
+    color:var(--text-hi);
+    margin-bottom:6px;
+  }
+  .entry-desc{
+    color:var(--text-body);
+    font-size:0.94rem;
+    max-width:480px;
+  }
+  .entry-cta{
+    justify-self:end;
+    white-space:nowrap;
+  }
+  a.desk-btn{
+    display:inline-block;
+    text-decoration:none;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.78rem;
+    letter-spacing:0.04em;
+    color:var(--text-hi);
+    border:1px solid var(--line);
+    padding:10px 18px;
+    border-radius:3px;
+    transition:border-color .15s ease, color .15s ease, background .15s ease;
+  }
+  a.desk-btn:hover{border-color:var(--brass-bright);color:var(--brass-bright);}
+  a.desk-btn:focus-visible{outline:2px solid var(--brass-bright);outline-offset:2px;}
+
+  /* ===== FEATURED ENTRY (Faceless Forge) ===== */
+  .entry.featured{
+    background:linear-gradient(135deg, rgba(192,138,62,0.07), transparent 60%);
+    border-radius:8px;
+    border-top:1px solid rgba(192,138,62,0.35);
+    padding-left:16px;padding-right:16px;
+  }
+  .entry.featured .entry-thumb{
+    background:radial-gradient(circle at 30% 30%, rgba(192,138,62,0.35), rgba(19,21,27,0.9));
+    display:flex;align-items:center;justify-content:center;
+    border-color:rgba(224,170,94,0.4);
+  }
+  .stamp{
+    position:absolute;
+    top:14px;right:14px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.62rem;
+    font-weight:700;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--stamp-red);
+    border:1.5px solid var(--stamp-red);
+    padding:3px 9px;
+    border-radius:2px;
+    transform:rotate(-4deg);
+    opacity:0.9;
+  }
+  a.desk-btn.primary{
+    background:var(--brass);
+    border-color:var(--brass);
+    color:#171208;
+    font-weight:700;
+  }
+  a.desk-btn.primary:hover{background:var(--brass-bright);border-color:var(--brass-bright);color:#171208;}
+
+  /* ===== FOOTER ===== */
+  footer{
+    border-top:1px solid var(--line);
+    padding:40px 24px 56px;
+  }
+  .footer-inner{
+    max-width:720px;margin:0 auto;
+    color:var(--text-body);
+    font-size:0.78rem;
+    line-height:1.65;
+  }
+  .footer-inner p{margin-bottom:14px;}
+  .footer-links{
+    display:flex;gap:10px;flex-wrap:wrap;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.76rem;
+    margin:18px 0 14px;
+  }
+  .footer-links a{color:var(--brass-bright);text-decoration:none;border-bottom:1px solid transparent;}
+  .footer-links a:hover{border-bottom-color:var(--brass-bright);}
+  .footer-links .sep{color:var(--line);}
+  .copyright{opacity:0.7;font-size:0.72rem;}
+
+  @media (max-width:640px){
+    .entry{grid-template-columns:64px 1fr;grid-template-areas:"thumb title" "thumb desc" "cta cta";}
+    .entry-thumb{width:64px;height:64px;grid-area:thumb;}
+    .entry-title{grid-area:title;}
+    .entry-desc{grid-area:desc;}
+    .entry-cta{grid-area:cta;justify-self:start;margin-top:14px;}
+    .stamp{position:static;display:inline-block;transform:none;margin-bottom:8px;}
+  }
+</style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Daily Insight Desk</h1>
-        <p>Your trusted source for curated digital products and software.</p>
-    </header>
-    
-    <main class="grid">
-        <!-- Produto Simulado 1 -->
-        <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=300&auto=format&fit=crop" alt="AI Automation Platform interface preview">
-            <h3>AI Productivity Suite</h3>
-            <p>Revolutionize your workflow with our all-in-one AI-powered automation platform. Save time and increase efficiency instantly.</p>
-            <a href="#" class="btn" target="_blank">Learn More</a>
-        </div>
-        
-        <!-- Produto Simulado 2 -->
-        <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=300&auto=format&fit=crop" alt="Digital Marketing Dashboard showing data analytics">
-            <h3 class="product-title">Digital Marketing Mastery</h3>
-            <p>Unlock the secrets of successful online campaigns. Our comprehensive course covers SEO, social media, and email marketing strategies.</p>
-            <a href="#" class="btn" target="_blank">Get Access</a>
-        </div>
-        
-        <!-- Produto Simulado 3 -->
-        <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=300&auto=format&fit=crop" alt="Graphic Design Software user interface with tools">
-            <h3>Creative Graphic Design Pro</h3>
-            <p>Design stunning visuals without the steep learning curve. Our intuitive software includes thousands of templates and assets.</p>
-            <a href="#" class="btn" target="_blank">View Offer</a>
-        </div>
-    </main>
+
+<div class="masthead">
+  <div class="masthead-inner">
+    <div class="wordmark">Daily Insight <span>Desk</span></div>
+    <div class="dateline" id="dateline">Today's Briefing</div>
+  </div>
+</div>
+
+<div class="intro">
+  <div class="issue-tag">Curated Rotation</div>
+  <h1 class="headline">A short list of digital tools worth your attention this week.</h1>
+  <p class="intro-sub">We track a rotating set of software, courses, and creative tools and surface the ones we think are worth a closer look. No filler, no padded "top 50" lists — just the current rotation.</p>
+</div>
+
+<div class="briefing">
+
+  <div class="entry featured">
+    <span class="stamp">In Rotation</span>
+    <div class="entry-thumb">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#e0aa5e" stroke-width="1.6"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><circle cx="9" cy="9" r="1.2" fill="#e0aa5e" stroke="none"/><path d="M13 12l3-3 3 3" /></svg>
+    </div>
+    <div class="entry-body">
+      <div class="entry-eyebrow">Software · AI Content Automation</div>
+      <div class="entry-title">Faceless Forge</div>
+      <div class="entry-desc">An AI agent that writes, builds, and posts faceless YouTube videos from your own computer — no camera, no editing software, no subscription.</div>
+    </div>
+    <div class="entry-cta">
+      <a class="desk-btn primary" href="https://jvz4.com/c/3597797/445367/" target="_blank" rel="noopener">View Offer →</a>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="entry-thumb">
+      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=300&auto=format&fit=crop" alt="AI Automation Platform interface preview">
+    </div>
+    <div class="entry-body">
+      <div class="entry-eyebrow">Software · Workflow Automation</div>
+      <div class="entry-title">AI Productivity Suite</div>
+      <div class="entry-desc">An all-in-one AI-powered automation platform built to cut down repetitive work across your daily workflow.</div>
+    </div>
+    <div class="entry-cta">
+      <a class="desk-btn" href="#">Learn More</a>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="entry-thumb">
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=300&auto=format&fit=crop" alt="Digital Marketing Dashboard showing data analytics">
+    </div>
+    <div class="entry-body">
+      <div class="entry-eyebrow">Course · Marketing</div>
+      <div class="entry-title">Digital Marketing Mastery</div>
+      <div class="entry-desc">A structured course covering SEO, social media, and email marketing fundamentals for building online campaigns.</div>
+    </div>
+    <div class="entry-cta">
+      <a class="desk-btn" href="#">Get Access</a>
+    </div>
+  </div>
+
+  <div class="entry">
+    <div class="entry-thumb">
+      <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=300&auto=format&fit=crop" alt="Graphic Design Software user interface with tools">
+    </div>
+    <div class="entry-body">
+      <div class="entry-eyebrow">Software · Design</div>
+      <div class="entry-title">Creative Graphic Design Pro</div>
+      <div class="entry-desc">Design software with a shallow learning curve, built around a large library of templates and ready-made assets.</div>
+    </div>
+    <div class="entry-cta">
+      <a class="desk-btn" href="#">View Offer</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p><strong>Affiliate Disclosure:</strong> Daily Insight Desk may receive a commission when you purchase a product featured in this rotation, at no additional cost to you. We are an independent publisher and are not the creator or official representative of the products listed above. No income, results, or outcomes are promised or implied by any listing on this page.</p>
+
+    <div class="footer-links">
+      <a href="https://www.dailyinsightdesk.com/terms-of-service" target="_blank" rel="noopener">Terms-of-Service</a>
+      <span class="sep">·</span>
+      <a href="https://www.dailyinsightdesk.com/earnings-disclaimer" target="_blank" rel="noopener">Earnings Disclaimer</a>
+      <span class="sep">·</span>
+      <a href="https://www.dailyinsightdesk.com/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>
+      <span class="sep">·</span>
+      <a href="https://www.dailyinsightdesk.com/affiliate-disclosure" target="_blank" rel="noopener">Affiliate Disclosure</a>
+      <span class="sep">·</span>
+      <a href="https://www.dailyinsightdesk.com/cookie-policy" target="_blank" rel="noopener">Cookie Policy</a>
+    </div>
+
+    <p class="copyright">© 2026 Daily Insight Desk. All product names and trademarks belong to their respective owners.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('dateline').textContent = new Date().toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+</script>
+
 </body>
 </html>
+
+```
