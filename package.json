@@ -1,6 +1,7 @@
 {
-  "name": "daily-insight-desk",
+  "name": "jvzoo-google-ads-conversions",
   "version": "1.0.0",
   "private": true,
-  "type": "module"
+  "description": "Recebe postback do JVZoo e escreve conversoes na Google Sheet para importacao no Google Ads",
+  "main": "api/jvzoo-postback.js"
 }
