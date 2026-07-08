@@ -26,10 +26,11 @@ export default async function handler(req, res) {
       return res.status(200).send('Ignored (not a confirmed sale)');
     }
 
-    // ---------- 3. Extrair GCLID e valor ----------
+    // ---------- 3. Extrair GCLID, valor e ID da transação ----------
     const gclid = params.gclid;
     const value = parseFloat(params.amount || '0');
     const currency = params.currency || 'USD';
+    const transactionId = params.transaction_id || '';
 
     if (!gclid) {
       return res.status(200).send('Ignored (no GCLID found)');
@@ -41,6 +42,7 @@ export default async function handler(req, res) {
       conversionName: process.env.CONVERSION_NAME || 'Venda JVZoo',
       value,
       currency,
+      transactionId,
     });
 
     return res.status(200).send('OK');
@@ -100,7 +102,7 @@ async function getAccessToken() {
   return data.access_token;
 }
 
-async function appendConversionToSheet({ gclid, conversionName, value, currency }) {
+async function appendConversionToSheet({ gclid, conversionName, value, currency, transactionId }) {
   const accessToken = await getAccessToken();
   const sheetId = process.env.GOOGLE_SHEET_ID;
 
@@ -109,8 +111,8 @@ async function appendConversionToSheet({ gclid, conversionName, value, currency 
   const conversionTime =
     now.toISOString().replace('T', ' ').substring(0, 19) + '+00:00';
 
-  const row = [[gclid, conversionName, conversionTime, value, currency]];
-  const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/A:E:append?valueInputOption=USER_ENTERED`;
+  const row = [[gclid, conversionName, conversionTime, value, currency, transactionId]];
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/A:F:append?valueInputOption=USER_ENTERED`;
 
   const response = await fetch(url, {
     method: 'POST',
