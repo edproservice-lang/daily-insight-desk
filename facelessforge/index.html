@@ -533,7 +533,7 @@
       document.querySelectorAll('a[href*="jvz4.com"]').forEach(function(link) {
         try {
           const url = new URL(link.href);
-          url.searchParams.set('tid', savedGclid);
+          url.searchParams.set('gclid', savedGclid);
           link.href = url.toString();
         } catch (e) {
           console.warn('Erro ao ajustar link de afiliado:', e);
