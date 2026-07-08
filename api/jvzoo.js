@@ -1,49 +1,34 @@
-import crypto from 'crypto';
-
 // ===== CONFIG (variáveis de ambiente na Vercel) =====
-// JVZOO_SECRET_KEY           -> Chave secreta do JVZoo (Settings > Secret Key)
+// JVZOO_SECRET_KEY           -> Senha inventada por você, mesma usada no parâmetro ?secret= da Postback URL
 // GOOGLE_CLIENT_ID           -> Client ID do Google Cloud Console
 // GOOGLE_CLIENT_SECRET       -> Client Secret do Google Cloud Console
 // GOOGLE_SHEETS_REFRESH_TOKEN-> Refresh Token gerado no OAuth Playground (escopo spreadsheets)
 // GOOGLE_SHEET_ID            -> ID da planilha (trecho da URL entre /d/ e /edit)
 // CONVERSION_NAME            -> Nome EXATO da ação de conversão criada no Google Ads (ex: "Venda JVZoo")
+//
+// Postback URL a configurar no JVZoo (S2S Postbacks):
+// https://SEU-PROJETO.vercel.app/api/jvzoo?secret=SUA_CHAVE&gclid={gclid}&transaction_id={transaction_id}&amount={transaction_amount}&currency={currency}&type={transaction_type}
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).send('Method not allowed');
-  }
-
   try {
-    const body = req.body;
-    const secretKey = process.env.JVZOO_SECRET_KEY;
+    // O JVZoo (sistema novo de S2S Postback) manda os dados via GET, na própria URL
+    const params = req.method === 'GET' ? req.query : { ...req.query, ...req.body };
 
-    // ---------- 1. Validar autenticidade do postback (checksum SHA) ----------
-    const fields = Object.keys(body).sort();
-    let concatenated = secretKey;
-    fields.forEach((key) => {
-      if (key !== 'cverify') concatenated += body[key];
-    });
-    const hash = crypto
-      .createHash('sha256')
-      .update(concatenated)
-      .digest('hex')
-      .substring(0, 8)
-      .toUpperCase();
-
-    if (hash !== body.cverify) {
-      return res.status(403).send('Invalid IPN signature');
+    // ---------- 1. Validar autenticidade (chave secreta compartilhada) ----------
+    const expectedSecret = process.env.JVZOO_SECRET_KEY;
+    if (!expectedSecret || params.secret !== expectedSecret) {
+      return res.status(403).send('Invalid or missing secret');
     }
 
     // ---------- 2. Só processa vendas confirmadas ----------
-    if (body.ctransaction !== 'SALE') {
+    if (params.type !== 'SALE') {
       return res.status(200).send('Ignored (not a confirmed sale)');
     }
 
     // ---------- 3. Extrair GCLID e valor ----------
-    // Ajuste o campo abaixo conforme o placeholder que o JVZoo está te devolvendo
-    // (pode ser body.tid, body.cvar2, body.ccustom, etc — confirme no seu IPN log)
-    const gclid = body.tid || body.cvar2 || body.ccustom;
-    const value = parseFloat(body.ctransamount || '0');
+    const gclid = params.gclid;
+    const value = parseFloat(params.amount || '0');
+    const currency = params.currency || 'USD';
 
     if (!gclid) {
       return res.status(200).send('Ignored (no GCLID found)');
@@ -54,6 +39,7 @@ export default async function handler(req, res) {
       gclid,
       conversionName: process.env.CONVERSION_NAME || 'Venda JVZoo',
       value,
+      currency,
     });
 
     return res.status(200).send('OK');
@@ -86,7 +72,7 @@ async function getAccessToken() {
   return data.access_token;
 }
 
-async function appendConversionToSheet({ gclid, conversionName, value }) {
+async function appendConversionToSheet({ gclid, conversionName, value, currency }) {
   const accessToken = await getAccessToken();
   const sheetId = process.env.GOOGLE_SHEET_ID;
 
@@ -95,7 +81,7 @@ async function appendConversionToSheet({ gclid, conversionName, value }) {
   const conversionTime =
     now.toISOString().replace('T', ' ').substring(0, 19) + '+00:00';
 
-  const row = [[gclid, conversionName, conversionTime, value, 'USD']];
+  const row = [[gclid, conversionName, conversionTime, value, currency]];
 
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/A:E:append?valueInputOption=USER_ENTERED`;
 
