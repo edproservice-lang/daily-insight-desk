@@ -39,7 +39,7 @@ export default async function handler(req, res) {
     // ---------- 4. Escrever a linha na Google Sheet ----------
     await appendConversionToSheet({
       gclid,
-      conversionName: process.env.CONVERSION_NAME || 'Venda JVZoo',
+      conversionName: 'facelessforge',
       value,
       currency,
       transactionId,
@@ -90,7 +90,7 @@ async function getAccessToken() {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: new URLSearchParams({
-      grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
+      grant_type: 'urn:ietf:params:oauth2:grant-type:jwt-bearer',
       assertion: jwt,
     }),
   });
