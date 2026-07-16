@@ -90,7 +90,7 @@ async function getAccessToken() {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: new URLSearchParams({
-      grant_type: 'urn:ietf:params:oauth2:grant-type:jwt-bearer',
+      grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
       assertion: jwt,
     }),
   });
@@ -99,10 +99,17 @@ async function getAccessToken() {
   if (!data.access_token) {
     throw new Error('Falha ao obter access token: ' + JSON.stringify(data));
   }
+
   return data.access_token;
 }
 
-async function appendConversionToSheet({ gclid, conversionName, value, currency, transactionId }) {
+async function appendConversionToSheet({
+  gclid,
+  conversionName,
+  value,
+  currency,
+  transactionId,
+}) {
   const accessToken = await getAccessToken();
   const sheetId = process.env.GOOGLE_SHEET_ID;
 
@@ -111,7 +118,15 @@ async function appendConversionToSheet({ gclid, conversionName, value, currency,
   const conversionTime =
     now.toISOString().replace('T', ' ').substring(0, 19) + '+00:00';
 
-  const row = [[gclid, conversionName, conversionTime, value, currency, transactionId]];
+  const row = [[
+    gclid,
+    conversionName,
+    conversionTime,
+    value,
+    currency,
+    transactionId,
+  ]];
+
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/A:F:append?valueInputOption=USER_ENTERED`;
 
   const response = await fetch(url, {
