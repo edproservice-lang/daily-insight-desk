@@ -77,6 +77,9 @@
       border:1px solid rgba(255,180,71,0.5);
       transition:transform .15s ease,box-shadow .15s ease;
       cursor:pointer;
+      min-height:56px;
+      touch-action:manipulation;
+      -webkit-tap-highlight-color:transparent;
     }
 
     a.cta-btn:hover{
@@ -120,7 +123,7 @@
     .hero{
       max-width:960px;
       margin:0 auto;
-      padding:44px 24px 40px;
+      padding:34px 24px 38px;
       text-align:center;
     }
 
@@ -137,7 +140,7 @@
       padding:6px 14px;
       border-radius:999px;
       background:rgba(255,123,31,.08);
-      margin-bottom:22px;
+      margin-bottom:16px;
     }
 
     .eyebrow .dot{
@@ -154,7 +157,7 @@
     h1.hero-title{
       font-size:clamp(2.1rem,5vw,3.4rem);
       line-height:1.08;
-      margin-bottom:18px;
+      margin-bottom:14px;
     }
 
     h1.hero-title .accent{color:var(--ember-hot);}
@@ -163,12 +166,12 @@
       color:var(--steel-light);
       font-size:1.15rem;
       max-width:720px;
-      margin:0 auto 26px;
+      margin:0 auto 18px;
     }
 
     .offer-clarifier{
       max-width:720px;
-      margin:0 auto 30px;
+      margin:22px auto 20px;
       padding:14px 18px;
       border:1px solid rgba(139,92,246,.42);
       background:rgba(139,92,246,.08);
@@ -183,7 +186,7 @@
       display:flex;
       justify-content:center;
       gap:14px;
-      margin-bottom:34px;
+      margin-bottom:12px;
       flex-wrap:wrap;
     }
 
@@ -227,7 +230,38 @@
       display:flex;
       flex-direction:column;
       align-items:center;
-      gap:10px;
+      gap:8px;
+      margin-bottom:12px;
+    }
+
+    .hero-cta-row .cta-btn{
+      min-width:min(100%,560px);
+      font-size:1.08rem;
+      padding:19px 30px;
+    }
+
+    .hero-deadline{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      max-width:720px;
+      margin:2px auto 18px;
+      padding:9px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,77,77,.38);
+      background:rgba(255,77,77,.08);
+      color:var(--steel-light);
+      font-size:.84rem;
+      font-weight:700;
+    }
+
+    .hero-deadline strong{color:#ff8b8b;}
+
+    .cta-destination{
+      color:var(--steel);
+      font-size:.75rem;
+      line-height:1.35;
     }
 
     .micro-trust{color:var(--steel);font-size:.82rem;margin-top:6px;}
@@ -434,6 +468,28 @@
       font-size:.85rem;
     }
 
+    .section-cta{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:8px;
+      margin:28px auto 0;
+      text-align:center;
+    }
+
+    .section-cta .cta-btn{
+      min-width:min(100%,520px);
+    }
+
+    .section-cta-note{
+      color:var(--steel);
+      font-size:.8rem;
+    }
+
+    .mobile-bottom-cta{
+      display:none;
+    }
+
     .steps{
       display:grid;
       grid-template-columns:repeat(3,minmax(0,1fr));
@@ -543,17 +599,126 @@
 
     @media(max-width:760px){
       .included-grid,.steps,.hooks-grid{grid-template-columns:1fr;}
+      .section{padding:42px 18px;}
     }
 
     @media(max-width:600px){
-      .bonus-card{flex-direction:column;}
-      .bonus-head-row{flex-direction:column;align-items:flex-start;gap:2px;}
-      a.cta-btn{width:100%;max-width:440px;}
-    }
+      body{padding-bottom:78px;}
 
-    @media(max-width:400px){
-      .sticky-trust{display:none;}
-      .sticky-bar-inner{justify-content:flex-end;}
+      .sticky-bar{display:none;}
+
+      .hero{
+        padding:20px 16px 28px;
+      }
+
+      .eyebrow{
+        margin-bottom:11px;
+        padding:5px 10px;
+        font-size:.67rem;
+        letter-spacing:.09em;
+      }
+
+      h1.hero-title{
+        font-size:clamp(1.9rem,9vw,2.45rem);
+        line-height:1.04;
+        margin-bottom:11px;
+      }
+
+      .hero-sub{
+        font-size:1rem;
+        line-height:1.43;
+        margin-bottom:15px;
+      }
+
+      .hero-cta-row{
+        gap:7px;
+        margin-bottom:9px;
+      }
+
+      .hero-cta-row .cta-btn,
+      .section-cta .cta-btn{
+        width:100%;
+        min-width:0;
+        max-width:none;
+        padding:17px 14px;
+        font-size:1rem;
+        line-height:1.2;
+      }
+
+      .hero-deadline{
+        width:100%;
+        margin:4px auto 14px;
+        padding:8px 10px;
+        border-radius:8px;
+        font-size:.76rem;
+        line-height:1.35;
+      }
+
+      .offer-clarifier{
+        margin:16px auto 16px;
+        padding:12px 13px;
+        font-size:.84rem;
+        line-height:1.45;
+      }
+
+      .countdown-wrap{
+        gap:6px;
+        margin-bottom:9px;
+        flex-wrap:nowrap;
+      }
+
+      .cd-box{
+        flex:1 1 0;
+        min-width:0;
+        padding:10px 5px;
+      }
+
+      .cd-num{font-size:1.45rem;}
+      .cd-label{font-size:.58rem;}
+
+      .micro-trust{font-size:.75rem;line-height:1.35;}
+      .affiliate-note{font-size:.7rem;line-height:1.35;margin-top:9px;}
+
+      .section{
+        padding:38px 16px;
+      }
+
+      .section-head{margin-bottom:26px;}
+      .primary-hook,.hook-card,.included-item,.step{padding:18px;}
+      .bonus-card{flex-direction:column;padding:18px;}
+      .bonus-head-row{flex-direction:column;align-items:flex-start;gap:2px;}
+      .stack-total{padding:16px;}
+      .guarantee-box{padding:20px;gap:14px;}
+      .guarantee-icon{width:50px;height:50px;}
+      .final-cta{padding:46px 16px 54px;}
+
+      a.cta-btn{
+        width:100%;
+        max-width:440px;
+      }
+
+      .mobile-bottom-cta{
+        display:block;
+        position:fixed;
+        left:0;
+        right:0;
+        bottom:0;
+        z-index:150;
+        padding:8px 10px calc(8px + env(safe-area-inset-bottom));
+        background:rgba(13,11,22,.96);
+        backdrop-filter:blur(10px);
+        border-top:1px solid rgba(247,148,29,.38);
+        box-shadow:0 -8px 26px rgba(0,0,0,.35);
+      }
+
+      .mobile-bottom-cta .cta-btn{
+        width:100%;
+        max-width:none;
+        min-height:52px;
+        padding:14px 12px;
+        font-size:.95rem;
+        border-radius:7px;
+      }
     }
   </style>
 </head>
@@ -567,7 +732,7 @@
          href="https://jvz3.com/c/3597797/445413/"
          target="_blank"
          rel="noopener sponsored"
-         data-position="sticky">Get Bundle →</a>
+         data-position="sticky">View Bundle + Bonuses →</a>
     </div>
   </div>
 
@@ -578,21 +743,33 @@
       <h1 class="hero-title display">
         Get the Complete Faceless Forge Bundle
         <br>
-        <span class="accent">Own It. Don't Rent It.</span>
+        <span class="accent">+ 5 Complete Bonus Bundles</span>
       </h1>
 
       <p class="hero-sub">
-        Get the complete $297 Faceless Forge Bundle in one payment:
-        the full system, every major upgrade, unlimited-channel tools,
-        done-for-you content resources and agency rights — plus five complete
-        bonus bundles when you purchase before the launch window closes.
+        Get the full $297 system, every major upgrade, unlimited-channel tools,
+        done-for-you resources and agency rights in one payment.
       </p>
 
-      <div class="offer-clarifier">
-        <strong>Your agent. Your channels. Your content.</strong>
-        Faceless Forge is designed around ownership: one payment, no platform subscription,
-        local rendering on the computer you already own and access to AI models from multiple providers.
-        <strong>Complete your purchase through this page by July 26 to receive all five complete bonus bundles.</strong>
+      <div class="hero-cta-row">
+        <a class="cta-btn affiliate-link"
+           href="https://jvz3.com/c/3597797/445413/"
+           target="_blank"
+           rel="noopener sponsored"
+           data-position="hero">View Faceless Forge Bundle + All 5 Bonuses →</a>
+
+        <div class="micro-trust">
+          One-time payment · 30-day money-back guarantee · Bonuses end July 26
+        </div>
+
+        <div class="cta-destination">
+          Opens the Faceless Forge Bundle offer in a new tab
+        </div>
+      </div>
+
+      <div class="hero-deadline">
+        <span aria-hidden="true">⏳</span>
+        <span>All five complete bonus bundles are included only until <strong>Sunday, July 26 · 11:59 PM ET</strong>.</span>
       </div>
 
       <div class="countdown-wrap" id="countdown" aria-label="Offer countdown">
@@ -602,24 +779,14 @@
         <div class="cd-box"><div class="cd-num" id="cd-secs">--</div><div class="cd-label">Secs</div></div>
       </div>
 
-      <div class="micro-trust" style="margin-bottom:22px;">
-        Complete your purchase by Sunday, July 26, 2026 · 11:59 PM ET to receive all 5 complete bonus bundles
+      <div class="offer-clarifier">
+        <strong>Your agent. Your channels. Your content.</strong>
+        Faceless Forge is built around ownership: one payment, no platform subscription,
+        local rendering on your computer and access to AI models from multiple providers.
       </div>
 
-      <div class="hero-cta-row">
-        <a class="cta-btn affiliate-link"
-           href="https://jvz3.com/c/3597797/445413/"
-           target="_blank"
-           rel="noopener sponsored"
-           data-position="hero">Get Faceless Forge Bundle + All 5 Bonuses →</a>
-
-        <div class="micro-trust">
-          One-time payment · complete package · 5 bonus bundles removed when the launch window ends
-        </div>
-
-        <div class="affiliate-note">
-          Independent bonus page. Daily Insight Desk is not the product creator or official Faceless Forge website.
-        </div>
+      <div class="affiliate-note">
+        Independent bonus page. Daily Insight Desk is not the product creator or official Faceless Forge website.
       </div>
     </section>
 
@@ -819,6 +986,15 @@
         Once the timer reaches zero, these five complete bonus bundles will no longer be included.
         After purchasing, follow the bonus-delivery instructions supplied with your order.
       </p>
+
+      <div class="section-cta">
+        <a class="cta-btn affiliate-link"
+           href="https://jvz3.com/c/3597797/445413/"
+           target="_blank"
+           rel="noopener sponsored"
+           data-position="after-bonuses">Get the Bundle + All 5 Complete Bonuses →</a>
+        <div class="section-cta-note">Bonus eligibility is based on completing the purchase before the deadline.</div>
+      </div>
     </section>
 
     <section class="section" id="claim">
@@ -886,6 +1062,15 @@
       </div>
     </section>
   </main>
+
+
+  <div class="mobile-bottom-cta" aria-label="Quick access to the Faceless Forge Bundle">
+    <a class="cta-btn affiliate-link"
+       href="https://jvz3.com/c/3597797/445413/"
+       target="_blank"
+       rel="noopener sponsored"
+       data-position="mobile-fixed">View Bundle + All 5 Bonuses →</a>
+  </div>
 
   <footer>
     <div class="footer-inner">
