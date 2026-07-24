@@ -863,24 +863,80 @@
   </div>
 
   <script>
-    // Diagnostic outbound-click event. Works automatically after GA4/GTM is installed.
-    document.querySelectorAll('.affiliate-link').forEach(function (link) {
-      link.addEventListener('click', function () {
-        if (typeof window.gtag === 'function') {
-          window.gtag('event', 'outbound_click', {
-            link_url: link.href,
-            link_text: link.textContent.trim(),
-            product_name: 'Katori Titanium Cutting Board'
-          });
+    (function () {
+      const STORAGE_KEY = 'katori_everflow_tracking';
+      const pageParams = new URLSearchParams(window.location.search);
+
+      // The MediaScalers/Everflow Google Ads integration sends:
+      // sub1 = Google Click ID (GCLID)
+      // sub2 = Google Ads keyword
+      //
+      // The gclid fallback makes the page robust if Google appends the
+      // click ID directly to the landing-page URL.
+      const incomingTracking = {
+        sub1: pageParams.get('sub1') || pageParams.get('gclid') || '',
+        sub2: pageParams.get('sub2') || ''
+      };
+
+      let savedTracking = {};
+
+      try {
+        savedTracking = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || '{}');
+      } catch (error) {
+        savedTracking = {};
+      }
+
+      const tracking = {
+        sub1: incomingTracking.sub1 || savedTracking.sub1 || '',
+        sub2: incomingTracking.sub2 || savedTracking.sub2 || ''
+      };
+
+      try {
+        sessionStorage.setItem(STORAGE_KEY, JSON.stringify(tracking));
+      } catch (error) {
+        // Tracking still works during this page view if storage is unavailable.
+      }
+
+      const affiliateLinks = document.querySelectorAll(
+        'a.affiliate-link[href*="clickrtrckr.com"]'
+      );
+
+      affiliateLinks.forEach(function (link) {
+        const destination = new URL(link.href);
+
+        if (tracking.sub1) {
+          destination.searchParams.set('sub1', tracking.sub1);
         }
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          event: 'affiliate_outbound_click',
-          product_name: 'Katori Titanium Cutting Board',
-          destination: 'producer_product_page'
+
+        if (tracking.sub2) {
+          destination.searchParams.set('sub2', tracking.sub2);
+        }
+
+        // Preserve the MediaScalers source label on every outbound click.
+        destination.searchParams.set('source_id', 'search');
+        link.href = destination.toString();
+
+        link.addEventListener('click', function () {
+          if (typeof window.gtag === 'function') {
+            window.gtag('event', 'outbound_click', {
+              link_url: link.href,
+              link_text: link.textContent.trim(),
+              product_name: 'Katori Titanium Cutting Board',
+              traffic_source: 'google_search'
+            });
+          }
+
+          // Useful only if a GTM container is added later; harmless otherwise.
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: 'affiliate_outbound_click',
+            product_name: 'Katori Titanium Cutting Board',
+            destination: 'producer_product_page',
+            tracking_id_present: Boolean(tracking.sub1)
+          });
         });
       });
-    });
+    })();
   </script>
 </body>
 </html>
