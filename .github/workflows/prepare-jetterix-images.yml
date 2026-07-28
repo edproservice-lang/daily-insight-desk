@@ -1,0 +1,94 @@
+name: Prepare Jetterix Images
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  optimize-images:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install WebP tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y webp
+
+      - name: Download and optimize seller images
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          TARGET="jetterix-pressure-nozzle-review/assets/images"
+          TMP="$(mktemp -d)"
+          mkdir -p "$TARGET"
+
+          download() {
+            local url="$1"
+            local output="$2"
+
+            curl \
+              --location \
+              --fail \
+              --retry 4 \
+              --retry-delay 3 \
+              --connect-timeout 25 \
+              --max-time 120 \
+              --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/150 Safari/537.36" \
+              --referer "https://jetteerix.com/" \
+              "$url" \
+              --output "$output"
+          }
+
+          convert_image() {
+            local input="$1"
+            local output="$2"
+            local width="$3"
+
+            cwebp -quiet -q 76 -m 6 -mt -resize "$width" 0 "$input" -o "$output"
+          }
+
+          download "https://jetteerix.com/images/MV9Qb3dlcmZ1bC1Ob3p6bGUuanBn-h_480.jpg" "$TMP/hero.jpg"
+          convert_image "$TMP/hero.jpg" "$TARGET/jetterix-hero.webp" 480
+
+          download "https://jetteerix.com/images/UHJlc3N1cmUtTm96emxlX0ZlYXR1cmUtaW1hZ2UtMS5wbmc-w_616.png" "$TMP/overview.png"
+          convert_image "$TMP/overview.png" "$TARGET/jetterix-overview.webp" 616
+
+          download "https://getjetterix.com/images/MDEtQ29ubmVjdC1JdC5qcGc-w_700.jpg" "$TMP/connect.jpg"
+          convert_image "$TMP/connect.jpg" "$TARGET/jetterix-step-connect.webp" 700
+
+          download "https://getjetterix.com/images/MDItQXR0YWNoLXRoZS1Ob3p6bGUuanBn-w_700.jpg" "$TMP/nozzle.jpg"
+          convert_image "$TMP/nozzle.jpg" "$TARGET/jetterix-step-nozzle.webp" 700
+
+          download "https://getjetterix.com/images/MDMtU3RhcnQtQ2xlYW5pbmcuanBn-w_700.jpg" "$TMP/clean.jpg"
+          convert_image "$TMP/clean.jpg" "$TARGET/jetterix-step-clean.webp" 700
+
+          if download "https://jetteerix.com/images/1b419d2636cfe4e589853b85291a84d1.webp" "$TMP/use.webp"; then
+            dwebp "$TMP/use.webp" -o "$TMP/use.png"
+            convert_image "$TMP/use.png" "$TARGET/jetterix-outdoor-use.webp" 760
+          else
+            echo "Imagem de uso externo indisponível. Usando imagem alternativa."
+            cp "$TARGET/jetterix-overview.webp" "$TARGET/jetterix-outdoor-use.webp"
+          fi
+
+          echo "Arquivos gerados:"
+          du -h "$TARGET"/*.webp
+
+      - name: Commit optimized images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add jetterix-pressure-nozzle-review/assets/images/*.webp
+
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteração de imagem para enviar."
+          else
+            git commit -m "Optimize and host Jetterix images locally"
+            git push
+          fi
