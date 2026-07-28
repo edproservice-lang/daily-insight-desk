@@ -327,6 +327,49 @@
     .use-item strong { display: block; margin-bottom: 5px; }
     .use-item span { color: var(--muted); font-size: 14px; }
 
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .result-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: #fff;
+      box-shadow: 0 10px 30px rgba(18,59,89,.06);
+    }
+    .result-card img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      background: var(--sky);
+    }
+    .result-copy {
+      padding: 18px 19px 20px;
+    }
+    .result-copy strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--navy);
+      font-size: 16px;
+    }
+    .result-copy span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .seller-example-note {
+      max-width: 850px;
+      margin: 25px auto 0;
+      padding: 15px 18px;
+      border: 1px solid #d8e7ed;
+      border-radius: 14px;
+      background: #f7fbfd;
+      color: #5b6b75;
+      font-size: 12px;
+      text-align: center;
+    }
+
     .expect-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .expect-card {
       padding: 29px;
@@ -433,7 +476,8 @@
       .hero { padding-top: 48px; }
       .hero-grid { gap: 35px; }
       .hero-card { max-width: 680px; margin-inline: auto; }
-      .steps, .expect-grid { grid-template-columns: 1fr 1fr; }
+      .steps, .expect-grid, .results-grid { grid-template-columns: 1fr 1fr; }
+      .results-grid .result-card:last-child { grid-column: 1 / -1; }
       .expect-card:last-child { grid-column: 1 / -1; }
       .trust-grid { grid-template-columns: 1fr 1fr; }
       .trust-item:nth-child(2) { border-right: 0; }
@@ -450,7 +494,7 @@
       section { padding: 63px 0; }
       .verdict-copy { padding: 29px 24px; }
       .verdict-image { min-height: 310px; }
-      .steps, .expect-grid, .use-list { grid-template-columns: 1fr; }
+      .steps, .expect-grid, .use-list, .results-grid { grid-template-columns: 1fr; }
       .expect-card:last-child { grid-column: auto; }
       .use-photo img { min-height: 340px; }
       .cta-box { padding: 42px 22px; }
@@ -526,6 +570,7 @@
         <a href="#verdict">Overview</a>
         <a href="#how-it-works">How It Works</a>
         <a href="#uses">Common Uses</a>
+        <a href="#examples">Examples</a>
         <a href="#faq">FAQ</a>
         <a class="btn affiliate-link" data-cta-location="header" href="https://www.clickrtrckr.com/J2D6CNH/7L95GK9/?uid=12402&source_id=demandgen" rel="nofollow sponsored noopener">
           View Jetterix Details <span class="arrow">→</span>
@@ -565,13 +610,13 @@
         <div class="hero-card">
           <img decoding="async"
             src="/jetterix-pressure-nozzle-review/assets/images/jetterix-hero.webp"
-            alt="Jetterix pressure nozzle shown as a compact garden hose attachment"
-            width="720"
-            height="720"
+            alt="Jetterix hose nozzle directing a focused spray onto an outdoor surface"
+            width="480"
+            height="480"
             fetchpriority="high"
             onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
           <div class="img-fallback" style="display:none;">Jetterix compact garden-hose attachment</div>
-          <p class="image-caption">Product imagery is used for independent product-review and advertising purposes. Current appearance and package contents may vary.</p>
+          <p class="image-caption">Original seller-provided product image. Current appearance and package contents may vary.</p>
         </div>
       </div>
     </section>
@@ -610,12 +655,12 @@
           <div class="verdict-image">
             <img decoding="async"
               src="/jetterix-pressure-nozzle-review/assets/images/jetterix-overview.webp"
-              alt="Jetterix nozzle shown during an outdoor cleaning task"
-              width="760"
-              height="760"
+              alt="Jetterix hose nozzle being connected to a standard garden hose"
+              width="700"
+              height="698"
               loading="lazy"
               onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
-            <div class="img-fallback" style="display:none;">A compact nozzle designed for everyday outdoor cleaning</div>
+            <div class="img-fallback" style="display:none;">Jetterix shown connecting to a standard garden hose</div>
           </div>
         </div>
       </div>
@@ -667,12 +712,13 @@
         <div class="use-photo">
           <img decoding="async"
             src="/jetterix-pressure-nozzle-review/assets/images/jetterix-outdoor-use.webp"
-            alt="Garden hose nozzle used for routine outdoor rinsing"
-            width="760"
-            height="900"
+            alt="Seller-provided before-and-after example of outdoor paver cleaning"
+            width="480"
+            height="480"
             loading="lazy"
             onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
-          <div class="img-fallback" style="display:none;">Routine rinsing for outdoor home areas</div>
+          <div class="img-fallback" style="display:none;">Seller-provided outdoor cleaning example</div>
+          <p class="image-caption" style="padding:0 14px 13px;">Seller-provided before/after illustration. Actual results vary with water pressure, surface condition, dirt type and technique.</p>
         </div>
 
         <div>
@@ -694,7 +740,62 @@
       </div>
     </section>
 
-    <section id="expectations" style="background:#edf7fb;">
+    <section id="examples" style="background:#edf7fb;">
+      <div class="container">
+        <div class="section-intro">
+          <div class="section-kicker">Seller-provided demonstrations</div>
+          <h2>Examples of the outdoor surfaces shown in the seller’s materials</h2>
+          <p>These visuals help illustrate the kinds of routine exterior cleaning tasks for which Jetterix is promoted.</p>
+        </div>
+
+        <div class="results-grid">
+          <article class="result-card">
+            <img decoding="async"
+              src="/jetterix-pressure-nozzle-review/assets/images/jetterix-result-siding.webp"
+              alt="Seller-provided before-and-after example of exterior siding cleaning"
+              width="480"
+              height="480"
+              loading="lazy">
+            <div class="result-copy">
+              <strong>Exterior siding</strong>
+              <span>Illustrates a before-and-after exterior surface example shown by the seller.</span>
+            </div>
+          </article>
+
+          <article class="result-card">
+            <img decoding="async"
+              src="/jetterix-pressure-nozzle-review/assets/images/jetterix-outdoor-use.webp"
+              alt="Seller-provided before-and-after example of outdoor paver cleaning"
+              width="480"
+              height="480"
+              loading="lazy">
+            <div class="result-copy">
+              <strong>Patios and pavers</strong>
+              <span>Shows the type of outdoor hard-surface rinsing featured in the product materials.</span>
+            </div>
+          </article>
+
+          <article class="result-card">
+            <img decoding="async"
+              src="/jetterix-pressure-nozzle-review/assets/images/jetterix-result-car.webp"
+              alt="Seller-provided before-and-after example of vehicle exterior rinsing"
+              width="480"
+              height="480"
+              loading="lazy">
+            <div class="result-copy">
+              <strong>Vehicle exteriors</strong>
+              <span>Illustrates exterior vehicle rinsing as another use presented by the seller.</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="seller-example-note">
+          These are seller-provided illustrative examples, not guaranteed or independently verified outcomes. Results can differ based on household water pressure, hose condition, spray distance, surface material, buildup and cleaning technique.
+        </div>
+      </div>
+    </section>
+
+    <section id="expectations">
       <div class="container">
         <div class="section-intro">
           <div class="section-kicker">Before you continue</div>
