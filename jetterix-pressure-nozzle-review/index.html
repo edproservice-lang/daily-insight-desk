@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en-US">
 <head>
+  <!-- Jetterix Demand Gen Presell V8 Tracking -->
   <!-- Existing Daily Insight Desk Google Analytics property -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-QM23XL6N04"></script>
   <script>
@@ -928,16 +929,29 @@
       const STORAGE_KEY = 'jetterix_everflow_tracking';
       const pageParams = new URLSearchParams(window.location.search);
 
+      // MediaScalers maps Google Click ID to sub1.
+      // GBRAID and WBRAID are different identifiers and must not be treated as GCLID.
       const incomingTracking = {
         sub1:
           pageParams.get('sub1') ||
           pageParams.get('gclid') ||
-          pageParams.get('gbraid') ||
-          pageParams.get('wbraid') ||
           '',
         sub2:
           pageParams.get('sub2') ||
+          pageParams.get('keyword') ||
+          '',
+        sub3:
+          pageParams.get('sub3') ||
+          pageParams.get('campaignid') ||
           pageParams.get('utm_campaign') ||
+          '',
+        sub4:
+          pageParams.get('sub4') ||
+          pageParams.get('adgroupid') ||
+          '',
+        sub5:
+          pageParams.get('sub5') ||
+          pageParams.get('creative') ||
           pageParams.get('utm_content') ||
           ''
       };
@@ -952,7 +966,10 @@
 
       const tracking = {
         sub1: incomingTracking.sub1 || savedTracking.sub1 || '',
-        sub2: incomingTracking.sub2 || savedTracking.sub2 || ''
+        sub2: incomingTracking.sub2 || savedTracking.sub2 || '',
+        sub3: incomingTracking.sub3 || savedTracking.sub3 || '',
+        sub4: incomingTracking.sub4 || savedTracking.sub4 || '',
+        sub5: incomingTracking.sub5 || savedTracking.sub5 || ''
       };
 
       try {
@@ -968,13 +985,11 @@
       affiliateLinks.forEach(function (link) {
         const destination = new URL(link.href);
 
-        if (tracking.sub1) {
-          destination.searchParams.set('sub1', tracking.sub1);
-        }
-
-        if (tracking.sub2) {
-          destination.searchParams.set('sub2', tracking.sub2);
-        }
+        ['sub1', 'sub2', 'sub3', 'sub4', 'sub5'].forEach(function (parameter) {
+          if (tracking[parameter]) {
+            destination.searchParams.set(parameter, tracking[parameter]);
+          }
+        });
 
         destination.searchParams.set('source_id', 'demandgen');
         link.href = destination.toString();
@@ -989,6 +1004,10 @@
               product_name: 'Jetterix Pressure Nozzle',
               traffic_source: 'google_demand_gen',
               cta_location: ctaLocation,
+              tracking_id_present: Boolean(tracking.sub1),
+              campaign_id: tracking.sub3 || undefined,
+              ad_group_id: tracking.sub4 || undefined,
+              creative_id: tracking.sub5 || undefined,
               transport_type: 'beacon'
             });
           }
@@ -999,7 +1018,10 @@
             product_name: 'Jetterix Pressure Nozzle',
             destination: 'producer_product_page',
             cta_location: ctaLocation,
-            tracking_id_present: Boolean(tracking.sub1)
+            tracking_id_present: Boolean(tracking.sub1),
+            campaign_id: tracking.sub3 || '',
+            ad_group_id: tracking.sub4 || '',
+            creative_id: tracking.sub5 || ''
           });
         });
       });
