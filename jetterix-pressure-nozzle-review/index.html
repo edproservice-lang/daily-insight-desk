@@ -325,7 +325,7 @@
       background: #fff;
       box-shadow: var(--shadow);
     }
-    .use-photo img { width: 100%; min-height: 500px; object-fit: cover; }
+    .use-photo img { width: 100%; height: auto; min-height: 0; object-fit: cover; }
     .use-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     .use-item {
       min-height: 128px;
@@ -506,7 +506,7 @@
       .verdict-image { min-height: 310px; }
       .steps, .expect-grid, .use-list, .results-grid { grid-template-columns: 1fr; }
       .expect-card:last-child { grid-column: auto; }
-      .use-photo img { min-height: 340px; }
+      .use-photo img { min-height: 0; }
       .cta-box { padding: 42px 22px; }
       .footer-grid { grid-template-columns: 1fr; }
       .footer-links { justify-content: flex-start; }
@@ -721,14 +721,14 @@
       <div class="container use-grid">
         <div class="use-photo">
           <img decoding="async"
-            src="/jetterix-pressure-nozzle-review/assets/images/jetterix-outdoor-use.webp"
-            alt="Before-and-after example of outdoor paver cleaning from the product materials"
-            width="480"
-            height="480"
+            src="/jetterix-pressure-nozzle-review/assets/images/jetterix-deck-before-after.webp"
+            alt="Before-and-after example of deck and outdoor step cleaning from the product materials"
+            width="1200"
+            height="725"
             loading="lazy"
             onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
-          <div class="img-fallback" style="display:none;">Outdoor cleaning example from the product materials</div>
-          <p class="image-caption" style="padding:0 14px 13px;">Outdoor-cleaning example from the product materials. Individual results vary.</p>
+          <div class="img-fallback" style="display:none;">Deck and outdoor-step cleaning example from the product materials</div>
+          <p class="image-caption" style="padding:0 14px 13px;">Deck and outdoor-step example from the product materials. Individual results vary.</p>
         </div>
 
         <div>
