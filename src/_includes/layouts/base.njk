@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ metaTitle or (title ~ " · Daily Insight Desk") }}</title>
+  <meta name="description" content="{{ description }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  {% if robots %}<meta name="robots" content="{{ robots }}">{% endif %}
+  <meta name="theme-color" content="#f3eee6">
+  <meta property="og:site_name" content="Daily Insight Desk">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="{{ ogType or "website" }}">
+  <meta property="og:title" content="{{ metaTitle or title }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:image" content="{{ site.url }}{{ ogImage or "/assets/images/og.jpg" }}">
+  <meta property="og:image:alt" content="{{ ogAlt or "A sunlit table by an open door, with a cutting board and a garden hose on the patio." }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ metaTitle or title }}">
+  <meta name="twitter:description" content="{{ description }}">
+  <meta name="twitter:image" content="{{ site.url }}{{ ogImage or "/assets/images/og.jpg" }}">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  {% if lcp %}
+  <link rel="preload" as="image" href="{{ lcp }}-800.webp" imagesrcset="{{ lcp }}-800.webp 800w, {{ lcp }}-1600.webp 1600w" imagesizes="{{ lcpSizes or "100vw" }}">
+  {% endif %}
+  <link rel="preload" href="/assets/fonts/fraunces-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/source-serif-4-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.ga }}');
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "{{ site.url }}/#organization",
+        "name": "{{ site.name }}",
+        "url": "{{ site.url }}/",
+        "logo": "{{ site.url }}/android-chrome-192x192.png",
+        "email": "{{ site.email }}",
+        "parentOrganization": {
+          "@type": "Organization",
+          "name": "{{ site.operator }}"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "{{ site.url }}/#website",
+        "name": "{{ site.name }}",
+        "url": "{{ site.url }}/",
+        "description": {{ site.description | dump | safe }},
+        "inLanguage": "en-US",
+        "publisher": { "@id": "{{ site.url }}/#organization" }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  {% include "partials/header.njk" %}
+  {{ content | safe }}
+  {% include "partials/footer.njk" %}
+  <script src="/assets/js/site.js" defer></script>
+</body>
+</html>

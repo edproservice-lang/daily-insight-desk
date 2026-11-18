@@ -1,0 +1,26 @@
+<a class="skip" href="#main">Skip to content</a>
+<header class="mast">
+  <div class="mast-inner">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true">D</span>
+      <span>Daily Insight Desk</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    {% if section %}
+      {% set navActive = section %}
+    {% elif shelf.slug %}
+      {% set navActive = shelf.slug %}
+    {% elif silo %}
+      {% set navActive = silo %}
+    {% else %}
+      {% set navActive = "" %}
+    {% endif %}
+    <nav id="site-nav" class="nav" aria-label="Primary">
+      <a href="/cleaning/" {% if navActive == "cleaning" %}aria-current="page"{% endif %}>Cleaning</a>
+      <a href="/kitchen/" {% if navActive == "kitchen" %}aria-current="page"{% endif %}>Kitchen</a>
+      <a href="/outdoor/" {% if navActive == "outdoor" %}aria-current="page"{% endif %}>Outdoor</a>
+      <a href="/tools/" {% if navActive == "tools" %}aria-current="page"{% endif %}>Tools</a>
+      <a href="/about/" {% if navActive == "about" %}aria-current="page"{% endif %}>About</a>
+    </nav>
+  </div>
+</header>

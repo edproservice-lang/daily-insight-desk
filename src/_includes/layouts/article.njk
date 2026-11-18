@@ -1,0 +1,139 @@
+---
+layout: layouts/base.njk
+ogType: article
+---
+<main id="main" class="wrap page-hero">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li><a href="/{{ silo }}/">{{ siloName }}</a></li>
+      <li aria-current="page">{{ title }}</li>
+    </ol>
+  </nav>
+  <p class="eyebrow">{{ siloName }}</p>
+  <h1>{{ title }}</h1>
+  <p class="dek">{{ dek }}</p>
+  <p class="byline">
+    <span>By Daily Insight Desk</span>
+    <span>Published {{ date | prettyDate }}</span>
+    {% if updated | isoDate != date | isoDate %}
+      <span>Updated {{ updated | prettyDate }}</span>
+    {% else %}
+      <span>Reviewed {{ date | prettyDate }}</span>
+    {% endif %}
+    <span>{{ readTime }}</span>
+  </p>
+  <aside class="disclosure">
+    <p><strong>Affiliate disclosure.</strong> This guide contains affiliate links. If you buy through one, we may earn a commission at no extra cost to you. We have not hands-on tested the products mentioned. Read the full <a href="/affiliate-disclosure/">affiliate disclosure</a>.</p>
+  </aside>
+  <div class="article-grid">
+    <figure class="frame article-hero">
+      <img
+        src="{{ hero }}-800.webp"
+        srcset="{{ hero }}-800.webp 800w, {{ hero }}-1600.webp 1600w"
+        sizes="(min-width: 1040px) 40rem, calc(100vw - 2.5rem)"
+        alt="{{ heroAlt }}"
+        width="1600"
+        height="{{ heroHeight }}"
+        fetchpriority="high"
+        decoding="async">
+      <figcaption>{{ heroCaption }}</figcaption>
+    </figure>
+    <article class="prose">
+      {{ content | safe }}
+      {% if faq %}
+      <section class="faq" aria-labelledby="faq-title">
+        <h2 id="faq-title">Questions people actually ask</h2>
+        {% for item in faq %}
+        <details>
+          <summary>{{ item.q }}</summary>
+          <p>{{ item.a }}</p>
+        </details>
+        {% endfor %}
+      </section>
+      {% endif %}
+      <aside class="author">
+        <div class="avatar" aria-hidden="true">D</div>
+        <div>
+          <h2>Daily Insight Desk</h2>
+          <p>Guides for U.S. households, published by {{ site.operator }}. We explain the job first. A product is mentioned only when it fits, the link is labeled, and we say when a point comes from a seller or from another publication. We do not invent hands-on tests.</p>
+        </div>
+      </aside>
+    </article>
+    <nav class="toc" aria-label="On this page">
+      <p class="kicker">On this page</p>
+      <ol>
+        {% for item in toc %}
+        <li><a href="#{{ item.id }}">{{ item.label }}</a></li>
+        {% endfor %}
+        {% if faq %}<li><a href="#faq-title">Questions</a></li>{% endif %}
+      </ol>
+    </nav>
+  </div>
+</main>
+<section class="wrap related" aria-labelledby="related-title">
+  <h2 id="related-title">Also on the desk</h2>
+  <div class="guide-grid">
+    <a class="guide-card" href="/{{ silo }}/">
+      <div>
+        <p class="kicker">{{ siloName }} shelf</p>
+        <h3>More from {{ siloName }}</h3>
+        <p>The hub for this subject, including guides that are still being written and are not linked yet.</p>
+      </div>
+    </a>
+    {% for post in collections.guide %}
+      {% if post.url != page.url %}
+      <a class="guide-card" href="{{ post.url }}">
+        <div>
+          <p class="kicker">{{ post.data.siloName }}</p>
+          <h3>{{ post.data.title }}</h3>
+          <p>{{ post.data.dek }}</p>
+        </div>
+      </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}/" },
+        { "@type": "ListItem", "position": 2, "name": {{ siloName | dump | safe }}, "item": "{{ site.url }}/{{ silo }}/" },
+        { "@type": "ListItem", "position": 3, "name": {{ title | dump | safe }}, "item": "{{ site.url }}{{ page.url }}" }
+      ]
+    },
+    {
+      "@type": "Article",
+      "headline": {{ title | dump | safe }},
+      "description": {{ description | dump | safe }},
+      "datePublished": "{{ date | isoDate }}",
+      "dateModified": "{{ updated | isoDate }}",
+      "inLanguage": "en-US",
+      "articleSection": {{ siloName | dump | safe }},
+      "mainEntityOfPage": "{{ site.url }}{{ page.url }}",
+      "image": ["{{ site.url }}{{ hero }}-1600.webp"],
+      "author": { "@id": "{{ site.url }}/#organization" },
+      "publisher": { "@id": "{{ site.url }}/#organization" }
+    }{% if faq %},
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {% for item in faq %}
+        {
+          "@type": "Question",
+          "name": {{ item.q | dump | safe }},
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": {{ item.a | dump | safe }}
+          }
+        }{% if not loop.last %},{% endif %}
+        {% endfor %}
+      ]
+    }{% endif %}
+  ]
+}
+</script>
