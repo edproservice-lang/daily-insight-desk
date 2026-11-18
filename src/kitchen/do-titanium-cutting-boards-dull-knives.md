@@ -17,6 +17,10 @@ heroCaption: Original illustration of three board materials. Not a photo from a 
 ogImage: /assets/images/guide-boards-1600.webp
 ogAlt: Illustration of wood, plastic, and metal cutting boards on a kitchen counter.
 permalink: /kitchen/do-titanium-cutting-boards-dull-knives/
+related:
+  - href: /kitchen/are-rolling-knife-sharpeners-good/
+    title: Are rolling knife sharpeners good?
+    note: What to use when a hard board has already taken the edge off.
 toc:
   - id: the-short-answer
     label: The short answer
@@ -53,7 +57,7 @@ Yes. A titanium cutting board dulls knives faster than a wood or plastic board. 
 
 The other half of the advertisement is also true, and it is why these boards sell. A metal board is easy to rinse. It does not drink garlic juice the way a dry wood board can, and it does not ask you to oil it. Easy to clean is a real household benefit. It does not cancel the knife.
 
-For everyday chopping, use wood or plastic. Keep a hard board, if you want one at all, for the jobs that are mostly a platter: bread you are not sawing for long, or food you are arranging rather than cutting. That is the recommendation from the reporting below, and it is the recommendation of this desk. We did not run the knife test ourselves. [Serious Eats did](https://www.seriouseats.com/titanium-cutting-board-review-12003725), on a titanium board that is not the Katori board mentioned later.
+For everyday chopping, use wood or plastic. Keep a hard board, if you want one at all, for the jobs that are mostly a platter: bread you are not sawing for long, or food you are arranging rather than cutting. That is the recommendation from the reporting below, and it is the recommendation of this desk. We did not run the knife test ourselves. Serious Eats did, on a titanium board that is not the Katori board mentioned later. If the edge is already gone, the [rolling knife sharpener guide](/kitchen/are-rolling-knife-sharpeners-good/) is the next kitchen question, and the rest of these notes live on the [kitchen shelf](/kitchen/).
 
 ## Why the board should give a little
 
@@ -125,4 +129,4 @@ Sharpen or steel the knife on a schedule you will keep. A board that is kind to 
 
 ## Sources
 
-Taylor Murray, “Do You Need a Titanium Cutting Board? We Reviewed One—Here’s What You Should Buy Instead,” Serious Eats, July 16, 2026. [seriouseats.com/titanium-cutting-board-review-12003725](https://www.seriouseats.com/titanium-cutting-board-review-12003725). The test described above is hers, on a Taima board. This desk did not repeat it.
+Taylor Murray, “Do You Need a Titanium Cutting Board? We Reviewed One—Here’s What You Should Buy Instead,” Serious Eats, July 16, 2026. Cited without a link: the review recommends other boards and carries shopping buttons. The test described above is hers, on a Taima board. This desk did not repeat it.

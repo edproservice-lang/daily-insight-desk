@@ -42,6 +42,29 @@ export default function (eleventyConfig) {
     level: 2,
     permalink: false,
   });
+
+  const defaultLinkOpen = markdown.renderer.rules.link_open
+    || ((tokens, idx, options, env, self) => self.renderToken(tokens, idx, options));
+  markdown.renderer.rules.link_open = (tokens, idx, options, env, self) => {
+    const token = tokens[idx];
+    const href = token.attrGet("href") || "";
+    if (/^https?:\/\//i.test(href)) {
+      let host = "";
+      try {
+        host = new URL(href).hostname.toLowerCase().replace(/^www\./, "");
+      } catch {
+        host = "";
+      }
+      const ownTracking = host === "clickrtrckr.com" || host === "clickomundo.com";
+      const ownSite = host === "dailyinsightdesk.com";
+      const authority = host.endsWith(".gov") || host.endsWith(".edu") || host.endsWith(".gov.uk") || host.endsWith(".ac.uk");
+      token.attrSet("target", "_blank");
+      if (ownTracking) token.attrSet("rel", "sponsored nofollow noopener");
+      else if (ownSite || authority) token.attrSet("rel", "noopener");
+      else token.attrSet("rel", "nofollow noopener");
+    }
+    return defaultLinkOpen(tokens, idx, options, env, self);
+  };
   eleventyConfig.setLibrary("md", markdown);
 
   eleventyConfig.addFilter("inSilo", (guides, slug) =>

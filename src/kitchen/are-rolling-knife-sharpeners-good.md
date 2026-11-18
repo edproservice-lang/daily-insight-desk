@@ -17,6 +17,10 @@ heroCaption: Seller product photo of KatuSharp on a plain background. Not a phot
 ogImage: /assets/images/guide-rolling-sharpener-1600.webp
 ogAlt: A rolling knife sharpener disc next to its angled magnetic base.
 permalink: /kitchen/are-rolling-knife-sharpeners-good/
+related:
+  - href: /kitchen/do-titanium-cutting-boards-dull-knives/
+    title: Do titanium cutting boards dull knives?
+    note: The board under the knife decides how soon you need this sharpener.
 toc:
   - id: the-short-answer
     label: The short answer
@@ -48,7 +52,7 @@ faq:
   - q: Should I use 15 or 20 degrees?
     a: 20 degrees is the sturdier, common default for Western-style kitchen knives. 15 degrees is a finer edge suited to thinner blades, often Japanese-style. Pick the angle that matches the knife and keep using it for that knife, so you are not regrinding the bevel every time.
   - q: Has Daily Insight Desk tested KatuSharp?
-    a: No. What we say about KatuSharp comes from the maker’s product page. What we say about how rolling sharpeners perform comes from published reviews of other brands, which we name and link.
+    a: No. What we say about KatuSharp comes from the maker’s product page. What we say about how rolling sharpeners perform comes from a published review of another brand, named in the sources. That review is a product page with shopping buttons, so this guide does not link it.
 ---
 
 ## The short answer
@@ -167,10 +171,10 @@ These are general habits for the category, not results from a test.
 - **Even strokes, both sides.** Do the same number of passes on each side, and work heel to tip so the belly of the blade gets sharpened too.
 - **Mind your fingers.** The edge faces up while you roll. Keep your hand on the disc, not near the edge, and move slowly at first.
 - **Hone between sharpenings.** A few strokes on a honing rod straighten a rolled edge and stretch the time between real sharpenings.
-- **Cut on wood or plastic.** Glass, stone, and metal boards undo the work fast. Our guide on [titanium cutting boards](/kitchen/do-titanium-cutting-boards-dull-knives/) explains why.
+- **Cut on wood or plastic.** Glass, stone, and metal boards undo the work fast. Our guide on [titanium cutting boards](/kitchen/do-titanium-cutting-boards-dull-knives/) explains why. Both pieces sit on the [kitchen shelf](/kitchen/).
 
 ## Sources
 
-Taylor Murray, “This Rolling Knife Sharpener Actually Makes Sharpening Knives Fun,” Serious Eats, March 11, 2025. [seriouseats.com/best-rolling-knife-sharpener-8781806](https://www.seriouseats.com/best-rolling-knife-sharpener-8781806). The test described above was of a Horl 3 Cruise, not KatuSharp. This desk did not repeat it.
+Taylor Murray, “This Rolling Knife Sharpener Actually Makes Sharpening Knives Fun,” Serious Eats, March 11, 2025. Cited without a link: it is a “best sharpener” review with shopping buttons. The test described above was of a Horl 3 Cruise, not KatuSharp. This desk did not repeat it.
 
 KatuSharp product page (seller), viewed November 18, 2026. Specifications, included items, and marketing claims quoted above are the seller’s.

@@ -65,8 +65,8 @@ ogType: article
             {% if author.bio and "[" not in author.bio %}<p>{{ author.bio }}</p>{% endif %}
             {% if (author.facebook and "[" not in author.facebook) or (author.instagram and "[" not in author.instagram) %}
             <p class="author-links">
-              {% if author.facebook and "[" not in author.facebook %}<a href="{{ author.facebook }}" rel="noopener">Facebook</a>{% endif %}
-              {% if author.instagram and "[" not in author.instagram %}<a href="{{ author.instagram }}" rel="noopener">Instagram</a>{% endif %}
+              {% if author.facebook and "[" not in author.facebook %}<a href="{{ author.facebook }}" rel="nofollow noopener" target="_blank">Facebook</a>{% endif %}
+              {% if author.instagram and "[" not in author.instagram %}<a href="{{ author.instagram }}" rel="nofollow noopener" target="_blank">Instagram</a>{% endif %}
             </p>
             {% endif %}
           </div>
@@ -90,29 +90,19 @@ ogType: article
     </nav>
   </div>
 </main>
+{% if related and related.length %}
 <section class="wrap related" aria-labelledby="related-title">
-  <h2 id="related-title">Also on the desk</h2>
-  <div class="guide-grid">
-    <a class="guide-card" href="/{{ silo }}/">
-      <div>
-        <p class="kicker">{{ siloName }} shelf</p>
-        <h3>More from {{ siloName }}</h3>
-        <p>The hub for this subject, including guides that are still being written and are not linked yet.</p>
-      </div>
-    </a>
-    {% for post in collections.guide %}
-      {% if post.url != page.url %}
-      <a class="guide-card" href="{{ post.url }}">
-        <div>
-          <p class="kicker">{{ post.data.siloName }}</p>
-          <h3>{{ post.data.title }}</h3>
-          <p>{{ post.data.dek }}</p>
-        </div>
-      </a>
-      {% endif %}
+  <h2 id="related-title">Related guides</h2>
+  <ul class="related-list">
+    {% for item in related %}
+    <li>
+      <a href="{{ item.href }}">{{ item.title }}</a>
+      {% if item.note %}<p>{{ item.note }}</p>{% endif %}
+    </li>
     {% endfor %}
-  </div>
+  </ul>
 </section>
+{% endif %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

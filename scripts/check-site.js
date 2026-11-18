@@ -119,6 +119,96 @@ for (const [urlPath, html] of pages) {
   }
 }
 
+const bannedHost = [
+  /(^|\.)amazon\./,
+  /^amzn\.to$/,
+  /(^|\.)walmart\./,
+  /(^|\.)ebay\./,
+  /(^|\.)target\.com$/,
+  /(^|\.)bestbuy\./,
+  /(^|\.)clickbank\./,
+  /(^|\.)shareasale\./,
+  /(^|\.)homedepot\./,
+  /(^|\.)lowes\./,
+  /(^|\.)wayfair\./,
+  /(^|\.)etsy\./,
+  /(^|\.)aliexpress\./,
+  /(^|\.)newegg\./,
+  /(^|\.)costco\./,
+  /(^|\.)overstock\./,
+  /(^|\.)rakuten\./,
+  /(^|\.)awin1\.com$/,
+  /(^|\.)awin\.com$/,
+  /(^|\.)impact\.com$/,
+  /(^|\.)cj\.com$/,
+  /(^|\.)avantlink\./,
+  /(^|\.)skimresources\./,
+  /(^|\.)rstyle\.me$/,
+  /(^|\.)shopstyle\./,
+  /(^|\.)anrdoezrs\.net$/,
+  /(^|\.)dpbolvw\.net$/,
+  /(^|\.)jdoqocy\.com$/,
+  /(^|\.)tkqlhce\.com$/,
+  /(^|\.)kqzyfj\.com$/,
+  /(^|\.)qksrv\.net$/,
+  /(^|\.)emjcd\.com$/,
+  /(^|\.)pjtra\.com$/,
+  /(^|\.)pntra\.com$/,
+  /(^|\.)pntrs\.com$/,
+  /(^|\.)linksynergy\./,
+  /(^|\.)flexlinks\./,
+];
+
+function attr(tag, name) {
+  const match = tag.match(new RegExp(`\\b${name}="([^"]*)"`, "i"));
+  return match ? match[1] : "";
+}
+
+function relHas(rel, token) {
+  return rel.toLowerCase().split(/\s+/).includes(token);
+}
+
+for (const [urlPath, html] of pages) {
+  for (const match of html.matchAll(/<a\b[^>]*>/gi)) {
+    const tag = match[0];
+    const href = attr(tag, "href").replace(/&amp;/g, "&");
+    if (!/^https?:\/\//i.test(href)) continue;
+    let host = "";
+    try {
+      host = new URL(href).hostname.toLowerCase().replace(/^www\./, "");
+    } catch {
+      fail(`${urlPath} has an unreadable external link: ${href}`);
+      continue;
+    }
+    const rel = attr(tag, "rel");
+    const tracking = host === "clickrtrckr.com" || host === "clickomundo.com";
+    const ownSite = host === "dailyinsightdesk.com";
+    const authority = host.endsWith(".gov") || host.endsWith(".mil") || host.endsWith(".edu") || host.endsWith(".gov.uk") || host.endsWith(".ac.uk");
+    if (!tracking && bannedHost.some((pattern) => pattern.test(host))) {
+      fail(`${urlPath} links to a retail or affiliate domain: ${host}`);
+    }
+    if (tracking) {
+      for (const token of ["sponsored", "nofollow", "noopener"]) {
+        if (!relHas(rel, token)) fail(`${urlPath} affiliate link to ${host} is missing rel=${token}`);
+      }
+    } else if (ownSite) {
+      if (relHas(rel, "nofollow")) fail(`${urlPath} nofollows our own site`);
+    } else if (authority) {
+      if (relHas(rel, "nofollow") || relHas(rel, "sponsored")) {
+        fail(`${urlPath} nofollows an authority source: ${host}`);
+      }
+      if (attr(tag, "target") === "_blank" && !relHas(rel, "noopener")) {
+        fail(`${urlPath} authority link to ${host} is missing rel=noopener`);
+      }
+    } else {
+      for (const token of ["nofollow", "noopener"]) {
+        if (!relHas(rel, token)) fail(`${urlPath} external link to ${host} is missing rel=${token}`);
+      }
+      if (relHas(rel, "sponsored")) fail(`${urlPath} marks a non-affiliate link as sponsored: ${host}`);
+    }
+  }
+}
+
 const robots = readFileSync(join(root, "robots.txt"), "utf8");
 if (!robots.includes("Sitemap: https://dailyinsightdesk.com/sitemap.xml")) {
   fail("robots.txt does not point at the sitemap");

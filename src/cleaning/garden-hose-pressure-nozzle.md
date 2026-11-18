@@ -17,6 +17,10 @@ heroCaption: Original illustration of a hose rinse. It is not a photo of a produ
 ogImage: /assets/images/guide-hose-1600.webp
 ogAlt: Illustration of a hose nozzle rinsing brick pavers.
 permalink: /cleaning/garden-hose-pressure-nozzle/
+related:
+  - href: /cleaning/garment-steamer-vs-iron/
+    title: Garment steamer vs. iron
+    note: The same kind of question, with a shirt instead of a patio. A smaller tool, and the job it does not replace.
 toc:
   - id: the-short-answer
     label: The short answer
@@ -137,5 +141,7 @@ Buy, or keep, a nozzle you can shut off at the handle, that does not leak at the
 You do not need a new nozzle to rinse a patio this Saturday if the one in the bucket still sprays evenly. Clean the tip, replace the washer, and unkink the hose. Spend the money on a brush that fits the paver, which is the tool the water was never going to replace.
 
 Rent or buy an actual pressure washer when the job is a pump job: a deck that has gone gray and you have decided to refinish it, concrete with set-in oil, or siding you have already accepted you will rinse very carefully according to the machine’s instructions. Renting for a day is often the better version of that decision. Owning a second machine to knock pollen off a chair is how garages fill up.
+
+The same split, a light tool versus the heavy machine, shows up with clothes. The [garment steamer and iron guide](/cleaning/garment-steamer-vs-iron/) sorts which wrinkles a steamer can finish and which still want an iron.
 
 The rest of the [cleaning shelf](/cleaning/) will take the narrower jobs one at a time: pavers, pollen on furniture, vinyl siding, muddy boots. Those titles are listed as upcoming. They are not links until they exist.

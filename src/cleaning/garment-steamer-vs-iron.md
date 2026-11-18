@@ -17,6 +17,10 @@ heroCaption: Seller product photo of Rowelle on a plain background. Not a photo 
 ogImage: /assets/images/guide-steamer-1600.webp
 ogAlt: A handheld 2-in-1 garment steamer and iron.
 permalink: /cleaning/garment-steamer-vs-iron/
+related:
+  - href: /cleaning/garden-hose-pressure-nozzle/
+    title: Do garden hose pressure nozzles actually work?
+    note: A rinse for the patio, not a wrinkle. Another case of a small tool with a clear limit.
 toc:
   - id: the-short-answer
     label: The short answer
@@ -50,7 +54,7 @@ faq:
   - q: Do I need distilled water in a garment steamer?
     a: Follow the manual. Most steamers use tap water, but some makers recommend distilled water if your tap water is very hard, because mineral buildup can clog the steam vents. Rowelle’s product page does not say which it recommends, so check the included manual.
   - q: Has Daily Insight Desk tested Rowelle?
-    a: No. What we say about Rowelle comes from the maker’s product page. General advice on steaming comes from Good Housekeeping and Better Homes & Gardens, which we name and link.
+    a: No. What we say about Rowelle comes from the maker’s product page. General advice on steaming comes from Good Housekeeping and Better Homes & Gardens, which we name in the sources. Those magazine pages recommend products, so this guide cites them without linking.
 ---
 
 ## The short answer
@@ -165,12 +169,12 @@ General technique for handheld steamers, not results from a test:
 6. **Let the garment cool and dry on the hanger** for a few minutes before wearing it, so the fibers set smooth.
 7. **Unplug, cool, and empty the tank** after use.
 
-Wrinkles are one cleaning job. Rinsing a patio is another. The guide on [garden-hose pressure nozzles](/cleaning/garden-hose-pressure-nozzle/) covers what a nozzle can and cannot do.
+A wrinkle and a dirty patio are different cleaning jobs. The guide on [garden-hose pressure nozzles](/cleaning/garden-hose-pressure-nozzle/) is about the rinse, and the rest of the [cleaning shelf](/cleaning/) is where those jobs are gathered.
 
 ## Sources
 
-Carolyn Forté, “Iron vs Steamer? Experts Reveal Which Works Best for Your Clothes,” Good Housekeeping, December 22, 2025. [goodhousekeeping.com/home/cleaning/a69830698/iron-vs-steamer-expert-guide/](https://www.goodhousekeeping.com/home/cleaning/a69830698/iron-vs-steamer-expert-guide/)
+Carolyn Forté, “Iron vs Steamer? Experts Reveal Which Works Best for Your Clothes,” Good Housekeeping, December 22, 2025. Cited without a link: the piece is a product comparison with shopping buttons.
 
-“9 Clothing Items You Should Never Steam (and What to Do Instead),” Better Homes & Gardens, October 8, 2026. [bhg.com/clothes-not-to-steam-11784786](https://www.bhg.com/clothes-not-to-steam-11784786)
+“9 Clothing Items You Should Never Steam (and What to Do Instead),” Better Homes & Gardens, October 8, 2026. Cited without a link: the piece is a commercial magazine feature, not a government, university, or maker care document.
 
-Rowelle product page (seller), viewed November 18, 2026. Specifications, included items, and marketing claims quoted above are the seller’s. This desk has not tested Rowelle.
+Rowelle product page (seller), viewed November 18, 2026. Specifications, included items, and marketing claims quoted above are the seller’s. This desk has not tested Rowelle. The seller page is reached only through the labeled offer button above.
