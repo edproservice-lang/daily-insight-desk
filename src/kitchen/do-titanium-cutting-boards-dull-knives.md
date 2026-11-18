@@ -21,6 +21,7 @@ permalink: /kitchen/do-titanium-cutting-boards-dull-knives/
 
 story:
   slug: do-titanium-cutting-boards-dull-knives
+  product: katori
   pages:
     - id: cover
       title: "Do titanium boards dull knives?"
@@ -41,6 +42,10 @@ story:
     - id: test
       title: "A published test dulled a new knife"
       text: "Serious Eats measured it on a titanium board. We did not."
+      image: /assets/images/stories/do-titanium-cutting-boards-dull-knives/p3.webp
+      imageWidth: 720
+      imageHeight: 960
+      alt: "A chef’s knife on a wooden board beside chopped garlic"
       tone: clay
     - id: clean
       title: "Easy to clean is real"
@@ -53,14 +58,26 @@ story:
     - id: daily
       title: "Chop on wood or plastic"
       text: "Keep a hard board for serving, not for the knife you care about."
+      image: /assets/images/stories/do-titanium-cutting-boards-dull-knives/p5.webp
+      imageWidth: 720
+      imageHeight: 960
+      alt: "Hands chopping scallions on a wooden cutting board"
       tone: moss
     - id: next
       title: "A dull edge is the next question"
       text: "A rolling sharpener holds the angle. It is a different tool."
+      image: /assets/images/stories/do-titanium-cutting-boards-dull-knives/p6.webp
+      imageWidth: 720
+      imageHeight: 960
+      alt: "A knife held against a small wooden sharpening block"
       tone: ink
     - id: read
       title: "Read the full guide"
       text: "What the test showed, and what we will not claim."
+      image: /assets/images/stories/do-titanium-cutting-boards-dull-knives/p7.webp
+      imageWidth: 720
+      imageHeight: 960
+      alt: "A metal cutting board rinsed under a kitchen faucet"
       tone: moss
 related:
   - href: /kitchen/are-rolling-knife-sharpeners-good/

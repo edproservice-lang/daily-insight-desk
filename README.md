@@ -34,6 +34,6 @@ story:
       tone: moss
 ```
 
-Use 5 to 10 pages. `id` values must be unique. `tone` is `ink`, `moss`, or `clay`. `image` is optional and must already live in this repo. The first page is the cover and is the only `h1`. The last page’s button links to the guide. Do not put affiliate URLs in `story`.
+Use 5 to 10 pages. `id` values must be unique. `tone` is `ink`, `moss`, or `clay`. Each page should set `image`, `imageWidth`, `imageHeight`, and `alt`. Portrait card photos live at `src/assets/images/stories/<slug>/pN.webp` (720×960). If a page omits `image`, the template uses the guide hero, then the product photo named by `product` in the story block, so a card is not left blank. The build fails if a rendered story page still has no image. The first page is the cover and is the only `h1`. The last page’s button links to the guide. Do not put affiliate URLs in `story`.
 
 Add a portrait poster at `src/assets/images/stories/<slug>.webp`, at least 640×853 (the ones in the repo are 720×960 crops of the guide image). The article page then shows “View as a story” on its own.

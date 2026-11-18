@@ -60,10 +60,28 @@
     publisher-logo-src="{{ site.url }}/android-chrome-192x192.png"
     poster-portrait-src="{{ site.url }}/assets/images/stories/{{ guide.data.story.slug }}.webp">
     {% for item in guide.data.story.pages %}
+    {% if item.image %}
+      {% set bg = item.image %}
+      {% set bgW = item.imageWidth %}
+      {% set bgH = item.imageHeight %}
+      {% set bgAlt = item.alt or item.title %}
+    {% elif guide.data.hero %}
+      {% set bg = guide.data.hero ~ "-1600.webp" %}
+      {% set bgW = 1600 %}
+      {% set bgH = guide.data.heroHeight or 900 %}
+      {% set bgAlt = guide.data.heroAlt or guide.data.title %}
+    {% elif guide.data.story.product and products[guide.data.story.product] %}
+      {% set bg = products[guide.data.story.product].image %}
+      {% set bgW = products[guide.data.story.product].width %}
+      {% set bgH = products[guide.data.story.product].height %}
+      {% set bgAlt = products[guide.data.story.product].name ~ ". " ~ (products[guide.data.story.product].alt or "") %}
+    {% else %}
+      {% set bg = "" %}
+    {% endif %}
     <amp-story-page id="{{ item.id }}" class="tone-{{ item.tone or 'ink' }}">
-      {% if item.image %}
+      {% if bg %}
       <amp-story-grid-layer template="fill">
-        <amp-img src="{{ item.image }}" width="{{ item.imageWidth }}" height="{{ item.imageHeight }}" layout="fill" alt="{{ item.alt }}"></amp-img>
+        <amp-img src="{{ bg }}" width="{{ bgW }}" height="{{ bgH }}" layout="fill" alt="{{ bgAlt }}"></amp-img>
       </amp-story-grid-layer>
       <amp-story-grid-layer template="fill">
         <div class="scrim"></div>
