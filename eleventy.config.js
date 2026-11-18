@@ -21,6 +21,20 @@ function esc(value) {
     .replace(/"/g, "&quot;");
 }
 
+function productAlt(product) {
+  const name = String(product.name || "").trim();
+  const detail = String(product.alt || "").trim();
+  if (!detail) return name;
+  if (detail.toLowerCase().includes(name.toLowerCase())) return detail;
+  return `${name}. ${detail}`;
+}
+
+function affiliateImageLink(product, imgHtml) {
+  return `<a class="product-photo-link affiliate-link" data-product="${esc(product.name)}" href="${esc(product.href)}" rel="sponsored nofollow noopener" target="_blank">${imgHtml}</a>`;
+}
+
+const productByImage = new Map(Object.values(products).map((product) => [product.image, product]));
+
 function toIsoDate(value) {
   if (!value) return "";
   const date = value instanceof Date ? value : new Date(value);
@@ -65,6 +79,16 @@ export default function (eleventyConfig) {
     }
     return defaultLinkOpen(tokens, idx, options, env, self);
   };
+  const defaultImage = markdown.renderer.rules.image
+    || ((tokens, idx, options, env, self) => self.renderToken(tokens, idx, options));
+  markdown.renderer.rules.image = (tokens, idx, options, env, self) => {
+    const token = tokens[idx];
+    const src = token.attrGet("src") || "";
+    const product = productByImage.get(src);
+    if (!product) return defaultImage(tokens, idx, options, env, self);
+    const img = `<img class="product-photo" src="${esc(src)}" alt="${esc(productAlt(product))}" loading="lazy" decoding="async">`;
+    return affiliateImageLink(product, img);
+  };
   eleventyConfig.setLibrary("md", markdown);
 
   eleventyConfig.addCollection("storyGuides", (api) =>
@@ -108,10 +132,11 @@ export default function (eleventyConfig) {
     const points = product.points
       .map((point) => `<li>${esc(point)}</li>`)
       .join("");
+    const photo = `<img class="product-photo" src="${esc(product.image)}" width="${product.width}" height="${product.height}" alt="${esc(productAlt(product))}" loading="lazy" decoding="async">`;
     return `<aside class="product" aria-label="${esc(product.name)} offer">
       <p class="product-kicker">Seller offer · Affiliate link</p>
       <div class="product-layout">
-        <img class="product-photo" src="${esc(product.image)}" width="${product.width}" height="${product.height}" alt="${esc(product.alt)}" loading="lazy" decoding="async">
+        ${affiliateImageLink(product, photo)}
         <div>
           <h3>${esc(product.name)}</h3>
           <p>${esc(product.summary)}</p>

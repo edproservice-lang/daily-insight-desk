@@ -208,6 +208,35 @@ for (const [urlPath, html] of pages) {
       if (relHas(rel, "sponsored")) fail(`${urlPath} marks a non-affiliate link as sponsored: ${host}`);
     }
   }
+
+  const photos = [...html.matchAll(/<img\b[^>]*\bclass="[^"]*\bproduct-photo\b[^"]*"[^>]*>/gi)];
+  for (const photo of photos) {
+    const img = photo[0];
+    const before = html.slice(Math.max(0, photo.index - 500), photo.index);
+    const open = before.match(/<a\b[^>]*class="[^"]*\bproduct-photo-link\b[^"]*"[^>]*>\s*$/i);
+    if (!open) {
+      fail(`${urlPath} has a product image that is not an affiliate link`);
+      continue;
+    }
+    const rel = attr(open[0], "rel");
+    const href = attr(open[0], "href").replace(/&amp;/g, "&");
+    let host = "";
+    try {
+      host = new URL(href).hostname.toLowerCase().replace(/^www\./, "");
+    } catch {
+      host = "";
+    }
+    if (host !== "clickrtrckr.com" && host !== "clickomundo.com") {
+      fail(`${urlPath} product image links to ${host || href}, not an allowed affiliate host`);
+    }
+    for (const token of ["sponsored", "nofollow"]) {
+      if (!relHas(rel, token)) fail(`${urlPath} product image link is missing rel=${token}`);
+    }
+    if (!relHas(rel, "noopener")) fail(`${urlPath} product image link is missing rel=noopener`);
+    if (attr(open[0], "target") !== "_blank") fail(`${urlPath} product image link is missing target=_blank`);
+    const alt = attr(img, "alt");
+    if (!alt || alt.length < 8) fail(`${urlPath} product image is missing a descriptive alt`);
+  }
 }
 
 const robots = readFileSync(join(root, "robots.txt"), "utf8");

@@ -478,6 +478,11 @@ h1 {
   .product-layout { grid-template-columns: 11.5rem minmax(0, 1fr); align-items: start; }
 }
 
+.product-photo-link {
+  display: block;
+  border-radius: 0.8rem;
+  line-height: 0;
+}
 .product-photo {
   width: 100%;
   border-radius: 0.8rem;
