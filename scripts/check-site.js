@@ -73,6 +73,26 @@ if (kitchen && !kitchen.includes('rel="sponsored nofollow noopener"')) fail("Kit
 if (kitchen && !kitchen.includes("Serious Eats")) fail("Kitchen article does not cite Serious Eats");
 if (kitchen && !/wood or plastic/i.test(kitchen)) fail("Kitchen article does not recommend wood or plastic");
 
+const sharpener = pages.get("/kitchen/are-rolling-knife-sharpeners-good/");
+const steamer = pages.get("/cleaning/garment-steamer-vs-iron/");
+const katusharp = "https://www.clickomundo.com/J2D6CNH/B7R6P93/";
+const rowelle = "https://www.clickomundo.com/J2D6CNH/B8GM3KK/";
+if (!sharpener) fail("Missing the rolling sharpener article");
+if (!steamer) fail("Missing the garment steamer article");
+if (sharpener && !sharpener.includes(`href="${katusharp}"`)) fail("KatuSharp affiliate link changed");
+if (steamer && !steamer.includes(`href="${rowelle}"`)) fail("Rowelle affiliate link changed");
+if (sharpener && !sharpener.includes("/kitchen/do-titanium-cutting-boards-dull-knives/")) {
+  fail("Sharpener guide does not link to the cutting-board guide");
+}
+if (steamer && !steamer.includes("/cleaning/garden-hose-pressure-nozzle/")) {
+  fail("Steamer guide does not link to the nozzle guide");
+}
+for (const [urlPath, html] of pages) {
+  if (/\[Author name\]|\[Short bio|\[fanpage|\[Instagram URL\]/i.test(html)) {
+    fail(`${urlPath} still shows an author placeholder`);
+  }
+}
+
 for (const [urlPath, html] of pages) {
   const hrefs = [...html.matchAll(/href="([^"]+)"/g)].map((match) => match[1]);
   for (const href of hrefs) {

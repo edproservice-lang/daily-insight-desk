@@ -13,8 +13,9 @@ ogType: article
   <p class="eyebrow">{{ siloName }}</p>
   <h1>{{ title }}</h1>
   <p class="dek">{{ dek }}</p>
+  {% set namedAuthor = author.name if author and author.name and "[" not in author.name else "" %}
   <p class="byline">
-    <span>By Daily Insight Desk</span>
+    <span>By {{ namedAuthor or "Daily Insight Desk" }}</span>
     <span>Published {{ date | prettyDate }}</span>
     {% if updated | isoDate != date | isoDate %}
       <span>Updated {{ updated | prettyDate }}</span>
@@ -53,11 +54,29 @@ ogType: article
       </section>
       {% endif %}
       <aside class="author">
-        <div class="avatar" aria-hidden="true">D</div>
-        <div>
-          <h2>Daily Insight Desk</h2>
-          <p>Guides for U.S. households, published by {{ site.operator }}. We explain the job first. A product is mentioned only when it fits, the link is labeled, and we say when a point comes from a seller or from another publication. We do not invent hands-on tests.</p>
-        </div>
+        {% if namedAuthor %}
+          {% if author.photo and "[" not in author.photo %}
+          <img class="avatar" src="{{ author.photo }}" alt="" width="52" height="52">
+          {% else %}
+          <div class="avatar" aria-hidden="true">{{ namedAuthor[0] }}</div>
+          {% endif %}
+          <div>
+            <h2>{{ namedAuthor }}</h2>
+            {% if author.bio and "[" not in author.bio %}<p>{{ author.bio }}</p>{% endif %}
+            {% if (author.facebook and "[" not in author.facebook) or (author.instagram and "[" not in author.instagram) %}
+            <p class="author-links">
+              {% if author.facebook and "[" not in author.facebook %}<a href="{{ author.facebook }}" rel="noopener">Facebook</a>{% endif %}
+              {% if author.instagram and "[" not in author.instagram %}<a href="{{ author.instagram }}" rel="noopener">Instagram</a>{% endif %}
+            </p>
+            {% endif %}
+          </div>
+        {% else %}
+          <div class="avatar" aria-hidden="true">D</div>
+          <div>
+            <h2>Daily Insight Desk</h2>
+            <p>Guides for U.S. households, published by {{ site.operator }}. We explain the job first. A product is mentioned only when it fits, the link is labeled, and we say when a point comes from a seller or from another publication. We do not invent hands-on tests.</p>
+          </div>
+        {% endif %}
       </aside>
     </article>
     <nav class="toc" aria-label="On this page">
@@ -116,7 +135,21 @@ ogType: article
       "articleSection": {{ siloName | dump | safe }},
       "mainEntityOfPage": "{{ site.url }}{{ page.url }}",
       "image": ["{{ site.url }}{{ hero }}-1600.webp"],
+      {% if namedAuthor %}
+      "author": {
+        "@type": "Person",
+        "name": {{ namedAuthor | dump | safe }}
+        {% if (author.facebook and "[" not in author.facebook) or (author.instagram and "[" not in author.instagram) %}
+        ,"sameAs": [
+          {% if author.facebook and "[" not in author.facebook %}{{ author.facebook | dump | safe }}{% endif %}
+          {% if author.facebook and "[" not in author.facebook and author.instagram and "[" not in author.instagram %},{% endif %}
+          {% if author.instagram and "[" not in author.instagram %}{{ author.instagram | dump | safe }}{% endif %}
+        ]
+        {% endif %}
+      },
+      {% else %}
       "author": { "@id": "{{ site.url }}/#organization" },
+      {% endif %}
       "publisher": { "@id": "{{ site.url }}/#organization" }
     }{% if faq %},
     {
