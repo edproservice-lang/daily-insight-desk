@@ -8,4 +8,30 @@ npm run build
 npm run dev
 ```
 
-`npm run build` writes `_site/` and checks that internal links, canonical URLs, the sitemap, and `robots.txt` resolve. Guides live in `src/cleaning/` and `src/kitchen/`. Shelf copy and upcoming titles live in `src/_data/silos.js`. Affiliate URLs live in `src/_data/products.js` and should stay exactly as they are.
+`npm run build` writes `_site/` and checks that internal links, canonical URLs, the sitemap, and `robots.txt` resolve. It also validates every AMP Web Story. Guides live in `src/cleaning/` and `src/kitchen/`. Shelf copy and upcoming titles live in `src/_data/silos.js`. Affiliate URLs live in `src/_data/products.js` and should stay exactly as they are.
+
+## Web Stories
+
+A guide gets a story when its front matter includes a `story` block. The build turns that into `/stories/<slug>/` and lists it on `/stories/`.
+
+```yaml
+story:
+  slug: garden-hose-pressure-nozzle
+  pages:
+    - id: cover
+      title: "A short cover line"
+      text: "One subtitle sentence."
+      image: /assets/images/guide-hose-1600.webp
+      imageWidth: 1600
+      imageHeight: 900
+      alt: "Description of the photo"
+      tone: ink
+    - id: read
+      title: "Read the full guide"
+      text: "What the article adds."
+      tone: moss
+```
+
+Use 5 to 10 pages. `id` values must be unique. `tone` is `ink`, `moss`, or `clay`. `image` is optional and must already live in this repo. The first page is the cover and is the only `h1`. The last page’s button links to the guide. Do not put affiliate URLs in `story`.
+
+Add a portrait poster at `src/assets/images/stories/<slug>.webp`, at least 640×853 (the ones in the repo are 720×960 crops of the guide image). The article page then shows “View as a story” on its own.

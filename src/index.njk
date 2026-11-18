@@ -103,6 +103,21 @@ permalink: /
         </article>
       </div>
 
+      {% if collections.storyGuides.length %}
+      <div class="section-head" style="margin-top: 2.5rem;">
+        <h2 id="stories-title">Stories</h2>
+        <a href="/stories/">All stories</a>
+      </div>
+      <div class="story-grid">
+        {% for guide in collections.storyGuides %}
+        <a class="story-card" href="/stories/{{ guide.data.story.slug }}/">
+          <img src="/assets/images/stories/{{ guide.data.story.slug }}.webp" alt="" width="720" height="960" loading="lazy" decoding="async">
+          <span>{{ guide.data.title }}</span>
+        </a>
+        {% endfor %}
+      </div>
+      {% endif %}
+
       <aside class="letter" aria-labelledby="letter-title">
         <p class="stub-flag">Newsletter not open</p>
         <h2 id="letter-title">The household letter is not collecting addresses</h2>

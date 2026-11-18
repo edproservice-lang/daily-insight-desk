@@ -67,9 +67,26 @@ export default function (eleventyConfig) {
   };
   eleventyConfig.setLibrary("md", markdown);
 
+  eleventyConfig.addCollection("storyGuides", (api) =>
+    api.getFilteredByTag("guide")
+      .filter((item) => item.data.story && item.data.story.slug && item.data.story.pages)
+      .sort((a, b) => String(a.data.title || "").localeCompare(String(b.data.title || "")))
+  );
   eleventyConfig.addFilter("inSilo", (guides, slug) =>
     (guides || []).filter((post) => post.data.silo === slug)
   );
+  eleventyConfig.addFilter("recommend", (guides, currentUrl, silo) => {
+    const list = (guides || []).filter((post) => post.url !== currentUrl && post.data.hero);
+    const byRecent = (a, b) => {
+      const ta = new Date(a.data.updated || a.data.date || 0).getTime();
+      const tb = new Date(b.data.updated || b.data.date || 0).getTime();
+      if (tb !== ta) return tb - ta;
+      return String(a.data.title || "").localeCompare(String(b.data.title || ""));
+    };
+    const same = list.filter((post) => post.data.silo === silo).sort(byRecent);
+    const other = list.filter((post) => post.data.silo !== silo).sort(byRecent);
+    return [...same, ...other].slice(0, 3);
+  });
   eleventyConfig.addFilter("isoDate", toIsoDate);
   eleventyConfig.addFilter("prettyDate", (value) => {
     const iso = toIsoDate(value);

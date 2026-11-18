@@ -17,6 +17,51 @@ heroCaption: Seller product photo of KatuSharp on a plain background. Not a phot
 ogImage: /assets/images/guide-rolling-sharpener-1600.webp
 ogAlt: A rolling knife sharpener disc next to its angled magnetic base.
 permalink: /kitchen/are-rolling-knife-sharpeners-good/
+
+
+story:
+  slug: are-rolling-knife-sharpeners-good
+  pages:
+    - id: cover
+      title: "Are rolling sharpeners good?"
+      text: "They hold the angle so your wrist does not have to."
+      image: /assets/images/guide-rolling-sharpener-1600.webp
+      imageWidth: 1600
+      imageHeight: 900
+      alt: "Seller photo of a rolling knife sharpener and its magnetic base"
+      tone: ink
+    - id: how
+      title: "Magnet, then a rolling disc"
+      text: "The block sets 15 or 20 degrees. You roll along the edge."
+      image: /assets/images/products/katusharp.webp
+      imageWidth: 616
+      imageHeight: 616
+      alt: "Seller photo of a wood-wrapped rolling sharpener disc"
+      tone: ink
+    - id: compare
+      title: "Easier than a stone"
+      text: "Gentler than a pull-through slot. Less flexible than either."
+      tone: moss
+    - id: skip
+      title: "Not every knife"
+      text: "Serrated and ceramic blades are the wrong fit."
+      tone: clay
+    - id: time
+      title: "A neglected knife takes time"
+      text: "A published test used a different brand. We have not tested one."
+      tone: ink
+    - id: after
+      title: "Then cut on wood or plastic"
+      text: "A hard board gives that fresh edge back to the sharpener."
+      image: /assets/images/guide-boards-1600.webp
+      imageWidth: 1600
+      imageHeight: 900
+      alt: "Illustration of wood, plastic, and metal cutting boards"
+      tone: moss
+    - id: read
+      title: "Read the full guide"
+      text: "The comparison, the limits, and the seller’s claims."
+      tone: ink
 related:
   - href: /kitchen/do-titanium-cutting-boards-dull-knives/
     title: Do titanium cutting boards dull knives?

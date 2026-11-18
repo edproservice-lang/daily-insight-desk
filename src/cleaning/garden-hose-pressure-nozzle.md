@@ -17,6 +17,55 @@ heroCaption: Original illustration of a hose rinse. It is not a photo of a produ
 ogImage: /assets/images/guide-hose-1600.webp
 ogAlt: Illustration of a hose nozzle rinsing brick pavers.
 permalink: /cleaning/garden-hose-pressure-nozzle/
+
+
+story:
+  slug: garden-hose-pressure-nozzle
+  pages:
+    - id: cover
+      title: "A hose nozzle is not a pressure washer"
+      text: "It only shapes the water already in the hose."
+      image: /assets/images/guide-hose-1600.webp
+      imageWidth: 1600
+      imageHeight: 900
+      alt: "Illustration of a hose nozzle rinsing brick pavers"
+      tone: ink
+    - id: shape
+      title: "Same water, smaller opening"
+      text: "The stream feels stronger because it covers less ground."
+      image: /assets/images/still-patio-1600.webp
+      imageWidth: 1600
+      imageHeight: 1200
+      alt: "Illustration of a coiled garden hose on a brick patio"
+      tone: ink
+    - id: rinse
+      title: "It is good at a rinse"
+      text: "Loose dirt, pollen, and mud. Not stains that have set."
+      image: /assets/images/still-tools-1600.webp
+      imageWidth: 1600
+      imageHeight: 1200
+      alt: "Illustration of garden tools and a coiled hose on a bench"
+      tone: moss
+    - id: limit
+      title: "Moss and oil stay put"
+      text: "Those still need a brush, a labeled cleaner, or a real machine."
+      tone: clay
+    - id: clog
+      title: "A clogged tip spits sideways"
+      text: "Hard-water scale is a common cause. Follow the maker’s care note."
+      image: /assets/images/products/jetterix.webp
+      imageWidth: 700
+      imageHeight: 698
+      alt: "Seller photo of a garden-hose nozzle"
+      tone: ink
+    - id: method
+      title: "Sweep, then use a fan"
+      text: "Keep the stream moving. Don’t park a tight jet on wood or screens."
+      tone: moss
+    - id: read
+      title: "Read the full guide"
+      text: "The limits, the steps, and what we have not tested."
+      tone: ink
 related:
   - href: /cleaning/garment-steamer-vs-iron/
     title: Garment steamer vs. iron

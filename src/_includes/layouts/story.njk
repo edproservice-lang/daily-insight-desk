@@ -1,0 +1,102 @@
+<!doctype html>
+<html amp lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <script async custom-element="amp-story" src="https://cdn.ampproject.org/v0/amp-story-1.0.js"></script>
+  <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+  <title>{{ guide.data.title }} — Web Story</title>
+  <meta name="description" content="{{ guide.data.description }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <meta property="og:site_name" content="Daily Insight Desk">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{ guide.data.title }}">
+  <meta property="og:description" content="{{ guide.data.description }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:image" content="{{ site.url }}/assets/images/stories/{{ guide.data.story.slug }}.webp">
+  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+  <style amp-custom>
+    amp-story-page { background: #221c16; color: #f6f1e7; }
+    .tone-moss { background: #1e3b31; }
+    .tone-ink { background: #221c16; }
+    .tone-clay { background: #6a3326; }
+    .scrim { background: linear-gradient(180deg, rgba(20,16,12,.12) 0%, rgba(20,16,12,.25) 42%, rgba(20,16,12,.9) 100%); }
+    .bottom { align-content: end; padding: 1.4rem 1.3rem 2.4rem; }
+    .kicker { margin: 0 0 .7rem; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: #e7d7b8; }
+    h1, .hed { margin: 0 0 .65rem; font-family: Georgia, "Iowan Old Style", Palatino, serif; font-weight: 500; font-size: 2.15rem; line-height: 1.08; color: #f6f1e7; }
+    .sub { margin: 0; font-family: Georgia, "Iowan Old Style", Palatino, serif; font-size: 1.15rem; line-height: 1.35; color: #f6f1e7; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": {{ guide.data.title | dump | safe }},
+    "description": {{ guide.data.description | dump | safe }},
+    "datePublished": "{{ guide.data.date | isoDate }}",
+    "dateModified": "{{ (guide.data.updated or guide.data.date) | isoDate }}",
+    "inLanguage": "en-US",
+    "mainEntityOfPage": "{{ site.url }}{{ page.url }}",
+    "image": ["{{ site.url }}/assets/images/stories/{{ guide.data.story.slug }}.webp"],
+    "author": { "@id": "{{ site.url }}/#organization" },
+    "publisher": {
+      "@type": "Organization",
+      "@id": "{{ site.url }}/#organization",
+      "name": "Daily Insight Desk",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ site.url }}/android-chrome-192x192.png",
+        "width": 192,
+        "height": 192
+      }
+    }
+  }
+  </script>
+</head>
+<body>
+  <amp-story standalone
+    title="{{ guide.data.title }}"
+    publisher="Daily Insight Desk"
+    publisher-logo-src="{{ site.url }}/android-chrome-192x192.png"
+    poster-portrait-src="{{ site.url }}/assets/images/stories/{{ guide.data.story.slug }}.webp">
+    {% for item in guide.data.story.pages %}
+    <amp-story-page id="{{ item.id }}" class="tone-{{ item.tone or 'ink' }}">
+      {% if item.image %}
+      <amp-story-grid-layer template="fill">
+        <amp-img src="{{ item.image }}" width="{{ item.imageWidth }}" height="{{ item.imageHeight }}" layout="fill" alt="{{ item.alt }}"></amp-img>
+      </amp-story-grid-layer>
+      <amp-story-grid-layer template="fill">
+        <div class="scrim"></div>
+      </amp-story-grid-layer>
+      {% endif %}
+      <amp-story-grid-layer template="vertical" class="bottom">
+        <p class="kicker">{{ guide.data.siloName }}</p>
+        {% if loop.first %}
+        <h1>{{ item.title }}</h1>
+        {% else %}
+        <p class="hed">{{ item.title }}</p>
+        {% endif %}
+        <p class="sub">{{ item.text }}</p>
+      </amp-story-grid-layer>
+      {% if loop.last %}
+      <amp-story-page-outlink layout="nodisplay">
+        <a href="{{ site.url }}{{ guide.url }}">Read the full guide</a>
+      </amp-story-page-outlink>
+      {% endif %}
+    </amp-story-page>
+    {% endfor %}
+    <amp-analytics type="gtag" data-credentials="include">
+      <script type="application/json">
+      {
+        "vars": {
+          "gtag_id": "{{ site.ga }}",
+          "config": {
+            "{{ site.ga }}": { "groups": "default" }
+          }
+        }
+      }
+      </script>
+    </amp-analytics>
+  </amp-story>
+</body>
+</html>
