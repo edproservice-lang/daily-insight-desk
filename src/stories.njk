@@ -1,0 +1,39 @@
+---
+layout: layouts/base.njk
+title: Stories
+metaTitle: Web Stories · Daily Insight Desk
+description: Short portrait stories from Daily Insight Desk. Each one leads to the full home and garden guide, with no product links inside the story.
+section: stories
+date: 2026-11-18
+updated: 2026-11-18
+permalink: /stories/
+---
+<main id="main" class="wrap page-hero">
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li aria-current="page">Stories</li>
+    </ol>
+  </nav>
+  <p class="eyebrow">Web Stories</p>
+  <h1>Stories</h1>
+  <p class="dek">A short, full-screen version of a guide. The last page opens the article. Stories do not contain product links.</p>
+  <div class="story-grid">
+    {% for guide in collections.storyGuides %}
+    <a class="story-card" href="/stories/{{ guide.data.story.slug }}/">
+      <img src="/assets/images/stories/{{ guide.data.story.slug }}.webp" alt="" width="720" height="960" loading="lazy" decoding="async">
+      <span>{{ guide.data.title }}</span>
+    </a>
+    {% endfor %}
+  </div>
+</main>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}/" },
+    { "@type": "ListItem", "position": 2, "name": "Stories", "item": "{{ site.url }}/stories/" }
+  ]
+}
+</script>

@@ -17,6 +17,51 @@ heroCaption: Original illustration of three board materials. Not a photo from a 
 ogImage: /assets/images/guide-boards-1600.webp
 ogAlt: Illustration of wood, plastic, and metal cutting boards on a kitchen counter.
 permalink: /kitchen/do-titanium-cutting-boards-dull-knives/
+
+
+story:
+  slug: do-titanium-cutting-boards-dull-knives
+  pages:
+    - id: cover
+      title: "Do titanium boards dull knives?"
+      text: "Easy to rinse. Hard on the edge."
+      image: /assets/images/guide-boards-1600.webp
+      imageWidth: 1600
+      imageHeight: 900
+      alt: "Illustration of wood, plastic, and metal cutting boards"
+      tone: ink
+    - id: give
+      title: "The board should give a little"
+      text: "Wood and plastic do. Metal does not."
+      image: /assets/images/still-kitchen-1600.webp
+      imageWidth: 1600
+      imageHeight: 1200
+      alt: "Illustration of a wooden board and lemons on a kitchen counter"
+      tone: ink
+    - id: test
+      title: "A published test dulled a new knife"
+      text: "Serious Eats measured it on a titanium board. We did not."
+      tone: clay
+    - id: clean
+      title: "Easy to clean is real"
+      text: "No oiling. You still wash the board between foods."
+      image: /assets/images/products/katori.webp
+      imageWidth: 600
+      imageHeight: 635
+      alt: "Seller photo of a metal cutting board"
+      tone: ink
+    - id: daily
+      title: "Chop on wood or plastic"
+      text: "Keep a hard board for serving, not for the knife you care about."
+      tone: moss
+    - id: next
+      title: "A dull edge is the next question"
+      text: "A rolling sharpener holds the angle. It is a different tool."
+      tone: ink
+    - id: read
+      title: "Read the full guide"
+      text: "What the test showed, and what we will not claim."
+      tone: moss
 related:
   - href: /kitchen/are-rolling-knife-sharpeners-good/
     title: Are rolling knife sharpeners good?

@@ -1,5 +1,6 @@
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join, dirname } from "node:path";
+import amphtmlValidator from "amphtml-validator";
 
 const root = join(import.meta.dirname, "..", "_site");
 const errors = [];
@@ -232,6 +233,56 @@ for (const [urlPath, html] of pages) {
   if (!locSet.has(loc)) fail(`Page missing from sitemap: ${loc}`);
 }
 if (sitemap.includes("404")) fail("sitemap includes the 404 page");
+
+function webpSize(buffer) {
+  const format = buffer.toString("ascii", 12, 16);
+  if (format === "VP8X") {
+    return { width: 1 + buffer.readUIntLE(24, 3), height: 1 + buffer.readUIntLE(27, 3) };
+  }
+  if (format === "VP8 ") {
+    return { width: buffer.readUInt16LE(26) & 0x3fff, height: buffer.readUInt16LE(28) & 0x3fff };
+  }
+  if (format === "VP8L") {
+    const bits = buffer.readUInt32LE(21);
+    return { width: (bits & 0x3fff) + 1, height: ((bits >> 14) & 0x3fff) + 1 };
+  }
+  return null;
+}
+
+const storyDir = join(root, "assets", "images", "stories");
+if (!statSync(storyDir, { throwIfNoEntry: false })?.isDirectory()) {
+  fail("Story poster directory is missing");
+} else {
+  for (const name of readdirSync(storyDir).filter((file) => file.endsWith(".webp"))) {
+    const size = webpSize(readFileSync(join(storyDir, name)));
+    if (!size || size.width < 640 || size.height < 853) {
+      fail(`Story poster ${name} must be at least 640 by 853 pixels`);
+    }
+  }
+}
+
+for (const [urlPath, html] of pages) {
+  if (!urlPath.startsWith("/stories/") || urlPath === "/stories/") continue;
+  if (/clickrtrckr\.com|clickomundo\.com/i.test(html)) {
+    fail(`${urlPath} contains an affiliate link`);
+  }
+  if (!html.includes('poster-portrait-src="') || !html.includes('publisher-logo-src="') || !html.includes("<amp-story")) {
+    fail(`${urlPath} is missing required Web Story metadata`);
+  }
+}
+
+const ampValidator = await amphtmlValidator.getInstance();
+for (const [urlPath, html] of pages) {
+  if (!html.includes("<html amp")) continue;
+  const result = ampValidator.validateString(html);
+  if (result.status !== "PASS") {
+    const details = result.errors
+      .filter((error) => error.severity === "ERROR")
+      .map((error) => `line ${error.line}: ${error.message}`)
+      .join("; ");
+    fail(`${urlPath} failed AMP validation (${result.status}): ${details}`);
+  }
+}
 
 if (errors.length) {
   console.error(`Site check failed with ${errors.length} problem(s):`);

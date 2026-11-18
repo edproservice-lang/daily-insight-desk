@@ -6,6 +6,9 @@
   <title>{{ metaTitle or (title ~ " · Daily Insight Desk") }}</title>
   <meta name="description" content="{{ description }}">
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  {% if story and story.slug %}
+  <link rel="amphtml" href="{{ site.url }}/stories/{{ story.slug }}/">
+  {% endif %}
   {% if robots %}<meta name="robots" content="{{ robots }}">{% endif %}
   <meta name="theme-color" content="#f3eee6">
   <meta property="og:site_name" content="Daily Insight Desk">

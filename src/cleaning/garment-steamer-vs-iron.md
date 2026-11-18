@@ -17,6 +17,47 @@ heroCaption: Seller product photo of Rowelle on a plain background. Not a photo 
 ogImage: /assets/images/guide-steamer-1600.webp
 ogAlt: A handheld 2-in-1 garment steamer and iron.
 permalink: /cleaning/garment-steamer-vs-iron/
+
+
+story:
+  slug: garment-steamer-vs-iron
+  pages:
+    - id: cover
+      title: "Steamer or iron?"
+      text: "A steamer is for one shirt. An iron is for a crease."
+      image: /assets/images/guide-steamer-1600.webp
+      imageWidth: 1600
+      imageHeight: 900
+      alt: "Seller photo of a handheld garment steamer"
+      tone: ink
+    - id: difference
+      title: "Steam relaxes. Pressure flattens."
+      text: "Hanging fabric smooths. A hot plate sets a crease."
+      tone: moss
+    - id: steamer
+      title: "Reach for the steamer"
+      text: "Knits, a dress from a suitcase, one hanger before you leave."
+      image: /assets/images/products/rowelle.webp
+      imageWidth: 616
+      imageHeight: 616
+      alt: "Seller photo of a stainless handheld steamer"
+      tone: ink
+    - id: iron
+      title: "Keep the iron"
+      text: "Dress shirts, sharp pleats, and a whole pile of laundry."
+      tone: clay
+    - id: never
+      title: "Do not steam leather or waxed cloth"
+      text: "Read the care label. Heat can melt a coating."
+      tone: ink
+    - id: tank
+      title: "A tiny tank is a touch-up"
+      text: "It is not a week of shirts, and a small plate is not a full iron."
+      tone: moss
+    - id: read
+      title: "Read the full guide"
+      text: "Which fabrics to skip, and what we have not tested."
+      tone: ink
 related:
   - href: /cleaning/garden-hose-pressure-nozzle/
     title: Do garden hose pressure nozzles actually work?

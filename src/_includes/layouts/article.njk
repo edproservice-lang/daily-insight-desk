@@ -23,6 +23,7 @@ ogType: article
       <span>Reviewed {{ date | prettyDate }}</span>
     {% endif %}
     <span>{{ readTime }}</span>
+    {% if story and story.slug %}<a class="story-link" href="/stories/{{ story.slug }}/">View as a story</a>{% endif %}
   </p>
   <aside class="disclosure">
     <p><strong>Affiliate disclosure.</strong> This guide contains affiliate links. If you buy through one, we may earn a commission at no extra cost to you. We have not hands-on tested the products mentioned. Read the full <a href="/affiliate-disclosure/">affiliate disclosure</a>.</p>
@@ -101,6 +102,29 @@ ogType: article
     </li>
     {% endfor %}
   </ul>
+</section>
+{% endif %}
+{% set picks = collections.guide | recommend(page.url, silo) %}
+{% if picks.length %}
+<section class="wrap recommend" aria-labelledby="recommend-title">
+  <h2 id="recommend-title">Recommended for you</h2>
+  <div class="recommend-grid">
+    {% for post in picks %}
+    <a class="recommend-card" href="{{ post.url }}">
+      <img
+        src="{{ post.data.hero }}-800.webp"
+        alt=""
+        width="800"
+        height="450"
+        loading="lazy"
+        decoding="async">
+      <span>
+        <span class="kicker">{{ post.data.siloName }}</span>
+        <h3 class="recommend-title">{{ post.data.title }}</h3>
+      </span>
+    </a>
+    {% endfor %}
+  </div>
 </section>
 {% endif %}
 <script type="application/ld+json">

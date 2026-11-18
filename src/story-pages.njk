@@ -1,0 +1,9 @@
+---
+layout: layouts/story.njk
+pagination:
+  data: collections.storyGuides
+  size: 1
+  alias: guide
+  addAllPagesToCollections: true
+permalink: "/stories/{{ guide.data.story.slug }}/"
+---
