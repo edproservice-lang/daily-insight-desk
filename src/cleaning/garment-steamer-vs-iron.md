@@ -21,6 +21,7 @@ permalink: /cleaning/garment-steamer-vs-iron/
 
 story:
   slug: garment-steamer-vs-iron
+  product: rowelle
   pages:
     - id: cover
       title: "Steamer or iron?"
@@ -33,6 +34,10 @@ story:
     - id: difference
       title: "Steam relaxes. Pressure flattens."
       text: "Hanging fabric smooths. A hot plate sets a crease."
+      image: /assets/images/stories/garment-steamer-vs-iron/p2.webp
+      imageWidth: 720
+      imageHeight: 960
+      alt: "A handheld steamer smoothing a white shirt on a hanger"
       tone: moss
     - id: steamer
       title: "Reach for the steamer"
@@ -45,18 +50,34 @@ story:
     - id: iron
       title: "Keep the iron"
       text: "Dress shirts, sharp pleats, and a whole pile of laundry."
+      image: /assets/images/stories/garment-steamer-vs-iron/p4.webp
+      imageWidth: 720
+      imageHeight: 960
+      alt: "The metal soleplate of a clothes iron on an ironing board"
       tone: clay
     - id: never
       title: "Do not steam leather or waxed cloth"
       text: "Read the care label. Heat can melt a coating."
+      image: /assets/images/stories/garment-steamer-vs-iron/p5.webp
+      imageWidth: 720
+      imageHeight: 960
+      alt: "A leather jacket hanging on a wall hook"
       tone: ink
     - id: tank
       title: "A tiny tank is a touch-up"
       text: "It is not a week of shirts, and a small plate is not a full iron."
+      image: /assets/images/stories/garment-steamer-vs-iron/p6.webp
+      imageWidth: 720
+      imageHeight: 960
+      alt: "Water pouring into a small steamer tank"
       tone: moss
     - id: read
       title: "Read the full guide"
       text: "Which fabrics to skip, and what we have not tested."
+      image: /assets/images/stories/garment-steamer-vs-iron/p7.webp
+      imageWidth: 720
+      imageHeight: 960
+      alt: "A hand turning the fabric dial on a steaming handheld iron"
       tone: ink
 related:
   - href: /cleaning/garden-hose-pressure-nozzle/

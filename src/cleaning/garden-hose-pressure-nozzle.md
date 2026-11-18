@@ -21,6 +21,7 @@ permalink: /cleaning/garden-hose-pressure-nozzle/
 
 story:
   slug: garden-hose-pressure-nozzle
+  product: jetterix
   pages:
     - id: cover
       title: "A hose nozzle is not a pressure washer"
@@ -49,6 +50,10 @@ story:
     - id: limit
       title: "Moss and oil stay put"
       text: "Those still need a brush, a labeled cleaner, or a real machine."
+      image: /assets/images/stories/garden-hose-pressure-nozzle/p4.webp
+      imageWidth: 720
+      imageHeight: 960
+      alt: "Moss growing in the joints of concrete pavers"
       tone: clay
     - id: clog
       title: "A clogged tip spits sideways"
@@ -61,10 +66,18 @@ story:
     - id: method
       title: "Sweep, then use a fan"
       text: "Keep the stream moving. Don’t park a tight jet on wood or screens."
+      image: /assets/images/stories/garden-hose-pressure-nozzle/p6.webp
+      imageWidth: 720
+      imageHeight: 960
+      alt: "A garden hose nozzle spraying a wide fan of water"
       tone: moss
     - id: read
       title: "Read the full guide"
       text: "The limits, the steps, and what we have not tested."
+      image: /assets/images/stories/garden-hose-pressure-nozzle/p7.webp
+      imageWidth: 720
+      imageHeight: 960
+      alt: "A hose nozzle with a long metal wand and a trigger handle"
       tone: ink
 related:
   - href: /cleaning/garment-steamer-vs-iron/

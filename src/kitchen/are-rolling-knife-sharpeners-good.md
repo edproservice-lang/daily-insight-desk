@@ -21,6 +21,7 @@ permalink: /kitchen/are-rolling-knife-sharpeners-good/
 
 story:
   slug: are-rolling-knife-sharpeners-good
+  product: katusharp
   pages:
     - id: cover
       title: "Are rolling sharpeners good?"
@@ -41,14 +42,26 @@ story:
     - id: compare
       title: "Easier than a stone"
       text: "Gentler than a pull-through slot. Less flexible than either."
+      image: /assets/images/stories/are-rolling-knife-sharpeners-good/p3.webp
+      imageWidth: 720
+      imageHeight: 960
+      alt: "Hands holding a knife against a sharpening stone"
       tone: moss
     - id: skip
       title: "Not every knife"
       text: "Serrated and ceramic blades are the wrong fit."
+      image: /assets/images/stories/are-rolling-knife-sharpeners-good/p4.webp
+      imageWidth: 720
+      imageHeight: 960
+      alt: "A serrated bread knife slicing a loaf"
       tone: clay
     - id: time
       title: "A neglected knife takes time"
       text: "A published test used a different brand. We have not tested one."
+      image: /assets/images/stories/are-rolling-knife-sharpeners-good/p5.webp
+      imageWidth: 720
+      imageHeight: 960
+      alt: "A worn kitchen knife held over a granite counter"
       tone: ink
     - id: after
       title: "Then cut on wood or plastic"
@@ -61,6 +74,10 @@ story:
     - id: read
       title: "Read the full guide"
       text: "The comparison, the limits, and the seller’s claims."
+      image: /assets/images/stories/are-rolling-knife-sharpeners-good/p7.webp
+      imageWidth: 720
+      imageHeight: 960
+      alt: "Hands rolling a sharpening disc along a knife edge"
       tone: ink
 related:
   - href: /kitchen/do-titanium-cutting-boards-dull-knives/

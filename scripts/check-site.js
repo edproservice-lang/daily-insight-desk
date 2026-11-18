@@ -298,6 +298,11 @@ for (const [urlPath, html] of pages) {
   if (!html.includes('poster-portrait-src="') || !html.includes('publisher-logo-src="') || !html.includes("<amp-story")) {
     fail(`${urlPath} is missing required Web Story metadata`);
   }
+  const storyPages = [...html.matchAll(/<amp-story-page id="([^"]+)"[\s\S]*?<\/amp-story-page>/gi)];
+  if (!storyPages.length) fail(`${urlPath} has no story pages`);
+  for (const page of storyPages) {
+    if (!/<amp-img\b/i.test(page[0])) fail(`${urlPath} story page ${page[1]} has no image`);
+  }
 }
 
 const ampValidator = await amphtmlValidator.getInstance();
