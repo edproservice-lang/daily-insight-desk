@@ -542,13 +542,43 @@ h1 {
   color: #f6f1e7;
   font-family: var(--display);
   font-size: 1.4rem;
+  object-fit: cover;
+}
+
+.author-links {
+  display: flex;
+  gap: 0.9rem;
+  margin-top: 0.45rem;
+  font-family: var(--sans);
+  font-size: 0.92rem;
 }
 
 .author h2 { font-size: 1.35rem; margin: 0; }
 .author p { margin: 0.25rem 0 0; color: var(--muted); }
 
 .related { padding-bottom: 3.5rem; }
-.related .guide-grid { margin-top: 1rem; }
+.related-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: grid;
+  gap: 0.85rem;
+}
+.related-list li {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  padding: 1rem 1.1rem;
+}
+.related-list a {
+  font-family: var(--display);
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  color: var(--ink);
+}
+.related-list a:hover { color: var(--moss); }
+.related-list p { margin: 0.35rem 0 0; color: var(--muted); }
 
 .soon-list {
   list-style: none;

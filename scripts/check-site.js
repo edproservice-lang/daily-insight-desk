@@ -73,6 +73,26 @@ if (kitchen && !kitchen.includes('rel="sponsored nofollow noopener"')) fail("Kit
 if (kitchen && !kitchen.includes("Serious Eats")) fail("Kitchen article does not cite Serious Eats");
 if (kitchen && !/wood or plastic/i.test(kitchen)) fail("Kitchen article does not recommend wood or plastic");
 
+const sharpener = pages.get("/kitchen/are-rolling-knife-sharpeners-good/");
+const steamer = pages.get("/cleaning/garment-steamer-vs-iron/");
+const katusharp = "https://www.clickomundo.com/J2D6CNH/B7R6P93/";
+const rowelle = "https://www.clickomundo.com/J2D6CNH/B8GM3KK/";
+if (!sharpener) fail("Missing the rolling sharpener article");
+if (!steamer) fail("Missing the garment steamer article");
+if (sharpener && !sharpener.includes(`href="${katusharp}"`)) fail("KatuSharp affiliate link changed");
+if (steamer && !steamer.includes(`href="${rowelle}"`)) fail("Rowelle affiliate link changed");
+if (sharpener && !sharpener.includes("/kitchen/do-titanium-cutting-boards-dull-knives/")) {
+  fail("Sharpener guide does not link to the cutting-board guide");
+}
+if (steamer && !steamer.includes("/cleaning/garden-hose-pressure-nozzle/")) {
+  fail("Steamer guide does not link to the nozzle guide");
+}
+for (const [urlPath, html] of pages) {
+  if (/\[Author name\]|\[Short bio|\[fanpage|\[Instagram URL\]/i.test(html)) {
+    fail(`${urlPath} still shows an author placeholder`);
+  }
+}
+
 for (const [urlPath, html] of pages) {
   const hrefs = [...html.matchAll(/href="([^"]+)"/g)].map((match) => match[1]);
   for (const href of hrefs) {
@@ -95,6 +115,96 @@ for (const [urlPath, html] of pages) {
       if (targetHtml && !targetHtml.includes(`id="${hash}"`)) {
         fail(`${urlPath} links to ${href}, but #${hash} is missing`);
       }
+    }
+  }
+}
+
+const bannedHost = [
+  /(^|\.)amazon\./,
+  /^amzn\.to$/,
+  /(^|\.)walmart\./,
+  /(^|\.)ebay\./,
+  /(^|\.)target\.com$/,
+  /(^|\.)bestbuy\./,
+  /(^|\.)clickbank\./,
+  /(^|\.)shareasale\./,
+  /(^|\.)homedepot\./,
+  /(^|\.)lowes\./,
+  /(^|\.)wayfair\./,
+  /(^|\.)etsy\./,
+  /(^|\.)aliexpress\./,
+  /(^|\.)newegg\./,
+  /(^|\.)costco\./,
+  /(^|\.)overstock\./,
+  /(^|\.)rakuten\./,
+  /(^|\.)awin1\.com$/,
+  /(^|\.)awin\.com$/,
+  /(^|\.)impact\.com$/,
+  /(^|\.)cj\.com$/,
+  /(^|\.)avantlink\./,
+  /(^|\.)skimresources\./,
+  /(^|\.)rstyle\.me$/,
+  /(^|\.)shopstyle\./,
+  /(^|\.)anrdoezrs\.net$/,
+  /(^|\.)dpbolvw\.net$/,
+  /(^|\.)jdoqocy\.com$/,
+  /(^|\.)tkqlhce\.com$/,
+  /(^|\.)kqzyfj\.com$/,
+  /(^|\.)qksrv\.net$/,
+  /(^|\.)emjcd\.com$/,
+  /(^|\.)pjtra\.com$/,
+  /(^|\.)pntra\.com$/,
+  /(^|\.)pntrs\.com$/,
+  /(^|\.)linksynergy\./,
+  /(^|\.)flexlinks\./,
+];
+
+function attr(tag, name) {
+  const match = tag.match(new RegExp(`\\b${name}="([^"]*)"`, "i"));
+  return match ? match[1] : "";
+}
+
+function relHas(rel, token) {
+  return rel.toLowerCase().split(/\s+/).includes(token);
+}
+
+for (const [urlPath, html] of pages) {
+  for (const match of html.matchAll(/<a\b[^>]*>/gi)) {
+    const tag = match[0];
+    const href = attr(tag, "href").replace(/&amp;/g, "&");
+    if (!/^https?:\/\//i.test(href)) continue;
+    let host = "";
+    try {
+      host = new URL(href).hostname.toLowerCase().replace(/^www\./, "");
+    } catch {
+      fail(`${urlPath} has an unreadable external link: ${href}`);
+      continue;
+    }
+    const rel = attr(tag, "rel");
+    const tracking = host === "clickrtrckr.com" || host === "clickomundo.com";
+    const ownSite = host === "dailyinsightdesk.com";
+    const authority = host.endsWith(".gov") || host.endsWith(".mil") || host.endsWith(".edu") || host.endsWith(".gov.uk") || host.endsWith(".ac.uk");
+    if (!tracking && bannedHost.some((pattern) => pattern.test(host))) {
+      fail(`${urlPath} links to a retail or affiliate domain: ${host}`);
+    }
+    if (tracking) {
+      for (const token of ["sponsored", "nofollow", "noopener"]) {
+        if (!relHas(rel, token)) fail(`${urlPath} affiliate link to ${host} is missing rel=${token}`);
+      }
+    } else if (ownSite) {
+      if (relHas(rel, "nofollow")) fail(`${urlPath} nofollows our own site`);
+    } else if (authority) {
+      if (relHas(rel, "nofollow") || relHas(rel, "sponsored")) {
+        fail(`${urlPath} nofollows an authority source: ${host}`);
+      }
+      if (attr(tag, "target") === "_blank" && !relHas(rel, "noopener")) {
+        fail(`${urlPath} authority link to ${host} is missing rel=noopener`);
+      }
+    } else {
+      for (const token of ["nofollow", "noopener"]) {
+        if (!relHas(rel, token)) fail(`${urlPath} external link to ${host} is missing rel=${token}`);
+      }
+      if (relHas(rel, "sponsored")) fail(`${urlPath} marks a non-affiliate link as sponsored: ${host}`);
     }
   }
 }

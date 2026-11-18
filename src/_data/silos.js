@@ -5,15 +5,15 @@ export default [
     number: "01",
     summary: "Rinses, odors, and the mess that sits on the surface.",
     description:
-      "Cleaning guides for U.S. homes: patio rinsing, odors, and what a garden hose can honestly do. No invented tests.",
+      "Cleaning guides for U.S. homes: patio rinsing, garment care, and what a hose or a steamer can honestly do. No invented tests.",
     dek: "The jobs that make a house look looked-after: dust, pollen, mud, and the rinse that is actually enough.",
     image: "/assets/images/guide-hose",
     width: 1600,
     height: 900,
     alt: "Illustration of a brass outdoor spigot and a hose nozzle rinsing damp brick pavers",
     paragraphs: [
-      "Cleaning, on this desk, means the ordinary film a house collects: patio dust, pollen on a chair, mud at the back door, a smell that stayed in a board or a bin. The useful answer is usually a sequence, not a stronger machine.",
-      "A garden hose already does more than people give it credit for, and less than the ads claim. The guide below separates a focused rinse from a pressure washer, which is a different tool because it adds a pump.",
+      "Cleaning, on this desk, means the ordinary film a house collects: patio dust, a wrinkled shirt, mud at the back door. The useful answer is usually a sequence, not a stronger machine.",
+      "A garden hose already does more than people give it credit for, and less than the ads claim. One guide separates a focused rinse from a pressure washer. Another covers when a steamer is enough and when you still want an iron.",
     ],
     soon: [
       "How to clean patio pavers with a garden hose",
@@ -28,15 +28,15 @@ export default [
     number: "02",
     summary: "Boards, knives, and the cleanup after dinner.",
     description:
-      "Kitchen guides on cutting boards and knife care. An honest look at titanium, wood, and plastic, including what hard boards do to an edge.",
+      "Kitchen guides on cutting boards, knife edges, and sharpening. Honest notes on titanium boards and rolling sharpeners, including what we have not tested.",
     dek: "What to cut on, how to keep an edge, and which cleanup promises are worth believing.",
     image: "/assets/images/still-kitchen",
     width: 1600,
     height: 1200,
     alt: "Illustration of a wooden cutting board, a bowl of lemons, and a linen towel on a stone counter",
     paragraphs: [
-      "A cutting board is a tool you touch every day and replace too late. The material decides two different things: how the board cleans up, and what happens to the knife.",
-      "Those are not the same question. A surface can be easy to rinse and still be a poor place to chop. The guide below stays with that distinction, and it says plainly when a point comes from another publication rather than from us.",
+      "A cutting board is a tool you touch every day and replace too late. The material decides two different things: how the board cleans up, and what happens to the knife. A sharpener decides whether you can get that edge back.",
+      "Those are not the same question. A surface can be easy to rinse and still be a poor place to chop. A sharpener can hold an angle and still be the wrong tool for a serrated blade. The guides below say when a point comes from a seller or from another publication.",
     ],
     soon: [
       "How to get garlic smell out of a wood cutting board",
