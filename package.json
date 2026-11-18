@@ -1,7 +1,15 @@
 {
-  "name": "jvzoo-google-ads-conversions",
-  "version": "1.0.0",
+  "name": "daily-insight-desk",
+  "version": "2.0.0",
   "private": true,
-  "description": "Recebe postback do JVZoo e escreve conversoes na Google Sheet para importacao no Google Ads",
-  "main": "api/jvzoo-postback.js"
+  "type": "module",
+  "description": "Daily Insight Desk — a static home and garden guide for dailyinsightdesk.com",
+  "scripts": {
+    "build": "eleventy && node scripts/check-site.js",
+    "dev": "eleventy --serve --port 8080"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "markdown-it-anchor": "^9.2.0"
+  }
 }

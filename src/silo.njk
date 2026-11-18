@@ -1,0 +1,90 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: silos
+  size: 1
+  alias: shelf
+  addAllPagesToCollections: true
+permalink: "/{{ shelf.slug }}/"
+eleventyComputed:
+  title: "{{ shelf.name }}"
+  description: "{{ shelf.description }}"
+  metaTitle: "{{ shelf.name }} guides · Daily Insight Desk"
+  ogImage: "{{ shelf.image }}-1600.webp"
+  ogAlt: "{{ shelf.alt }}"
+  lcp: "{{ shelf.image }}"
+  lcpSizes: "(min-width: 960px) 42rem, calc(100vw - 2.5rem)"
+date: 2026-11-18
+updated: 2026-11-18
+---
+<main id="main">
+  <section class="page-hero">
+    <div class="wrap page-hero-grid">
+      <div>
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li aria-current="page">{{ shelf.name }}</li>
+          </ol>
+        </nav>
+        <p class="eyebrow">Shelf {{ shelf.number }}</p>
+        <h1>{{ shelf.name }}</h1>
+        <p class="dek">{{ shelf.dek }}</p>
+        {% for paragraph in shelf.paragraphs %}
+        <p>{{ paragraph }}</p>
+        {% endfor %}
+        {% if shelf.related %}
+        <p><a href="{{ shelf.related.href }}">{{ shelf.related.label }}</a></p>
+        {% endif %}
+      </div>
+      <figure class="frame {% if shelf.height == 1200 %}portrait{% endif %}">
+        <img
+          src="{{ shelf.image }}-800.webp"
+          srcset="{{ shelf.image }}-800.webp 800w, {{ shelf.image }}-1600.webp 1600w"
+          sizes="(min-width: 960px) 42rem, calc(100vw - 2.5rem)"
+          alt="{{ shelf.alt }}"
+          width="{{ shelf.width }}"
+          height="{{ shelf.height }}"
+          fetchpriority="high"
+          decoding="async">
+        <figcaption>Original illustration for this shelf.</figcaption>
+      </figure>
+    </div>
+  </section>
+  <section class="band">
+    <div class="wrap">
+      <h2>Published guides</h2>
+      {% set posts = collections.guide | inSilo(shelf.slug) %}
+      <div class="guide-list">
+        {% for post in posts %}
+        <a class="guide-row" href="{{ post.url }}">
+          <span class="kicker">{{ post.data.readTime }}</span>
+          <span>
+            <strong>{{ post.data.title }}</strong>
+            <p>{{ post.data.dek }}</p>
+          </span>
+        </a>
+        {% endfor %}
+        {% if posts.length == 0 %}
+        <p class="note">No guide is published on this shelf yet. The titles below are planned. They are not links, because the pages do not exist.</p>
+        {% endif %}
+      </div>
+      <h2>Still being written</h2>
+      <ul class="soon-list">
+        {% for item in shelf.soon %}
+        <li><span>{{ item }}</span><span class="soon">Coming soon</span></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+</main>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}/" },
+    { "@type": "ListItem", "position": 2, "name": {{ shelf.name | dump | safe }}, "item": "{{ site.url }}/{{ shelf.slug }}/" }
+  ]
+}
+</script>
