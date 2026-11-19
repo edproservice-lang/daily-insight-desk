@@ -200,10 +200,10 @@ Use it, if you buy it, the way you would use any other nozzle. Fan for broad rin
 
 Buy, or keep, a nozzle you can shut off at the handle, that does not leak at the threads, and that still produces an even fan after a season. Patterns are the feature. A mist, a fan, and a stream cover the real week. A “drill” or “turbo” setting is the one most likely to mark wood and mortar, and it is the one the ads lean on.
 
-You do not need a new nozzle to rinse a patio this Saturday if the one in the bucket still sprays evenly. Clean the tip, replace the washer, and unkink the hose. Spend the money on a brush that fits the paver, which is the tool the water was never going to replace.
+You do not need a new nozzle to rinse a patio this Saturday if the one in the bucket still sprays evenly. Clean the tip, replace the washer, and unkink the hose. Spend the money on a brush that fits the paver, which is the tool the water was never going to replace. The [step-by-step guide to cleaning patio pavers with a hose](/cleaning/how-to-clean-patio-pavers-with-a-garden-hose/) puts the two together.
 
 Rent or buy an actual pressure washer when the job is a pump job: a deck that has gone gray and you have decided to refinish it, concrete with set-in oil, or siding you have already accepted you will rinse very carefully according to the machine’s instructions. Renting for a day is often the better version of that decision. Owning a second machine to knock pollen off a chair is how garages fill up.
 
 The same split, a light tool versus the heavy machine, shows up with clothes. The [garment steamer and iron guide](/cleaning/garment-steamer-vs-iron/) sorts which wrinkles a steamer can finish and which still want an iron.
 
-The rest of the [cleaning shelf](/cleaning/) will take the narrower jobs one at a time: pavers, pollen on furniture, vinyl siding, muddy boots. Those titles are listed as upcoming. They are not links until they exist.
+The rest of the [cleaning shelf](/cleaning/) will take the narrower jobs one at a time: pollen on furniture, vinyl siding, muddy boots. Those titles are listed as upcoming. They are not links until they exist.
