@@ -1,0 +1,73 @@
+name: Daily articles (autowriter)
+
+on:
+  schedule:
+    # 10:17 UTC = 07:17 America/Sao_Paulo, Monday-Saturday
+    - cron: "17 10 * * 1-6"
+  workflow_dispatch:
+    inputs:
+      count:
+        description: "How many articles to write (blank = repo variable ARTICLES_PER_DAY, default 2)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: autowriter
+  cancel-in-progress: false
+
+jobs:
+  write:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: |
+          npm ci --no-audit --no-fund
+          npm i --no-save --no-audit --no-fund sharp@0.34 js-yaml@4
+
+      - name: Prepare branch
+        id: branch
+        run: |
+          git config user.name "edproservice-lang"
+          git config user.email "edproservice@gmail.com"
+          BR="autowriter/$(TZ=America/Sao_Paulo date +%Y-%m-%d)-${GITHUB_RUN_NUMBER}"
+          git checkout -b "$BR"
+          echo "name=$BR" >> "$GITHUB_OUTPUT"
+
+      - name: Write articles
+        id: write
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODELS: ${{ vars.GEMINI_MODELS }}
+          ARTICLES: ${{ github.event.inputs.count || vars.ARTICLES_PER_DAY || '2' }}
+        run: |
+          [ -n "$GEMINI_MODELS" ] || unset GEMINI_MODELS
+          node scripts/autowriter/write.mjs "$ARTICLES"
+
+      - name: Open pull request (no auto-merge)
+        if: steps.write.outputs.made != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          BR="${{ steps.branch.outputs.name }}"
+          git push -u origin "$BR"
+          gh label create autowriter --color 6E8B3D --description "Draft written by the free autowriter" 2>/dev/null || true
+          TITLE="Autowriter drafts $(TZ=America/Sao_Paulo date +%Y-%m-%d) ($(git log --format=%s origin/main..HEAD | grep -c '^Autowriter:') article(s))"
+          gh pr create --base main --head "$BR" --title "$TITLE" --body-file autowriter-summary.md --label autowriter
+
+      - name: Job summary
+        if: always()
+        run: '[ -f autowriter-summary.md ] && cat autowriter-summary.md >> "$GITHUB_STEP_SUMMARY" || true'
