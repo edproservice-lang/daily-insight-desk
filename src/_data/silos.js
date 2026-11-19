@@ -13,7 +13,7 @@ export default [
     alt: "Illustration of a brass outdoor spigot and a hose nozzle rinsing damp brick pavers",
     paragraphs: [
       "Cleaning, on this desk, means the ordinary film a house collects: patio dust, a wrinkled shirt, mud at the back door. The useful answer is usually a sequence, not a stronger machine.",
-      "A garden hose already does more than people give it credit for, and less than the ads claim. One guide separates a focused rinse from a pressure washer. Another covers when a steamer is enough and when you still want an iron.",
+      "A garden hose already does more than people give it credit for, and less than the ads claim. One guide separates a focused rinse from a pressure washer. Another covers when a steamer is enough and when you still want an iron. A third asks whether a window-cleaning robot is worth the ladder it replaces, and a fourth asks whether cleaning tablets replace the sprays under the sink.",
     ],
     soon: [
       "How to clean patio pavers with a garden hose",
@@ -61,7 +61,7 @@ export default [
     alt: "Illustration of a wooden patio chair, a coiled garden hose, and a terracotta pot against a brick wall",
     paragraphs: [
       "Outdoor care is mostly water, timing, and not forcing a surface that wants a brush. A nozzle is often the right tool. A pressure washer is sometimes the right tool. They are not interchangeable, and the ads that say otherwise are selling the overlap.",
-      "Guides for washing a car with a hose, winterizing the hose, moss on a shady patio, and grill grates are written next. Nothing in the upcoming list is a link until the guide exists. The published cleaning guide already covers what a nozzle can honestly do.",
+      "The first guide on this shelf is whether a portable evaporative cooler actually cools a room, or mostly adds humidity. Guides for washing a car, winterizing the hose, moss on a shady patio, and grill grates are still unwritten. The published cleaning guide already covers what a nozzle can honestly do.",
     ],
     related: {
       href: "/cleaning/garden-hose-pressure-nozzle/",

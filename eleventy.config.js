@@ -69,7 +69,7 @@ export default function (eleventyConfig) {
       } catch {
         host = "";
       }
-      const ownTracking = host === "clickrtrckr.com" || host === "clickomundo.com";
+      const ownTracking = ["clickrtrckr.com", "clickomundo.com", "treejammer.com", "tricklyn.com"].includes(host);
       const ownSite = host === "dailyinsightdesk.com";
       const authority = host.endsWith(".gov") || host.endsWith(".edu") || host.endsWith(".gov.uk") || host.endsWith(".ac.uk");
       token.attrSet("target", "_blank");
