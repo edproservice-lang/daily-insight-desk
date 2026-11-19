@@ -1,6 +1,6 @@
 // Daily Insight Desk autowriter: writes N guides with the free Gemini API.
 // Usage: GEMINI_API_KEY=... node scripts/autowriter/write.mjs [count]
-import { readFileSync, writeFileSync, readdirSync, mkdirSync, appendFileSync, mkdtempSync, rmSync } from "node:fs";
+import { readFileSync, writeFileSync, readdirSync, mkdirSync, appendFileSync, mkdtempSync, rmSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { execSync, execFileSync } from "node:child_process";
 import { tmpdir } from "node:os";
@@ -13,6 +13,7 @@ const QUEUE = join(import.meta.dirname, "queue.json");
 const SUMMARY = join(import.meta.dirname, "..", "..", "autowriter-summary.md");
 const KEY = (process.env.GEMINI_API_KEY || "").trim();
 const MODELS = (process.env.GEMINI_MODELS || "gemini-3.8-flash,gemini-3.5-flash,gemini-3.7-flash,gemini-flash-latest").split(",").map((s) => s.trim()).filter(Boolean);
+const LITE = (process.env.GEMINI_LITE_MODELS || "gemini-3.5-flash-lite,gemini-3.1-flash-lite,gemini-3.5-flash").split(",").map((x) => x.trim()).filter(Boolean);
 const COUNT = Number(process.argv[2] || process.env.ARTICLES || 1);
 const UA = "DailyInsightDeskBot/1.0 (+https://dailyinsightdesk.com/contact/)";
 const TODAY = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Sao_Paulo" }).format(new Date());
@@ -48,18 +49,18 @@ const PRODUCTS = productsMod.default;
 const silos = (await import(join(SRC, "_data", "silos.js"))).default;
 
 // ---------- Gemini ----------
-async function gemini(prompt, { json = true, temperature = 0.8 } = {}) {
+async function gemini(prompt, { json = true, temperature = 0.8, models = MODELS, parts = [] } = {}) {
   // curl instead of fetch: Node's fetch drops responses that take >5 min to start.
   const tmp = mkdtempSync(join(tmpdir(), "aw-"));
   const hdr = join(tmp, "h"), req = join(tmp, "req.json");
   writeFileSync(hdr, `x-goog-api-key: ${KEY}\nContent-Type: application/json\n`, { mode: 0o600 });
   writeFileSync(req, JSON.stringify({
-    contents: [{ role: "user", parts: [{ text: prompt }] }],
+    contents: [{ role: "user", parts: [{ text: prompt }, ...parts] }],
     generationConfig: { temperature, maxOutputTokens: 32000, ...(json ? { responseMimeType: "application/json" } : {}) },
   }));
   let lastErr = "";
   try {
-    for (const model of MODELS) {
+    for (const model of models) {
       for (let attempt = 0; attempt < 2; attempt++) {
         let raw = "", code = 0;
         try {
@@ -199,6 +200,7 @@ HARD RULES
 ${list}
 4. EXTERNAL SOURCES: cite 2-3 real, neutral authority pages (US .gov, .edu extension services, or an official manufacturer care/manual page) that you are confident exist at that exact URL; link each once inside a sentence in the body and list it in "sources". Also add 2 extra backup candidates at the end of "sources" with "inline": false (prefer stable top-level pages like epa.gov, cdc.gov, usda.gov, extension.umn.edu, extension.psu.edu that are certain to exist). Mark the linked ones "inline": true. Never link to stores, Amazon, marketplaces, or blogs/roundups with affiliate links.
 5. FAQ: 4-6 real questions people search, answers 2-4 sentences.
+5b. STYLE: US spelling (color, not colour). No brand names except the product above. Do not copy the product facts word for word; paraphrase briefly and let the product box carry the details. Only attribute a claim to a source if that page is specifically about it; otherwise state general advice without attribution. Internal links must read naturally: if a target is only loosely related, write a short bridging sentence that gives the reader a real reason to click.
 6. Web Story: exactly 7 cards. Card 1 is a cover. The last card invites reading the full guide. Card titles 3-7 words, text max 18 words. For each card give a concrete stock-photo search query (2-4 plain words, a real scene, no brand names, no text) and alt text describing that scene. ${product ? 'Set "kind":"product" on exactly one card about the product itself; other cards "kind":"stock".' : 'All cards "kind":"stock".'}
 7. "related": choose the 3 most related existing articles (href from the list) with a one-sentence note on why.
 
@@ -209,42 +211,62 @@ ${feedback ? `\nYOUR PREVIOUS DRAFT FAILED THESE CHECKS. Fix every one:\n- ${fee
 
 // ---------- images ----------
 const usedImages = new Set();
-async function openverse(query, aspect) {
-  const tries = [query, query.split(" ").slice(0, 2).join(" "), query.split(" ")[0]];
-  for (const q of tries) {
-    for (const src of ["openverse", "commons"]) {
+let openverseBlocked = false;
+const JUNK = /poster|painting|drawing|illustration|engraving|lithograph|map\b|specimen|logo|diagram|coat of arms|flag|film|movie|catalog|catalogue|page \d|book|scan|statue|temple|church|cathedral|saint|god|goddess|shrine|buddha|krishna|shiva|ganesh|idol|deity|religio|bible|cross\b|portrait of|stamp|coin|advert|\bad\b|magazine|newspaper/i;
+async function candidates(query, aspect, n = 4) {
+  const out = [];
+  const qs = [...new Set([query, query.split(" ").slice(0, 2).join(" ")])];
+  for (const q of qs) {
+    const lists = [];
+    if (!openverseBlocked) {
       try {
-        let results = [];
-        if (src === "openverse") {
-          const u = `https://api.openverse.org/v1/images/?q=${encodeURIComponent(q)}&license=cc0,pdm&page_size=20&mature=false${aspect ? `&aspect_ratio=${aspect}` : ""}`;
-          const r = await fetch(u, { headers: { "User-Agent": UA }, signal: AbortSignal.timeout(30000) });
-          if (!r.ok) { log(`openverse ${r.status}`); continue; }
-          results = (await r.json()).results.map((x) => ({ url: x.url, w: x.width, h: x.height, credit: `${x.title || "Photo"}${x.creator ? ` by ${x.creator}` : ""}, ${String(x.license).toUpperCase()} via Openverse` }));
-        } else {
-          const u = `https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrnamespace=6&gsrlimit=20&gsrsearch=${encodeURIComponent(q + " filetype:bitmap")}&prop=imageinfo&iiprop=url|size|extmetadata&iiurlwidth=1600`;
-          const r = await fetch(u, { headers: { "User-Agent": UA }, signal: AbortSignal.timeout(30000) });
-          if (!r.ok) continue;
-          const pages = Object.values((await r.json()).query?.pages || {});
-          results = pages.map((p) => p.imageinfo?.[0]).filter((ii) => ii && /^(cc0|public domain|pd)/i.test(ii.extmetadata?.LicenseShortName?.value || ""))
-            .map((ii) => ({ url: ii.thumburl || ii.url, w: ii.width, h: ii.height, credit: `Wikimedia Commons, ${ii.extmetadata.LicenseShortName.value}` }));
-        }
-        for (const x of results) {
-          if (!x.url || usedImages.has(x.url) || Math.min(x.w || 0, x.h || 0) < 600) continue;
-          if (aspect === "tall" && x.w > x.h * 1.6) continue;
-          try {
-            const r = await fetch(x.url, { headers: { "User-Agent": UA }, signal: AbortSignal.timeout(30000) });
-            if (!r.ok) continue;
-            const buf = Buffer.from(await r.arrayBuffer());
-            const meta = await sharp(buf).metadata();
-            if (!meta.width || Math.min(meta.width, meta.height) < 540) continue;
-            usedImages.add(x.url);
-            return { buf, credit: x.credit };
-          } catch { /* next */ }
-        }
-      } catch (e) { log(`image search ${src} failed: ${e.message}`); }
+        const u = `https://api.openverse.org/v1/images/?q=${encodeURIComponent(q)}&license=cc0,pdm&category=photograph&page_size=20&mature=false${aspect ? `&aspect_ratio=${aspect}` : ""}`;
+        const r = await fetch(u, { headers: { "User-Agent": UA }, signal: AbortSignal.timeout(20000) });
+        if (r.status === 403 || r.status === 429) { openverseBlocked = true; log(`openverse ${r.status}; using Wikimedia Commons only`); }
+        else if (r.ok) lists.push((await r.json()).results.map((x) => ({ url: x.url, w: x.width, h: x.height, title: `${x.title} ${(x.tags || []).map((t) => t.name).join(" ")}`, credit: `${x.title || "Photo"}${x.creator ? ` by ${x.creator}` : ""}, ${String(x.license).toUpperCase()} via Openverse` })));
+        else log(`openverse ${r.status}`);
+      } catch (e) { log(`openverse ${e.message}`); }
     }
+    try {
+      const u = `https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrnamespace=6&gsrlimit=30&gsrsearch=${encodeURIComponent(q + " filetype:bitmap filemime:jpeg")}&prop=imageinfo&iiprop=url|size|extmetadata&iiurlwidth=1600`;
+      const r = await fetch(u, { headers: { "User-Agent": UA }, signal: AbortSignal.timeout(20000) });
+      if (r.ok) {
+        const pages = Object.values((await r.json()).query?.pages || {});
+        lists.push(pages.map((p) => ({ p, ii: p.imageinfo?.[0] })).filter(({ ii }) => ii && /^(cc0|public domain|pd)/i.test(ii.extmetadata?.LicenseShortName?.value || ""))
+          .map(({ p, ii }) => ({ url: ii.thumburl || ii.url, w: ii.width, h: ii.height, title: `${p.title} ${(ii.extmetadata?.ImageDescription?.value || "").replace(/<[^>]+>/g, "").slice(0, 200)}`, credit: `${p.title.replace(/^File:/, "").replace(/\.\w+$/, "")}, ${ii.extmetadata.LicenseShortName.value}, Wikimedia Commons` })));
+      }
+    } catch (e) { log(`commons ${e.message}`); }
+    for (const x of lists.flat()) {
+      if (out.length >= n) break;
+      if (!x.url || usedImages.has(x.url) || out.some((o) => o.url === x.url) || JUNK.test(x.title) || Math.min(x.w || 0, x.h || 0) < 600) continue;
+      try {
+        const r = await fetch(x.url, { headers: { "User-Agent": UA }, signal: AbortSignal.timeout(30000) });
+        if (!r.ok) continue;
+        const buf = Buffer.from(await r.arrayBuffer());
+        const meta = await sharp(buf).metadata();
+        if (!meta.width || Math.min(meta.width, meta.height) < 540) continue;
+        const thumb = await sharp(buf).rotate().resize(320, 320, { fit: "inside" }).jpeg({ quality: 60 }).toBuffer();
+        out.push({ ...x, buf, thumb });
+      } catch { /* next */ }
+    }
+    if (out.length >= n) break;
   }
-  return null;
+  return out;
+}
+// One Gemini vision call picks a fitting photo for every slot (or none).
+async function pickImages(slots) {
+  const parts = [];
+  let text = "Pick photos for a US home & garden article and its Web Story. For each slot below, choose the ONE candidate that is a real photograph clearly showing the described scene (or very close). Reject drawings, posters, scans, documents, specimens, religious or political imagery, close-up faces of identifiable people, images with visible text or logos, and anything off-topic. If no candidate fits, answer -1. Never pick the same candidate for two slots.\n";
+  let k = 0;
+  for (const s of slots) {
+    text += `\nSLOT ${s.key}: "${s.want}". Candidates: ${s.cands.map((c) => { c.id = k++; return `#${c.id}`; }).join(", ") || "none"}`;
+    for (const c of s.cands) parts.push({ text: `Candidate #${c.id}:` }, { inline_data: { mime_type: "image/jpeg", data: c.thumb.toString("base64") } });
+  }
+  text += `\n\nReturn JSON {"picks": {"<slot key>": <candidate number or -1>}}`;
+  try {
+    const { out } = await gemini(text, { temperature: 0, models: LITE, parts });
+    return out.picks || {};
+  } catch (e) { log(`image pick failed: ${e.message}`); return {}; }
 }
 async function portrait(buf, out, contain = false) {
   mkdirSync(dirname(out), { recursive: true });
@@ -263,7 +285,7 @@ function frontMatter(a, item, wc, heroCredit, storyPages) {
   const fm = {
     layout: "layouts/article.njk", tags: "guide", title: a.title, metaTitle: a.metaTitle, description: a.description, dek: a.dek,
     silo: item.silo, siloName: silo ? silo.name : item.silo, date: TODAY, updated: TODAY, readTime: `${Math.max(4, Math.round(wc / 200))} min read`,
-    hero: `/assets/images/guide-${a.slug}`, heroHeight: 900, heroAlt: a.heroAlt, heroCaption: `Stock photo: ${heroCredit}. Illustrative only, not a test by Daily Insight Desk.`,
+    hero: `/assets/images/guide-${a.slug}`, heroHeight: 900, heroAlt: a.heroAlt, heroCaption: heroCredit.startsWith("Daily Insight Desk") ? "Illustration by Daily Insight Desk." : `Stock photo: ${heroCredit}. Illustrative only, not a test by Daily Insight Desk.`,
     ogImage: `/assets/images/guide-${a.slug}-1600.webp`, ogAlt: a.heroAlt, permalink: `/${item.silo}/${a.slug}/`,
     story: { slug: a.slug, ...(item.product ? { product: item.product } : {}), pages: storyPages },
     related: a.related.slice(0, 3), toc, faq: a.faq.map((f) => ({ q: f.q, a: f.a })),
@@ -273,7 +295,7 @@ function frontMatter(a, item, wc, heroCredit, storyPages) {
 }
 
 async function draft(item, existing, feedback) {
-  const { model, out } = await gemini(buildPrompt(item, existing, feedback));
+  const { model, out } = process.env.AW_FAKE_DRAFT ? { model: "fake", out: JSON.parse(readFileSync(process.env.AW_FAKE_DRAFT, "utf8")) } : await gemini(buildPrompt(item, existing, feedback));
   out._model = model;
   out.slug = slugify(out.slug || out.title || item.topic);
   out.related = (out.related || []).filter((r) => existing.some((g) => g.url === r.href));
@@ -283,7 +305,7 @@ async function draft(item, existing, feedback) {
     if (okSources.length >= 3) break;
     let host = ""; try { host = new URL(s.url).hostname; } catch {}
     const allowed = host && !BANNED_HOST.test(host) && !AFFIL_HOSTS.some((h) => host.endsWith(h));
-    if (allowed && await urlOk(s.url)) okSources.push(s); else log(`dropping source ${s.url}`);
+    if (allowed && await urlOk(s.url)) { if (new URL(s.url).pathname.replace(/\/+$/, "") === "") s.name = String(s.name).split(",")[0] + " (home page)"; okSources.push(s); } else log(`dropping source ${s.url}`);
   }
   out.sources = okSources;
   const okSet = new Set(okSources.map((s) => s.url));
@@ -294,12 +316,12 @@ async function draft(item, existing, feedback) {
 async function rescueSources(a) {
   log("no source verified; asking for replacement sources");
   try {
-    const { out } = await gemini(`For a US home & garden article titled "${a.title}" (${a.description}), list 5 real, stable, neutral authority web pages (US .gov, .edu extension service, or official manufacturer care page) that support general advice in it. Prefer top-level pages that certainly exist. Return JSON {"sources":[{"name":"Publisher, page title","url":"https://...","note":"one sentence on what it supports"}]}`, { temperature: 0.2 });
+    const { out } = await gemini(`For a US home & garden article titled "${a.title}" (${a.description}), list 8 real, stable, neutral authority web pages (specific pages, not home pages) (US .gov, .edu extension service, or official manufacturer care page) that support general advice in it. Prefer top-level pages that certainly exist. Return JSON {"sources":[{"name":"Publisher, page title","url":"https://...","note":"one sentence on what it supports"}]}`, { temperature: 0.2, models: LITE });
     const ok = [];
     for (const s of out.sources || []) {
       if (ok.length >= 2) break;
       let host = ""; try { host = new URL(s.url).hostname; } catch {}
-      if (host && !BANNED_HOST.test(host) && await urlOk(s.url)) ok.push(s);
+      if (host && new URL(s.url).pathname.replace(/\/+$/, "") !== "" && !BANNED_HOST.test(host) && await urlOk(s.url)) ok.push(s);
     }
     return ok;
   } catch (e) { log(`rescue failed: ${e.message}`); return []; }
@@ -320,29 +342,54 @@ async function writeArticle(item, existing) {
   }
   // images
   const imgDir = join(SRC, "assets", "images");
-  const hero = await openverse(a.heroQuery, "wide");
-  if (!hero) throw new Error("no hero image found");
+  const product = item.product ? PRODUCTS[item.product] : null;
+  const productImgs = product ? [product.image, ...(product.storyImages || [])] : [];
+  const slots = [{ key: "hero", want: a.heroAlt || a.heroQuery, cands: await candidates(a.heroQuery, "wide") }];
+  for (const c of slots[0].cands) usedImages.add(c.url);
+  for (const [i, card] of a.story.entries()) {
+    if (card.kind === "product" && productImgs.length) continue;
+    const cands = await candidates(card.imageQuery || a.heroQuery, "tall", 3);
+    for (const c of cands) usedImages.add(c.url);
+    slots.push({ key: `card${i + 1}`, want: card.alt || card.imageQuery, cands });
+  }
+  const picks = await pickImages(slots);
+  const chosen = {};
+  const taken = new Set();
+  for (const s of slots) {
+    const c = s.cands.find((x) => x.id === Number(picks[s.key]));
+    if (c && !taken.has(c.url)) { chosen[s.key] = c; taken.add(c.url); }
+  }
+  const silo = silos.find((x) => x.slug === item.silo);
+  const fallbacks = [silo?.image, "/assets/images/hero-patio", "/assets/images/still-tools", "/assets/images/still-kitchen", "/assets/images/still-patio"].filter(Boolean)
+    .map((b) => join(SRC, `${b}-1600.webp`)).filter((f, i, arr) => arr.indexOf(f) === i && existsSync(f));
+  let fb = 0;
+  const hero = chosen.hero || { buf: readFileSync(fallbacks[fb++ % fallbacks.length]), credit: "Daily Insight Desk illustration", house: true };
   for (const w of [1600, 800]) {
     await sharp(hero.buf).rotate().resize(w, Math.round((w * 9) / 16), { fit: "cover", position: "attention" }).webp({ quality: 72 }).toFile(join(imgDir, `guide-${a.slug}-${w}.webp`));
   }
+  const imageReport = [`hero: ${chosen.hero ? "stock photo" : "site illustration (no fitting stock photo)"}`];
   const storyPages = [];
   const tones = ["ink", "moss"];
-  const product = item.product ? PRODUCTS[item.product] : null;
-  const productImgs = product ? [product.image, ...(product.storyImages || [])] : [];
   for (const [i, card] of a.story.entries()) {
     const out = join(imgDir, "stories", a.slug, `p${i + 1}.webp`);
     let alt = card.alt;
     if (card.kind === "product" && productImgs.length) {
-      const src = productImgs.shift();
-      await portrait(readFileSync(join(SRC, src)), out, true);
+      await portrait(readFileSync(join(SRC, productImgs.shift())), out, true);
       alt = `Seller photo: ${product.name}. ${product.alt || ""}`.trim();
+      imageReport.push(`card ${i + 1}: seller photo`);
+    } else if (chosen[`card${i + 1}`]) {
+      await portrait(chosen[`card${i + 1}`].buf, out);
+      imageReport.push(`card ${i + 1}: stock photo`);
     } else {
-      const img = await openverse(card.imageQuery || a.heroQuery, "tall");
-      if (img) await portrait(img.buf, out);
-      else await portrait(hero.buf, out); // last resort: hero crop
+      const f = fallbacks[fb++ % fallbacks.length];
+      await portrait(readFileSync(f), out, true);
+      alt = "Illustration of home and garden tools";
+      imageReport.push(`card ${i + 1}: site illustration (no fitting stock photo)`);
     }
     storyPages.push({ id: slugify(card.id || `card-${i + 1}`) || `card-${i + 1}`, title: card.title, text: card.text, image: `/assets/images/stories/${a.slug}/p${i + 1}.webp`, imageWidth: 720, imageHeight: 960, alt, tone: tones[i % 2] });
   }
+  a._imageReport = imageReport;
+  if (hero.house) a.heroAlt = silo?.alt || "Illustration of home and garden tools";
   await sharp(join(imgDir, "stories", a.slug, "p1.webp")).toFile(join(imgDir, "stories", `${a.slug}.webp`));
   // body + sources section
   const wc = words(a.body);
@@ -370,7 +417,7 @@ Return JSON: {"links":[{"file":"","line":0,"phrase":""}]}
 PARAGRAPHS:
 ${cands.map((c) => JSON.stringify(c)).join("\n")}`;
   let out;
-  try { out = (await gemini(prompt, { temperature: 0.2 })).out; } catch (e) { log(`backlink call failed: ${e.message}`); return []; }
+  try { out = (await gemini(prompt, { temperature: 0.2, models: LITE })).out; } catch (e) { log(`backlink call failed: ${e.message}`); return []; }
   const done = [];
   const seen = new Set();
   for (const l of (out.links || []).slice(0, 3)) {
@@ -425,9 +472,9 @@ for (const item of queue.items) {
       const err = build();
       if (err) throw Object.assign(new Error("build failed"), { buildLog: err });
       item.status = "done"; item.slug = r.a.slug; item.url = r.url; item.date = TODAY; delete item._buildError;
-      writeFileSync(QUEUE, JSON.stringify(queue, null, 2) + "\n");
+      writeFileSync(QUEUE, `{\n  "_readme": ${JSON.stringify(queue._readme)},\n  "items": [\n${queue.items.map((x) => `    ${JSON.stringify(x)}`).join(",\n")}\n  ]\n}\n`);
       sh(`git add -A src scripts/autowriter/queue.json && git commit -q -m ${JSON.stringify(`Autowriter: ${r.a.title}`)}`);
-      results.push({ ...r, backs, model: r.a._model, sources: r.a.sources.length });
+      results.push({ ...r, backs, model: r.a._model, sources: r.a.sources.length, images: r.a._imageReport });
       made++; ok = true;
       log(`done ${r.url} (${r.wc} words, ${r.internal} internal links, ${backs.length} backlinks)`);
     } catch (e) {
@@ -446,6 +493,8 @@ for (const r of results.filter((x) => !x.failed)) {
   lines.push(`| [${r.a.title}](https://dailyinsightdesk.com${r.url}) (\`${r.file.slice(ROOT.length + 1)}\`) | ${r.wc} | ${r.internal} | ${r.backs.length} | ${r.sources} | ${r.model} |`);
 }
 for (const r of results.filter((x) => x.failed)) lines.push("", `Skipped **${r.topic}** (${r.failed}): ${r.reason.replace(/\n/g, " ")}`);
+const imgLines = results.filter((r) => r.images).map((r) => `- ${r.a.title}: ${r.images.join("; ")}`);
+if (imgLines.length) lines.push("", "### Images", ...imgLines);
 const backs = results.flatMap((r) => (r.backs || []).map((b) => `- ${b.file}: linked “${b.phrase}” → ${r.url}`));
 if (backs.length) lines.push("", "### Backlinks inserted in older articles", ...backs);
 lines.push("", "Checklist: read for accuracy, confirm no invented specs or prices, check story images, then merge.");
