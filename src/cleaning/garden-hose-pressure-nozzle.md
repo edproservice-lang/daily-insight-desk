@@ -141,17 +141,17 @@ Use the hose, with a nozzle you can shut off in your hand, for the mess that is 
 - Outdoor furniture before anyone sits down: a fan of water across mesh, slats, and cushions that are labeled as rinseable. Check the tag on a cushion before you soak the filling.
 - Mud on boots, a dog’s paws at the back door, and tools that came in from the beds. A stream knocks the soil off so you are not carrying it inside.
 - A car that is dusty rather than filmed with road grime. Rinse from the top down, then wash with a mitt if you actually need it clean. The nozzle’s job is the loose layer and the soap rinse, not the bonded dirt.
-- Siding and windows, as a rinse after you have done the washing with a brush and a cleaner made for that surface. The hose takes the soap away. It does not do the washing.
+- Siding and windows, as a rinse after you have done the washing with a brush and a cleaner made for that surface. The hose takes the soap away. It does not do the washing. A machine that crawls the pane is a different tool: [window-cleaning robots](/cleaning/are-window-cleaning-robots-worth-it/) hold smooth glass with suction, and they still leave the frame to you.
 
 On all of these, a shutoff at the nozzle is the feature that matters more than any “turbo” engraving. You can walk to the next chair without turning the spigot, and you are not watering the foundation while you move a pot.
 
-The [outdoor shelf](/outdoor/) is where the car, the winter hose, and the grill-grate versions of this will live. They are not written yet, and the shelf does not pretend they are.
+The [outdoor shelf](/outdoor/) now has a guide on [portable evaporative coolers](/outdoor/do-portable-evaporative-coolers-work/), which is a humidity question, not a rinse. The car, the winter hose, and the grill-grate versions of this are still unwritten.
 
 ## What still needs a brush or a real pressure washer
 
 A nozzle fails honestly at anything that has grabbed the surface.
 
-Moss and algae in a shady joint have roots, or at least a grip. Water slides over the green and leaves it. A cleaner meant for the paver, a dwell time, and a stiff brush do the work. The hose comes back at the end to carry the mess into the yard, not into the beds if you can help it.
+Moss and algae in a shady joint have roots, or at least a grip. Water slides over the green and leaves it. A cleaner meant for the paver, a dwell time, and a stiff brush do the work. Which bottle you mix is its own choice: [cleaning tablets](/cleaning/do-cleaning-tablets-replace-spray-bottles/) are one way to stop keeping a different spray for every room, and they still have to name the surface. The hose comes back at the end to carry the mess into the yard, not into the beds if you can help it.
 
 Oil, rust stains, and barbecue grease are the same story. They are not dirt sitting on top. A focused rinse can cool a grate and carry away flakes you have already scraped. It will not dissolve a black patch on concrete. That patch wants a degreaser labeled for concrete, or, if you care about the result enough to rent a machine, a real pressure washer used on a setting that will not etch the slab. More water from a hose is not a gentler version of that machine. It is a different tool.
 

@@ -88,6 +88,18 @@ if (sharpener && !sharpener.includes("/kitchen/do-titanium-cutting-boards-dull-k
 if (steamer && !steamer.includes("/cleaning/garden-hose-pressure-nozzle/")) {
   fail("Steamer guide does not link to the nozzle guide");
 }
+const windobotz = "https://www.treejammer.com/J2D6CNH/B98T7C9/";
+const aircooler = "https://www.tricklyn.com/J2D6CNH/T82ZTW/";
+const nuroclean = "https://www.clickomundo.com/J2D6CNH/52B5LNB/";
+const windows = pages.get("/cleaning/are-window-cleaning-robots-worth-it/");
+const cooler = pages.get("/outdoor/do-portable-evaporative-coolers-work/");
+const tablets = pages.get("/cleaning/do-cleaning-tablets-replace-spray-bottles/");
+if (!windows) fail("Missing the window-robot article");
+if (!cooler) fail("Missing the evaporative-cooler article");
+if (!tablets) fail("Missing the cleaning-tablet article");
+if (windows && !windows.includes(`href="${windobotz}"`)) fail("Windobotz affiliate link changed");
+if (cooler && !cooler.includes(`href="${aircooler}"`)) fail("HomePro AirCooler affiliate link changed");
+if (tablets && !tablets.includes(`href="${nuroclean}"`)) fail("NuroClean affiliate link changed");
 for (const [urlPath, html] of pages) {
   if (/\[Author name\]|\[Short bio|\[fanpage|\[Instagram URL\]/i.test(html)) {
     fail(`${urlPath} still shows an author placeholder`);
@@ -182,7 +194,7 @@ for (const [urlPath, html] of pages) {
       continue;
     }
     const rel = attr(tag, "rel");
-    const tracking = host === "clickrtrckr.com" || host === "clickomundo.com";
+    const tracking = ["clickrtrckr.com", "clickomundo.com", "treejammer.com", "tricklyn.com"].includes(host);
     const ownSite = host === "dailyinsightdesk.com";
     const authority = host.endsWith(".gov") || host.endsWith(".mil") || host.endsWith(".edu") || host.endsWith(".gov.uk") || host.endsWith(".ac.uk");
     if (!tracking && bannedHost.some((pattern) => pattern.test(host))) {
@@ -226,7 +238,7 @@ for (const [urlPath, html] of pages) {
     } catch {
       host = "";
     }
-    if (host !== "clickrtrckr.com" && host !== "clickomundo.com") {
+    if (!["clickrtrckr.com", "clickomundo.com", "treejammer.com", "tricklyn.com"].includes(host)) {
       fail(`${urlPath} product image links to ${host || href}, not an allowed affiliate host`);
     }
     for (const token of ["sponsored", "nofollow"]) {
@@ -292,7 +304,7 @@ if (!statSync(storyDir, { throwIfNoEntry: false })?.isDirectory()) {
 
 for (const [urlPath, html] of pages) {
   if (!urlPath.startsWith("/stories/") || urlPath === "/stories/") continue;
-  if (/clickrtrckr\.com|clickomundo\.com/i.test(html)) {
+  if (/clickrtrckr\.com|clickomundo\.com|treejammer\.com|tricklyn\.com/i.test(html)) {
     fail(`${urlPath} contains an affiliate link`);
   }
   if (!html.includes('poster-portrait-src="') || !html.includes('publisher-logo-src="') || !html.includes("<amp-story")) {

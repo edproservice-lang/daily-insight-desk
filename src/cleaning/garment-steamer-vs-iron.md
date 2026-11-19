@@ -131,7 +131,7 @@ Handheld 2-in-1 models, like the Rowelle portable steamer covered below, add a s
 
 Wrinkles are fibers that have been bent and set in place. Heat and moisture relax them. Pressure and weight flatten them into a new shape.
 
-A steamer supplies heat and moisture, and gravity does the rest while the garment hangs. Nothing presses the fabric flat, which is why steamed clothes look smooth but soft, and why steam is kind to textures like knits, velvet, and lace.
+A steamer supplies heat and moisture, and gravity does the rest while the garment hangs. Nothing presses the fabric flat, which is why steamed clothes look smooth but soft, and why steam is kind to textures like knits, velvet, and lace. That moisture is a burst on a shirt. A [portable evaporative cooler](/outdoor/do-portable-evaporative-coolers-work/) adds moisture to a whole room for hours, and it only helps when the air is dry.
 
 An iron supplies heat, often steam, and a lot of pressure through a wide, hot plate. That is how you get a crease that stays put. It is also how you flatten a texture you wanted to keep or put a shine on dark fabric.
 
@@ -231,7 +231,7 @@ General technique for handheld steamers, not results from a test:
 6. **Let the garment cool and dry on the hanger** for a few minutes before wearing it, so the fibers set smooth.
 7. **Unplug, cool, and empty the tank** after use.
 
-A wrinkle and a dirty patio are different cleaning jobs. The guide on [garden-hose pressure nozzles](/cleaning/garden-hose-pressure-nozzle/) is about the rinse, and the rest of the [cleaning shelf](/cleaning/) is where those jobs are gathered.
+A wrinkle and a dirty patio are different cleaning jobs. The guide on [garden-hose pressure nozzles](/cleaning/garden-hose-pressure-nozzle/) is about the rinse. The liquid in a steamer tank is water, not the mix from [cleaning tablets](/cleaning/do-cleaning-tablets-replace-spray-bottles/), which belongs on a counter you can wipe. The rest of the [cleaning shelf](/cleaning/) is where those jobs are gathered.
 
 ## Sources
 

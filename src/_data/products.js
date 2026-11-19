@@ -67,6 +67,57 @@ const products = {
     height: 616,
     caption: "Seller photo. Not a test by Daily Insight Desk. Appearance and included items can vary.",
   },
+  windobotz: {
+    name: "Qinux Windobotz",
+    summary:
+      "A window-cleaning robot sold as a suction unit with water spray, wiping pads, and a remote. The seller page we opened did not list a price or a spec sheet.",
+    points: [
+      "The page describes suction, a dual water spray, and a remote. It does not publish suction pressure, runtime, tank size, or a dollar price.",
+      "The same page is written as a test of 14 robots. We are not treating that story, or any score on it, as a result.",
+      "Daily Insight Desk has not tested Windobotz. Confirm the current price, what is in the box, and the return terms on the seller’s page.",
+    ],
+    href: "https://www.treejammer.com/J2D6CNH/B98T7C9/",
+    cta: "See the current Windobotz offer",
+    image: "/assets/images/products/windobotz.webp",
+    alt: "Seller photo of a white two-pad window-cleaning robot",
+    width: 800,
+    height: 800,
+    caption: "Seller photo of the unit the page presents as Windobotz. Not a test by Daily Insight Desk.",
+  },
+  aircooler: {
+    name: "HomePro AirCooler",
+    summary:
+      "A small portable evaporative cooler. The checkout listed one unit at $79.95 on November 19, 2026. It cools by wetting the air, so it is not an air conditioner.",
+    points: [
+      "The checkout showed $79.95 for one unit, against a crossed-out $159.99. A later offer on the same page showed other prices. Shipping was not listed as a dollar amount.",
+      "The page says it blows humidified air, has an adjustable fan switch, and needs no installation. It does not list tank size, wattage, or a measured noise level.",
+      "Daily Insight Desk has not tested it. The studio photo on the checkout is marked Jmlo, not HomePro.",
+    ],
+    href: "https://www.tricklyn.com/J2D6CNH/T82ZTW/",
+    cta: "See the current HomePro AirCooler offer",
+    image: "/assets/images/products/homepro-aircooler.webp",
+    alt: "Seller photo of a small white portable fan with a front water drawer. The drawer is marked Jmlo.",
+    width: 900,
+    height: 900,
+    caption: "Seller photo from the HomePro checkout. The drawer reads Jmlo. Not a test by Daily Insight Desk.",
+  },
+  nuroclean: {
+    name: "NuroClean cleaning tablets",
+    summary:
+      "Concentrated cleaning tablets sold with a reusable spray bottle. You dissolve one tablet in water, then spray and wipe. The page we read did not show a dollar price.",
+    points: [
+      "The seller’s steps are: fill the bottle with water, add one tablet, let it dissolve, spray, and wipe.",
+      "The checkout identifies the offer as multipurpose cleaning tablets plus a universal spray bottle. The page advertises a percentage discount, not a price we could read.",
+      "Daily Insight Desk has not tested NuroClean. The bottle label says “kills bacteria.” That is a label claim, not a result from us, and the page did not show an EPA registration number.",
+    ],
+    href: "https://www.clickomundo.com/J2D6CNH/52B5LNB/",
+    cta: "See the current NuroClean offer",
+    image: "/assets/images/products/nuroclean.webp",
+    alt: "Seller photo of a purple NuroClean spray bottle beside purple cleaning tablets",
+    width: 616,
+    height: 616,
+    caption: "Seller photo. Not a test by Daily Insight Desk. The label’s germ-killing line is the seller’s claim.",
+  },
 };
 
 export default products;
