@@ -123,7 +123,7 @@ We have not stood in a driveway with a gauge and compared brands. The distinctio
 
 ## A nozzle shapes water. It does not make pressure.
 
-Open the spigot with no nozzle and the hose dumps a soft column. Thread a nozzle on and you ask the same water to leave through a smaller opening. The stream moves faster and it covers less ground. That is why it feels “stronger” in your hand, and why it knocks loose grit off a paver that an open hose only darkens.
+Open the spigot with no nozzle and the hose dumps a soft column. Thread a nozzle on and you ask the same water to leave through a smaller opening. The stream moves faster and it covers less ground. That is why it feels “stronger” in your hand, and why it [knocks loose grit off a paver](/cleaning/how-to-clean-patio-pavers-with-a-garden-hose/) that an open hose only darkens.
 
 Two limits travel with that trick.
 
