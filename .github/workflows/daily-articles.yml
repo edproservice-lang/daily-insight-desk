@@ -47,6 +47,18 @@ jobs:
           git checkout -b "$BR"
           echo "name=$BR" >> "$GITHUB_OUTPUT"
 
+      - name: Skip topics already drafted in open PRs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          IDS=""
+          for b in $(gh pr list --label autowriter --state open --json headRefName -q '.[].headRefName'); do
+            git fetch -q origin "$b" || continue
+            IDS="$IDS,$(git show FETCH_HEAD:scripts/autowriter/queue.json | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>console.log(JSON.parse(s).items.filter(i=>i.status==="done").map(i=>i.id).join(",")))')"
+          done
+          echo "SKIP_IDS=$IDS" >> "$GITHUB_ENV"
+          echo "Skipping: $IDS"
+
       - name: Write articles
         id: write
         env:
