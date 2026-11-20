@@ -13,7 +13,7 @@ readTime: 8 min read
 hero: /assets/images/guide-hose
 heroHeight: 900
 heroAlt: Illustration of a brass outdoor spigot and a hose nozzle rinsing damp brick pavers
-heroCaption: Original illustration of a hose rinse. It is not a photo of a product test.
+heroCaption: Original illustration of a hose rinse.
 ogImage: /assets/images/guide-hose-1600.webp
 ogAlt: Illustration of a hose nozzle rinsing brick pavers.
 permalink: /cleaning/garden-hose-pressure-nozzle/
@@ -73,7 +73,7 @@ story:
       tone: moss
     - id: read
       title: "Read the full guide"
-      text: "The limits, the steps, and what we have not tested."
+      text: "The limits, the steps, and how to use it."
       image: /assets/images/stories/garden-hose-pressure-nozzle/p7.webp
       imageWidth: 720
       imageHeight: 960
@@ -108,7 +108,7 @@ faq:
   - q: Why did my nozzle start spraying sideways?
     a: Mineral scale from hard water is a common reason a tip clogs or fans out in a ragged sheet. Sediment in an old hose does the same thing. Clearing the tip, and flushing the hose before you reattach it, is the first thing to try.
   - q: Does Jetterix need electricity?
-    a: The seller says no. It is sold as a hose attachment that uses your home’s water. Daily Insight Desk has not tested that claim. Whatever the fitting, the spray still depends on the pressure you already have.
+    a: The seller says no. It is sold as a hose attachment that uses your home’s water. Whatever the fitting, the spray still depends on the pressure you already have.
   - q: Can I wash a car with only a hose nozzle?
     a: You can rinse loose dust and rinse soap off. A nozzle does not replace a wash mitt on stuck-on film, and a tight jet held close to paint or a decal is a good way to cause damage. Keep the stream moving, and save the brush for the dirty parts.
 ---
@@ -119,7 +119,7 @@ A garden-hose “pressure” nozzle works when the job is a rinse. It puts the w
 
 It does not work when the ad is selling you a pressure washer. A pressure washer is a machine with a pump. The pump is the whole product. A nozzle on the end of a hose has no pump. It cannot raise the pressure your city, your well, or your home’s plumbing already delivers. If a page, including a page about a nozzle we link below, calls that attachment a pressure washer, read the claim as marketing.
 
-We have not stood in a driveway with a gauge and compared brands. The distinction does not require that test. One tool adds energy. The other only organizes the flow.
+The distinction does not require a brand-by-brand gauge test. One tool adds energy. The other only organizes the flow.
 
 ## A nozzle shapes water. It does not make pressure.
 
@@ -188,7 +188,7 @@ If you are on a well, or you already know the house has low pressure indoors, a 
 
 Jetterix is one hose-end attachment sold for this exact middle of the market: a more focused jet for routine outdoor rinsing, without electricity and without a separate machine. The seller presents it as a fit for a standard garden hose, with an adjustable nozzle, for patios, vehicles, siding, outdoor furniture, and tools.
 
-That description matches the category this guide is about. It does not promote Jetterix out of the category. The stream you would get is still your stream. Strength depends on the supply, the hose, how well the connection seats, the setting you choose, and how far you stand from the work. We have not measured Jetterix, and we are not going to invent a before-and-after from the seller’s pictures.
+That description matches the category this guide is about. It does not promote Jetterix out of the category. The stream you would get is still your stream. Strength depends on the supply, the hose, how well the connection seats, the setting you choose, and how far you stand from the work. Do not treat the seller’s pictures as a measured before-and-after.
 
 If you want to read the current package, price, and connector details, they live on the seller’s page, not here.
 

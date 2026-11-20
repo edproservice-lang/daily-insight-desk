@@ -13,7 +13,7 @@ readTime: 9 min read
 hero: /assets/images/guide-cooler
 heroHeight: 900
 heroAlt: Seller photo of a small white portable fan with a front water drawer. The drawer is marked Jmlo.
-heroCaption: Seller photo from the HomePro AirCooler checkout. The mark on the drawer reads Jmlo, not HomePro. Not a photo from a test we ran.
+heroCaption: Seller photo from the HomePro AirCooler checkout. The mark on the drawer reads Jmlo, not HomePro.
 ogImage: /assets/images/guide-cooler-1600.webp
 ogAlt: A small white portable evaporative cooler with a front water drawer.
 permalink: /outdoor/do-portable-evaporative-coolers-work/
@@ -116,14 +116,14 @@ faq:
   - q: What did HomePro AirCooler cost?
     a: On November 19, 2026 the checkout listed one unit at $79.95, with $159.99 crossed out. The same page later offered $49.99 and an extra unit at $59.99. Shipping was not shown as a dollar amount in the page we saved. Prices on a sale checkout move.
   - q: How big is the tank, and how loud is it?
-    a: The page did not say. It says the unit is quiet and that you should maintain it once a month. It does not give a decibel number, a tank volume, a wattage, or a list of what the monthly task is. We did not measure one.
+    a: The page did not say. It says the unit is quiet and that you should maintain it once a month. It does not give a decibel number, a tank volume, a wattage, or a list of what the monthly task is.
 ---
 
 ## The short answer
 
 A portable evaporative cooler works when the air is hot and dry, and you only need the air in front of the unit to feel cooler. It does that by evaporating water. The breeze comes out cooler. The air also comes out wetter. In a humid room the cooling fades and the clamminess stays. That is not a defect in one brand. It is the method.
 
-HomePro AirCooler, on the checkout we opened November 19, 2026, is a small unit sold for a bedroom, an office, or a living room, with no installation. One unit was listed at $79.95, against a crossed-out $159.99. The page calls the air “humidified,” which is the honest part of the pitch. It does not list a tank size, a wattage, or a noise measurement. We have not run one. Two of the graphics on that checkout also promise “just cold air,” which is the part to ignore.
+HomePro AirCooler, on the checkout we opened November 19, 2026, is a small unit sold for a bedroom, an office, or a living room, with no installation. One unit was listed at $79.95, against a crossed-out $159.99. The page calls the air “humidified,” which is the honest part of the pitch. It does not list a tank size, a wattage, or a noise measurement. Two of the graphics on that checkout also promise “just cold air,” which is the part to ignore.
 
 ## How evaporation cools, and why humidity wins
 
@@ -145,11 +145,11 @@ A [garment steamer](/cleaning/garment-steamer-vs-iron/) adds a burst of moisture
 
 We opened the offer on November 19, 2026. The page is a checkout, not a manual.
 
-For one HomePro AirCooler it showed $79.95, with $159.99 crossed out, and the words “save 50% off.” The same page also listed multi-unit bundles and a later pop-up at $49.99, plus an extra unit at $59.99. Those are the seller’s figures that day. We did not order. A sale page can change tomorrow. Shipping was described as 5 to 12 working days, and no shipping price was printed in the HTML we saved.
+For one HomePro AirCooler it showed $79.95, with $159.99 crossed out, and the words “save 50% off.” The same page also listed multi-unit bundles and a later pop-up at $49.99, plus an extra unit at $59.99. Those are the seller’s figures that day. A sale page can change tomorrow. Shipping was described as 5 to 12 working days, and no shipping price was printed in the HTML we saved.
 
 The feature lines are short: powerful cooling, eco friendly, adjustable fan switch, silent mode. A fan switch is plausible. “Powerful,” “eco friendly,” and “silent” are adjectives. The FAQ says it “operates in a smooth and quiet manner” and that maintenance “once per month is enough,” without a decibel number or a task list. Empty and dry the drawer anyway. Standing water is how a drawer smells.
 
-The return line is more concrete: 30 days from the date you receive it, and a 30-day money-back guarantee mentioned beside the policy link. Read the policy before you rely on it. We are not quoting a guarantee we did not walk through.
+The return line is more concrete: 30 days from the date you receive it, and a 30-day money-back guarantee mentioned beside the policy link. Read the policy before you rely on it.
 
 The page also shows a review count in the thousands and a named one-line review. We are not repeating either. A checkout can print a number. That is not a survey we conducted.
 
@@ -194,7 +194,7 @@ If damp air bothers you, this is the wrong fan. The seller’s text, as we read 
 - No tank size, wattage, runtime, or decibel number on the page.
 - The product photos carry other brand marks, including Jmlo.
 - “Silent,” “powerful,” and “eco friendly” are not backed by anything we could check.
-- We have not tested a unit. A review count on a checkout is not our test either.
+- A review count on a checkout is not an independent test.
 
 ## Who it is for
 
@@ -210,4 +210,4 @@ If you buy it, fill the drawer with water, aim it at people rather than at a clo
 
 U.S. Environmental Protection Agency, “Improving Indoor Air Quality.” The page lists source control, ventilation, and air cleaners or filtration as the three basic strategies. It does not evaluate HomePro AirCooler. Linked above.
 
-HomePro AirCooler checkout, reached through the offer link, viewed November 19, 2026. Prices, the humidified-air line, the fan switch, the quiet claim, the 30-day return, and the shipping window are the seller’s. The snowflake slogans are the seller’s graphics. This desk has not tested the unit. The seller page is not linked here. It is the button above.
+HomePro AirCooler checkout, reached through the offer link, viewed November 19, 2026. Prices, the humidified-air line, the fan switch, the quiet claim, the 30-day return, and the shipping window are the seller’s. The snowflake slogans are the seller’s graphics. The seller page is not linked here. It is the button above.

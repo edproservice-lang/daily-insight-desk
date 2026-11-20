@@ -13,7 +13,7 @@ readTime: 8 min read
 hero: /assets/images/guide-rolling-sharpener
 heroHeight: 900
 heroAlt: Seller photo of a wood-wrapped rolling knife sharpener disc beside an angled magnetic base marked 20 degrees
-heroCaption: Seller product photo of KatuSharp on a plain background. Not a photo from a test we ran.
+heroCaption: Seller product photo of KatuSharp on a plain background.
 ogImage: /assets/images/guide-rolling-sharpener-1600.webp
 ogAlt: A rolling knife sharpener disc next to its angled magnetic base.
 permalink: /kitchen/are-rolling-knife-sharpeners-good/
@@ -57,7 +57,7 @@ story:
       tone: clay
     - id: time
       title: "A neglected knife takes time"
-      text: "A published test used a different brand. We have not tested one."
+      text: "A published test used a different brand."
       image: /assets/images/stories/are-rolling-knife-sharpeners-good/p5.webp
       imageWidth: 720
       imageHeight: 960
@@ -123,7 +123,7 @@ Rolling knife sharpeners are good at the one thing most home cooks get wrong: ho
 
 That makes a rolling sharpener a genuine step up from the pull-through slot in a kitchen drawer, and a reasonable alternative to a whetstone for people who know they will never learn one. It is not magic. It is slower than a pull-through. It is less flexible than a set of stones. It struggles with very wide blades, and it cannot touch serrations.
 
-This guide explains how the tool works, what an independent review of one actually found, and where the KatuSharp rolling sharpener sits in that picture. We have not tested KatuSharp. Everything we say about it comes from the maker’s specs and from how this type of tool works.
+This guide explains how the tool works, what an independent review of one actually found, and where the KatuSharp rolling sharpener sits in that picture. Everything we say about it comes from the maker’s specs and from how this type of tool works.
 
 ## How a rolling sharpener works
 
@@ -156,7 +156,7 @@ They sit in the middle. They take off less metal than a pull-through and need fa
 
 ## What the reporting found
 
-We did not run a sharpness test. Serious Eats did, on a different rolling sharpener. In March 2025, Taylor Murray reviewed the Horl 3 Cruise, a German rolling sharpener with a diamond disc, a honing side, and 15- and 20-degree magnetic angles. She measured edges with an edge tester before and after.
+Serious Eats ran a sharpness test on a different rolling sharpener. In March 2025, Taylor Murray reviewed the Horl 3 Cruise, a German rolling sharpener with a diamond disc, a honing side, and 15- and 20-degree magnetic angles. She measured edges with an edge tester before and after.
 
 Her badly worn, chipped stainless knife read 1044 on that tester at the start. After about 10 minutes, roughly 100 passes per side, it was down to 600. With more time she got it to 239, which she described as about as sharp as a double-edged razor blade and most high-end knives out of the box. Lower is sharper on that scale.
 
@@ -178,7 +178,7 @@ KatuSharp is a rolling sharpener we can link to. On its product page, the maker 
 - **Dry use**, with no water or oil.
 - **In the box:** the sharpener, the disc pre-installed, and an instruction manual.
 
-On paper, the two-grit disc addresses the main weakness Serious Eats found in a single-grit design. A 400-grit side is genuinely coarse and should rebuild a neglected edge in fewer passes than a fine-only disc. Of the claims above, that one is the most useful. We have not confirmed it with a test.
+On paper, the two-grit disc addresses the main weakness Serious Eats found in a single-grit design. A 400-grit side is genuinely coarse and should rebuild a neglected edge in fewer passes than a fine-only disc. Of the claims above, that one is the most useful, because a coarser grit is what rebuilds a neglected edge.
 
 Some claims on the page are marketing, and we will not repeat them as fact. The page calls KatuSharp “America’s #1 rolling knife sharpener” and quotes an unnamed “best knife sharpener of 2026” rating without saying who gave it. It shows a 4.7 star average and notes that it displays only 4- and 5-star reviews. We could not verify any of that. The “sharpen every dull knife in 60 seconds” line is best read as a touch-up time. A badly neglected knife takes longer on any rolling sharpener, as the Serious Eats test shows.
 

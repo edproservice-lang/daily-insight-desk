@@ -13,7 +13,7 @@ readTime: 8 min read
 hero: /assets/images/guide-steamer
 heroHeight: 900
 heroAlt: Seller photo of a stainless handheld garment steamer with a round mode display and a flat pressing plate
-heroCaption: Seller product photo of Rowelle on a plain background. Not a photo from a test we ran.
+heroCaption: Seller product photo of Rowelle on a plain background.
 ogImage: /assets/images/guide-steamer-1600.webp
 ogAlt: A handheld 2-in-1 garment steamer and iron.
 permalink: /cleaning/garment-steamer-vs-iron/
@@ -73,7 +73,7 @@ story:
       tone: moss
     - id: read
       title: "Read the full guide"
-      text: "Which fabrics to skip, and what we have not tested."
+      text: "Which fabrics to skip, and where a handheld 2-in-1 fits."
       image: /assets/images/stories/garment-steamer-vs-iron/p7.webp
       imageWidth: 720
       imageHeight: 960
@@ -125,7 +125,7 @@ A garment steamer is the faster tool for most everyday wrinkles: one shirt on a 
 
 If you only own one, choose based on what you wear. Mostly casual, soft, and unstructured clothes point to a steamer. Dress shirts and creased trousers every workday point to an iron. Good Housekeeping’s cleaning lab, which tests both, says having both gives you the most options.
 
-Handheld 2-in-1 models, like the Rowelle portable steamer covered below, add a small heated plate so you can press a collar or hem without setting up a board. That closes part of the gap, not all of it. We have not tested Rowelle. What we say about it is based on the maker’s specs and on how this type of tool works.
+Handheld 2-in-1 models, like the Rowelle portable steamer covered below, add a small heated plate so you can press a collar or hem without setting up a board. That closes part of the gap, not all of it. What we say about it is based on the maker’s specs and on how this type of tool works.
 
 ## What steam does, and what pressure does
 
@@ -239,4 +239,4 @@ Carolyn Forté, “Iron vs Steamer? Experts Reveal Which Works Best for Your Clo
 
 “9 Clothing Items You Should Never Steam (and What to Do Instead),” Better Homes & Gardens, October 8, 2026. Cited without a link: the piece is a commercial magazine feature, not a government, university, or maker care document.
 
-Rowelle product page (seller), viewed November 18, 2026. Specifications, included items, and marketing claims quoted above are the seller’s. This desk has not tested Rowelle. The seller page is reached only through the labeled offer button above.
+Rowelle product page (seller), viewed November 18, 2026. Specifications, included items, and marketing claims quoted above are the seller’s. The seller page is reached only through the labeled offer button above.

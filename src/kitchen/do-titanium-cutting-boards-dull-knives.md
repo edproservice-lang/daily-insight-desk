@@ -13,7 +13,7 @@ readTime: 8 min read
 hero: /assets/images/guide-boards
 heroHeight: 900
 heroAlt: Illustration of a wood cutting board, a white plastic board, and a metal board on a stone counter beside a chef’s knife
-heroCaption: Original illustration of three board materials. Not a photo from a test we ran.
+heroCaption: Original illustration of three board materials.
 ogImage: /assets/images/guide-boards-1600.webp
 ogAlt: Illustration of wood, plastic, and metal cutting boards on a kitchen counter.
 permalink: /kitchen/do-titanium-cutting-boards-dull-knives/
@@ -41,7 +41,7 @@ story:
       tone: ink
     - id: test
       title: "A published test dulled a new knife"
-      text: "Serious Eats measured it on a titanium board. We did not."
+      text: "Serious Eats measured it on a titanium board."
       image: /assets/images/stories/do-titanium-cutting-boards-dull-knives/p3.webp
       imageWidth: 720
       imageHeight: 960
@@ -104,7 +104,7 @@ faq:
   - q: Do titanium cutting boards dull knives?
     a: Yes, faster than wood or plastic. Serious Eats tested a titanium board and reported that a new knife was noticeably duller after about 10 swipes, with a sharpness reading moving from 108 to 261. A hard surface does not give under the edge, so the edge is what deforms.
   - q: Was that test of the Katori board?
-    a: No. Serious Eats tested a Taima titanium board. Daily Insight Desk has not tested Katori or Taima. The caution is about chopping on hard metal, not a score we invented for one brand.
+    a: No. Serious Eats tested a Taima titanium board. The caution is about chopping on hard metal, not a score invented for one brand.
   - q: Are titanium boards easier to clean than wood?
     a: That part of the pitch is fair. A solid metal surface does not soak up water the way unfinished wood can, and it does not need oil. Serious Eats also found the board they tested easy to wash, including in a dishwasher, without rust. You still have to wash it. Non-porous is not the same as clean.
   - q: Should I cut raw meat on a titanium board?
@@ -119,7 +119,7 @@ Yes. A titanium cutting board dulls knives faster than a wood or plastic board. 
 
 The other half of the advertisement is also true, and it is why these boards sell. A metal board is easy to rinse. It does not drink garlic juice the way a dry wood board can, and it does not ask you to oil it. Easy to clean is a real household benefit. It does not cancel the knife.
 
-For everyday chopping, use wood or plastic. Keep a hard board, if you want one at all, for the jobs that are mostly a platter: bread you are not sawing for long, or food you are arranging rather than cutting. That is the recommendation from the reporting below, and it is the recommendation of this desk. We did not run the knife test ourselves. Serious Eats did, on a titanium board that is not the Katori board mentioned later. If the edge is already gone, the [rolling knife sharpener guide](/kitchen/are-rolling-knife-sharpeners-good/) is the next kitchen question, and the rest of these notes live on the [kitchen shelf](/kitchen/).
+For everyday chopping, use wood or plastic. Keep a hard board, if you want one at all, for the jobs that are mostly a platter: bread you are not sawing for long, or food you are arranging rather than cutting. That is the recommendation from the reporting below, and it is the recommendation of this desk. Serious Eats ran the knife test on a titanium board that is not the Katori board mentioned later. If the edge is already gone, the [rolling knife sharpener guide](/kitchen/are-rolling-knife-sharpeners-good/) is the next kitchen question, and the rest of these notes live on the [kitchen shelf](/kitchen/).
 
 ## Why the board should give a little
 
@@ -153,7 +153,7 @@ Wood has its own care, and it is fair to dislike that care. An unfinished board 
 
 Katori is a titanium cutting board we can link to, sold as a smooth metal surface for people who want simple cleanup. The seller presents it as low-absorption and straightforward to wash, without the oiling a wood board wants, in a slim format that stores more easily than a thick block. Those are the same virtues the category advertises. If you hate hand-washing a scarred plastic board, or you are tired of oiling wood, the interest is understandable.
 
-We have not used Katori. The Serious Eats test was of a Taima board. We are not going to borrow their scratches, their sharpness numbers, or their dishwasher pass and paste Katori’s name on them. What we will say is the category point, because it does not depend on a logo: a hard metal face is a poor place to do your daily knife work. Buying Katori does not create an exception to that. If easy washing is the reason you want it, treat it as a second surface, not as the board the chef’s knife lives on. Keep wood or plastic beside it for actual chopping.
+The Serious Eats test was of a Taima board. Do not borrow their scratches, their sharpness numbers, or their dishwasher pass and paste Katori’s name on them. What we will say is the category point, because it does not depend on a logo: a hard metal face is a poor place to do your daily knife work. Buying Katori does not create an exception to that. If easy washing is the reason you want it, treat it as a second surface, not as the board the chef’s knife lives on. Keep wood or plastic beside it for actual chopping.
 
 Confirm the size, what is included, and the care instructions on the current seller page before you order. We are not going to promise that this particular board is [dishwasher-safe](/kitchen/are-titanium-cutting-boards-dishwasher-safe/). Serious Eats said the Taima board they washed came out without rust. That sentence is about the board they washed. Read Katori’s own note, and follow that note rather than a review of a different product.
 

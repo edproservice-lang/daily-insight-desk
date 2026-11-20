@@ -228,7 +228,7 @@ This is for a homeowner with an ordinary paver patio or walk that is dirty rathe
 
 Skip it, or plan on more than a hose, if the patio is large, if old oil stains are the real problem, or if the pavers are loose and the joints already empty. That last one is a repair, not a cleaning.
 
-If you want a more focused rinse from the hose you already own, Jetterix is one attachment sold for that. Daily Insight Desk has not tested it.
+If you want a more focused rinse from the hose you already own, Jetterix is one attachment sold for that.
 
 {% product "jetterix" %}
 
@@ -238,4 +238,4 @@ If you want a more focused rinse from the hose you already own, Jetterix is one 
 - [Ask Extension, “Moss removal from concrete”](https://ask.extension.org/kb/faq.php?id=820065). Protecting plants, removing all remaining moss, and why moss returns.
 - [Ask Extension, “Patio lichen removal”](https://ask.extension.org/kb/faq.php?id=925903). A stiff brush and hose, cleaned in early spring and late fall.
 
-Daily Insight Desk has not tested the products mentioned here. Product details come from the seller’s page and can change.
+Product details come from the seller’s page and can change.

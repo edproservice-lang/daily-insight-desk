@@ -13,7 +13,7 @@ readTime: 9 min read
 hero: /assets/images/guide-windobotz
 heroHeight: 900
 heroAlt: Seller photo of a white two-pad window-cleaning robot on a plain background
-heroCaption: Seller photo of the unit the page presents as Qinux Windobotz. Not a photo from a test we ran.
+heroCaption: Seller photo of the unit the page presents as Qinux Windobotz.
 ogImage: /assets/images/guide-windobotz-1600.webp
 ogAlt: A white two-pad window-cleaning robot.
 permalink: /cleaning/are-window-cleaning-robots-worth-it/
@@ -123,7 +123,7 @@ faq:
 
 A window-cleaning robot is worth it when you have several large, smooth panes, you hate the ladder, and you will still stand there while it runs. It sticks by suction, sprays a little water, and drags a pad across the glass. That is the whole trick. If the glass is textured, the pane is small, or the dirt is paint and mineral crust, the machine is the wrong tool.
 
-It is not worth it as a leap of faith. The Qinux Windobotz page we opened on November 19, 2026 is written like a review of fourteen robots. It does not publish a price. It does not publish suction, runtime, tank size, cord length, or what comes in the box beyond the story it is telling. We have not tested the unit. Anything on that page that sounds like a score is the page’s story, not ours.
+It is not worth it as a leap of faith. The Qinux Windobotz page we opened on November 19, 2026 is written like a review of fourteen robots. It does not publish a price. It does not publish suction, runtime, tank size, cord length, or what comes in the box beyond the story it is telling. Anything on that page that sounds like a score is the page’s story, not a published spec sheet.
 
 ## What the machine actually is
 
@@ -143,9 +143,9 @@ Someone still does the edges. A body with pads cannot wipe where the glass meets
 
 We followed the offer to the seller’s page. The product name on the page is Qinux Windobotz. The photo it uses for that name is a white, two-pad unit. The copy says the machine uses suction, sprays water from both sides, and comes with a remote so you can start a run and pick a mode. It also says a safety system is included. It does not say how long the tether is, what it clips to, or what happens when the power fails.
 
-The page is arranged as a comparison. It names other window robots, quotes suction numbers for those other machines, and tells a story about a testing team and a three-week evaluation. We are not repeating those numbers, that story, or the percentage the page puts on its own machine. We did not watch a test. A page that grades its own product against rivals is an ad, even when it uses the shape of a review.
+The page is arranged as a comparison. It names other window robots, quotes suction numbers for those other machines, and tells a story about a testing team and a three-week evaluation. We are not repeating those numbers, that story, or the percentage the page puts on its own machine. A page that grades its own product against rivals is an ad, even when it uses the shape of a review.
 
-What the page does say in plain language: a remote-controlled window robot that sprays water and is supposed to crawl the glass. It also says “50% off the original price” and never prints either number. On November 19, 2026 there was no dollar figure to report. The other photos in that comparison are other brands. We did not use them.
+What the page does say in plain language: a remote-controlled window robot that sprays water and is supposed to crawl the glass. It also says “50% off the original price” and never prints either number. On November 19, 2026 there was no dollar figure to report. The other photos in that comparison are other brands.
 
 ## When a robot is the right tool
 
@@ -175,7 +175,7 @@ And skip it if the problem is heat, not dirt. Clearer glass lets in more sun. It
 
 - It can take the middle of a large, smooth pane without a ladder, which is the only reason to own one.
 - The seller’s photo is a compact two-pad unit, the kind of thing that lives in a closet rather than a garage.
-- The page says a remote is part of the offer, so you are not supposed to need an app account to start it. We did not hold the remote.
+- The page says a remote is part of the offer, so you are not supposed to need an app account to start it.
 - You can see, on the first run, whether your glass will hold it. The experiment is reversible if you are standing there.
 
 **Cons**
@@ -185,7 +185,7 @@ And skip it if the problem is heat, not dirt. Clearer glass lets in more sun. It
 - You still fill it, place it, watch it, wipe the frame, and wash the pads.
 - Power loss is a fall. A safety line only helps if it is attached to something that can hold the unit.
 - Hard-water spots, paint, and screens are outside the job. So is a [garment steamer](/cleaning/garment-steamer-vs-iron/): steam is for fabric fibers, not for mineral film on glass.
-- We have not run one, so we cannot tell you how it behaves on a dusty slider in July.
+- How it behaves on a dusty slider in July depends on the pane, the weather, and upkeep; the page does not document that job.
 
 ## Who it is for
 
@@ -213,4 +213,4 @@ If the seal will not hold on your glass, stop. More passes will not invent a fla
 
 ## Sources
 
-Qinux Windobotz seller page, reached through the offer link, viewed November 19, 2026. The description of suction, dual water spray, a remote, an included safety system, and a “50% off” line with no printed price is the seller’s. The comparison story on that page is not a test by this desk. The seller page is not linked here. It is the button above.
+Qinux Windobotz seller page, reached through the offer link, viewed November 19, 2026. The description of suction, dual water spray, a remote, an included safety system, and a “50% off” line with no printed price is the seller’s. The comparison story on that page is the seller’s ad, not an independent review. The seller page is not linked here. It is the button above.

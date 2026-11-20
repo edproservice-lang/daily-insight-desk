@@ -302,6 +302,23 @@ if (!statSync(storyDir, { throwIfNoEntry: false })?.isDirectory()) {
   }
 }
 
+const AFFILIATE_NOTE = "We may earn a commission if you buy through our links, at no extra cost to you.";
+const AFFILIATE_HOST_RE = /https?:\/\/(?:www\.)?(?:clickrtrckr|clickomundo|treejammer|tricklyn)\.com/i;
+for (const [urlPath, html] of pages) {
+  if (urlPath.startsWith("/stories/")) continue;
+  const firstOffer = html.search(AFFILIATE_HOST_RE);
+  if (firstOffer === -1) continue;
+  if (!html.includes(AFFILIATE_NOTE)) {
+    fail(`${urlPath} is missing the in-article affiliate commission note`);
+    continue;
+  }
+  const noteAt = html.indexOf(AFFILIATE_NOTE);
+  if (noteAt > firstOffer) fail(`${urlPath} places the affiliate commission note after the first offer link`);
+  if (html.includes("We have not hands-on tested the products mentioned")) {
+    fail(`${urlPath} still has the old top-of-article affiliate disclosure`);
+  }
+}
+
 for (const [urlPath, html] of pages) {
   if (!urlPath.startsWith("/stories/") || urlPath === "/stories/") continue;
   if (/clickrtrckr\.com|clickomundo\.com|treejammer\.com|tricklyn\.com/i.test(html)) {

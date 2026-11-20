@@ -368,7 +368,7 @@ h1 {
 
 .guide-card h3 { font-size: 1.7rem; }
 
-.trust article, .letter, .author, .disclosure, .note {
+.trust article, .letter, .author, .note {
   background: rgba(255, 252, 247, 0.7);
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -453,13 +453,16 @@ h1 {
   }
 }
 
-.disclosure {
-  border-left: 3px solid var(--brass);
-  margin: 1.25rem 0 0.25rem;
+.affiliate-note {
+  margin: 1.5rem 0 0.35rem;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  line-height: 1.45;
+  font-weight: 400;
+  color: var(--muted);
 }
 
-.disclosure p { margin: 0; }
-.disclosure a { font-weight: 600; }
+.prose .affiliate-note { font-weight: 400; }
 
 .product {
   margin: 1.75rem 0;

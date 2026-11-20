@@ -197,7 +197,7 @@ If you have more than one hose, label the one that already weeps at the coupling
 
 Jetterix is a garden-hose attachment sold for a more focused rinse on patios, vehicles, siding, furniture, and tools. It does not add a pump, so it is not a pressure washer. In winter it is one more fitting to take off the hose, drain, and store dry.
 
-We have not tested Jetterix, and we are not going to invent a storage temperature or a winter warranty for it. Treat it like the other rigid attachments: empty it, keep it out of a puddle, and put it back on in spring after you have flushed the hose. Confirm any care notes on the current seller page.
+Treat it like the other rigid attachments: empty it, keep it out of a puddle, and put it back on in spring after you have flushed the hose. Confirm any care notes on the current seller page rather than inventing a storage temperature or a winter warranty.
 
 {% product "jetterix" %}
 
@@ -218,4 +218,4 @@ Skip the heroic version if the faucet is in a shared wall you cannot shut off, o
 - [Oregon State University Extension, “Can I leave my garden hoses outside this winter?”](https://extension.oregonstate.edu/ask-extension/featured/can-i-leave-my-garden-hoses-outside-winter). Published October 2017, reviewed 2024. A drained hose may be left outside; temperature swings still age the material.
 - [University of Missouri Extension, “Frozen pipes create big problems during cold weather,” December 12, 2017](https://extension.missouri.edu/news/frozen-pipes-create-big-problems-during-cold-weather). Disconnect hoses, cover the faucets, and, if possible, shut indoor valves and drain the pipes.
 
-Daily Insight Desk has not tested the products mentioned here. Product details come from the seller’s page and can change.
+Product details come from the seller’s page and can change.

@@ -54,7 +54,7 @@ story:
       alt: Hands chopping scallions on a wooden cutting board
       tone: moss
     - id: card-5
-      title: We have not tested Katori
+      title: Don’t borrow another board’s result
       text: Do not borrow another board’s dishwasher pass and put this name on it.
       image: /assets/images/stories/are-titanium-cutting-boards-dishwasher-safe/p5.webp
       imageWidth: 720
@@ -107,9 +107,9 @@ faq:
   - q: Are titanium cutting boards dishwasher safe?
     a: "Many solid titanium boards can go in the dishwasher, but only if the maker of that board says so. The metal itself does not rust the way ordinary steel can, and it does not soak up water. Handles, rubber feet, coatings, and wood accents can change the answer. Read the care note that came with the board you own."
   - q: Did Serious Eats put a titanium board in the dishwasher?
-    a: "Yes. In a July 2026 review of a Taima titanium board, Taylor Murray wrote that the board went through a dishwasher without rusting. Daily Insight Desk has not repeated that wash, and it was not a test of Katori."
+    a: "Yes. In a July 2026 review of a Taima titanium board, Taylor Murray wrote that the board went through a dishwasher without rusting. That was a Taima board, not Katori."
   - q: Is the Katori board dishwasher safe?
-    a: "We have not tested Katori, and we are not going to promise that it is. Confirm the current care instructions on the seller’s page, and follow those instructions rather than a review of a different product."
+    a: "Confirm the current care instructions on the seller’s page, and follow those instructions rather than a review of a different product. Do not treat a dishwasher pass on a different board as a promise for this one."
   - q: Does a dishwasher replace washing the board after raw meat?
     a: "No. Wash the board after raw meat, poultry, or seafood before you use it for food you will not cook. That is ordinary kitchen sense, not a claim that one material makes food safe. The USDA’s Food Safety and Inspection Service says to wash cutting boards with hot, soapy water after each use."
   - q: Can wood and plastic boards go in the dishwasher?
@@ -123,7 +123,7 @@ autowriter:
 
 A solid titanium cutting board often can go in the dishwasher, but only when the maker of that board says it can. The metal does not drink water, and it does not rust the way a carbon-steel knife can. That is why the category is sold as easy to wash. It is not a blanket permission slip for every board with “titanium” in the name.
 
-Handles, silicone feet, coatings, and wood or plastic rims are not the same material as the face. They are why two boards that look alike can have two different care notes. Daily Insight Desk has not tested the boards mentioned here. We will not invent a dishwasher rating for a product whose seller page we have not been asked to quote on this point.
+Handles, silicone feet, coatings, and wood or plastic rims are not the same material as the face. They are why two boards that look alike can have two different care notes. Follow the care instructions on the current seller page rather than inventing a dishwasher rating for a board that page does not clearly rate.
 
 The ordinary wash is still the one the [USDA’s Food Safety and Inspection Service](https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/cutting-boards) describes for cutting boards in general: hot, soapy water after each use, then a rinse and a dry. The machine is a convenience, not a substitute for that habit, and it does not settle the other titanium question. A hard metal face is still a poor everyday chopping surface if you care about the knife, which is the subject of the [titanium cutting board guide](/kitchen/do-titanium-cutting-boards-dull-knives/).
 
@@ -155,7 +155,7 @@ In July 2026, Taylor Murray at Serious Eats reviewed a Taima titanium cutting bo
 
 The headline finding in that review, and the reason we already wrote a [guide about dulling](/kitchen/do-titanium-cutting-boards-dull-knives/), is that the board was hard on a knife. Murray also wrote down the cleanup side. The board was easy to wash. It did not absorb moisture or hold odors the way a neglected wood board can. It went through a dishwasher without rusting. The surface scratched, but the scratches were cosmetic.
 
-Those sentences belong to the board she washed. They are useful as a category clue: a plain titanium face can survive a household dishwasher, at least once, on the product she had in hand. They are not a lab report on every titanium board, and they are not a test of Katori. We did not repeat the wash.
+Those sentences belong to the board she washed. They are useful as a category clue: a plain titanium face can survive a household dishwasher, at least once, on the product she had in hand. They are not a lab report on every titanium board, and they are not a result for Katori.
 
 If a seller’s page shows a gleaming metal board in a dishwasher rack, treat that as advertising until you have the care instructions in front of you. Serious Eats earned the right to say what happened to the Taima board. A product photo does not.
 
@@ -179,7 +179,7 @@ The machine does not retire the sink. A mid-cooking rinse, when you go from raw 
 
 Katori is a titanium cutting board we can link to, sold as a smooth metal surface for people who want simple cleanup. The seller presents it as low-absorption and straightforward to wash, without the oiling a wood board wants. Those are the usual reasons someone looks at this category, and they are fair reasons to be interested in cleanup.
 
-We have not used Katori. We have not run it through a dishwasher. We are not going to take Serious Eats’ dishwasher pass on a Taima board and paste Katori’s name on it. If you are considering the board because you hate hand-washing, read the current care instructions on the seller’s page and follow those. If the page is silent, wash it by hand until you have a clear answer. Silence is not a yes.
+Do not take Serious Eats’ dishwasher pass on a Taima board and paste Katori’s name on it. If you are considering the board because you hate hand-washing, read the current care instructions on the seller’s page and follow those. If the page is silent, wash it by hand until you have a clear answer. Silence is not a yes.
 
 Confirm the size, what is included, and the care line before you order. Package details can change.
 
@@ -210,4 +210,4 @@ A dishwasher will not dull a knife that is not in the machine. It also will not 
 - [USDA Food Safety and Inspection Service, “Cutting Boards”](https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/cutting-boards). Last updated August 27, 2024. The wash with hot, soapy water; the dishwasher sentence naming acrylic, plastic, glass, and solid wood; and the advice to keep raw meat on a separate board.
 - Taylor Murray, “Do You Need a Titanium Cutting Board? We Reviewed One—Here’s What You Should Buy Instead,” Serious Eats, July 16, 2026. Cited without a link: the review recommends other boards and carries shopping buttons. The dishwasher pass described above is hers, on a Taima board. This desk did not repeat it.
 
-Daily Insight Desk has not tested the products mentioned here. Product details come from the seller’s page and can change.
+Product details come from the seller’s page and can change.

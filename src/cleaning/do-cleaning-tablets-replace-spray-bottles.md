@@ -13,7 +13,7 @@ readTime: 9 min read
 hero: /assets/images/guide-tablets
 heroHeight: 900
 heroAlt: Seller photo of a purple NuroClean spray bottle beside purple cleaning tablets
-heroCaption: Seller photo of the NuroClean bottle and tablets. The words on the label are the seller’s, not a result from this desk.
+heroCaption: Seller photo of the NuroClean bottle and tablets. The words on the label are the seller’s.
 ogImage: /assets/images/guide-tablets-1600.webp
 ogAlt: A purple NuroClean spray bottle and cleaning tablets.
 permalink: /cleaning/do-cleaning-tablets-replace-spray-bottles/
@@ -133,9 +133,9 @@ The seller’s order is simple. Fill the bottle. Add one tablet. Wait until it d
 
 The checkout names the pieces even though it did not name the price: multipurpose cleaning tablets and a universal spray bottle. An upsell mentions more tablets for an extra $10. That is an add-on, not the kit price. The main total never appeared as a number in the page source we saved. “Up to 70% off” without a base is not a price.
 
-A 30-day money-back line is printed, with “send your package back.” Read the returns page before you treat that as unconditional. We did not.
+A 30-day money-back line is printed, with “send your package back.” Read the returns page before you treat that as unconditional.
 
-The photos show a translucent purple trigger bottle and small purple tablets: the bottle alone, a hand setting it down, and the bottle aimed at a kitchen faucet. We did not use the before-and-after pictures. A split photo of a shower is an ad, not a test we ran.
+The photos show a translucent purple trigger bottle and small purple tablets: the bottle alone, a hand setting it down, and the bottle aimed at a kitchen faucet. A split photo of a shower is an ad, not a lab result.
 
 The page says you keep the bottle and repurchase tablets. That only wins if the bottle survives. A nozzle you throw out every month is a regular spray with extra steps.
 
@@ -183,7 +183,7 @@ The mix does not belong in other machines. A [window-cleaning robot](/cleaning/a
 - “Any stain” and “any surface” are broader than one formula can be.
 - The bottle label says it kills bacteria, and the page did not show an EPA registration number.
 - “Non-toxic” and “safe for pets” are claims we are not carrying.
-- We have not tested how fast a tablet dissolves, what it does to a finish, or whether the nozzle lasts.
+- Dissolve time, effect on a finish, and how long the nozzle lasts are not spelled out on the page we read; check the current offer if those details matter to you.
 - Testimonials and a “#1” banner are on the page. They are not evidence.
 
 ## Who it is for
@@ -198,7 +198,7 @@ If the checkout price is close to a bottle you already know, the tablet has to w
 
 ## How to use a tablet without fooling yourself
 
-This follows the seller’s steps. It is not a test result.
+This follows the seller’s steps.
 
 1. Read the label in the box. Surfaces it tells you to avoid outrank the landing page.
 2. Fill with water, then add one tablet. More tablets are not a recipe we can vouch for.
@@ -214,6 +214,6 @@ If you wanted a Safer Choice mark or an EPA registration number, this page did n
 
 U.S. Environmental Protection Agency, “What Are Antimicrobial Pesticides?” The page says antimicrobial pesticides are used to destroy or suppress bacteria, viruses, or fungi on surfaces, and that more than 4,000 antimicrobial products are registered with EPA. Linked above. The page does not mention NuroClean.
 
-U.S. Environmental Protection Agency, “Safer Choice.” The program helps people find products that perform and contain ingredients that are safer for human health and the environment. Linked above. We did not see a Safer Choice mark on the NuroClean page.
+U.S. Environmental Protection Agency, “Safer Choice.” The program helps people find products that perform and contain ingredients that are safer for human health and the environment. Linked above. The NuroClean page we opened did not show a Safer Choice mark.
 
-NuroClean seller page and checkout, reached through the offer link, viewed November 19, 2026. The dissolve-spray-wipe steps, the tablet-and-bottle offer, the “70% off” line, the 30-day return, and the label text are the seller’s. This desk has not tested the product. The seller page is not linked here. It is the button above.
+NuroClean seller page and checkout, reached through the offer link, viewed November 19, 2026. The dissolve-spray-wipe steps, the tablet-and-bottle offer, the “70% off” line, the 30-day return, and the label text are the seller’s. The seller page is not linked here. It is the button above.

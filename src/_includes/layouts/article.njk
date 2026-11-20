@@ -25,9 +25,6 @@ ogType: article
     <span>{{ readTime }}</span>
     {% if story and story.slug %}<a class="story-link" href="/stories/{{ story.slug }}/">View as a story</a>{% endif %}
   </p>
-  <aside class="disclosure">
-    <p><strong>Affiliate disclosure.</strong> This guide contains affiliate links. If you buy through one, we may earn a commission at no extra cost to you. We have not hands-on tested the products mentioned. Read the full <a href="/affiliate-disclosure/">affiliate disclosure</a>.</p>
-  </aside>
   <div class="article-grid">
     <figure class="frame article-hero">
       <img
@@ -42,7 +39,7 @@ ogType: article
       <figcaption>{{ heroCaption }}</figcaption>
     </figure>
     <article class="prose">
-      {{ content | safe }}
+      {{ content | withAffiliateNote | safe }}
       {% if faq %}
       <section class="faq" aria-labelledby="faq-title">
         <h2 id="faq-title">Questions people actually ask</h2>
@@ -75,7 +72,7 @@ ogType: article
           <div class="avatar" aria-hidden="true">D</div>
           <div>
             <h2>Daily Insight Desk</h2>
-            <p>Guides for U.S. households, published by {{ site.operator }}. We explain the job first. A product is mentioned only when it fits, the link is labeled, and we say when a point comes from a seller or from another publication. We do not invent hands-on tests.</p>
+            <p>Guides for U.S. households, published by {{ site.operator }}. We explain the job first. A product is mentioned only when it fits, the link is labeled, and we say when a point comes from a seller or from another publication. We do not invent tests, statistics, or testimonials.</p>
           </div>
         {% endif %}
       </aside>

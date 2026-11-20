@@ -27,7 +27,7 @@ export default [
     number: "02",
     summary: "Boards, knives, and the cleanup after dinner.",
     description:
-      "Kitchen guides on cutting boards, knife edges, and sharpening. Honest notes on titanium boards and rolling sharpeners, including what we have not tested.",
+      "Kitchen guides on cutting boards, knife edges, and sharpening. Honest notes on titanium boards and rolling sharpeners.",
     dek: "What to cut on, how to keep an edge, and which cleanup promises are worth believing.",
     image: "/assets/images/still-kitchen",
     width: 1600,

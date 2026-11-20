@@ -43,7 +43,7 @@
     /* The current page can still append what it already has. */
   }
 
-  document.querySelectorAll('a.affiliate-link[href*="clickrtrckr.com"]').forEach(function (link) {
+  document.querySelectorAll('a.affiliate-link[href*="clickrtrckr.com"], a.affiliate-link[href*="clickomundo.com"], a.affiliate-link[href*="treejammer.com"], a.affiliate-link[href*="tricklyn.com"]').forEach(function (link) {
     var href = link.getAttribute("href");
     var extra = [];
     Object.keys(tracking).forEach(function (key) {

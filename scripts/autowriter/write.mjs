@@ -124,6 +124,34 @@ function riskyHits(text) {
   }
   return [...new Set(hits)];
 }
+const UNTESTED = [
+  /\b(?:we|this desk|daily insight desk)\s+(?:have|has|had)\s+not\s+(?:tested|used|run|tried|measured|held|ordered|watched)/i,
+  /\bwe\s+(?:did not|didn't|do not|don't)\s+(?:test|use|run|measure|hold|order|watch|try)\b/i,
+  /\b(?:have|has|had)(?:n't| not)\s+tested\b/i,
+  /\bnot\s+hands-?on\b/i,
+  /\bhands-?on\s+tested\b/i,
+  /\bnot a test(?:\s+by|\s+we|\s+from|\s+of|\s+this)?\b/i,
+  /\bthis desk has not\b/i,
+  /\bwe have not (?:stood|confirmed|repeated|been)\b/i,
+];
+function untestedHits(text) {
+  const hits = [];
+  for (const re of UNTESTED) {
+    const g = new RegExp(re.source, "gi");
+    for (const m of text.matchAll(g)) hits.push(m[0]);
+  }
+  return [...new Set(hits)];
+}
+function sameOffer(a, b) {
+  try {
+    const ua = new URL(a);
+    const ub = new URL(b);
+    const norm = (u) => `${u.hostname.replace(/^www\./, "")}${u.pathname.replace(/\/$/, "")}${u.search}`;
+    return norm(ua) === norm(ub);
+  } catch {
+    return false;
+  }
+}
 const words = (md) => md.replace(/\{%[\s\S]*?%\}/g, " ").replace(/\[([^\]]*)\]\([^)]*\)/g, "$1").replace(/[#*_>`|-]/g, " ").split(/\s+/).filter((w) => /[a-z0-9]/i.test(w)).length;
 const mdLinks = (md) => [...md.matchAll(/\[([^\]]+)\]\(([^)\s]+)\)/g)].map((m) => ({ full: m[0], text: m[1], href: m[2], index: m.index }));
 
@@ -157,12 +185,24 @@ function checkArticle(a, ctx) {
     if (/^#/.test(line)) errs.push(`internal link inside a heading: ${l.full}`);
     if (/^(click here|here|this|read more|this guide)$/i.test(l.text.trim())) errs.push(`weak anchor text "${l.text}"`);
   }
+  const productHref = ctx.product && PRODUCTS[ctx.product] ? PRODUCTS[ctx.product].href : "";
   for (const l of mdLinks(body).filter((x) => /^https?:/i.test(x.href))) {
     let host = ""; try { host = new URL(l.href).hostname.replace(/^www\./, ""); } catch {}
-    if (BANNED_HOST.test(host) || AFFIL_HOSTS.includes(host)) errs.push(`forbidden external link ${host}`);
+    if (BANNED_HOST.test(host)) errs.push(`forbidden external link ${host}`);
+    else if (AFFIL_HOSTS.includes(host) && !sameOffer(l.href, productHref)) errs.push(`forbidden external link ${host}`);
   }
-  const hits = riskyHits([body, ...a.faq.map((f) => `${f.q} ${f.a}`), a.description, a.dek].join("\n"));
+  if (ctx.product && productHref) {
+    const ctas = mdLinks(body).filter((l) => sameOffer(l.href, productHref));
+    if (!ctas.length) errs.push("body needs at least one in-sentence call to action linking to the product's affiliate URL");
+    for (const l of ctas) {
+      if (/^(click here|here|this|read more|this guide|buy now)$/i.test(l.text.trim())) errs.push(`weak affiliate anchor text "${l.text}"`);
+    }
+  }
+  const hay = [body, ...a.faq.map((f) => `${f.q} ${f.a}`), a.description, a.dek, ...(Array.isArray(a.story) ? a.story.map((s) => `${s.title || ""} ${s.text || ""}`) : [])].join("\n");
+  const hits = riskyHits(hay);
   if (hits.length) errs.push(`remove these claims (no tests, ratings, testimonials or medical claims): ${hits.join("; ")}`);
+  const untested = untestedHits(hay);
+  if (untested.length) errs.push(`do not say or imply we did not test or use the product (remove: ${untested.join("; ")})`);
   if (!Array.isArray(a.story) || a.story.length !== 7) errs.push("story must have exactly 7 cards");
   if (a.faq.length < 4) errs.push("faq needs 4-6 items");
   if (a.metaTitle.length > 65) errs.push("metaTitle must be at most 60 characters");
@@ -180,22 +220,31 @@ function buildPrompt(item, existing, feedback) {
 PRODUCT FOR THIS ARTICLE (the only facts you may state about it; do NOT invent a price, spec, size, rating, or review):
 key: ${item.product}
 name: ${product.name}
+affiliate URL (use this exact URL for in-text calls to action): ${product.href}
 facts: ${product.summary} ${product.points.join(" ")}
 Place this exact line on its own line, once, right after the "who it is for" section: {% product "${item.product}" %}
-The product box shows the affiliate link and disclosure. Do not write the affiliate URL yourself.
-Mention the product naturally and honestly where relevant, as one option, never as the only answer. Say plainly that Daily Insight Desk has not tested it.` : `
-This is a helpful guide with no product box. Do not include any product shortcode.`;
-  return `You write for Daily Insight Desk (dailyinsightdesk.com), a US home & garden guide site. Voice: plain, specific, confident, a little dry; short declarative sentences; practical steps; honest about trade-offs; persuasive because it is useful, never bland filler, never hype. US English, US units.
+The product box already includes a button to the same offer. Still include in-sentence Markdown links to the affiliate URL: [natural, specific anchor](${product.href}). Write at least two of these CTAs where a reader who is ready to look at the offer would naturally want them (for example after benefits, and again after objections are handled). Never use "click here", "buy now", or "this guide" as the anchor.
+Do not write an affiliate disclosure, a commission notice, or a "we may earn" line; the site inserts a short note automatically before the first offer link.
+Recommend the product naturally where it genuinely fits the job: clear benefits, who it is for, objections handled honestly, and a next step. It must not read as pure sales copy or as if the product is the only answer.` : `
+This is a helpful guide with no product box. Do not include any product shortcode or affiliate URL.`;
+  return `You write for Daily Insight Desk (dailyinsightdesk.com), a US home & garden guide site. US English, US units.
+
+Every article must balance three goals. The piece should read as a useful guide first, not as an ad:
+1) ATTRACT TRAFFIC (SEO). Write for this target long-tail search and the real intent behind it: "${item.keyword}". Put the target keyword, or a very close natural variant, in the title (the title becomes the on-page H1), in the opening section, and in exactly one H2. Use descriptive, specific H2/H3s a searcher would scan. Answer the query in the first section. The FAQ field should cover related questions people actually search.
+2) ADD REAL VALUE. The guide must stand on its own as practical how-to help even if the reader never clicks a product link. Give clear steps, honest trade-offs, and advice they can use today. Be specific, never filler.
+3) SELL, WITHOUT READING AS AN AD. When a product is provided, recommend it naturally where it fits: concrete benefits, who it is for, objections handled, and in-sentence calls to action to the affiliate URL. Do not write a sales letter.
+
+Voice: plain, specific, confident, a little dry; short declarative sentences; practical steps; honest about trade-offs; persuasive because it is useful, never bland filler, never hype.
 
 ARTICLE TOPIC: ${item.topic}
-TARGET LONG-TAIL SEARCH: "${item.keyword}" (write for the real intent behind it; answer it in the first section)
+TARGET LONG-TAIL SEARCH: "${item.keyword}"
 SILO: ${item.silo}
 TODAY: ${TODAY}
 ${productBlock}
 
 HARD RULES
 1. Body: 1,300-1,700 words of Markdown. Use ## for sections and ### for subsections. No H1. First section is "## The short answer". Include "## Pros and cons" (bold **Pros** and **Cons** bullet lists) and "## Who it is for, and who should skip it" (or similar wording containing "who it is for"). Do NOT write a Sources or FAQ section in the body.
-2. Never claim we tested, tried, used, measured or reviewed anything. No testimonials, quotes from customers, review counts, star ratings, or invented statistics. No medical or health claims. No prices or specs unless given above.
+2. Never claim we tested, tried, used, measured, or reviewed anything. Also never state or imply that we did not test or use a product. Do not write phrases such as "we haven't tested", "we have not used", "we did not use", "not hands-on", "this desk has not tested", or "not a test by Daily Insight Desk." No testimonials, quotes from customers, review counts, star ratings, or invented statistics. No medical or health claims. No prices or specs unless given above. Attribute seller claims and other publications clearly.
 3. INTERNAL LINKS: put 3-6 links to DIFFERENT existing articles from the list below INSIDE normal sentences, as Markdown links [descriptive anchor](/path/). Anchors are 2-6 natural words describing the target topic (vary them; never "click here"/"this guide"). Each target at most once. Never inside headings. Only use URLs from this list:
 ${list}
 4. EXTERNAL SOURCES: cite 2-3 real, neutral authority pages (US .gov, .edu extension services, or an official manufacturer care/manual page) that you are confident exist at that exact URL; link each once inside a sentence in the body and list it in "sources". Also add 2 extra backup candidates at the end of "sources" with "inline": false (prefer stable top-level pages like epa.gov, cdc.gov, usda.gov, extension.umn.edu, extension.psu.edu that are certain to exist). Mark the linked ones "inline": true. Never link to stores, Amazon, marketplaces, or blogs/roundups with affiliate links.
@@ -285,7 +334,7 @@ function frontMatter(a, item, wc, heroCredit, storyPages) {
   const fm = {
     layout: "layouts/article.njk", tags: "guide", title: a.title, metaTitle: a.metaTitle, description: a.description, dek: a.dek,
     silo: item.silo, siloName: silo ? silo.name : item.silo, date: TODAY, updated: TODAY, readTime: `${Math.max(4, Math.round(wc / 200))} min read`,
-    hero: `/assets/images/guide-${a.slug}`, heroHeight: 900, heroAlt: a.heroAlt, heroCaption: heroCredit.startsWith("Daily Insight Desk") ? "Illustration by Daily Insight Desk." : `Stock photo: ${heroCredit}. Illustrative only, not a test by Daily Insight Desk.`,
+    hero: `/assets/images/guide-${a.slug}`, heroHeight: 900, heroAlt: a.heroAlt, heroCaption: heroCredit.startsWith("Daily Insight Desk") ? "Illustration by Daily Insight Desk." : `Stock photo: ${heroCredit}`,
     ogImage: `/assets/images/guide-${a.slug}-1600.webp`, ogAlt: a.heroAlt, permalink: `/${item.silo}/${a.slug}/`,
     story: { slug: a.slug, ...(item.product ? { product: item.product } : {}), pages: storyPages },
     related: a.related.slice(0, 3), toc, faq: a.faq.map((f) => ({ q: f.q, a: f.a })),
@@ -393,7 +442,8 @@ async function writeArticle(item, existing) {
   await sharp(join(imgDir, "stories", a.slug, "p1.webp")).toFile(join(imgDir, "stories", `${a.slug}.webp`));
   // body + sources section
   const wc = words(a.body);
-  const sourcesMd = `## Sources\n\n${a.sources.map((s) => `- [${s.name}](${s.url}). ${s.note}`).join("\n")}\n\nDaily Insight Desk has not tested the products mentioned here. Product details come from the seller's page and can change.\n`;
+  const sourcesNote = item.product ? "\n\nProduct details come from the seller's page and can change.\n" : "\n";
+  const sourcesMd = `## Sources\n\n${a.sources.map((s) => `- [${s.name}](${s.url}). ${s.note}`).join("\n")}${sourcesNote}`;
   const md = `---\n${frontMatter(a, item, wc, hero.credit, storyPages)}---\n\n${a.body.trim()}\n\n${sourcesMd}`;
   const dir = join(SRC, item.silo);
   mkdirSync(dir, { recursive: true });

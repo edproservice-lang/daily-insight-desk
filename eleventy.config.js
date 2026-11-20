@@ -42,6 +42,42 @@ function toIsoDate(value) {
   return date.toISOString().slice(0, 10);
 }
 
+
+const AFFILIATE_NOTE_TEXT = "We may earn a commission if you buy through our links, at no extra cost to you.";
+const AFFILIATE_NOTE_HTML = `<p class="affiliate-note">${AFFILIATE_NOTE_TEXT}</p>\n`;
+const AFFILIATE_LINK_RE = /<a\b[^>]*?(?:class="[^"]*\baffiliate-link\b[^"]*"|href="https?:\/\/(?:www\.)?(?:clickrtrckr|clickomundo|treejammer|tricklyn)\.com[^"]*")[^>]*>/i;
+
+function findAffiliateNoteInsertionPoint(before) {
+  const blocks = [
+    { open: /<aside\b[^>]*\bclass="[^"]*\bproduct\b[^"]*"[^>]*>/gi, close: "</aside>" },
+    { open: /<ul\b[^>]*>/gi, close: "</ul>" },
+    { open: /<ol\b[^>]*>/gi, close: "</ol>" },
+    { open: /<blockquote\b[^>]*>/gi, close: "</blockquote>" },
+    { open: /<p\b[^>]*>/gi, close: "</p>" },
+  ];
+  for (const { open, close } of blocks) {
+    let match;
+    let lastUnclosed = -1;
+    open.lastIndex = 0;
+    while ((match = open.exec(before))) {
+      if (!before.slice(match.index).toLowerCase().includes(close)) {
+        lastUnclosed = match.index;
+      }
+    }
+    if (lastUnclosed !== -1) return lastUnclosed;
+  }
+  return before.length;
+}
+
+function withAffiliateNote(content) {
+  const html = String(content ?? "");
+  if (!html || html.includes('class="affiliate-note"') || html.includes("class='affiliate-note'")) return html;
+  const match = html.match(AFFILIATE_LINK_RE);
+  if (!match || match.index == null) return html;
+  const insertAt = findAffiliateNoteInsertionPoint(html.slice(0, match.index));
+  return html.slice(0, insertAt) + AFFILIATE_NOTE_HTML + html.slice(insertAt);
+}
+
 export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ public: "." });
@@ -73,8 +109,13 @@ export default function (eleventyConfig) {
       const ownSite = host === "dailyinsightdesk.com";
       const authority = host.endsWith(".gov") || host.endsWith(".edu") || host.endsWith(".gov.uk") || host.endsWith(".ac.uk");
       token.attrSet("target", "_blank");
-      if (ownTracking) token.attrSet("rel", "sponsored nofollow noopener");
-      else if (ownSite || authority) token.attrSet("rel", "noopener");
+      if (ownTracking) {
+        token.attrSet("rel", "sponsored nofollow noopener");
+        const existing = token.attrGet("class") || "";
+        if (!/(^|\s)affiliate-link(\s|$)/.test(existing)) {
+          token.attrSet("class", `${existing} affiliate-link`.trim());
+        }
+      } else if (ownSite || authority) token.attrSet("rel", "noopener");
       else token.attrSet("rel", "nofollow noopener");
     }
     return defaultLinkOpen(tokens, idx, options, env, self);
@@ -111,6 +152,7 @@ export default function (eleventyConfig) {
     const other = list.filter((post) => post.data.silo !== silo).sort(byRecent);
     return [...same, ...other].slice(0, 3);
   });
+  eleventyConfig.addFilter("withAffiliateNote", withAffiliateNote);
   eleventyConfig.addFilter("isoDate", toIsoDate);
   eleventyConfig.addFilter("prettyDate", (value) => {
     const iso = toIsoDate(value);
