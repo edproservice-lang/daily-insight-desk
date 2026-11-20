@@ -33,7 +33,7 @@ for (const file of htmlFiles) {
     : rel;
   pages.set(urlPath, html);
 
-  if (!html.includes("G-QM23XL6N04")) fail(`${urlPath} is missing the Analytics tag`);
+  if (!html.includes(site.ga)) fail(`${urlPath} is missing the Analytics tag`);
   if (!/<title>[^<]+<\/title>/.test(html)) fail(`${urlPath} is missing a title`);
   if (!/name="description" content="[^"]+"/.test(html)) fail(`${urlPath} is missing a meta description`);
   const canonical = html.match(/rel="canonical" href="([^"]+)"/);
