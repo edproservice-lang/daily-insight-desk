@@ -10,6 +10,12 @@
   <link rel="amphtml" href="{{ site.url }}/stories/{{ story.slug }}/">
   {% endif %}
   {% if robots %}<meta name="robots" content="{{ robots }}">{% endif %}
+  {% if site.googleSiteVerification %}
+  <meta name="google-site-verification" content="{{ site.googleSiteVerification }}">
+  {% endif %}
+  {% if site.msValidate %}
+  <meta name="msvalidate.01" content="{{ site.msValidate }}">
+  {% endif %}
   <meta name="theme-color" content="#f3eee6">
   <meta property="og:site_name" content="Daily Insight Desk">
   <meta property="og:locale" content="en_US">
