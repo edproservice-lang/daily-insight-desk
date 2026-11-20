@@ -155,7 +155,7 @@ Katori is a titanium cutting board we can link to, sold as a smooth metal surfac
 
 We have not used Katori. The Serious Eats test was of a Taima board. We are not going to borrow their scratches, their sharpness numbers, or their dishwasher pass and paste Katori’s name on them. What we will say is the category point, because it does not depend on a logo: a hard metal face is a poor place to do your daily knife work. Buying Katori does not create an exception to that. If easy washing is the reason you want it, treat it as a second surface, not as the board the chef’s knife lives on. Keep wood or plastic beside it for actual chopping.
 
-Confirm the size, what is included, and the care instructions on the current seller page before you order. We are not going to promise that this particular board is dishwasher-safe. Serious Eats said the Taima board they washed came out without rust. That sentence is about the board they washed. Read Katori’s own note, and follow that note rather than a review of a different product.
+Confirm the size, what is included, and the care instructions on the current seller page before you order. We are not going to promise that this particular board is [dishwasher-safe](/kitchen/are-titanium-cutting-boards-dishwasher-safe/). Serious Eats said the Taima board they washed came out without rust. That sentence is about the board they washed. Read Katori’s own note, and follow that note rather than a review of a different product.
 
 {% product "katori" %}
 

@@ -145,7 +145,7 @@ Use the hose, with a nozzle you can shut off in your hand, for the mess that is 
 
 On all of these, a shutoff at the nozzle is the feature that matters more than any “turbo” engraving. You can walk to the next chair without turning the spigot, and you are not watering the foundation while you move a pot.
 
-The [outdoor shelf](/outdoor/) now has a guide on [portable evaporative coolers](/outdoor/do-portable-evaporative-coolers-work/), which is a humidity question, not a rinse. The car, the winter hose, and the grill-grate versions of this are still unwritten.
+The [outdoor shelf](/outdoor/) now has a guide on [portable evaporative coolers](/outdoor/do-portable-evaporative-coolers-work/), which is a humidity question, not a rinse. The car and the grill-grate versions of this are still unwritten. The [winter hose](/outdoor/how-to-winterize-a-garden-hose-and-nozzle/) now has its own guide.
 
 ## What still needs a brush or a real pressure washer
 
