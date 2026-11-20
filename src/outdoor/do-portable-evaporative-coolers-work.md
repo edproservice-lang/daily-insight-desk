@@ -8,7 +8,7 @@ dek: These little units are a fan blowing across wet material. In dry heat you c
 silo: outdoor
 siloName: Outdoor
 date: 2026-11-19
-updated: 2026-11-19
+updated: 2026-11-20
 readTime: 9 min read
 hero: /assets/images/guide-cooler
 heroHeight: 900
@@ -121,7 +121,7 @@ faq:
 
 ## The short answer
 
-A portable evaporative cooler works when the air is hot and dry, and you only need the air in front of the unit to feel cooler. It does that by evaporating water. The breeze comes out cooler. The air also comes out wetter. In a humid room the cooling fades and the clamminess stays. That is not a defect in one brand. It is the method.
+A portable evaporative cooler works when the air is hot and dry, and you only need the air in front of the unit to feel cooler. It evaporates water, so the breeze comes out cooler and wetter. In a humid room the cooling fades and the clamminess stays. That is the method, not a defect in one brand.
 
 HomePro AirCooler, on the checkout we opened November 19, 2026, is a small unit sold for a bedroom, an office, or a living room, with no installation. One unit was listed at $79.95, against a crossed-out $159.99. The page calls the air “humidified,” which is the honest part of the pitch. It does not list a tank size, a wattage, or a noise measurement. Two of the graphics on that checkout also promise “just cold air,” which is the part to ignore.
 

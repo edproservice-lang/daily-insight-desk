@@ -1,0 +1,25 @@
+---
+permalink: llms.txt
+eleventyExcludeFromCollections: true
+---
+# {{ site.name }}
+
+> {{ site.description }}
+
+{{ site.name }} publishes practical home and garden guides for U.S. households. Each guide answers a specific job in the kitchen, the yard, or around the house, with clear steps, honest trade-offs, and labeled affiliate links when a product is mentioned.
+
+{% for silo in silos -%}
+{%- set guides = collections.guide | inSilo(silo.slug) | sort(false, false, "data.title") -%}
+{%- if guides.length %}
+## {{ silo.name }}
+
+{% for post in guides -%}
+- [{{ post.data.title }}]({{ site.url }}{{ post.url }}): {{ post.data.description }}
+{% endfor %}
+{% endif -%}
+{%- endfor %}
+## Optional
+
+- [About {{ site.name }}]({{ site.url }}/about/): Who publishes the site and how the guides are written.
+- [Web Stories]({{ site.url }}/stories/): Short visual versions of the published guides.
+- [Sitemap]({{ site.url }}/sitemap.xml): Machine-readable list of published pages.

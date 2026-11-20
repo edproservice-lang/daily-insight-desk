@@ -8,7 +8,7 @@ dek: A tablet and a bottle you refill is a real way to own fewer jugs. It is sti
 silo: cleaning
 siloName: Cleaning
 date: 2026-11-19
-updated: 2026-11-19
+updated: 2026-11-20
 readTime: 9 min read
 hero: /assets/images/guide-tablets
 heroHeight: 900
@@ -121,7 +121,7 @@ faq:
 
 ## The short answer
 
-Cleaning tablets replace a closet of sprays only when that closet was five bottles of the same idea. One concentrated tablet, dissolved in a bottle you already own, is a refill. It is not a new category of dirt. If the tablet’s formula is a light all-purpose cleaner, you have a light all-purpose cleaner. The plastic you did not buy is the real gain. The stains that needed a different chemical still need it.
+Cleaning tablets replace a closet of sprays only when those bottles were the same kind of cleaner. One tablet dissolved in a bottle you already own is a refill, not a new way to treat dirt. The plastic you did not buy is the real gain. Stains that needed a different chemical still need it.
 
 NuroClean is sold as that kind of kit. The page we opened on November 19, 2026 says you fill a reusable spray bottle with water, drop in one tablet, let it dissolve, spray, and wipe. The checkout calls the pieces multipurpose cleaning tablets and a universal spray bottle. The seller says you buy tablets again and keep the bottle. That format is coherent. The rest of the page is not a lab report, and it never showed us a price.
 

@@ -115,7 +115,7 @@ faq:
 
 ## The short answer
 
-Yes. A titanium cutting board dulls knives faster than a wood or plastic board. The same is true of glass, stone, and other metal boards. The surface is harder than the edge wants, so the edge is what wears.
+Yes. A titanium cutting board dulls knives faster than a wood or plastic board. The same is true of glass, stone, and other metal boards. The surface is harder than the knife edge, so the edge is what wears, not the board.
 
 The other half of the advertisement is also true, and it is why these boards sell. A metal board is easy to rinse. It does not drink garlic juice the way a dry wood board can, and it does not ask you to oil it. Easy to clean is a real household benefit. It does not cancel the knife.
 

@@ -121,7 +121,7 @@ autowriter:
 
 ## The short answer
 
-A solid titanium cutting board often can go in the dishwasher, but only when the maker of that board says it can. The metal does not drink water, and it does not rust the way a carbon-steel knife can. That is why the category is sold as easy to wash. It is not a blanket permission slip for every board with “titanium” in the name.
+A solid titanium cutting board can often go in the dishwasher, but only when the maker of that board says it can. The metal does not drink water, and it does not rust the way a carbon-steel knife can. That is not a blanket permission slip for every board with “titanium” in the name.
 
 Handles, silicone feet, coatings, and wood or plastic rims are not the same material as the face. They are why two boards that look alike can have two different care notes. Follow the care instructions on the current seller page rather than inventing a dishwasher rating for a board that page does not clearly rate.
 

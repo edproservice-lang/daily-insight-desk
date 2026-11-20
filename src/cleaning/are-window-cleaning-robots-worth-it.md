@@ -8,7 +8,7 @@ dek: These machines are a suction cup with a wipe. They can keep you off a ladde
 silo: cleaning
 siloName: Cleaning
 date: 2026-11-19
-updated: 2026-11-19
+updated: 2026-11-20
 readTime: 9 min read
 hero: /assets/images/guide-windobotz
 heroHeight: 900
@@ -121,7 +121,7 @@ faq:
 
 ## The short answer
 
-A window-cleaning robot is worth it when you have several large, smooth panes, you hate the ladder, and you will still stand there while it runs. It sticks by suction, sprays a little water, and drags a pad across the glass. That is the whole trick. If the glass is textured, the pane is small, or the dirt is paint and mineral crust, the machine is the wrong tool.
+A window-cleaning robot is worth it for large, smooth panes you would otherwise clean from a ladder, if you will still stand there while it runs. It sticks by suction, sprays a little water, and drags a pad across the glass. Textured glass, small panes, or dirt that is paint and mineral crust need a different tool.
 
 It is not worth it as a leap of faith. The Qinux Windobotz page we opened on November 19, 2026 is written like a review of fourteen robots. It does not publish a price. It does not publish suction, runtime, tank size, cord length, or what comes in the box beyond the story it is telling. Anything on that page that sounds like a score is the page’s story, not a published spec sheet.
 

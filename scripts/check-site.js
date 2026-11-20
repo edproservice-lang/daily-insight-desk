@@ -1,6 +1,8 @@
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join, dirname } from "node:path";
 import amphtmlValidator from "amphtml-validator";
+import site from "../src/_data/site.js";
+import indexnow from "../src/_data/indexnow.js";
 
 const root = join(import.meta.dirname, "..", "_site");
 const errors = [];
@@ -254,6 +256,57 @@ for (const [urlPath, html] of pages) {
 const robots = readFileSync(join(root, "robots.txt"), "utf8");
 if (!robots.includes("Sitemap: https://dailyinsightdesk.com/sitemap.xml")) {
   fail("robots.txt does not point at the sitemap");
+}
+for (const bot of ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "PerplexityBot", "ClaudeBot", "Google-Extended", "Bingbot"]) {
+  const block = new RegExp(`User-agent:\\s*${bot}\\s*\\nAllow:\\s*/`, "i");
+  if (!block.test(robots)) fail(`robots.txt does not explicitly allow ${bot}`);
+}
+
+if (site.googleSiteVerification) {
+  const home = pages.get("/");
+  const tag = `name="google-site-verification" content="${site.googleSiteVerification}"`;
+  if (!home?.includes(tag)) fail("home page is missing the Google site verification tag");
+}
+
+const indexNowKeyFile = join(root, `${indexnow.key}.txt`);
+if (!statSync(indexNowKeyFile, { throwIfNoEntry: false })) {
+  fail(`IndexNow key file /${indexnow.key}.txt is missing`);
+} else if (readFileSync(indexNowKeyFile, "utf8").trim() !== indexnow.key) {
+  fail("IndexNow key file does not contain the key");
+}
+
+const llmsPath = join(root, "llms.txt");
+if (!statSync(llmsPath, { throwIfNoEntry: false })) {
+  fail("llms.txt is missing");
+} else {
+  const llms = readFileSync(llmsPath, "utf8");
+  if (!llms.startsWith("# Daily Insight Desk")) fail("llms.txt must start with the site name");
+  for (const [urlPath] of pages) {
+    if (!/^\/(cleaning|kitchen|outdoor|tools)\/.+/.test(urlPath)) continue;
+    if (!llms.includes(`https://dailyinsightdesk.com${urlPath}`)) {
+      fail(`llms.txt is missing ${urlPath}`);
+    }
+  }
+}
+
+for (const [urlPath, html] of pages) {
+  if (!/^\/(cleaning|kitchen|outdoor|tools)\/.+/.test(urlPath)) continue;
+  let article;
+  for (const block of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+    try {
+      const data = JSON.parse(block[1]);
+      const nodes = data["@graph"] || [data];
+      article = nodes.find((node) => node["@type"] === "Article") || article;
+    } catch {
+      // invalid JSON-LD is already reported above
+    }
+  }
+  if (!article) fail(`${urlPath} is missing Article JSON-LD`);
+  else {
+    for (const field of ["datePublished", "dateModified", "author", "publisher"]) {
+      if (!article[field]) fail(`${urlPath} Article schema is missing ${field}`);
+    }
+  }
 }
 
 const sitemap = readFileSync(join(root, "sitemap.xml"), "utf8");
