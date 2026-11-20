@@ -59,7 +59,7 @@ export default [
     alt: "Illustration of a wooden patio chair, a coiled garden hose, and a terracotta pot against a brick wall",
     paragraphs: [
       "Outdoor care is mostly water, timing, and not forcing a surface that wants a brush. A nozzle is often the right tool. A pressure washer is sometimes the right tool. They are not interchangeable, and the ads that say otherwise are selling the overlap.",
-      "The first guide on this shelf is whether a portable evaporative cooler actually cools a room, or mostly adds humidity. Guides for washing a car, winterizing the hose, moss on a shady patio, and grill grates are still unwritten. The published cleaning guide already covers what a nozzle can honestly do.",
+      "The published guides on this shelf cover whether a portable evaporative cooler actually cools a room, or mostly adds humidity, and how to winterize a garden hose and nozzle. Guides for washing a car, moss on a shady patio, and grill grates are still unwritten. The published cleaning guide already covers what a nozzle can honestly do.",
     ],
     related: {
       href: "/cleaning/garden-hose-pressure-nozzle/",

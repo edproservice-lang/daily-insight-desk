@@ -1,118 +1,119 @@
 ---
 layout: layouts/article.njk
 tags: guide
-title: How to Winterize a Garden Hose and Nozzle Step-by-Step
+title: How to Winterize a Garden Hose and Nozzle
 metaTitle: How to Winterize a Garden Hose and Nozzle
-description: Learn how to winterize a garden hose and nozzle to prevent freeze damage, split rubber, and burst spigots. Step-by-step guidance for winter storage.
-dek: Draining your hose and spray nozzle before the first freeze prevents split rubber lines, broken internal valves, and burst outdoor spigots.
+description: Disconnect and drain the hose and nozzle before the first freeze, then drain the outdoor faucet. What extension services say, and where to store the hose.
+dek: The hose is the easy part. The risk is the water left in the faucet, and in the nozzle you forgot on the end of the line.
 silo: outdoor
 siloName: Outdoor
 date: 2026-11-20
 updated: 2026-11-20
-readTime: 9 min read
+readTime: 7 min read
 hero: /assets/images/guide-how-to-winterize-a-garden-hose-and-nozzle
 heroHeight: 900
-heroAlt: Illustration of a wooden patio chair, a coiled garden hose, and a terracotta pot against a brick wall
+heroAlt: Illustration of a brass outdoor spigot and a hose nozzle rinsing damp brick pavers
 heroCaption: Illustration by Daily Insight Desk.
 ogImage: /assets/images/guide-how-to-winterize-a-garden-hose-and-nozzle-1600.webp
-ogAlt: Illustration of a wooden patio chair, a coiled garden hose, and a terracotta pot against a brick wall
+ogAlt: Illustration of a brass outdoor spigot and a hose nozzle rinsing damp brick pavers
 permalink: /outdoor/how-to-winterize-a-garden-hose-and-nozzle/
 story:
   slug: how-to-winterize-a-garden-hose-and-nozzle
   product: jetterix
   pages:
-    - id: cover
-      title: How to Winterize Your Hose & Nozzle
-      text: Protect your outdoor plumbing, hoses, and nozzles from freeze damage before winter hits.
+    - id: card-1
+      title: Disconnect it before the freeze
+      text: A hose left on the faucet can let ice work back toward the house.
       image: /assets/images/stories/how-to-winterize-a-garden-hose-and-nozzle/p1.webp
       imageWidth: 720
       imageHeight: 960
-      alt: Illustration of home and garden tools
+      alt: Illustration of a garden hose, a watering can, and a plant on a table by a window
       tone: ink
-    - id: step-1
-      title: Shut Off Indoor Water Supply
-      text: Close the indoor valve leading to your outdoor spigot to prevent line freezes.
+    - id: card-2
+      title: Drain the hose completely
+      text: Walk it downhill, or hang a section high, so gravity empties the line.
       image: /assets/images/stories/how-to-winterize-a-garden-hose-and-nozzle/p2.webp
       imageWidth: 720
       imageHeight: 960
-      alt: Illustration of home and garden tools
+      alt: Illustration of garden tools and a coiled hose on a wooden bench
       tone: moss
-    - id: step-2
-      title: Drain Faucet and Hose
-      text: Open the outdoor spigot, disconnect the hose, and elevate it to drain all water.
+    - id: card-3
+      title: Empty the nozzle too
+      text: Rigid plastic fittings crack when the water inside them freezes.
       image: /assets/images/stories/how-to-winterize-a-garden-hose-and-nozzle/p3.webp
       imageWidth: 720
       imageHeight: 960
-      alt: Illustration of home and garden tools
+      alt: Illustration of a brass outdoor spigot and a hose nozzle rinsing damp brick pavers
       tone: ink
-    - id: step-3
-      title: Clear Spray Nozzles Completely
-      text: Squeeze nozzle triggers and rotate multi-pattern dials to shake out hidden moisture.
+    - id: card-4
+      title: Shut off the indoor valve
+      text: Then open the outdoor faucet so the short run in the wall can drain.
       image: /assets/images/stories/how-to-winterize-a-garden-hose-and-nozzle/p4.webp
       imageWidth: 720
       imageHeight: 960
-      alt: Illustration of home and garden tools
+      alt: Illustration of a wooden patio chair, a coiled garden hose, and a terracotta pot against a brick wall
       tone: moss
-    - id: product-card
-      title: Care for Special Attachments
-      text: Focusing attachments like Jetterix need full draining; Daily Insight Desk has not tested Jetterix.
+    - id: card-5
+      title: Store the hose under shelter
+      text: Outside is possible if it is empty. Temperature swings still age the material.
       image: /assets/images/stories/how-to-winterize-a-garden-hose-and-nozzle/p5.webp
       imageWidth: 720
       imageHeight: 960
-      alt: "Seller photo: Jetterix. Seller photo of hands attaching a gray hose nozzle to a garden hose outdoors"
+      alt: Illustration of a coiled garden hose on a brick patio
       tone: ink
-    - id: step-4
-      title: Store Equipment Above Freezing
-      text: Coil hoses loosely and keep equipment inside a heated basement or warm garage.
+    - id: card-6
+      title: A nozzle only shapes the water
+      text: Drain it for winter the same way you drain the hose. It is not a pump.
       image: /assets/images/stories/how-to-winterize-a-garden-hose-and-nozzle/p6.webp
       imageWidth: 720
       imageHeight: 960
-      alt: Illustration of home and garden tools
+      alt: Seller photo of hands attaching a gray hose nozzle to a garden hose outdoors
       tone: moss
-    - id: cta-card
-      title: Read the Complete Winterization Guide
-      text: Visit Daily Insight Desk for full step-by-step instructions on winter garden care.
+    - id: card-7
+      title: Read the full guide
+      text: The faucet, the hose, the nozzle, and where to put them until spring.
       image: /assets/images/stories/how-to-winterize-a-garden-hose-and-nozzle/p7.webp
       imageWidth: 720
       imageHeight: 960
-      alt: Illustration of home and garden tools
+      alt: Illustration of a scrub brush, pruning shears, a coiled hose, and a terracotta pot on a wooden bench
       tone: ink
 related:
   - href: /cleaning/garden-hose-pressure-nozzle/
-    title: Do Garden Hose “Pressure” Nozzles Actually Work?
-    note: Learn how hose nozzle pressure works and how to maintain spray attachments.
+    title: Do garden hose “pressure” nozzles actually work?
+    note: The tool on the end of the hose. What it can rinse, and what it cannot.
   - href: /cleaning/how-to-clean-patio-pavers-with-a-garden-hose/
-    title: How to Clean Patio Pavers With a Garden Hose
-    note: Practical guide on using standard hose setups to clean outdoor stone surfaces.
-  - href: /outdoor/do-portable-evaporative-coolers-work/
-    title: Do Portable Evaporative Coolers Actually Work?
-    note: Additional advice on winterizing outdoor and seasonal water-using devices.
+    title: How to clean patio pavers with a garden hose
+    note: The last rinse of the season, before you put the hose away.
 toc:
   - id: the-short-answer
-    label: Short answer
-  - id: why-water-left-inside-damages-hoses-nozzles-and-spigots
-    label: Freeze damage risk
-  - id: step-by-step-how-to-winterize-a-garden-hose-and-nozzle
-    label: Step-by-step guide
-  - id: handling-specialized-spray-nozzles-and-attachments
-    label: Specialty attachments
-  - id: pros-and-cons-of-common-winter-hose-storage-methods
-    label: Pros and cons
-  - id: who-it-is-for-and-who-should-skip-it
+    label: The short answer
+  - id: why-a-connected-hose-is-the-real-risk
+    label: Why a connected hose is the risk
+  - id: what-you-need
+    label: What you need
+  - id: how-to-winterize-a-hose-and-nozzle-step-by-step
+    label: Step by step
+  - id: the-outdoor-faucet-still-needs-draining
+    label: The faucet
+  - id: where-to-store-the-hose
+    label: Where to store it
+  - id: where-jetterix-fits
+    label: Where Jetterix fits
+  - id: who-it-is-for
     label: Who it is for
   - id: sources
     label: Sources
 faq:
-  - q: Can I leave a hose outside in winter if it is drained?
-    a: Even if you drain a hose, leaving it outside exposes vinyl and rubber materials to freezing temperatures and UV rays, which causes embrittlement and cracking. Storing the hose indoors in a basement or heated garage ensures maximum lifespan.
-  - q: What happens if I leave a nozzle attached to the hose over winter?
-    a: Trapped moisture between the metal threads can cause galvanic corrosion, fusing the nozzle to the hose coupling permanently. Water trapped inside internal nozzle valves will also freeze, expanding and cracking plastic or brass housings.
-  - q: Do frost-proof spigots still freeze if a hose is connected?
-    a: Yes. Frost-proof spigots drain automatically only when the hose is disconnected. Leaving a hose attached holds water inside the spigot barrel, leading to ice buildup that can rupture your indoor water pipe.
-  - q: How do I clear water out of a multi-pattern spray nozzle?
-    a: Squeeze the trigger to release main line pressure, then rotate the selector head through every spray pattern setting while shaking the nozzle upside down. This expels water trapped behind internal gaskets and seal chambers.
-  - q: Is it safe to store hoses in an unheated shed during winter?
-    a: An unheated shed protects hoses from snow and sun, but temperatures inside still drop below freezing. If any residual moisture remains inside the hose or nozzle, it can freeze and cause damage, so indoor storage above 32°F is safer.
+  - q: Do I have to disconnect the garden hose before a freeze?
+    a: "Yes. Illinois Extension says to remove and drain all hoses from the spigots, because a hose left attached can hold water that freezes and progresses back into the faucet, and perhaps into the house. University of Missouri Extension gives the same first step: disconnect the hoses from outdoor hose bibs."
+  - q: Can I leave a drained hose outside all winter?
+    a: "Oregon State University Extension says yes, if you drain it completely, for example by running it over a high point so gravity empties it. The same answer warns that temperature swings age the hose faster, so a sheltered place with a steadier temperature will usually make it last longer."
+  - q: What about the nozzle, splitter, or hose timer?
+    a: "Take them off and drain them too. Rigid plastic fittings are the parts that crack when a little trapped water freezes. Open the nozzle, shake out what is left, and store it dry. If a timer uses batteries, follow its own winter instructions."
+  - q: Do frost-proof faucets still need this?
+    a: "Yes. Illinois Extension notes that a frost-proof spigot reduces the risk but can still freeze, depending on how cold it gets and how well the wall is insulated. Leaving a hose attached is still a way to keep water in the line. Disconnect it, then drain the faucet as your plumbing allows."
+  - q: What if the hose is already frozen?
+    a: "Do not bend, coil, or yank it while it is frozen. Wait for a thaw, then drain it and put it away. If the outdoor faucet will not shut, or you see water staining the wall, shut off the water at a valve you can reach safely and call a plumber."
 autowriter:
   model: gemini-3.5-flash
   queueId: winterize-hose
@@ -120,100 +121,101 @@ autowriter:
 
 ## The short answer
 
-To winterize a garden hose and nozzle, shut off the indoor water supply valve feeding the outdoor faucet, open the outdoor spigot to bleed remaining pressure, and disconnect the hose completely. Next, drain every drop of water from the hose by elevating one end and walking down its length to let gravity pull the water out. Shake out the spray nozzle, open all valves or trigger locks to release trapped liquid, and store both the hose and attachment in a dry, frost-free location above 32°F such as a basement, heated garage, or utility closet.
+Before the first hard freeze, unscrew the hose from the outdoor faucet. Take off the nozzle, the splitter, the timer, and any other add-on. Drain the hose until it runs empty, drain those fittings, and store them under shelter. Then shut off the indoor valve that feeds the faucet, if you have one, and open the faucet so the short run of pipe in the wall can empty.
 
-Leaving a hose connected to an outdoor spigot during freezing weather is one of the most common causes of burst outdoor pipes, cracked brass fittings, and split hose walls. Water expands by roughly 9 percent as it transitions into ice. That expansion exerts massive pressure inside sealed lines and nozzle chambers. Taking ten to fifteen minutes before the first deep freeze saves you from replacing expensive hoses, damaged spray attachments, or cracked outdoor spigots come spring.
+That is the job. It takes a few minutes. The hose is the obvious object, but it is not the expensive failure. Illinois Extension is blunt about the sequence that actually matters: if you leave the hose attached, water may remain in the line, and as ice forms it can progress back into the spigot and perhaps into the house.
 
-## Why water left inside damages hoses, nozzles, and spigots
+A nozzle does not change any of this. It only shapes the water the spigot already supplies, which is the point of the [garden hose nozzle guide](/cleaning/garden-hose-pressure-nozzle/). In winter it is just another fitting with a little water inside it. Empty it the same way you empty the hose.
 
-Water trapped inside garden equipment is subject to thermal expansion during winter freezes. Agricultural experts at [University of Minnesota Extension](https://extension.umn.edu/yard-and-garden) emphasize that completely draining outdoor water fixtures before ground freezes occur prevents severe structural damage to home plumbing and watering equipment. As temperatures drop below 32°F, water solidifies and expands. If trapped water has nowhere to expand, it creates immense outward force on whatever container holds it.
+## Why a connected hose is the real risk
 
-### Rubber and vinyl hose deterioration
-Hoses are built to withstand internal water pressure from your home municipal supply, but they are not designed to resist the forces of expanding solid ice. Rubber, hybrid polymer, and vinyl hoses react differently to low temperatures:
-- **Vinyl hoses:** Become extremely brittle in cold air. When ice forms inside, vinyl easily splits or tears along its length.
-- **Rubber hoses:** Remain flexible in cold weather, but ice expansion stretches the inner core, weakening the structural reinforcement layers and causing pinhole leaks later.
-- **Expanding fabric hoses:** Hold water inside inner latex or silicone bladders. If frozen while holding moisture, the inner core ruptures quickly.
+Water expands when it freezes. A garden hose can take that expansion once or twice and look fine, or it can split at a fitting the first night it is left full. That is an annoyance. The worse case is the water that cannot get out of the faucet because a hose is still screwed onto the end.
 
-### Nozzle and spray tool failure
-Modern hose nozzles contain delicate internal parts. Trigger mechanisms, internal shut-off valves, multi-pattern dial gaskets, and quick-connect fittings all retain tiny pockets of water. When that trapped water freezes, it breaks plastic housings, distorts internal O-rings, and cracks brass or zinc internal valves. Even heavy-duty metal nozzles can split at the seams when water freezes inside closed internal chambers.
+Illinois Extension’s [Good Growing note on winterizing outdoor plumbing](https://extension.illinois.edu/blogs/good-growing/2020-11-26-how-winterize-outdoor-plumbing-irrigation-hoses-spigots) puts the hose and the house in the same paragraph. Remove and drain all hoses from the spigots. Store the empty hoses in a sheltered location. A hose left on the faucet can hold water in the line, and ice can work back toward the house.
 
-### The hidden danger to outdoor spigots
-Leaving a garden hose attached to an outdoor faucet during a freeze prevents the spigot from draining properly. Even frost-proof spigots depend on a long stem valve that sits inside the warm wall of your house. When a hose remains connected, trapped water inside the faucet barrel cannot drain outward. When a freeze hits, the water inside the spigot freezes solid, rupturing the copper or brass pipe inside your wall. You will not notice the damage until spring when you turn the water back on, resulting in severe indoor water leaks.
+The same piece is careful about “frost-proof” faucets. They reduce the risk of a freeze creeping inside, but they are not a charm. How cold it gets, and how well the wall cavity is insulated, still matter. A frost-proof faucet with a hose left on it is also a faucet that cannot drain the way it was designed to drain. Disconnect the hose anyway.
 
-## Step-by-step: How to winterize a garden hose and nozzle
+University of Missouri Extension, in a [note on frozen pipes](https://extension.missouri.edu/news/frozen-pipes-create-big-problems-during-cold-weather), starts in the same place: disconnect the hoses from outdoor hose bibs, put an insulating cover over the faucets if you use one, and, if possible, turn off the indoor valves that supply those bibs and drain the pipes.
 
-Proper winterization requires systematically removing water from the supply line, the hose body, and every attached tool. Follow these five practical steps before your region's first forecast freeze.
+This is not a guide to buried sprinkler lines, and it is not a reason to unscrew a backflow preventer that is part of the house plumbing. If you cannot tell a seasonal add-on from a fixture, leave the fixture and deal with the hose.
 
-### Step 1: Shut off the indoor valve and drain the outdoor spigot
-Locate the indoor shut-off valve for your outdoor hose bibb, usually situated in a basement, crawlspace, or utility room. Turn the valve handle clockwise until it fully closes. Follow seasonal freeze prep advice from [Penn State Extension](https://extension.psu.edu/) by opening the outdoor spigot completely to bleed remaining line pressure and drain residual water into a bucket or onto the ground. If your indoor shut-off valve features a small drain cap on its side, place a small bucket beneath it and unscrew the cap to drain any water trapped inside the pipe section between the inner valve and the outer faucet.
+## What you need
 
-### Step 2: Disconnect and drain the hose completely
-Disconnect the hose from the outdoor spigot. Never leave a hose attached to the sillcock over the winter. To drain the hose thoroughly, start at one end. Lift that end over your shoulder and walk down the length of the hose, feeding it along while keeping the elevated bend above the rest of the line. Gravity will force all standing water out of the lower open end. If your hose is long—50 feet or more—repeat this process twice to ensure no hidden water pockets remain in low spots or sagging loops.
+- **A dry afternoon before the first hard freeze.** Do not wait for the night the temperature actually drops.
+- **A place to stretch the hose.** A slope, a railing, or a hook high enough that gravity can do the work.
+- **A bucket** under the faucet, if you will open it when the air is already below freezing, so you are not building a sheet of ice on the step.
+- **Somewhere sheltered to store the hose and the nozzle.** A garage, a basement, or a shed is fine. An unheated garage can still drop below freezing, which is why the hose has to be empty even there.
+- **An insulating faucet cover,** if you use one. Missouri Extension mentions a foam dome as an extra step, not as a substitute for disconnecting the hose.
 
-### Step 3: Drain spray nozzles and specialty attachments
-Disconnect all spray nozzles, quick-connect adapters, and spray wands from the hose ends. Squeeze the trigger mechanism multiple times to pump out water trapped inside the inner valve body. For multi-pattern spray heads, rotate the selector dial through every spray setting (such as jet, shower, center, and mist) while shaking the nozzle upside down to clear water trapped behind the selector faceplate.
+If this is also the last outdoor rinse of the year, finish the patio first and put the hose away after. The [guide to cleaning pavers with a hose](/cleaning/how-to-clean-patio-pavers-with-a-garden-hose/) is that rinse. Winterizing is what you do when the rinse is over.
 
-If you use secondary cleaning tools, such as the Jetterix attachment for targeted rinsing of siding or patios, remove it from the line as well. Attachments designed for focused rinsing, including standard [pressure nozzle attachments](/cleaning/garden-hose-pressure-nozzle/), contain narrow internal fluid channels that easily retain water droplets. Disconnect these items, flip them over several times, and store them indoors alongside your regular hose accessories. Note that Daily Insight Desk has not tested Jetterix; however, standard maintenance rules apply to all non-electric hose attachments: water must be removed from internal channels before freezing temperatures arrive.
+## How to winterize a hose and nozzle, step by step
 
-### Step 4: Inspect O-rings, gaskets, and threads
-Winter preparation is an ideal opportunity to inspect your watering hardware. Look inside the female coupling at the end of the hose and inside the base of your spray nozzles. Check the rubber or silicone hose washers for cracking, flattening, or dry rot. Worn washers cause annoying drips and loss of pressure when you resume seasonal outdoor tasks, such as [cleaning patio pavers with a hose](/cleaning/how-to-clean-patio-pavers-with-a-garden-hose/). Remove damaged O-rings with a flathead screwdriver and store fresh replacement washers in a small bag attached to your hose line for spring reassembly. Apply a light dab of silicone lubricant to brass threads to prevent metal corrosion and galling during storage.
+### 1. Shut the faucet and take everything off it
 
-### Step 5: Coil correctly and store in a frost-free area
-Coil the drained hose into loose, flat loops approximately two to three feet in diameter. Avoid tight coiling, which puts structural stress on the outer casing, especially in cold environments. Store the hose lying flat on a shelf or hung across a wide hose hanger designed to distribute weight evenly. Never hang a hose over a single narrow nail, which creates sharp kinks and stretches internal reinforcement fibers.
+Close the outdoor faucet. Unscrew the hose. Unscrew the nozzle, a Y-splitter, a timer, a quick-connect, or a filter. Each of those can hold a little water, and the rigid plastic ones are the parts that crack. Illinois Extension’s winterizing note includes a hard lesson about rigid plastic fittings left with water inside them: they can fail, and the failure shows up when you turn the water on in spring.
 
-Store both the hose and all nozzles indoors in a sheltered space where temperatures stay consistently above freezing (32°F). A basement, climate-controlled garage, or utility closet is ideal. Unheated outdoor sheds or detached structures can still reach sub-freezing temperatures, which can damage any remaining moisture inside plastic nozzle components. Similar care applies when winterizing other seasonal water equipment, such as draining storage tanks on [portable evaporative coolers](/outdoor/do-portable-evaporative-coolers-work/) or clearing lines on non-essential outdoor cleaning tools like [robotic glass cleaners](/cleaning/are-window-cleaning-robots-worth-it/).
+### 2. Drain the hose
 
-## Handling specialized spray nozzles and attachments
+Keep both ends open. Stretch the hose out as straight as you reasonably can. Walk it from one end to the other, lifting each section so the water runs toward the open end. Oregon State University Extension’s [answer on leaving hoses outside](https://extension.oregonstate.edu/ask-extension/featured/can-i-leave-my-garden-hoses-outside-winter) describes the same idea as running the hose over a tall place so gravity forces the water out. A coil that still feels heavy is a coil that is not empty.
 
-Standard adjustable nozzles are simple to clear, but complex spray tools require extra attention before winter storage.
+You do not need the inside bone-dry. You do need to get the standing water out of the low spots. A long hose may need a second pass.
 
-### Multi-pattern spray nozzles
-Multi-pattern dials feature separate internal chambers for each spray pattern. Water easily becomes trapped in the small voids behind the pattern selector face. To prepare these nozzles:
-1. Depress the trigger to bleed main chamber pressure.
-2. Hold the trigger down while spinning the selector dial through every position.
-3. Shake the nozzle vigorously to expel liquid trapped behind internal seals.
-4. Set the lock switch to the open position so internal springs are not kept under tension all winter.
+### 3. Drain the nozzle and the other fittings
 
-### Brass and high-pressure jet nozzles
-Solid brass stream nozzles are durable, but their internal threading and precision-machined tips can freeze tightly shut if stored wet. Unscrew adjustable brass tips completely from the stem base, allow the threads to air dry, and reassemble loosely before putting them away.
+Open the nozzle to a wide setting, hold it upside down, and shake out what is left. Do the same with splitters and quick-connects. If a timer has a drain, a cap, or a battery the maker tells you to remove for winter, follow that note. Then let the parts sit until they are dry.
 
-## Pros and cons of common winter hose storage methods
+This is also a decent moment to look at the hose washers and the cracked fitting you have been ignoring since July. Replacing a washer in November is cheaper than discovering it in April with the water on.
 
-Understanding how different storage setups perform helps protect your garden equipment through cold weather.
+### 4. Coil it loosely and put it away
 
-### Storage options comparison
+Coil the empty hose in loops large enough that it does not kink. Hang it or set it on a shelf. Do not park a tight coil under a pile of lumber where it will take a set all winter.
 
-**Pros**
-- Indoor climate-controlled storage completely eliminates freeze damage risks for hoses and nozzles.
-- Hanging hoses on broad curved brackets prevents structural kinking and maintains hose shape.
-- Removing nozzles from hoses prevents metal couplings from fusing together through galvanic corrosion over winter months.
-- Storing drained equipment in dark spaces protects rubber compounds from ultraviolet radiation degradation.
+### 5. If the hose is already frozen, wait
 
-**Cons**
-- Unheated sheds or detached garages can still experience freezing temperatures that crack moist plastic nozzles.
-- Leaving hoses stored on outdoor reels exposes vinyl materials to sun bleaching and cold embrittlement.
-- Tight coiling on narrow hose hangers creates permanent creases and points of mechanical failure in rubber walls.
-- Storing wet hoses flat on concrete floors can trap ground moisture, accelerating brass rust and mold growth on outer casings.
+If you missed the freeze and the hose is stiff, leave it alone until it thaws. A frozen hose is brittle. Bending it is how you finish the split that the ice started. Thaw, drain, store.
 
-## Who it is for, and who should skip it
+## The outdoor faucet still needs draining
 
-Winterizing garden hoses and spray nozzles is essential for homeowner maintenance in specific climates, though the steps vary based on regional weather patterns.
+The hose can be perfect and the pipe in the wall can still freeze. Illinois Extension’s [page on water pipes](https://extension.illinois.edu/disasters/water-pipes) puts the two jobs together: disconnect garden hoses, and shut off and drain the water from pipes leading to outside faucets. That reduces the chance of freezing in the short span of pipe just inside the house.
 
-### Who must winterize fully
-- **Homeowners in USDA Hardiness Zones 1 through 8:** If your area experiences sustained winter temperatures below 32°F, full winterization—including shutting off interior valves and moving equipment indoors—is mandatory to prevent burst pipes and cracked spray tools.
-- **Owners of frost-proof spigots:** Even self-draining frost-free outdoor faucets will burst if a hose remains connected during freezing conditions.
-- **Users of premium rubber or expandable hoses:** High-end rubber and fabric hoses represent a financial investment worth preserving through indoor winter storage.
+If you have an indoor shutoff for that faucet, close it. If that valve has a bleeder, open the bleeder and catch what comes out. Then go back outside and open the faucet so the leftover water has a way out. Missouri Extension gives the same sequence: indoor valve if you have one, then drain the pipes. An insulating cover goes on after the faucet is empty, not over a hose that is still attached.
 
-### Who can use a simplified routine
-- **Residents in mild southern or coastal zones (Zones 9 and above):** If your region only experiences rare, light frosts that stay above 28°F for brief hours, you can generally leave hoses connected, provided you turn off the spigot and release pressure from the nozzle after use.
-- **Homeowners with fully insulated outdoor hose enclosures:** In moderate climates, storing drained hoses inside insulated hose boxes may provide sufficient thermal protection, provided nozzles are disconnected and shaken dry.
+Houses differ. Some faucets are frost-proof and drain back toward the interior when nothing is screwed onto the threads. Some are old sill cocks that hold water in the wall unless you shut them off from inside. If you cannot find the indoor valve, disconnect and drain the hose anyway, open the faucet to let out what it will, and use a cover. If the faucet drips, or the wall under it looks stained, that is a plumbing repair, not a hose problem.
+
+This desk is not going to walk you through cutting a pipe or replacing a faucet. If you need that done, hire it.
+
+## Where to store the hose
+
+A sheltered place with a steadier temperature is the better home for an empty hose. Oregon State University Extension says you can leave a fully drained hose outside, and also that the temperature swings will age the material faster, so the hose may not last more than a few seasons even when it is empty. That is the trade: convenience now, a shorter life later.
+
+An unheated garage or shed still counts as outside for the purpose of freezing. The hose can live there if it is drained. The nozzle and the timer should live somewhere you can find them in April, in a bag or a bin, so dirt does not pack into the openings and turn into a clog the first time you use them. The [nozzle guide](/cleaning/garden-hose-pressure-nozzle/) already covers what hard-water scale and sediment do to a tip. Winter storage is how you avoid adding a third problem, which is a fitting that sat wet and then froze.
+
+If you have more than one hose, label the one that already weeps at the coupling so you are not surprised in spring. The [outdoor shelf](/outdoor/) will hold later guides on hanging hoses so they dry. Until then, a hook and an empty coil are enough.
+
+## Where Jetterix fits
+
+Jetterix is a garden-hose attachment sold for a more focused rinse on patios, vehicles, siding, furniture, and tools. It does not add a pump, so it is not a pressure washer. In winter it is one more fitting to take off the hose, drain, and store dry.
+
+We have not tested Jetterix, and we are not going to invent a storage temperature or a winter warranty for it. Treat it like the other rigid attachments: empty it, keep it out of a puddle, and put it back on in spring after you have flushed the hose. Confirm any care notes on the current seller page.
 
 {% product "jetterix" %}
 
+A nozzle, including this one, still only aims the water your house already has. Winter does not change that, and it is not a reason to leave it on the faucet “just in case.”
+
+## Who it is for
+
+This is for a homeowner with an ordinary outdoor faucet and a garden hose, in a place that actually freezes. If you live where the nights stay well above 32°F (0°C) all winter, you can still drain a hose you will not use for months, but the burst-pipe urgency is not the same.
+
+It is also for the person who already has a frost-proof faucet and has been told, incorrectly, that the hose can stay. Disconnect it anyway.
+
+Skip the heroic version if the faucet is in a shared wall you cannot shut off, or if you cannot reach the indoor valve safely. Do the hose and the nozzle, cover the faucet, and get help with the plumbing rather than forcing a valve you cannot identify.
+
 ## Sources
 
-- [University of Minnesota Extension, Yard and Garden Care](https://extension.umn.edu/yard-and-garden). Provides guidance on preparing home garden equipment and outdoor fixtures for winter freeze protection.
-- [Penn State Extension (home page)](https://extension.psu.edu/). Offers practical instructions for winterizing outdoor spigots and plumbing fixtures.
-- [U.S. Environmental Protection Agency (home page)](https://www.epa.gov/). General reference on residential outdoor water maintenance and leak prevention.
+- [Christopher Enroth, “How to winterize outdoor plumbing — irrigation, hoses, spigots,” Illinois Extension, Good Growing, November 26, 2020](https://extension.illinois.edu/blogs/good-growing/2020-11-26-how-winterize-outdoor-plumbing-irrigation-hoses-spigots). Removing and draining hoses, the risk of ice progressing back into the spigot and the house, and the limits of frost-proof faucets.
+- [Illinois Extension, “Water Pipes”](https://extension.illinois.edu/disasters/water-pipes). Disconnect garden hoses, and shut off and drain the pipes leading to outside faucets.
+- [Oregon State University Extension, “Can I leave my garden hoses outside this winter?”](https://extension.oregonstate.edu/ask-extension/featured/can-i-leave-my-garden-hoses-outside-winter). Published October 2017, reviewed 2024. A drained hose may be left outside; temperature swings still age the material.
+- [University of Missouri Extension, “Frozen pipes create big problems during cold weather,” December 12, 2017](https://extension.missouri.edu/news/frozen-pipes-create-big-problems-during-cold-weather). Disconnect hoses, cover the faucets, and, if possible, shut indoor valves and drain the pipes.
 
-Daily Insight Desk has not tested the products mentioned here. Product details come from the seller's page and can change.
+Daily Insight Desk has not tested the products mentioned here. Product details come from the seller’s page and can change.
