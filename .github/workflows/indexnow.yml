@@ -22,5 +22,18 @@ jobs:
         with:
           node-version: 22
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
       - name: Wait for Vercel and submit sitemap URLs
         run: node scripts/indexnow.mjs --after-deploy --timeout 300
+
+      - name: Submit sitemap to Google Search Console
+        env:
+          GSC_SA_JSON: ${{ secrets.GSC_SA_JSON }}
+          GSC_SITE_URL: https://dailyinsightdesk.com/
+          GSC_SITEMAP_URL: https://dailyinsightdesk.com/sitemap.xml
+        run: |
+          python -m pip install --quiet google-auth requests
+          python scripts/submit-gsc-sitemap.py
