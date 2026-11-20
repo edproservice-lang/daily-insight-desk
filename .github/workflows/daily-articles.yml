@@ -59,6 +59,11 @@ jobs:
           echo "SKIP_IDS=$IDS" >> "$GITHUB_ENV"
           echo "Skipping: $IDS"
 
+      - name: Check keyword demand
+        env:
+          BING_WEBMASTER_API_KEY: ${{ secrets.BING_WEBMASTER_API_KEY }}
+        run: node scripts/keyword-check.mjs
+
       - name: Write articles
         id: write
         env:
