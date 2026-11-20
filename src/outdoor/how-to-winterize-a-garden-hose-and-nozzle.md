@@ -121,7 +121,7 @@ autowriter:
 
 ## The short answer
 
-Before the first hard freeze, unscrew the hose from the outdoor faucet. Take off the nozzle, the splitter, the timer, and any other add-on. Drain the hose and those fittings, and store them under shelter. If you have an indoor valve that feeds the faucet, shut it off and open the faucet so the pipe in the wall can empty.
+Before the first hard freeze, unscrew the hose from the outdoor faucet. Take off the nozzle, the splitter, the timer, and any other add-on. Drain the hose and those fittings, and [store them under shelter](/tools/how-to-store-garden-tools-so-they-dont-rust/). If you have an indoor valve that feeds the faucet, shut it off and open the faucet so the pipe in the wall can empty.
 
 That is the job. It takes a few minutes. The hose is the obvious object, but it is not the expensive failure. Illinois Extension is blunt about the sequence that actually matters: if you leave the hose attached, water may remain in the line, and as ice forms it can progress back into the spigot and perhaps into the house.
 
