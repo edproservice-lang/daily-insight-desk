@@ -42,7 +42,6 @@ export default [
       "Plastic, wood, or titanium for raw meat",
       "How to stop a cutting board from slipping",
       "How to oil a wood cutting board, and how often",
-      "Are titanium cutting boards dishwasher safe?",
       "How to choose a cutting board if you hate hand-washing",
     ],
   },
