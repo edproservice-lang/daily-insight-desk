@@ -16,11 +16,22 @@ const MODELS = (process.env.GEMINI_MODELS || "gemini-3.8-flash,gemini-3.5-flash,
 const LITE = (process.env.GEMINI_LITE_MODELS || "gemini-3.5-flash-lite,gemini-3.1-flash-lite,gemini-3.5-flash").split(",").map((x) => x.trim()).filter(Boolean);
 const COUNT = Number(process.argv[2] || process.env.ARTICLES || 1);
 const UA = "DailyInsightDeskBot/1.0 (+https://dailyinsightdesk.com/contact/)";
-const PEXELS = (process.env.PEXELS_API_KEY || "").trim();
+const TEST_PIXABAY = process.argv[2] === "--test-pixabay";
+function loadPixabayKey() {
+  const fromEnv = (process.env.PIXABAY_API_KEY || "").trim();
+  if (fromEnv) return fromEnv;
+  if (TEST_PIXABAY) {
+    const p = join(process.env.HOME || "", ".secrets", "pixabay_api_key");
+    if (existsSync(p)) return readFileSync(p, "utf8").trim();
+  }
+  return "";
+}
+const PIXABAY = loadPixabayKey();
+const PEXELS = (process.env.PEXELS_API_KEY || "").trim(); // dormant; Pexels paused new API keys
 const TODAY = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Sao_Paulo" }).format(new Date());
 const AFFIL_HOSTS = ["clickrtrckr.com", "clickomundo.com", "treejammer.com", "tricklyn.com"];
 
-if (!KEY) { console.error("GEMINI_API_KEY is missing"); process.exit(1); }
+if (!KEY && !TEST_PIXABAY) { console.error("GEMINI_API_KEY is missing"); process.exit(1); }
 const T0 = Date.now();
 const log = (...a) => console.log(`[autowriter +${Math.round((Date.now() - T0) / 1000)}s]`, ...a);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -281,12 +292,14 @@ function esc(value) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
 }
-function midFigureHtml({ src800, src1600, alt, width, height, caption, product }) {
-  const img = `<img src="${src800}" srcset="${src800} 800w, ${src1600} 1600w" sizes="(min-width: 1040px) 40rem, calc(100vw - 2.5rem)" alt="${esc(alt)}" width="${width}" height="${height}" loading="lazy" decoding="async">`;
+function midFigureHtml({ src, src800, src1600, alt, width, height, caption, captionHtml, product }) {
+  const img = src
+    ? `<img src="${src}" alt="${esc(alt)}" width="${width}" height="${height}" loading="lazy" decoding="async">`
+    : `<img src="${src800}" srcset="${src800} 800w, ${src1600} 1600w" sizes="(min-width: 1040px) 40rem, calc(100vw - 2.5rem)" alt="${esc(alt)}" width="${width}" height="${height}" loading="lazy" decoding="async">`;
   const photo = product
     ? `<a class="product-photo-link affiliate-link" data-product="${esc(product.name)}" href="${esc(product.href)}" rel="sponsored nofollow noopener" target="_blank">${img}</a>`
     : img;
-  return `<figure class="frame mid-figure">\n${photo}\n<figcaption>${esc(caption)}</figcaption>\n</figure>`;
+  return `<figure class="frame mid-figure">\n${photo}\n<figcaption>${captionHtml || esc(caption)}</figcaption>\n</figure>`;
 }
 function insertMidImage(body, figure, headingHint) {
   const headings = [...body.matchAll(/^## .+$/gm)];
@@ -326,11 +339,95 @@ function producerMidPath(product) {
 const usedImages = new Set();
 let openverseBlocked = false;
 const JUNK = /poster|painting|drawing|illustration|engraving|lithograph|map\b|specimen|logo|diagram|coat of arms|flag|film|movie|catalog|catalogue|page \d|book|scan|statue|temple|church|cathedral|saint|god|goddess|shrine|buddha|krishna|shiva|ganesh|idol|deity|religio|bible|cross\b|portrait of|stamp|coin|advert|\bad\b|magazine|newspaper/i;
-async function candidates(query, aspect, n = 4) {
+
+async function pixabaySearch(query, { orientation = "horizontal", perPage = 10 } = {}) {
+  if (!PIXABAY || !query) return [];
+  const params = new URLSearchParams({
+    key: PIXABAY,
+    q: query,
+    image_type: "photo",
+    orientation,
+    safesearch: "true",
+    per_page: String(perPage),
+  });
+  const r = await fetch(`https://pixabay.com/api/?${params}`, { headers: { "User-Agent": UA }, signal: AbortSignal.timeout(20000) });
+  if (!r.ok) { log(`pixabay ${r.status}`); return []; }
+  const data = await r.json();
+  return Array.isArray(data.hits) ? data.hits : [];
+}
+function scorePixabayHit(hit, query) {
+  const terms = String(query || "").toLowerCase().split(/[^a-z0-9]+/).filter((w) => w.length > 2);
+  const tags = String(hit.tags || "").toLowerCase();
+  let score = 0;
+  for (const t of terms) if (tags.includes(t)) score += 3;
+  if ((hit.imageWidth || 0) >= 1200) score += 1;
+  score += Math.log10((hit.downloads || 0) + 1) / 10;
+  score += Math.log10((hit.likes || 0) + 1) / 20;
+  if (JUNK.test(tags)) score -= 5;
+  return score;
+}
+async function downloadPixabayHit(hit) {
+  const url = hit.largeImageURL || hit.webformatURL;
+  if (!url) return null;
+  const r = await fetch(url, { headers: { "User-Agent": UA }, signal: AbortSignal.timeout(30000) });
+  if (!r.ok) return null;
+  const buf = Buffer.from(await r.arrayBuffer());
+  const meta = await sharp(buf).metadata();
+  if (!meta.width || Math.min(meta.width, meta.height) < 540) return null;
+  return { buf, meta, url, pageURL: hit.pageURL, tags: hit.tags, w: hit.imageWidth, h: hit.imageHeight, credit: "Pixabay" };
+}
+async function pixabayMidImage(query) {
+  try {
+    const hits = await pixabaySearch(query, { orientation: "horizontal", perPage: 10 });
+    const ranked = hits
+      .filter((h) => (h.largeImageURL || h.webformatURL) && !usedImages.has(h.largeImageURL || h.webformatURL) && !usedImages.has(h.pageURL))
+      .sort((a, b) => scorePixabayHit(b, query) - scorePixabayHit(a, query));
+    for (const hit of ranked) {
+      const got = await downloadPixabayHit(hit);
+      if (got) {
+        usedImages.add(got.url);
+        if (hit.pageURL) usedImages.add(hit.pageURL);
+        return { ...got, source: "Pixabay", pixabay: true };
+      }
+    }
+    if (!hits.length) log("pixabay: no hits for query");
+  } catch (e) { log(`pixabay ${e.message}`); }
+  return null;
+}
+async function jpegUnder(buf, width = 1200, maxBytes = 200 * 1024) {
+  let quality = 82;
+  let out = await sharp(buf).rotate().resize({ width, withoutEnlargement: true }).jpeg({ quality, mozjpeg: true }).toBuffer();
+  let w = width;
+  while (out.length > maxBytes && quality > 48) {
+    quality -= 8;
+    out = await sharp(buf).rotate().resize({ width: w, withoutEnlargement: true }).jpeg({ quality, mozjpeg: true }).toBuffer();
+  }
+  while (out.length > maxBytes && w > 800) {
+    w -= 100;
+    out = await sharp(buf).rotate().resize({ width: w, withoutEnlargement: true }).jpeg({ quality: 60, mozjpeg: true }).toBuffer();
+  }
+  return out;
+}
+
+async function candidates(query, aspect, n = 4, { skipPixabay = false } = {}) {
   const out = [];
   const qs = [...new Set([query, query.split(" ").slice(0, 2).join(" ")])];
   for (const q of qs) {
     const lists = [];
+    if (PIXABAY && !skipPixabay) {
+      try {
+        const orient = aspect === "tall" ? "vertical" : "horizontal";
+        const hits = await pixabaySearch(q, { orientation: orient, perPage: 15 });
+        lists.push(hits.map((p) => ({
+          url: p.largeImageURL || p.webformatURL,
+          w: p.imageWidth,
+          h: p.imageHeight,
+          title: p.tags || "",
+          credit: "Pixabay",
+          pageURL: p.pageURL,
+        })).filter((x) => x.url));
+      } catch (e) { log(`pixabay ${e.message}`); }
+    }
     if (PEXELS) {
       try {
         const orient = aspect === "tall" ? "portrait" : "landscape";
@@ -473,6 +570,9 @@ async function writeArticle(item, existing) {
   const product = item.product ? PRODUCTS[item.product] : null;
   const productImgs = product ? [product.image, ...(product.storyImages || [])] : [];
   const midProducerFile = producerMidPath(product);
+  const midQuery = a.midImageQuery || a.heroQuery;
+  let midPixabay = null;
+  if (!midProducerFile) midPixabay = await pixabayMidImage(midQuery);
   const slots = [{ key: "hero", want: a.heroAlt || a.heroQuery, cands: await candidates(a.heroQuery, "wide") }];
   for (const c of slots[0].cands) usedImages.add(c.url);
   for (const [i, card] of a.story.entries()) {
@@ -481,9 +581,8 @@ async function writeArticle(item, existing) {
     for (const c of cands) usedImages.add(c.url);
     slots.push({ key: `card${i + 1}`, want: card.alt || card.imageQuery, cands });
   }
-  if (!midProducerFile) {
-    const midQuery = a.midImageQuery || a.heroQuery;
-    const midCands = await candidates(midQuery, "wide");
+  if (!midProducerFile && !midPixabay) {
+    const midCands = await candidates(midQuery, "wide", 4, { skipPixabay: true });
     for (const c of midCands) usedImages.add(c.url);
     slots.push({ key: "mid", want: a.midImageAlt || midQuery, cands: midCands });
   }
@@ -527,38 +626,57 @@ async function writeArticle(item, existing) {
   let mid = null;
   if (midProducerFile) {
     mid = { buf: readFileSync(midProducerFile), credit: product.caption || "Seller photo.", product, source: "producer photo" };
+  } else if (midPixabay) {
+    mid = midPixabay;
   } else if (chosen.mid) {
     mid = { ...chosen.mid, source: "stock photo" };
   } else if (fallbacks.length) {
     mid = { buf: readFileSync(fallbacks[fb++ % fallbacks.length]), credit: "Daily Insight Desk illustration", house: true, source: "site illustration (no fitting stock photo)" };
   }
   if (mid) {
-    const midBase = `guide-${a.slug}-mid`;
-    const midH = Math.round((1600 * 9) / 16);
-    const fit = mid.product || mid.house ? "contain" : "cover";
-    for (const w of [1600, 800]) {
-      await sharp(mid.buf).rotate().resize(w, Math.round((w * 9) / 16), {
-        fit,
-        position: "attention",
-        background: { r: 247, g: 243, b: 234, alpha: 1 },
-      }).webp({ quality: 72 }).toFile(join(imgDir, `${midBase}-${w}.webp`));
-    }
     const alt = a.midImageAlt || (mid.product && product.alt) || a.heroAlt || "Photograph illustrating this guide";
-    const caption = mid.product
-      ? (product.caption || "Seller photo.")
-      : (mid.house || String(mid.credit || "").startsWith("Daily Insight Desk"))
-        ? "Illustration by Daily Insight Desk."
-        : `Stock photo: ${mid.credit}`;
-    a.body = insertMidImage(a.body, midFigureHtml({
-      src800: `/assets/images/${midBase}-800.webp`,
-      src1600: `/assets/images/${midBase}-1600.webp`,
-      alt,
-      width: 1600,
-      height: midH,
-      caption,
-      product: mid.product || null,
-    }), a.midImageSection);
-    imageReport.push(`mid-article: ${mid.source}`);
+    if (mid.pixabay) {
+      const dir = join(imgDir, "articles");
+      mkdirSync(dir, { recursive: true });
+      const jpg = await jpegUnder(mid.buf);
+      writeFileSync(join(dir, `${a.slug}.jpg`), jpg);
+      const meta = await sharp(jpg).metadata();
+      const page = mid.pageURL || "https://pixabay.com/";
+      a.body = insertMidImage(a.body, midFigureHtml({
+        src: `/assets/images/articles/${a.slug}.jpg`,
+        alt,
+        width: meta.width,
+        height: meta.height,
+        captionHtml: `Photo: <a href="${esc(page)}" rel="nofollow noopener" target="_blank">Pixabay</a>`,
+      }), a.midImageSection);
+      imageReport.push(`mid-article: Pixabay (${page})`);
+    } else {
+      const midBase = `guide-${a.slug}-mid`;
+      const midH = Math.round((1600 * 9) / 16);
+      const fit = mid.product || mid.house ? "contain" : "cover";
+      for (const w of [1600, 800]) {
+        await sharp(mid.buf).rotate().resize(w, Math.round((w * 9) / 16), {
+          fit,
+          position: "attention",
+          background: { r: 247, g: 243, b: 234, alpha: 1 },
+        }).webp({ quality: 72 }).toFile(join(imgDir, `${midBase}-${w}.webp`));
+      }
+      const caption = mid.product
+        ? (product.caption || "Seller photo.")
+        : (mid.house || String(mid.credit || "").startsWith("Daily Insight Desk"))
+          ? "Illustration by Daily Insight Desk."
+          : `Stock photo: ${mid.credit}`;
+      a.body = insertMidImage(a.body, midFigureHtml({
+        src800: `/assets/images/${midBase}-800.webp`,
+        src1600: `/assets/images/${midBase}-1600.webp`,
+        alt,
+        width: 1600,
+        height: midH,
+        caption,
+        product: mid.product || null,
+      }), a.midImageSection);
+      imageReport.push(`mid-article: ${mid.source}`);
+    }
   }
   a._imageReport = imageReport;
   if (hero.house) a.heroAlt = silo?.alt || "Illustration of home and garden tools";
@@ -624,6 +742,31 @@ function build() {
 }
 
 // ---------- main ----------
+if (TEST_PIXABAY) {
+  const query = process.argv.slice(3).join(" ").trim() || "garden hose";
+  if (!PIXABAY) { console.error("PIXABAY_API_KEY is missing"); process.exit(1); }
+  log(`pixabay dry run, query: ${query}`);
+  const hit = await pixabayMidImage(query);
+  if (!hit) { console.error("No Pixabay photo found"); process.exit(1); }
+  const tmp = mkdtempSync(join(tmpdir(), "pixabay-test-"));
+  const jpg = await jpegUnder(hit.buf);
+  const dest = join(tmp, "sample.jpg");
+  writeFileSync(dest, jpg);
+  const meta = await sharp(jpg).metadata();
+  console.log(JSON.stringify({
+    query,
+    pageURL: hit.pageURL,
+    tags: hit.tags,
+    sourceWidth: hit.w,
+    sourceHeight: hit.h,
+    output: dest,
+    outputWidth: meta.width,
+    outputHeight: meta.height,
+    bytes: jpg.length,
+  }, null, 2));
+  process.exit(0);
+}
+
 const queue = JSON.parse(readFileSync(QUEUE, "utf8"));
 const results = [];
 let made = 0;
