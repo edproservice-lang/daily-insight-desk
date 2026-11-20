@@ -16,6 +16,7 @@ const MODELS = (process.env.GEMINI_MODELS || "gemini-3.8-flash,gemini-3.5-flash,
 const LITE = (process.env.GEMINI_LITE_MODELS || "gemini-3.5-flash-lite,gemini-3.1-flash-lite,gemini-3.5-flash").split(",").map((x) => x.trim()).filter(Boolean);
 const COUNT = Number(process.argv[2] || process.env.ARTICLES || 1);
 const UA = "DailyInsightDeskBot/1.0 (+https://dailyinsightdesk.com/contact/)";
+const PEXELS = (process.env.PEXELS_API_KEY || "").trim();
 const TODAY = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Sao_Paulo" }).format(new Date());
 const AFFIL_HOSTS = ["clickrtrckr.com", "clickomundo.com", "treejammer.com", "tricklyn.com"];
 
@@ -265,10 +266,60 @@ ${list}
 5b. STYLE: US spelling (color, not colour). No brand names except the product above. Do not copy the product facts word for word; paraphrase briefly and let the product box carry the details. Only attribute a claim to a source if that page is specifically about it; otherwise state general advice without attribution. Internal links must read naturally: if a target is only loosely related, write a short bridging sentence that gives the reader a real reason to click.
 6. Web Story: exactly 7 cards. Card 1 is a cover. The last card invites reading the full guide. Card titles 3-7 words, text max 18 words. For each card give a concrete stock-photo search query (2-4 plain words, a real scene, no brand names, no text) and alt text describing that scene. ${product ? 'Set "kind":"product" on exactly one card about the product itself; other cards "kind":"stock".' : 'All cards "kind":"stock".'}
 7. "related": choose the 3 most related existing articles (href from the list) with a one-sentence note on why.
+8. Mid-article photo: do not put any image, figure, or HTML in the body (the publisher inserts one photo later). Set "midImageSection" to the exact H2 text of a practical how-to section near the middle (not "The short answer", not pros/cons, not "who it is for"). Set "midImageQuery" to a 2-4 word stock-photo search for a real scene that illustrates that section (no brand names, no text in the scene). Set "midImageAlt" to one descriptive sentence for that photo that naturally includes the target keyword.
 
 Return ONLY JSON with this shape:
-{"title": "question or how-to headline, max 70 chars", "metaTitle": "max 60 chars", "description": "meta description 140-160 chars", "dek": "1-2 sentence standfirst", "slug": "lowercase-hyphen-slug", "readTimeNote": "", "heroQuery": "stock photo search for a wide hero image, 2-4 words", "heroAlt": "alt text for that hero", "body": "markdown", "toc": [{"heading": "exact H2 text", "label": "2-4 word label"}], "faq": [{"q": "", "a": ""}], "sources": [{"name": "Publisher, page title", "url": "https://...", "note": "one sentence on what it supports"}], "related": [{"href": "/path/", "title": "", "note": ""}], "story": [{"id": "short-id", "title": "", "text": "", "imageQuery": "", "alt": "", "kind": "stock"}]}
+{"title": "question or how-to headline, max 70 chars", "metaTitle": "max 60 chars", "description": "meta description 140-160 chars", "dek": "1-2 sentence standfirst", "slug": "lowercase-hyphen-slug", "readTimeNote": "", "heroQuery": "stock photo search for a wide hero image, 2-4 words", "heroAlt": "alt text for that hero", "midImageSection": "exact H2 text", "midImageQuery": "2-4 word photo search", "midImageAlt": "descriptive alt including the keyword", "body": "markdown", "toc": [{"heading": "exact H2 text", "label": "2-4 word label"}], "faq": [{"q": "", "a": ""}], "sources": [{"name": "Publisher, page title", "url": "https://...", "note": "one sentence on what it supports"}], "related": [{"href": "/path/", "title": "", "note": ""}], "story": [{"id": "short-id", "title": "", "text": "", "imageQuery": "", "alt": "", "kind": "stock"}]}
 ${feedback ? `\nYOUR PREVIOUS DRAFT FAILED THESE CHECKS. Fix every one:\n- ${feedback.join("\n- ")}\n` : ""}`;
+}
+
+
+function esc(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+function midFigureHtml({ src800, src1600, alt, width, height, caption, product }) {
+  const img = `<img src="${src800}" srcset="${src800} 800w, ${src1600} 1600w" sizes="(min-width: 1040px) 40rem, calc(100vw - 2.5rem)" alt="${esc(alt)}" width="${width}" height="${height}" loading="lazy" decoding="async">`;
+  const photo = product
+    ? `<a class="product-photo-link affiliate-link" data-product="${esc(product.name)}" href="${esc(product.href)}" rel="sponsored nofollow noopener" target="_blank">${img}</a>`
+    : img;
+  return `<figure class="frame mid-figure">\n${photo}\n<figcaption>${esc(caption)}</figcaption>\n</figure>`;
+}
+function insertMidImage(body, figure, headingHint) {
+  const headings = [...body.matchAll(/^## .+$/gm)];
+  const skip = /the short answer|who (it|this) is for|pros and cons/i;
+  const usable = headings.filter((h) => !skip.test(h[0]));
+  const pool = usable.length ? usable : headings.slice(1);
+  if (!pool.length) {
+    const midAt = Math.max(0, Math.floor(body.length / 2));
+    const cut = body.indexOf("\n\n", midAt);
+    const at = cut === -1 ? midAt : cut;
+    return `${body.slice(0, at)}\n\n${figure}\n${body.slice(at)}`;
+  }
+  let target;
+  const hint = String(headingHint || "").trim().toLowerCase();
+  if (hint) target = pool.find((h) => h[0].slice(3).trim().toLowerCase() === hint);
+  if (!target) {
+    const midAt = Math.floor(body.length / 2);
+    target = pool.reduce((best, h) => Math.abs(h.index - midAt) < Math.abs(best.index - midAt) ? h : best);
+  }
+  let at = target.index + target[0].length;
+  const rest = body.slice(at);
+  const lead = rest.match(/^\n+(?:\{%[\s\S]*?%\}[ \t]*\n+|[^#\n][^\n]*(?:\n(?!## |### |$)[^\n]*)*\n*)/);
+  if (lead) at += lead[0].length;
+  return `${body.slice(0, at).replace(/\n*$/, "\n\n")}${figure}\n${body.slice(at).replace(/^\n*/, "")}`;
+}
+function producerMidPath(product) {
+  if (!product) return "";
+  for (const p of [...(product.storyImages || []), product.image]) {
+    if (!p) continue;
+    const file = join(SRC, String(p).replace(/^\//, ""));
+    if (existsSync(file)) return file;
+  }
+  return "";
 }
 
 // ---------- images ----------
@@ -280,6 +331,21 @@ async function candidates(query, aspect, n = 4) {
   const qs = [...new Set([query, query.split(" ").slice(0, 2).join(" ")])];
   for (const q of qs) {
     const lists = [];
+    if (PEXELS) {
+      try {
+        const orient = aspect === "tall" ? "portrait" : "landscape";
+        const u = `https://api.pexels.com/v1/search?query=${encodeURIComponent(q)}&per_page=15&orientation=${orient}`;
+        const r = await fetch(u, { headers: { Authorization: PEXELS, "User-Agent": UA }, signal: AbortSignal.timeout(20000) });
+        if (r.ok) lists.push((await r.json()).photos.map((p) => ({
+          url: p.src?.large2x || p.src?.large || p.src?.original,
+          w: p.width,
+          h: p.height,
+          title: `${p.alt || ""} ${p.photographer || ""}`,
+          credit: `Photo by ${p.photographer} on Pexels`,
+        })).filter((x) => x.url));
+        else log(`pexels ${r.status}`);
+      } catch (e) { log(`pexels ${e.message}`); }
+    }
     if (!openverseBlocked) {
       try {
         const u = `https://api.openverse.org/v1/images/?q=${encodeURIComponent(q)}&license=cc0,pdm&category=photograph&page_size=20&mature=false${aspect ? `&aspect_ratio=${aspect}` : ""}`;
@@ -406,6 +472,7 @@ async function writeArticle(item, existing) {
   const imgDir = join(SRC, "assets", "images");
   const product = item.product ? PRODUCTS[item.product] : null;
   const productImgs = product ? [product.image, ...(product.storyImages || [])] : [];
+  const midProducerFile = producerMidPath(product);
   const slots = [{ key: "hero", want: a.heroAlt || a.heroQuery, cands: await candidates(a.heroQuery, "wide") }];
   for (const c of slots[0].cands) usedImages.add(c.url);
   for (const [i, card] of a.story.entries()) {
@@ -413,6 +480,12 @@ async function writeArticle(item, existing) {
     const cands = await candidates(card.imageQuery || a.heroQuery, "tall", 3);
     for (const c of cands) usedImages.add(c.url);
     slots.push({ key: `card${i + 1}`, want: card.alt || card.imageQuery, cands });
+  }
+  if (!midProducerFile) {
+    const midQuery = a.midImageQuery || a.heroQuery;
+    const midCands = await candidates(midQuery, "wide");
+    for (const c of midCands) usedImages.add(c.url);
+    slots.push({ key: "mid", want: a.midImageAlt || midQuery, cands: midCands });
   }
   const picks = await pickImages(slots);
   const chosen = {};
@@ -450,11 +523,47 @@ async function writeArticle(item, existing) {
     }
     storyPages.push({ id: slugify(card.id || `card-${i + 1}`) || `card-${i + 1}`, title: card.title, text: card.text, image: `/assets/images/stories/${a.slug}/p${i + 1}.webp`, imageWidth: 720, imageHeight: 960, alt, tone: tones[i % 2] });
   }
+  const wc = words(a.body);
+  let mid = null;
+  if (midProducerFile) {
+    mid = { buf: readFileSync(midProducerFile), credit: product.caption || "Seller photo.", product, source: "producer photo" };
+  } else if (chosen.mid) {
+    mid = { ...chosen.mid, source: "stock photo" };
+  } else if (fallbacks.length) {
+    mid = { buf: readFileSync(fallbacks[fb++ % fallbacks.length]), credit: "Daily Insight Desk illustration", house: true, source: "site illustration (no fitting stock photo)" };
+  }
+  if (mid) {
+    const midBase = `guide-${a.slug}-mid`;
+    const midH = Math.round((1600 * 9) / 16);
+    const fit = mid.product || mid.house ? "contain" : "cover";
+    for (const w of [1600, 800]) {
+      await sharp(mid.buf).rotate().resize(w, Math.round((w * 9) / 16), {
+        fit,
+        position: "attention",
+        background: { r: 247, g: 243, b: 234, alpha: 1 },
+      }).webp({ quality: 72 }).toFile(join(imgDir, `${midBase}-${w}.webp`));
+    }
+    const alt = a.midImageAlt || (mid.product && product.alt) || a.heroAlt || "Photograph illustrating this guide";
+    const caption = mid.product
+      ? (product.caption || "Seller photo.")
+      : (mid.house || String(mid.credit || "").startsWith("Daily Insight Desk"))
+        ? "Illustration by Daily Insight Desk."
+        : `Stock photo: ${mid.credit}`;
+    a.body = insertMidImage(a.body, midFigureHtml({
+      src800: `/assets/images/${midBase}-800.webp`,
+      src1600: `/assets/images/${midBase}-1600.webp`,
+      alt,
+      width: 1600,
+      height: midH,
+      caption,
+      product: mid.product || null,
+    }), a.midImageSection);
+    imageReport.push(`mid-article: ${mid.source}`);
+  }
   a._imageReport = imageReport;
   if (hero.house) a.heroAlt = silo?.alt || "Illustration of home and garden tools";
   await sharp(join(imgDir, "stories", a.slug, "p1.webp")).toFile(join(imgDir, "stories", `${a.slug}.webp`));
   // body + sources section
-  const wc = words(a.body);
   const sourcesNote = item.product ? "\n\nProduct details come from the seller's page and can change.\n" : "\n";
   const sourcesMd = `## Sources\n\n${a.sources.map((s) => `- [${s.name}](${s.url}). ${s.note}`).join("\n")}${sourcesNote}`;
   const md = `---\n${frontMatter(a, item, wc, hero.credit, storyPages)}---\n\n${a.body.trim()}\n\n${sourcesMd}`;
@@ -470,7 +579,7 @@ async function addBacklinks(newUrl, a, existing) {
   const cands = [];
   for (const g of existing) {
     if (g.raw.includes(`](${newUrl})`)) continue;
-    const paras = g.body.split("\n").map((t, i) => ({ i, t })).filter((p) => p.t.length > 120 && !/^(#|-|\*|\{%|\||>|\d+\.)/.test(p.t) && (p.t.match(/\]\(/g) || []).length < 2);
+    const paras = g.body.split("\n").map((t, i) => ({ i, t })).filter((p) => p.t.length > 120 && !/^(#|-|\*|\{%|\||>|\d+\.|<)/.test(p.t) && (p.t.match(/\]\(/g) || []).length < 2);
     for (const p of paras.slice(0, 8)) cands.push({ file: g.file.slice(ROOT.length + 1), line: p.i, text: p.t });
   }
   if (!cands.length) return [];
