@@ -19,6 +19,7 @@ ogAlt: Garlic bulbs, cloves, and onions on a dark wooden cutting board
 permalink: /kitchen/how-to-get-garlic-smell-out-of-cutting-board/
 story:
   slug: how-to-get-garlic-smell-out-of-cutting-board
+  product: katori
   pages:
     - id: card-1
       title: Clear Garlic Smells
@@ -101,6 +102,8 @@ toc:
     label: Pros and cons
   - id: who-it-is-for-and-who-should-skip-it
     label: Who it is for
+  - id: where-katori-fits
+    label: Where Katori fits
   - id: sources
     label: Sources
 faq:
@@ -228,7 +231,21 @@ The [University of Maine Cooperative Extension](https://extension.umaine.edu/pub
 * **People seeking zero-maintenance tools:** If hand-scrubbing and board-oiling feel like chores, switching to non-porous surfaces may save time.
 * **Severely warped or split boards:** If deep garlic smell is accompanied by structural cracks, bacteria can hide deep within the split where surface scrubs cannot reach; the board should be replaced.
 
+## Where Katori fits
+
+A wood board holds garlic and onion smell because the juices soak into the grain. A titanium board is a non-porous metal face, so those juices stay on the surface and wash off with hot, soapy water. That is the honest appeal after a lemon-and-salt afternoon: you can skip the coarse-salt scrub, the baking-soda paste, and the re-oiling that wood wants after citrus.
+
+Katori is a titanium cutting board we can link to, sold as a smooth metal surface for people who want that kind of simple cleanup. The seller presents it as low-absorption and straightforward to wash, without the oiling a wood board wants. Those are fair reasons to be interested if odor and maintenance are the problem.
+
+The trade-off is in the [guide on titanium cutting boards](/kitchen/do-titanium-cutting-boards-dull-knives/): hard metal is tough on a knife edge, so wood or plastic is still the kinder everyday chopping surface. If easy rinsing is why you want a metal board, treat it as a second surface for garlic, onion, and other pungent prep, and keep wood or plastic for the daily knife work.
+
+Confirm the size, what is included, and the care instructions on the current seller page before you order.
+
+{% product "katori" %}
+
 ## Sources
 
 - [USDA Food Safety and Inspection Service, “Cutting Boards”](https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/cutting-boards). Last updated August 27, 2024. The page covers washing with hot, soapy water, air-drying, and using a separate board for raw meat and poultry.
 - [Gulsun Akdemir Evrendilek, “Safe Cutting Boards: Materials, Usage, and Cleaning Tips,” University of Maine Cooperative Extension, Bulletin #3108](https://extension.umaine.edu/publications/3108e/). The bulletin advises against soaking wood, cautions that many wooden boards do not belong in the dishwasher, and mentions vinegar or 3% hydrogen peroxide as household follow-up options after washing.
+
+Product details come from the seller’s page and can change.
