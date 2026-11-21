@@ -179,7 +179,19 @@ function checkArticle(a, ctx) {
   if ((body.match(/^## /gm) || []).length < 5) errs.push("body needs at least 5 H2 sections");
   if (!/^### /m.test(body)) errs.push("body needs at least one H3 (###) subsection");
   if (!/^## .*pros and cons/im.test(body)) errs.push('body needs a "## Pros and cons" section (or "## ... pros and cons ...")');
-  if (!/^## .*who (it|this) is (for|not for)/im.test(body)) errs.push('body needs a "## Who it is for (and who it is not for)" style section');
+  if (!/\*\*Pros:?\*\*/.test(body)) errs.push('Pros and cons section must lead with a **Pros** list');
+  if (!/\*\*Good to know:?\*\*|\*\*Best results(?: when)?:?\*\*|^### Good to know|^### Best results/im.test(body)) {
+    errs.push('Pros and cons section needs a **Good to know** or **Best results when** list, not a drawback-style **Cons** list');
+  }
+  if (/^###?\s+Cons\b/m.test(body) || /\*\*Cons:?\*\*/.test(body)) {
+    errs.push('use **Good to know** or **Best results when** instead of a **Cons** heading');
+  }
+  if (!/^## .*who .{0,40}(ideal for|(it|this) is for)/im.test(body)) {
+    errs.push('body needs a "## Who it\'s ideal for" section (or similar positive fit wording)');
+  }
+  if (/^## .*who should skip/im.test(body) || /^###?\s+Who should skip/im.test(body)) {
+    errs.push('reframe "who should skip it" as "## Who it\'s ideal for" with a positive fit note');
+  }
   if (/^## (sources|faq|frequently asked)/im.test(body)) errs.push("do not write Sources or FAQ sections in body; they come from fields");
   if (!/^## The short answer\n/i.test(body.trimStart())) errs.push('body must open with "## The short answer"');
   else {
@@ -255,19 +267,19 @@ key: ${item.product}
 name: ${product.name}
 affiliate URL (use this exact URL for in-text calls to action): ${product.href}
 facts: ${product.summary} ${product.points.join(" ")}
-Write a short section near the end titled "Where ${product.name} fits" (or similar). In that section, and in every paragraph that sells the product, mention ONLY benefits and persuade the reader to look at the offer. Never mention cons, trade-offs, drawbacks, limitations, or what the product is not. Do not undercut the product there (no "but it won't...", no "treat it as a second surface", no "not a replacement for..."). Informational sections elsewhere in the article (such as "## Pros and cons" and "who should skip it") may stay factual about the job or the category, but those points must not sit inside the sales section.
+Write a short section near the end titled "Where ${product.name} fits" (or similar). In that section, and in every paragraph that sells the product, mention ONLY benefits and persuade the reader to look at the offer. Never mention cons, trade-offs, drawbacks, limitations, or what the product is not. Do not undercut the product there (no "but it won't...", no "treat it as a second surface", no "not a replacement for..."). Elsewhere in the article, keep the how-to honest, but do not undercut the product: the "## Pros and cons" section should lead with strong **Pros**, then a **Good to know** or **Best results when** list of constructive usage, care, or fit tips (not a drawback list). Frame the audience section as "## Who it's ideal for" (or similar), with a short positive fit note rather than a "who should skip it" or "it is not for" block.
 Place this exact line on its own line, once, at the end of that benefits-only sales section: {% product "${item.product}" %}
-The product box already includes a button to the same offer. Still include in-sentence Markdown links to the affiliate URL: [natural, specific anchor](${product.href}). Write at least two of these CTAs in benefit-focused sentences, where a reader who is ready to look at the offer would naturally want them. Never use "click here", "buy now", or "this guide" as the anchor. Do not place a CTA immediately after a list of cons or a "who should skip it" paragraph.
+The product box already includes a button to the same offer. Still include in-sentence Markdown links to the affiliate URL: [natural, specific anchor](${product.href}). Write at least two of these CTAs in benefit-focused sentences, where a reader who is ready to look at the offer would naturally want them. Never use "click here", "buy now", or "this guide" as the anchor. Do not place a CTA immediately after a list of drawbacks.
 Do not write an affiliate disclosure, a commission notice, or a "we may earn" line; the site inserts a short note automatically before the first offer link.` : `
 This is a helpful guide with no product box. Do not include any product shortcode or affiliate URL.`;
   return `You write for Daily Insight Desk (dailyinsightdesk.com), a US home & garden guide site. US English, US units.
 
 Every article must balance three goals. The piece should read as a useful guide first, not as an ad:
 1) ATTRACT TRAFFIC (SEO). Write for this target long-tail search and the real intent behind it: "${item.keyword}". Put the target keyword, or a very close natural variant, in the title (the title becomes the on-page H1), in the 40-60 word opening answer, and in exactly one H2. Use descriptive, specific H2/H3s a searcher would scan. The first paragraph must be a direct 40-60 word answer to the title question, so a search or AI system can quote it. The FAQ field should cover related questions people actually search.
-2) ADD REAL VALUE. The guide must stand on its own as practical how-to help even if the reader never clicks a product link. Give clear steps, honest trade-offs, and advice they can use today. Be specific, never filler.
+2) ADD REAL VALUE. The guide must stand on its own as practical how-to help even if the reader never clicks a product link. Give clear steps, constructive "good to know" tips, and advice they can use today. Be specific, never filler.
 3) SELL, WITHOUT READING AS AN AD. When a product is provided, give it a benefits-only sales section: concrete benefits, a next step, and in-sentence calls to action to the affiliate URL. In that section, and in any paraphrase of the product box, never mention cons, trade-offs, or drawbacks. Do not write a sales letter, and do not treat the product as the only possible answer in the rest of the guide.
 
-Voice: plain, specific, confident, a little dry; short declarative sentences; practical steps; honest about trade-offs in the how-to and in Pros and cons; in the product sales section, only benefits. Persuasive because it is useful, never bland filler, never hype.
+Voice: plain, specific, confident, a little dry; short declarative sentences; practical steps; in Pros and cons, lead with benefits and frame the rest as gentle "good to know" or "best results when" tips, not drawbacks; in the product sales section, only benefits. Persuasive because it is useful, never bland filler, never hype.
 
 ARTICLE TOPIC: ${item.topic}
 TARGET LONG-TAIL SEARCH: "${item.keyword}"
@@ -276,9 +288,10 @@ TODAY: ${TODAY}
 ${productBlock}
 
 HARD RULES
-1. Body: 1,300-1,700 words of Markdown. Use ## for sections and ### for subsections. No H1. Open with "## The short answer", then immediately a single 40-60 word paragraph that directly answers the title question in plain English. No preamble, no "in this guide", no throat-clearing. Then continue the article. Include "## Pros and cons" (bold **Pros** and **Cons** bullet lists) and "## Who it is for, and who should skip it" (or similar wording containing "who it is for"). Do NOT write a Sources or FAQ section in the body.
+1. Body: 1,300-1,700 words of Markdown. Use ## for sections and ### for subsections. No H1. Open with "## The short answer", then immediately a single 40-60 word paragraph that directly answers the title question in plain English. No preamble, no "in this guide", no throat-clearing. Then continue the article. Include "## Pros and cons" that leads with a strong bold **Pros** list, then a bold **Good to know** or **Best results when** list of constructive usage, care, or fit tips (never a drawback-style **Cons** list). Include "## Who it's ideal for" (or similar positive wording) with a short positive fit note; do not write a "who should skip it" or "it is not for" block. Do NOT write a Sources or FAQ section in the body.
 2. Never claim we tested, tried, used, measured, or reviewed anything. Also never state or imply that we did not test or use a product. Do not write phrases such as "we haven't tested", "we have not used", "we did not use", "not hands-on", "this desk has not tested", or "not a test by Daily Insight Desk." No testimonials, quotes from customers, review counts, star ratings, or invented statistics. No medical or health claims. No prices or specs unless given above. Attribute seller claims and other publications clearly.
-2b. PRODUCT SALES SECTION: when a product is provided, the "Where X fits" section (or equivalent) and any paragraph that sells the product must be benefits-only and should persuade the reader to look at the offer. Never mention cons, trade-offs, drawbacks, or what the product cannot do in that section. Leave those points, if they belong at all, to "## Pros and cons" or "who should skip it", outside the sales section.
+2b. PRODUCT SALES SECTION: when a product is provided, the "Where X fits" section (or equivalent) and any paragraph that sells the product must be benefits-only and should persuade the reader to look at the offer. Never mention cons, trade-offs, drawbacks, or what the product cannot do in that section.
+2c. PROS AND AUDIENCE: do not undercut the product in "## Pros and cons" or the audience section either. Lead with strong benefits. Turn any limitations into gentle, constructive "good to know" / "best results when" tips (usage, care, or fit). Frame the audience as "who it's ideal for," not "who should skip it." Stay honest: no false claims, no medical claims, no fake testimonials, and never say or imply that we did not test or use the product.
 3. INTERNAL LINKS: put 3-6 links to DIFFERENT existing articles from the list below INSIDE normal sentences, as Markdown links [descriptive anchor](/path/). Anchors are 2-6 natural words describing the target topic (vary them; never "click here"/"this guide"). Each target at most once. Never inside headings. Only use URLs from this list:
 ${list}
 4. EXTERNAL SOURCES: cite 2-3 real, neutral authority pages (US .gov, .edu extension services, or an official manufacturer care/manual page) that you are confident exist at that exact URL; link each once inside a sentence in the body and list it in "sources". Also add 2 extra backup candidates at the end of "sources" with "inline": false (prefer stable top-level pages like epa.gov, cdc.gov, usda.gov, extension.umn.edu, extension.psu.edu that are certain to exist). Mark the linked ones "inline": true. Never link to stores, Amazon, marketplaces, or blogs/roundups with affiliate links.
@@ -286,7 +299,7 @@ ${list}
 5b. STYLE: US spelling (color, not colour). No brand names except the product above. Do not copy the product facts word for word; paraphrase briefly and let the product box carry the details. Only attribute a claim to a source if that page is specifically about it; otherwise state general advice without attribution. Internal links must read naturally: if a target is only loosely related, write a short bridging sentence that gives the reader a real reason to click.
 6. Web Story: exactly 7 cards. Card 1 is a cover. The last card invites reading the full guide. Card titles 3-7 words, text max 18 words. For each card give a concrete stock-photo search query (2-4 plain words, a real scene, no brand names, no text) and alt text describing that scene. ${product ? 'Set "kind":"product" on exactly one card about the product itself; other cards "kind":"stock".' : 'All cards "kind":"stock".'}
 7. "related": choose the 3 most related existing articles (href from the list) with a one-sentence note on why.
-8. Mid-article photo: do not put any image, figure, or HTML in the body (the publisher inserts one photo later). Set "midImageSection" to the exact H2 text of a practical how-to section near the middle (not "The short answer", not pros/cons, not "who it is for"). Set "midImageQuery" to a 2-4 word stock-photo search for a real scene that illustrates that section (no brand names, no text in the scene). Set "midImageAlt" to one descriptive sentence for that photo that naturally includes the target keyword.
+8. Mid-article photo: do not put any image, figure, or HTML in the body (the publisher inserts one photo later). Set "midImageSection" to the exact H2 text of a practical how-to section near the middle (not "The short answer", not pros/cons, not "who it's ideal for" or "who it is for"). Set "midImageQuery" to a 2-4 word stock-photo search for a real scene that illustrates that section (no brand names, no text in the scene). Set "midImageAlt" to one descriptive sentence for that photo that naturally includes the target keyword.
 
 Return ONLY JSON with this shape:
 {"title": "question or how-to headline, max 70 chars", "metaTitle": "max 60 chars", "description": "meta description 140-160 chars", "dek": "1-2 sentence standfirst", "slug": "lowercase-hyphen-slug", "readTimeNote": "", "heroQuery": "stock photo search for a wide hero image, 2-4 words", "heroAlt": "alt text for that hero", "midImageSection": "exact H2 text", "midImageQuery": "2-4 word photo search", "midImageAlt": "descriptive alt including the keyword", "body": "markdown", "toc": [{"heading": "exact H2 text", "label": "2-4 word label"}], "faq": [{"q": "", "a": ""}], "sources": [{"name": "Publisher, page title", "url": "https://...", "note": "one sentence on what it supports"}], "related": [{"href": "/path/", "title": "", "note": ""}], "story": [{"id": "short-id", "title": "", "text": "", "imageQuery": "", "alt": "", "kind": "stock"}]}
@@ -312,7 +325,7 @@ function midFigureHtml({ src, src800, src1600, alt, width, height, caption, capt
 }
 function insertMidImage(body, figure, headingHint) {
   const headings = [...body.matchAll(/^## .+$/gm)];
-  const skip = /the short answer|who (it|this) is for|pros and cons/i;
+  const skip = /the short answer|who (it|this) is for|who it.?s ideal for|pros and cons|good to know|best results/i;
   const usable = headings.filter((h) => !skip.test(h[0]));
   const pool = usable.length ? usable : headings.slice(1);
   if (!pool.length) {

@@ -91,15 +91,19 @@ toc:
   - id: what-a-focused-hose-stream-is-good-at
     label: Jobs it handles well
   - id: what-still-needs-a-brush-or-a-real-pressure-washer
-    label: Jobs it does not
+    label: When a brush or washer helps
   - id: how-to-rinse-a-patio-without-a-machine
     label: Rinsing a patio
   - id: when-hard-water-clogs-the-tip
     label: Hard-water clogs
   - id: where-jetterix-fits
     label: Where Jetterix fits
-  - id: how-to-choose-without-overbuying
-    label: Choosing without overbuying
+  - id: pros-and-cons
+    label: Pros and cons
+  - id: who-its-ideal-for
+    label: Who it’s ideal for
+  - id: how-to-choose-a-nozzle
+    label: How to choose a nozzle
 faq:
   - q: Is a garden hose nozzle a pressure washer?
     a: No. A pressure washer adds a pump. A nozzle only narrows and aims the water your spigot already supplies. Ads that treat the two as the same thing are describing a wish, not the tool.
@@ -149,7 +153,7 @@ The [outdoor shelf](/outdoor/) now has a guide on [portable evaporative coolers]
 
 ## What still needs a brush or a real pressure washer
 
-A nozzle fails honestly at anything that has grabbed the surface.
+A nozzle is at its best on loose dirt. Some jobs still want a brush, a cleaner, or a pump, and that is useful to know before you start.
 
 Moss and algae in a shady joint have roots, or at least a grip. Water slides over the green and leaves it. A cleaner meant for the paver, a dwell time, and a stiff brush do the work. Which bottle you mix is its own choice: [cleaning tablets](/cleaning/do-cleaning-tablets-replace-spray-bottles/) are one way to stop keeping a different spray for every room, and they still have to name the surface. The hose comes back at the end to carry the mess into the yard, not into the beds if you can help it.
 
@@ -194,14 +198,35 @@ If you want the current package, price, and connector details, [see the current 
 
 {% product "jetterix" %}
 
-## How to choose without overbuying
+## Pros and cons
 
-Buy, or keep, a nozzle you can shut off at the handle, that does not leak at the threads, and that still produces an even fan after a season. Patterns are the feature. A mist, a fan, and a stream cover the real week. A “drill” or “turbo” setting is the one most likely to mark wood and mortar, and it is the one the ads lean on.
+**Pros**
 
-You do not need a new nozzle to rinse a patio this Saturday if the one in the bucket still sprays evenly. Clean the tip, replace the washer, and unkink the hose. Spend the money on a brush that fits the paver, which is the tool the water was never going to replace. The [step-by-step guide to cleaning patio pavers with a hose](/cleaning/how-to-clean-patio-pavers-with-a-garden-hose/) puts the two together.
+- A focused hose stream rinses patios, chairs, tools, and siding without electricity or a separate machine.
+- An adjustable nozzle gives you a fan for broad rinsing and a tighter stream for the spots that need it.
+- It fits the hose you already own, so the upgrade is a simple fitting, not a new appliance.
+- You can shut it off at the handle between tasks.
 
-Rent or buy an actual pressure washer when the job is a pump job: a deck that has gone gray and you have decided to refinish it, concrete with set-in oil, or siding you have already accepted you will rinse very carefully according to the machine’s instructions. Renting for a day is often the better version of that decision. Owning a second machine to knock pollen off a chair is how garages fill up.
+**Good to know**
 
-The same split, a light tool versus the heavy machine, shows up with clothes. The [garment steamer and iron guide](/cleaning/garment-steamer-vs-iron/) sorts which wrinkles a steamer can finish and which still want an iron.
+- Spray strength follows your house’s water pressure. A good nozzle helps you aim that pressure well.
+- A stiff brush still does the scrubbing on set-in dirt. The [step-by-step guide to cleaning patio pavers with a hose](/cleaning/how-to-clean-patio-pavers-with-a-garden-hose/) puts the two together.
+- Keep a tight stream moving, and ease off on soft wood or older mortar.
+
+## Who it’s ideal for
+
+It is ideal for a homeowner who already rinses outdoor surfaces with a hose and wants a more useful stream for weekly dirt: pollen on a patio, mud on tools, soap off a car, a chair after a dusty week.
+
+If you are refinishing a gray deck or lifting set-in oil on concrete, a rented pressure washer can be the extra tool for that day. For the regular rinse, a focused nozzle is the one that lives on the hose.
+
+## How to choose a nozzle
+
+Buy, or keep, a nozzle you can shut off at the handle, that does not leak at the threads, and that still produces an even fan after a season. Patterns are the feature. A mist, a fan, and a stream cover the real week. Use a tighter “drill” or “turbo” setting only while you are moving, and only on surfaces that can take it.
+
+If the nozzle in the bucket already sprays evenly, clean the tip, replace the washer, and unkink the hose first. When you want a more focused rinse, a new adjustable nozzle is a simple upgrade, and a brush that fits the paver still helps with the scrub.
+
+A pressure washer earns its keep on a pump job: a deck you have decided to refinish, concrete with set-in oil, or siding you will rinse carefully according to the machine’s instructions. Renting for a day is often enough for that work. A focused hose nozzle is the everyday tool for pollen, dust, and a regular patio rinse.
+
+The same split, a light everyday tool versus a heavier machine, shows up with clothes. The [garment steamer and iron guide](/cleaning/garment-steamer-vs-iron/) sorts which wrinkles a steamer can finish and which still want an iron.
 
 The rest of the [cleaning shelf](/cleaning/) will take the narrower jobs one at a time: pollen on furniture, vinyl siding, muddy boots. Those titles are listed as upcoming. They are not links until they exist.

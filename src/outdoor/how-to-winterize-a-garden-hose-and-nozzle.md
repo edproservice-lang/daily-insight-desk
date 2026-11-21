@@ -99,8 +99,10 @@ toc:
     label: Where to store it
   - id: where-jetterix-fits
     label: Where Jetterix fits
-  - id: who-it-is-for
-    label: Who it is for
+  - id: pros-and-cons
+    label: Pros and cons
+  - id: who-its-ideal-for
+    label: Who it’s ideal for
   - id: sources
     label: Sources
 faq:
@@ -201,13 +203,26 @@ When you winterize, take it off with the other fittings, empty it, and store it 
 
 {% product "jetterix" %}
 
-## Who it is for
+## Pros and cons
 
-This is for a homeowner with an ordinary outdoor faucet and a garden hose, in a place that actually freezes. If you live where the nights stay well above 32°F (0°C) all winter, you can still drain a hose you will not use for months, but the burst-pipe urgency is not the same.
+**Pros**
 
-It is also for the person who already has a frost-proof faucet and has been told, incorrectly, that the hose can stay. Disconnect it anyway.
+- Disconnecting and draining the hose is a short job that protects the faucet and the pipe in the wall.
+- An empty hose, a drained nozzle, and a covered faucet are ready for spring.
+- The same habit works with a frost-proof faucet: take the hose off, drain it, and store it dry.
 
-Skip the heroic version if the faucet is in a shared wall you cannot shut off, or if you cannot reach the indoor valve safely. Do the hose and the nozzle, cover the faucet, and get help with the plumbing rather than forcing a valve you cannot identify.
+**Good to know**
+
+- If the hose is already frozen, wait until it thaws before you coil it.
+- After you store the fittings, put a focused nozzle back on in spring once you have flushed the hose.
+
+## Who it’s ideal for
+
+This is ideal for a homeowner with an ordinary outdoor faucet and a garden hose, in a place that actually freezes. If you live where the nights stay well above 32°F (0°C) all winter, you can still drain a hose you will not use for months so it is ready in spring.
+
+It is also for the person who already has a frost-proof faucet. Disconnect the hose anyway, then drain the nozzle and store them dry.
+
+If the faucet is on a shared wall, or you cannot reach the indoor valve safely, still disconnect and drain the hose, cover the faucet, and get help with the plumbing rather than forcing a valve you cannot identify.
 
 ## Sources
 

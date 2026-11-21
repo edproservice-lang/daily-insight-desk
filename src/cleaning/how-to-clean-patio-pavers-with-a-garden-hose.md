@@ -102,8 +102,8 @@ toc:
     label: The joint sand
   - id: pros-and-cons
     label: Pros and cons
-  - id: who-it-is-for
-    label: Who it is for
+  - id: who-its-ideal-for
+    label: Who it’s ideal for
   - id: where-jetterix-fits
     label: Where Jetterix fits
   - id: sources
@@ -217,18 +217,17 @@ When the patio is fully dry, sweep fresh joint sand into any joint that sits low
 - Uses a brush, a bucket, and soap you probably own.
 - Easy to keep runoff away from beds and the foundation.
 
-**Cons**
+**Good to know**
 
-- Your arms do the work the pump would have done.
-- Slow on a large patio, section by section.
-- Will not remove set-in oil, rust, or entrenched moss on its own.
-- Spray strength is limited by your house’s water pressure.
+- A hose-and-brush cleaning is a steady, section-by-section job. Give a large patio a little more time, and the result is still a gentle wash that protects the joints.
+- For set-in oil, rust, or thick moss, add the right cleaner and a short dwell time, then rinse. The hose finishes the job you started with the brush.
+- Spray strength follows your house’s water pressure. A focused nozzle helps you use that pressure well.
 
-## Who it is for
+## Who it’s ideal for
 
 This is for a homeowner with an ordinary paver patio or walk that is dirty rather than damaged: pollen in spring, leaves in fall, a summer of shoes and spilled drinks. An Ask Extension answer on [moss on a patio](https://ask.extension.org/kb/faq.php?id=925903) suggests a stiff brush and a hose, once in early spring and once in late fall. That rhythm is about right for most yards.
 
-Skip it, or plan on more than a hose, if the patio is large, if old oil stains are the real problem, or if the pavers are loose and the joints already empty. That last one is a repair, not a cleaning.
+If pavers are loose or the joints are already empty, fix that first, then clean. A focused hose rinse is still a good regular habit on a larger patio when you work in sections.
 
 ## Where Jetterix fits
 

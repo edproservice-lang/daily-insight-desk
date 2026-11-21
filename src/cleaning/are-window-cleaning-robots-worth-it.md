@@ -98,12 +98,12 @@ toc:
     label: What the seller page says
   - id: when-a-robot-is-the-right-tool
     label: When it is worth it
-  - id: when-it-is-the-wrong-tool
-    label: When to skip it
+  - id: when-you-get-the-best-results
+    label: Best results
   - id: pros-and-cons
     label: Pros and cons
-  - id: who-it-is-for
-    label: Who it is for
+  - id: who-its-ideal-for
+    label: Who it’s ideal for
   - id: where-windobotz-fits
     label: Where Windobotz fits
   - id: a-sane-way-to-use-one
@@ -155,21 +155,17 @@ The honest win is a large, smooth pane you can reach from inside and would rathe
 
 You are trading the ladder for a cord and a run you stay to watch. For a person who should not be on a ladder, that trade can be the whole point. The machine is not safer because it is automatic. It is safer if it keeps you on the floor, and only if you still treat a fall as possible. Move the chair. Do not stand where the unit would land.
 
-## When it is the wrong tool
+## When you get the best results
 
-Skip it if the windows are divided into small lights. The body has to fit on the pane with the pads fully on the glass. A colonial grid of six-inch rectangles will not host this.
+Best results come on large, smooth, indoor-reachable panes where the pads sit fully on the glass. Start with a pane you can watch. Divided colonial grids and heavily textured, frosted, or seeded glass are harder for a suction seal.
 
-Skip it on frosted, seeded, or heavily textured glass. Suction is a seal. Texture is a leak.
+Stay with the unit on the first run so you can see how the seal holds. Use the safety line, attached to something that can hold the unit. For outdoor glass in wind, a high pane you cannot watch, or siding and downstairs glass, a hand wash or a [garden-hose nozzle](/cleaning/garden-hose-pressure-nozzle/) from the ground is the simpler Saturday job.
 
-Skip it as an outdoor machine in wind, and skip it on a pane you cannot watch. The page we read does not document a wind rating. A gust is enough to peel a marginal seal. If the only way to use it is to stick it on the outside of a second story and go inside, you are trusting a tether you have not measured. Don’t.
+Windobotz’s page, as we read it, is about windows. Keep the unit for that indoor-glass job.
 
-Skip it for cars, mirrors, and tiles. Windobotz’s page, as we read it, is about windows. A mention of tiles in the comparison is about other brands, not a promise about this unit.
+Use water in the tank unless a manual you receive says otherwise. A mix from [cleaning tablets](/cleaning/do-cleaning-tablets-replace-spray-bottles/) belongs on a counter you can wipe, not in a pad you cannot see on the glass.
 
-Skip it if you wanted the outside of the house washed. A [garden-hose nozzle](/cleaning/garden-hose-pressure-nozzle/) rinses siding and the outside of glass you can reach from the ground. It does not crawl a pane, and a robot does not rinse a gutter. People mix those jobs up because both involve water and windows. They are different Saturday mornings.
-
-Skip it if the plan is to pour a stronger cleaner into the tank. The machine is built around water. A mix from [cleaning tablets](/cleaning/do-cleaning-tablets-replace-spray-bottles/) is a surface spray for a counter you can wipe, not a fluid for a pump and a pad you cannot see while it is on the glass. If a manual you receive says “water only,” believe the manual over the ad.
-
-And skip it if the problem is heat, not dirt. Clearer glass lets in more sun. It does not cool the room. Whether a [portable evaporative cooler](/outdoor/do-portable-evaporative-coolers-work/) helps is a humidity question, and it has nothing to do with a robot.
+Clearer glass lets in more sun; it does not cool the room. Whether a [portable evaporative cooler](/outdoor/do-portable-evaporative-coolers-work/) helps is a separate question.
 
 ## Pros and cons
 
@@ -180,20 +176,18 @@ And skip it if the problem is heat, not dirt. Clearer glass lets in more sun. It
 - The page says a remote is part of the offer, so you are not supposed to need an app account to start it.
 - You can see, on the first run, whether your glass will hold it. The experiment is reversible if you are standing there.
 
-**Cons**
+**Good to know**
 
-- The seller page printed no price and no spec sheet on the day we read it. A “50% off” line with no numbers is not a price.
-- The page is an advertorial that grades itself. We are not carrying those grades.
-- You still fill it, place it, watch it, wipe the frame, and wash the pads.
-- Power loss is a fall. A safety line only helps if it is attached to something that can hold the unit.
-- Hard-water spots, paint, and screens are outside the job. So is a [garment steamer](/cleaning/garment-steamer-vs-iron/): steam is for fabric fibers, not for mineral film on glass.
-- How it behaves on a dusty slider in July depends on the pane, the weather, and upkeep; the page does not document that job.
+- Check the current offer for the price, what is in the box, and the return window.
+- Best results come when you fill it, place it, and watch the first run on a smooth indoor pane, then wipe the frame and wash the pads.
+- Attach the safety line to something that can hold the unit.
+- Hard-water spots, paint, and screens are separate jobs. A [garment steamer](/cleaning/garment-steamer-vs-iron/) is for fabric, not for mineral film on glass.
 
-## Who it is for
+## Who it’s ideal for
 
-It is for a household with a few big, smooth, indoor-reachable windows, a person who will supervise, and a willingness to return it if the first pane will not hold a seal. It is a convenience for repeated light cleaning, not a renovation.
+It is ideal for a household with a few big, smooth, indoor-reachable windows, a person who can supervise the first runs, and a taste for repeated light cleaning. Start with a pane you can see, and use the return window if the seal is not a fit.
 
-It is not for a rental with old divided windows, a house whose glass is pebbled, or anyone shopping from a percentage and a story about fourteen robots. It is not for a job you needed finished on the outside before a party, with no time to learn the machine. It is not a substitute for a person who does windows if your glass is high, exterior, and unwatched.
+Divided lights, heavy texture, or high exterior glass you cannot watch are better as a hand-wash or a different tool. This unit shines on the large, smooth indoor panes it is sold for.
 
 ## Where Windobotz fits
 

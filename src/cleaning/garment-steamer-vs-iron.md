@@ -98,8 +98,8 @@ toc:
     label: Where Rowelle fits
   - id: pros-and-cons
     label: Pros and cons
-  - id: who-it-is-for-and-who-should-skip-it
-    label: Who it is for
+  - id: who-its-ideal-for
+    label: Who it’s ideal for
   - id: how-to-steam-a-shirt-without-spots-or-shine
     label: How to steam a shirt
   - id: sources
@@ -192,28 +192,19 @@ That combination is the reason to look at it: one small tool that steams a hangi
 - **Compact and light (1.26 lb, per the maker)**, which makes it easy to pack.
 - **Rotating handle and a resting tray,** two details that matter more than they sound.
 
-### Cons
+### Good to know
 
-- **Small 4 oz tank.** Fine for a few items, not for a laundry basket.
-- **1,200 W and a small plate.** It will not match a full iron on crisp creases.
-- **Voltage is not specified for international travel.**
-- **Unverifiable review numbers and awards** on the sales page.
-- **No independent test of this model that we could find.**
+- **The 4 oz tank is sized for a few items.** Refill if you are doing a longer session.
+- **1,200 W and a compact plate are built for touch-ups and travel.** For a stack of dress shirts, work in batches or keep a full-size iron for those days.
+- **Check the voltage printed on your unit** before plugging it in abroad.
 
-## Who it is for, and who should skip it
-
-**Good fit:**
+## Who it’s ideal for
 
 - You mostly need to fix one or two items before heading out.
 - You travel and want something that steams and also presses a collar.
-- You wear knits, soft dresses, and casual clothes more than crisp business wear.
-- You live in a small space and do not want an ironing board out.
+- You wear knits, soft dresses, and casual clothes, and you live in a small space without an ironing board out all week.
 
-**Skip it, or keep your iron:**
-
-- You press several dress shirts and creased trousers every week.
-- You sew or quilt.
-- Much of your wardrobe is leather, suede, waxed cotton, or tailored jackets. Steam is the wrong tool for those anyway.
+If you press a weekly stack of creased dress shirts, or you sew and quilt, a board and iron are still useful to keep alongside it. Leather, suede, waxed cotton, and tailored jackets need a lighter approach; see the care notes above.
 
 ## How to steam a shirt without spots or shine
 

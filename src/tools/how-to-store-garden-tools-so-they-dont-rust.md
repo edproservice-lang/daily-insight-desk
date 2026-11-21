@@ -102,8 +102,8 @@ toc:
     label: Hose nozzle
   - id: pros-and-cons
     label: Pros and cons
-  - id: who-it-is-for-and-who-should-skip-it
-    label: Who it is for
+  - id: who-its-ideal-for
+    label: Who it’s ideal for
   - id: sources
     label: Sources
 faq:
@@ -207,17 +207,16 @@ The same nozzle is handy for the [hose-only patio paver routine](/cleaning/how-t
 - Stops surface rust before it turns into flaking and pitting that is hard to scrub out.
 - Wooden handles last longer when they are oiled and kept off damp floors.
 
-**Cons**
-- It only works if you do it after each use, not once a year.
-- An oiled sand bucket takes floor space and gets messy if you skip knocking off the dirt.
-- Too much oil collects dust, so you have to wipe the excess off.
-- Linseed-oil rags need careful disposal.
+**Good to know**
+- The routine is most effective when you do it after each use, even as a two-minute version: knock off the dirt, dry, and a thin wipe of oil.
+- Knock soil off before the sand bucket, and wipe off extra oil so dust does not cling.
+- If you use linseed oil, let rags dry flat outdoors and dispose of them safely.
 
-## Who it is for, and who should skip it
+## Who it’s ideal for
 
-This routine is for anyone with steel shovels, spades, hoes, forks, or pruners, and especially for gardeners who store tools in an unheated shed or garage. Plain carbon-steel blades and older tools need it most.
+This routine is ideal for anyone with steel shovels, spades, hoes, forks, or pruners, and especially for gardeners who store tools in an unheated shed or garage. Plain carbon-steel blades and older tools benefit the most.
 
-If your tools are mostly stainless steel or plastic, you can skip the sand bucket and go lighter on the oil. Still clean them, dry them, oil the pivots, and hang them up. Springs, screws, and pivots rust even when the blade does not.
+If your tools are mostly stainless steel or plastic, you can go lighter on the oil and skip the sand bucket. Still clean them, dry them, oil the pivots, and hang them up. Springs, screws, and pivots stay happier with that short habit even when the blade itself is stainless.
 
 ## Sources
 
