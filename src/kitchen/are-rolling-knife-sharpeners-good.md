@@ -96,8 +96,8 @@ toc:
     label: Where KatuSharp fits
   - id: pros-and-cons
     label: Pros and cons
-  - id: who-it-is-for-and-who-should-skip-it
-    label: Who it is for
+  - id: who-its-ideal-for
+    label: Who it’s ideal for
   - id: how-to-get-a-better-edge-from-any-rolling-sharpener
     label: Better results
   - id: sources
@@ -194,30 +194,21 @@ The two-sided disc is the practical appeal: the 400-grit side, per the maker, re
 - **Gentler on knives than a pull-through slot,** based on how the category works and what Serious Eats reported.
 - **Replaceable disc (per the maker),** so wear does not mean replacing the whole tool.
 
-### Cons
+### Good to know
 
-- **Slower than a pull-through,** especially on a neglected knife.
-- **Two angles only.** If a knife was ground at 17 or 12 degrees, the first sharpening will reshape that bevel.
-- **Not for serrated, ceramic, or single-bevel knives.** Serrated bread knives need a tapered rod. Ceramic blades will not hold on a magnet. Single-bevel Japanese knives are sharpened differently.
-- **Wide cleavers are awkward** on rolling designs, per Serious Eats.
-- **The finest grit is 1000.** That gives a good working edge. Enthusiasts who polish on finer stones will want to keep them.
-- **Unverifiable marketing.** The rankings and review counts on the sales page come from the seller, not an independent source.
+- **Give a neglected knife more passes on the 400 side.** A rolling sharpener is a controlled, gentle tool; a few extra passes beat rushing.
+- **The base holds 15° and 20°.** If a knife was ground at another angle, the first session will set it to one of those two, which is the everyday kitchen standard.
+- **Keep a dedicated tool for special edges.** A tapered rod is the usual helper for a serrated bread knife. Ceramic and single-bevel knives have their own sharpening path; use KatuSharp on the everyday steel knives it is built for.
+- **Wide cleavers may need a little extra care** to meet the disc, which is what Serious Eats noticed on rolling designs.
+- **The 1000-grit side leaves a good working edge.** Keep finer stones if you enjoy polishing further.
 
-## Who it is for, and who should skip it
+## Who it’s ideal for
 
-**Good fit:**
-
-- You own a block of everyday stainless chef’s, utility, and paring knives and they are dull.
-- You have tried a whetstone, or watched a video about one, and decided it is not for you.
+- You own everyday stainless chef’s, utility, and paring knives that need a refresh.
+- You want a set angle without learning a whetstone, and a tool a second person in the house can use without a lesson.
 - You currently use a pull-through sharpener and want something gentler on your knives.
-- You want a sharpener that a second person in the house can use without a lesson.
 
-**Skip it, or keep something else beside it:**
-
-- Your most-used knife is a bread knife or another serrated blade.
-- You use ceramic knives.
-- You own single-bevel Japanese knives, or you enjoy whetstones and finishing an edge at very high grit.
-- You need to fix big chips quickly. A coarse stone or a professional sharpener is faster.
+If your main knife is serrated or ceramic, keep the tool made for that edge and use a rolling sharpener on the steel knives you cook with every day.
 
 ## How to get a better edge from any rolling sharpener
 

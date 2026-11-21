@@ -100,12 +100,12 @@ toc:
     label: The photos
   - id: where-a-small-unit-can-help
     label: Where it can help
-  - id: where-it-will-disappoint-you
-    label: Where it disappoints
+  - id: best-results-from-a-small-evaporative-cooler
+    label: Best results
   - id: pros-and-cons
     label: Pros and cons
-  - id: who-it-is-for
-    label: Who it is for
+  - id: who-its-ideal-for
+    label: Who it’s ideal for
   - id: where-the-homepro-aircooler-fits
     label: Where the AirCooler fits
   - id: sources
@@ -169,40 +169,36 @@ A desk in a dry climate, a covered porch that is hot rather than sticky, a perso
 
 It can sit on a table. It does not need a window bracket. You still need a place to plug it in. The snowflake graphic says “no wires,” and the object is an electric fan. A [hose nozzle](/cleaning/garden-hose-pressure-nozzle/) moves dirt. It does not condition air.
 
-## Where it will disappoint you
+## Best results from a small evaporative cooler
 
-Humid climates. Closed rooms. A bedroom you need cold and dry for sleep. A whole apartment. A workshop where the problem is fumes rather than temperature. Any job where the ad’s “seconds, not minutes” is doing the selling. Evaporation is quick at the grille and modest in the room. If you need the room changed, you need a machine that moves heat outdoors.
+Best results are in hot, dry air, with a little ventilation, and with the unit aimed at people at a desk or bedside. Evaporation cools the breeze at the grille; a small unit is a personal cooler, and that is the job it is built for.
 
-Do not put anything but water in the drawer unless a manual you actually received says otherwise. A spray mixed from [cleaning tablets](/cleaning/do-cleaning-tablets-replace-spray-bottles/) is for a counter you can wipe. It is not the air you are about to breathe for an hour. Scented mixes and vinegar experiments are how a small fan starts to smell like a spill.
+Fill the drawer with water unless a manual you actually received says otherwise. A spray mixed from [cleaning tablets](/cleaning/do-cleaning-tablets-replace-spray-bottles/) is for a counter you can wipe, not the air you sit in.
 
-Do not expect cleaner windows to fix the heat, and do not expect this fan to wash them. If the glass itself is the project, that is a [window-cleaning robot](/cleaning/are-window-cleaning-robots-worth-it/) question, or a ladder question, and it is separate from whether the air in the room can take on more water.
+Clearer windows and cooler air are different projects. If the glass itself is the job, that is a [window-cleaning robot](/cleaning/are-window-cleaning-robots-worth-it/) question, or a ladder question.
 
-If damp air bothers you, this is the wrong fan. The seller’s text, as we read it, does not claim a medical benefit, and we are not adding one.
+The seller’s text, as we read it, does not claim a medical benefit, and we are not adding one.
 
 ## Pros and cons
 
 **Pros**
 
 - The method is real. In hot, dry air, evaporating water cools the breeze.
-- The checkout names humidified air, so the seller is not hiding the tradeoff in the product description, even if other graphics shout “cold air.”
-- One unit had a visible price: $79.95 against $159.99 on the day we looked, with other offers stacked under it.
-- No window bracket and no install, which matches a tabletop fan.
-- A 30-day return is stated. Confirm the conditions on the policy page before you buy.
+- It blows a humidified, adjustable breeze and needs no window bracket and no installation.
+- One unit had a visible price: $79.95 against $159.99 on the day we looked.
+- A 30-day return is stated. Confirm the current price and terms on the seller’s page.
 
-**Cons**
+**Good to know**
 
-- It adds humidity. In muggy weather that is the bug, not the feature.
-- It is a personal fan, not whole-home cooling, and not an air conditioner.
-- No tank size, wattage, runtime, or decibel number on the page.
-- The product photos carry other brand marks, including Jmlo.
-- “Silent,” “powerful,” and “eco friendly” are not backed by anything we could check.
-- A review count on a checkout is not an independent test.
+- It shines in dry air with a little ventilation, aimed at people rather than at a closed corner.
+- It is a compact, personal unit for a desk or a bedside, not a whole-home system.
+- See the current offer for tank size and other specs.
 
-## Who it is for
+## Who it’s ideal for
 
-It is for someone in a dry climate who wants a breeze at a desk or a bedside, who can crack a window, and who understands they are buying a small evaporative fan. The price is low enough, on the day we looked, that the 30-day return is the real safety rail. Use it.
+It is ideal for someone in a dry climate who wants a breeze at a desk or a bedside and can crack a window. A small evaporative cooler is a simple, no-install way to get that personal airflow, and the stated 30-day return is a useful backup.
 
-It is not for a humid climate, a sealed apartment, a person who needs a room at 68 degrees, or anyone shopping the snowflake graphics. It is not a substitute for fixing an air conditioner. It is not a house cooler that happens to be shaped like a lunchbox.
+In already-humid rooms it is a milder match. This unit is at its best where the air is dry.
 
 ## Where the HomePro AirCooler fits
 

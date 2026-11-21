@@ -98,6 +98,10 @@ toc:
     label: Wood and plastic
   - id: habits-that-matter-more-than-the-label
     label: Habits that matter
+  - id: pros-and-cons
+    label: Pros and cons
+  - id: who-its-ideal-for
+    label: Who it’s ideal for
   - id: sources
     label: Source
 faq:
@@ -184,6 +188,27 @@ Replace plastic when the grooves are deep enough to catch a fingernail of food. 
 Stop the slide with a damp towel under the board if it travels while you cut. That is a friction problem. A harder board is not the fix, and a harder board that also slides is two problems.
 
 Sharpen or steel the knife on a schedule you will keep. A board that is kind to the edge only slows the dulling. It does not repeal it. If you have been cutting on metal or glass, the first honest step is a sharpening, and the second is to stop. A rolling sharpener is one way to hold the angle without learning a whetstone. The guide on [rolling knife sharpeners](/kitchen/are-rolling-knife-sharpeners-good/) covers what that tool does well and where it falls short.
+
+## Pros and cons
+
+**Pros**
+
+- A smooth, non-porous metal face rinses with hot, soapy water.
+- It does not soak up garlic, onion, or other odors the way wood can, and it does not need an oiling routine.
+- A slim board stores easily on its side or in a narrow gap.
+- Cleanup is quick after pungent prep.
+
+**Good to know**
+
+- Wash the board after each use, especially after raw meat, just as you would any board.
+- Follow the care instructions on the current seller’s page, including any dishwasher note.
+- A sharp knife still does the cutting; keep your edges in shape with a regular sharpening habit.
+
+## Who it’s ideal for
+
+It is ideal for cooks who want simple cleanup: a board that rinses clean, does not hold garlic smell, and does not ask for a mineral-oil routine. If you are tired of hand-washing a scarred plastic board, or of oiling wood, a titanium board is a natural next look.
+
+A wood or plastic board can still live beside it for the chopping you do every week. The metal board earns its place on the days when easy rinsing and a non-porous face are what you want.
 
 ## Sources
 

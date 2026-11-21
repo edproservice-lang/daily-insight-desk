@@ -100,8 +100,8 @@ toc:
     label: What to avoid
   - id: pros-and-cons
     label: Pros and cons
-  - id: who-it-is-for-and-who-should-skip-it
-    label: Who it is for
+  - id: who-its-ideal-for
+    label: Who it’s ideal for
   - id: where-katori-fits
     label: Where Katori fits
   - id: sources
@@ -214,22 +214,19 @@ The [University of Maine Cooperative Extension](https://extension.umaine.edu/pub
 * **Restores board function:** Removing sulfur oils prevents flavor transfer to delicate fruits, cheeses, and bread.
 * **Everyday kitchen ingredients:** Salt, lemon, and baking soda are common pantry staples and do not leave a harsh chemical film when the board is rinsed well.
 
-**Cons:**
-* **Requires manual scrubbing:** Removing deep-set garlic oils takes physical effort and multiple treatments if the board was neglected.
-* **Requires re-oiling:** Citrus acids and abrasive salt strip protective oil layers along with bad smells, requiring immediate conditioning.
-* **Slower than dishwasher cleaning:** Wood maintenance demands hand washing, thorough drying, and periodic sanding.
+**Good to know:**
+* **A firm scrub works best:** A neglected board may want a second salt-and-lemon pass, or a baking-soda paste, before the smell fully lifts.
+* **Re-oil after citrus:** A light coat of food-grade mineral oil puts a moisture barrier back on the wood after a lemon scrub.
+* **Hand-wash and stand to dry:** Wood stays happier when you wash it by hand, rinse well, and stand it on edge until it is fully dry.
 
-## Who it is for, and who should skip it
+## Who it’s ideal for
 
-### Who it is for
 * **Home cooks with wood or bamboo boards:** Anyone using butcher blocks, edge-grain maple, or end-grain walnut boards that have picked up pungent sulfur smells.
-* **Chefs preparing delicate foods:** People who notice garlic flavor transferring into sliced apples, bread, or mild cheeses during meal prep.
-* **Kitchen enthusiasts willing to maintain tools:** Cooks comfortable taking five minutes to scrub, dry, and periodically oil high-quality timber items.
+* **Cooks preparing delicate foods:** People who notice garlic flavor transferring into sliced apples, bread, or mild cheeses during meal prep.
+* **Anyone willing to spend a few minutes on care:** A short scrub, a thorough dry, and a little oil keep a good wooden board in shape.
+* **Cooks who want an easier cleanup:** A smooth, non-porous titanium board rinses with hot, soapy water and does not need the lemon-and-salt routine.
 
-### Who should skip it
-* **Cooks using plastic or composite boards:** Synthetic boards usually respond better to a quick scrub with dish soap or a dedicated top-rack dishwasher cycle.
-* **People seeking zero-maintenance tools:** If hand-scrubbing and board-oiling feel like chores, switching to non-porous surfaces may save time.
-* **Severely warped or split boards:** If deep garlic smell is accompanied by structural cracks, bacteria can hide deep within the split where surface scrubs cannot reach; the board should be replaced.
+A plastic or composite board usually comes clean with hot, soapy water. If a wooden board is badly cracked or warped, replacing it is the cleaner long-term move.
 
 ## Where Katori fits
 

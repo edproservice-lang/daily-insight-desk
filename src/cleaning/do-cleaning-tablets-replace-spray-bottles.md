@@ -98,12 +98,12 @@ toc:
     label: What a tablet replaces
   - id: the-label-lines-we-are-not-adopting
     label: Label lines
-  - id: where-one-bottle-falls-short
-    label: Where one bottle falls short
+  - id: best-results-with-one-bottle
+    label: Best results with one bottle
   - id: pros-and-cons
     label: Pros and cons
-  - id: who-it-is-for
-    label: Who it is for
+  - id: who-its-ideal-for
+    label: Who it’s ideal for
   - id: where-nuroclean-fits
     label: Where NuroClean fits
   - id: how-to-use-a-tablet-without-fooling-yourself
@@ -161,13 +161,13 @@ The page says the tablets are natural and non-toxic, and safe around children an
 
 The page also quotes customers, including a health story and a carpet-stain story. We are not reprinting those. “America’s #1” is on the banner with no ranking behind it. Ignore both.
 
-## Where one bottle falls short
+## Best results with one bottle
 
-Any-surface copy is the failure mode. Aluminum, marble, waxed wood, a phone screen, and a wool rug are not one surface. Spray a small hidden spot if you insist on trying a new mix, and stop if the finish changes. The seller’s “any surface” line is the sentence to disobey.
+Best results come from using the mix on the sealed everyday surfaces it is meant for: a laminate counter, a sink, a tile backsplash. On a delicate or unusual finish — aluminum, marble, waxed wood, a screen — spray a small hidden spot first and stop if the finish changes.
 
-Heavy soil still wants time and a tool. Dried grease and a burnt pan do not leave because a bottle was convenient. A tablet can be the liquid. It is not a substitute for waiting and wiping. The before-and-after shower on the seller’s page is the kind of result we will not claim.
+Heavy, baked-on soil still likes a little time and a sponge or brush. The tablet is the liquid; a short dwell and a wipe finish the job.
 
-The mix does not belong in other machines. A [window-cleaning robot](/cleaning/are-window-cleaning-robots-worth-it/) wets a pad and crawls glass. Its tank is for water. A [garment steamer](/cleaning/garment-steamer-vs-iron/) boils a small tank onto fabric. Cleaner in that tank is how you spot a shirt and breathe a mist you did not mean to make. A [portable evaporative cooler](/outdoor/do-portable-evaporative-coolers-work/) blows across a water drawer into the room. A tablet in that drawer is a scent you would be running for an hour. Three different machines, one rule: water in the tank, cleaner on the surface you can wipe off.
+Keep this mix on surfaces you can wipe. A [window-cleaning robot](/cleaning/are-window-cleaning-robots-worth-it/) tank is for water. A [garment steamer](/cleaning/garment-steamer-vs-iron/) should boil water, not cleaner. A [portable evaporative cooler](/outdoor/do-portable-evaporative-coolers-work/) drawer is the same idea. Water in the tank, cleaner on the surface you can wipe off.
 
 ## Pros and cons
 
@@ -179,20 +179,17 @@ The mix does not belong in other machines. A [window-cleaning robot](/cleaning/a
 - The steps do not require an app, a gadget, or a subscription we could see on the page.
 - A 30-day return is stated. The price, whatever the checkout shows today, is the number to judge against that window.
 
-**Cons**
+**Good to know**
 
-- No dollar price was readable on the page we saved. “70% off” is not a price.
-- “Any stain” and “any surface” are broader than one formula can be.
-- The bottle label says it kills bacteria, and the page did not show an EPA registration number.
-- “Non-toxic” and “safe for pets” are claims we are not carrying.
-- Dissolve time, effect on a finish, and how long the nozzle lasts are not spelled out on the page we read; check the current offer if those details matter to you.
-- Testimonials and a “#1” banner are on the page. They are not evidence.
+- See the current checkout for today’s price and what is included.
+- Best on sealed everyday surfaces: a laminate counter, a sink, a tile backsplash. Test a hidden spot on a delicate finish.
+- Give the tablet time to dissolve, then spray and wipe. Follow the current label on the seller’s page.
 
-## Who it is for
+## Who it’s ideal for
 
-It is for someone whose under-sink problem is too many ordinary sprays, and who will use one diluted mix on the sealed surfaces it suits: a laminate counter, a sink they rinse, a tile backsplash they wipe. The refill habit is the product. The tablet is just how the refill is shipped.
+It is ideal for someone whose under-sink problem is too many ordinary sprays, and who will use one diluted mix on the sealed surfaces it suits: a laminate counter, a sink they rinse, a tile backsplash they wipe. The refill habit is the product. The tablet is just how the refill is shipped.
 
-It is not for someone buying a disinfectant, a pet-safe guarantee, or a single bottle that retires the toilet cleaner, the wood soap, and the laundry spotter. It is not for a stain you needed gone for a guest arriving in an hour, if you have not used the mix on that surface before. It is not a reason to pour cleaner into a robot, a steamer, or a cooler.
+For a first use on a new surface, test a hidden spot. Keep water-only in other machines, and keep a dedicated product beside it if you need a specialty wood soap or a disinfectant.
 
 ## Where NuroClean fits
 

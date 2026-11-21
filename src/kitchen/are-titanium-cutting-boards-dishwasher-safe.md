@@ -101,6 +101,10 @@ toc:
     label: Wood and plastic
   - id: the-knife-is-a-separate-question
     label: The knife question
+  - id: pros-and-cons
+    label: Pros and cons
+  - id: who-its-ideal-for
+    label: Who it’s ideal for
   - id: sources
     label: Sources
 faq:
@@ -200,6 +204,27 @@ The reason titanium boards sell is cleanup. The reason to be careful with them i
 If you already own a metal board and you like how fast it rinses, keep it for the jobs that are mostly a platter, and cut on wood or plastic. If a hard board has already taken the edge off a knife you care about, a rolling sharpener is one way to hold an angle without learning a whetstone. The guide on [rolling knife sharpeners](/kitchen/are-rolling-knife-sharpeners-good/) covers what that tool does well and where it falls short.
 
 A dishwasher will not dull a knife that is not in the machine. It also will not undo a week of chopping on metal. Wash the board the way its maker tells you to. Cut on something that gives a little.
+
+## Pros and cons
+
+**Pros**
+
+- A titanium face is easy to wash with hot, soapy water and does not need oiling.
+- The metal does not soak up juices the way wood can, so cleanup stays simple.
+- Many solid metal boards can go in the dishwasher when that board’s maker says so.
+- A slim board stores easily once it is dry.
+
+**Good to know**
+
+- Read the care note that came with your board before you use the dishwasher, and follow that note.
+- A mid-cooking rinse at the sink still helps when you go from raw meat to herbs.
+- Stand the board so water can reach both faces, and wipe it if your machine leaves a film.
+
+## Who it’s ideal for
+
+It is ideal for cooks who want a cutting surface that rinses clean and may, if the maker allows it, go in the dishwasher. If you dislike oiling wood or hand-washing a scarred plastic board, a titanium board is built around that easier cleanup.
+
+Keep the care instructions handy, and wash at the sink between jobs even when the board will go in the machine later.
 
 ## Sources
 
