@@ -104,6 +104,8 @@ toc:
     label: Pros and cons
   - id: who-it-is-for
     label: Who it is for
+  - id: where-nuroclean-fits
+    label: Where NuroClean fits
   - id: how-to-use-a-tablet-without-fooling-yourself
     label: How to use one
   - id: sources
@@ -192,7 +194,11 @@ It is for someone whose under-sink problem is too many ordinary sprays, and who 
 
 It is not for someone buying a disinfectant, a pet-safe guarantee, or a single bottle that retires the toilet cleaner, the wood soap, and the laundry spotter. It is not for a stain you needed gone for a guest arriving in an hour, if you have not used the mix on that surface before. It is not a reason to pour cleaner into a robot, a steamer, or a cooler.
 
-If the checkout price is close to a bottle you already know, the tablet has to win on the refills. Do that math with the number on the screen.
+## Where NuroClean fits
+
+NuroClean is a set of concentrated cleaning tablets sold with a reusable spray bottle. You fill the bottle with water, add one tablet, let it dissolve, then spray and wipe. One bottle and a sleeve of tablets can replace a cluster of ordinary multipurpose sprays under the sink, and the refill habit takes less cabinet space than buying a new bottle each time.
+
+If that is the clutter you want to solve, [see the current NuroClean offer](https://www.clickomundo.com/J2D6CNH/52B5LNB/) for what is included.
 
 {% product "nuroclean" %}
 

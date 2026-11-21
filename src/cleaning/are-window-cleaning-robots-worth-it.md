@@ -104,6 +104,8 @@ toc:
     label: Pros and cons
   - id: who-it-is-for
     label: Who it is for
+  - id: where-windobotz-fits
+    label: Where Windobotz fits
   - id: a-sane-way-to-use-one
     label: A sane way to use one
   - id: sources
@@ -193,7 +195,11 @@ It is for a household with a few big, smooth, indoor-reachable windows, a person
 
 It is not for a rental with old divided windows, a house whose glass is pebbled, or anyone shopping from a percentage and a story about fourteen robots. It is not for a job you needed finished on the outside before a party, with no time to learn the machine. It is not a substitute for a person who does windows if your glass is high, exterior, and unwatched.
 
-If you buy from the offer below, read the checkout for the price, the contents, and the return window before you pay. Those facts were not on the page we were sent to.
+## Where Windobotz fits
+
+Qinux Windobotz is a window-cleaning robot sold as a suction unit with a dual water spray, wiping pads, and a remote. It is meant for repeated light cleaning on large, smooth, indoor-reachable glass: the unit holds itself on the pane while you direct the wash from the floor.
+
+If that is the job in your house, [see the current Windobotz offer](https://www.treejammer.com/J2D6CNH/B98T7C9/) for the price, what is in the box, and the return terms.
 
 {% product "windobotz" %}
 

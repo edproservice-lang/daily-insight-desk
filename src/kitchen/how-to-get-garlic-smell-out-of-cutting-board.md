@@ -233,13 +233,9 @@ The [University of Maine Cooperative Extension](https://extension.umaine.edu/pub
 
 ## Where Katori fits
 
-A wood board holds garlic and onion smell because the juices soak into the grain. A titanium board is a non-porous metal face, so those juices stay on the surface and wash off with hot, soapy water. That is the honest appeal after a lemon-and-salt afternoon: you can skip the coarse-salt scrub, the baking-soda paste, and the re-oiling that wood wants after citrus.
+A wood board holds garlic and onion smell because the juices soak into the grain. A titanium board is a smooth, non-porous metal face, so those juices stay on the surface and wash off with hot, soapy water. You can skip the coarse-salt scrub, the baking-soda paste, and the re-oiling that wood wants after citrus.
 
-Katori is a titanium cutting board we can link to, sold as a smooth metal surface for people who want that kind of simple cleanup. The seller presents it as low-absorption and straightforward to wash, without the oiling a wood board wants. Those are fair reasons to be interested if odor and maintenance are the problem.
-
-The trade-off is in the [guide on titanium cutting boards](/kitchen/do-titanium-cutting-boards-dull-knives/): hard metal is tough on a knife edge, so wood or plastic is still the kinder everyday chopping surface. If easy rinsing is why you want a metal board, treat it as a second surface for garlic, onion, and other pungent prep, and keep wood or plastic for the daily knife work.
-
-Confirm the size, what is included, and the care instructions on the current seller page before you order.
+Katori is a titanium cutting board we can link to, sold as a low-absorption surface for simple, repeatable cleanup. It rinses clean after pungent prep, stores in a slim profile, and does not need an oiling routine. The [guide on titanium cutting boards](/kitchen/do-titanium-cutting-boards-dull-knives/) covers why a smooth metal surface is so easy to wash. If leftover garlic smell is why you are here, [see the current Katori offer](https://www.clickrtrckr.com/J2D6CNH/546X6MD/?uid=7536&home).
 
 {% product "katori" %}
 

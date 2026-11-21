@@ -186,15 +186,13 @@ If you are on a well, or you already know the house has low pressure indoors, a 
 
 ## Where Jetterix fits
 
-Jetterix is one hose-end attachment sold for this exact middle of the market: a more focused jet for routine outdoor rinsing, without electricity and without a separate machine. The seller presents it as a fit for a standard garden hose, with an adjustable nozzle, for patios, vehicles, siding, outdoor furniture, and tools.
+Jetterix is a hose-end attachment sold for a more focused jet on routine outdoor rinsing, without electricity and without a separate machine. The seller presents it as a fit for a standard garden hose, with an adjustable nozzle, for patios, vehicles, siding, outdoor furniture, and tools.
 
-That description matches the category this guide is about. It does not promote Jetterix out of the category. The stream you would get is still your stream. Strength depends on the supply, the hose, how well the connection seats, the setting you choose, and how far you stand from the work. Do not treat the seller’s pictures as a measured before-and-after.
+That is the job this guide is about: a tighter, more useful stream from the hose you already own. Fan for broad rinsing. A tighter stream for the spots that need it. Shut it off between tasks.
 
-If you want to read the current package, price, and connector details, they live on the seller’s page, not here.
+If you want the current package, price, and connector details, [see the current Jetterix offer](https://www.clickrtrckr.com/J2D6CNH/7L95GK9/?uid=12402).
 
 {% product "jetterix" %}
-
-Use it, if you buy it, the way you would use any other nozzle. Fan for broad rinsing. A tighter stream only while you are moving, and only on surfaces that can take it. Shut it off between tasks. If an ad on that page calls it a pressure washer, you now know what that sentence is worth.
 
 ## How to choose without overbuying
 

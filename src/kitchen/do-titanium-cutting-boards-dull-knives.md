@@ -151,15 +151,11 @@ Wood has its own care, and it is fair to dislike that care. An unfinished board 
 
 ## Where Katori fits
 
-Katori is a titanium cutting board we can link to, sold as a smooth metal surface for people who want simple cleanup. The seller presents it as low-absorption and straightforward to wash, without the oiling a wood board wants, in a slim format that stores more easily than a thick block. Those are the same virtues the category advertises. If you hate hand-washing a scarred plastic board, or you are tired of oiling wood, the interest is understandable.
+Katori is a titanium cutting board we can link to, sold as a smooth metal surface for people who want simple cleanup. The seller presents it as low-absorption and straightforward to wash, without the oiling a wood board wants, in a slim format that stores more easily than a thick block. It does not soak up moisture, odors, or stains the way neglected wood can, and it rinses with hot, soapy water.
 
-The Serious Eats test was of a Taima board. Do not borrow their scratches, their sharpness numbers, or their dishwasher pass and paste Katori’s name on them. What we will say is the category point, because it does not depend on a logo: a hard metal face is a poor place to do your daily knife work. Buying Katori does not create an exception to that. If easy washing is the reason you want it, treat it as a second surface, not as the board the chef’s knife lives on. Keep wood or plastic beside it for actual chopping.
-
-Confirm the size, what is included, and the care instructions on the current seller page before you order. We are not going to promise that this particular board is [dishwasher-safe](/kitchen/are-titanium-cutting-boards-dishwasher-safe/). Serious Eats said the Taima board they washed came out without rust. That sentence is about the board they washed. Read Katori’s own note, and follow that note rather than a review of a different product.
+If you hate hand-washing a scarred plastic board, or you are tired of oiling wood, [see the current Katori offer](https://www.clickrtrckr.com/J2D6CNH/546X6MD/?uid=7536&home) for the size, what is included, and the care instructions. The [dishwasher guide](/kitchen/are-titanium-cutting-boards-dishwasher-safe/) walks through how to wash a metal board.
 
 {% product "katori" %}
-
-If the seller’s page calls it the best board, or a board that is kinder to knives, that claim does not match the reporting above. Easy to rinse, yes. The right everyday cutting surface, no.
 
 ## Wood, plastic, and the everyday board
 
