@@ -93,7 +93,6 @@ export default [
       label: "Do garden hose “pressure” nozzles actually work?",
     },
     soon: [
-      "How to store garden tools so they don’t rust",
       "How to choose a nozzle pattern for rinsing, not blasting",
       "A simple way to hang hoses and brushes so they dry",
     ],
