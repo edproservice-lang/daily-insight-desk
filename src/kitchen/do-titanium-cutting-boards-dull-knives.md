@@ -117,7 +117,7 @@ faq:
 
 Yes. A titanium cutting board dulls knives faster than a wood or plastic board. The same is true of glass, stone, and other metal boards. The surface is harder than the knife edge, so the edge is what wears, not the board.
 
-The other half of the advertisement is also true, and it is why these boards sell. A metal board is easy to rinse. It does not drink garlic juice the way a dry wood board can, and it does not ask you to oil it. Easy to clean is a real household benefit. It does not cancel the knife.
+The other half of the advertisement is also true, and it is why these boards sell. A metal board is easy to rinse. It does not drink [garlic juice the way](/kitchen/how-to-get-garlic-smell-out-of-cutting-board/) a dry wood board can, and it does not ask you to oil it. Easy to clean is a real household benefit. It does not cancel the knife.
 
 For everyday chopping, use wood or plastic. Keep a hard board, if you want one at all, for the jobs that are mostly a platter: bread you are not sawing for long, or food you are arranging rather than cutting. That is the recommendation from the reporting below, and it is the recommendation of this desk. Serious Eats ran the knife test on a titanium board that is not the Katori board mentioned later. If the edge is already gone, the [rolling knife sharpener guide](/kitchen/are-rolling-knife-sharpeners-good/) is the next kitchen question, and the rest of these notes live on the [kitchen shelf](/kitchen/).
 
