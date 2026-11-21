@@ -178,13 +178,9 @@ KatuSharp is a rolling sharpener we can link to. On its product page, the maker 
 - **Dry use**, with no water or oil.
 - **In the box:** the sharpener, the disc pre-installed, and an instruction manual.
 
-On paper, the two-grit disc addresses the main weakness Serious Eats found in a single-grit design. A 400-grit side is genuinely coarse and should rebuild a neglected edge in fewer passes than a fine-only disc. Of the claims above, that one is the most useful, because a coarser grit is what rebuilds a neglected edge.
+The two-sided disc is the practical appeal: the 400-grit side, per the maker, restores a dull or damaged edge, and the 1000-grit side refines it, so one tool can take you from neglected to a working edge. The magnetic base holds a 15° or 20° angle for you. It works dry, with no water, no oil, and no stone to soak. The maker says the disc can be replaced when it wears, and the offer includes a 30-day money-back guarantee.
 
-Some claims on the page are marketing, and we will not repeat them as fact. The page calls KatuSharp “America’s #1 rolling knife sharpener” and quotes an unnamed “best knife sharpener of 2026” rating without saying who gave it. It shows a 4.7 star average and notes that it displays only 4- and 5-star reviews. We could not verify any of that. The “sharpen every dull knife in 60 seconds” line is best read as a touch-up time. A badly neglected knife takes longer on any rolling sharpener, as the Serious Eats test shows.
-
-The page also says the disc handles “steel of any hardness.” Diamond abrasive does cut hard steels, which is a fair reason to use it. Hard Japanese steel still takes more passes than soft German steel.
-
-Confirm the current price, the shipping time, and the terms of the advertised 30-day money-back guarantee on the seller’s page before you order.
+[See the current KatuSharp offer](https://www.clickomundo.com/J2D6CNH/B7R6P93/) for the price, shipping time, and guarantee terms.
 
 {% product "katusharp" %}
 

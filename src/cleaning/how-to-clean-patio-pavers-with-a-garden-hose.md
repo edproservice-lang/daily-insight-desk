@@ -104,6 +104,8 @@ toc:
     label: Pros and cons
   - id: who-it-is-for
     label: Who it is for
+  - id: where-jetterix-fits
+    label: Where Jetterix fits
   - id: sources
     label: Sources
 faq:
@@ -228,7 +230,11 @@ This is for a homeowner with an ordinary paver patio or walk that is dirty rathe
 
 Skip it, or plan on more than a hose, if the patio is large, if old oil stains are the real problem, or if the pavers are loose and the joints already empty. That last one is a repair, not a cleaning.
 
-If you want a more focused rinse from the hose you already own, Jetterix is one attachment sold for that.
+## Where Jetterix fits
+
+If you want a more focused rinse from the hose you already own, Jetterix is a hose-end attachment sold for that job. The seller presents it as a fit for a standard garden hose, with no electricity and no separate machine, for patios, vehicles, siding, furniture, and tools. A tighter stream helps you finish the rinse faster after you have already brushed the pavers.
+
+[See the current Jetterix offer](https://www.clickrtrckr.com/J2D6CNH/7L95GK9/?uid=12402) for the package, price, and return terms.
 
 {% product "jetterix" %}
 

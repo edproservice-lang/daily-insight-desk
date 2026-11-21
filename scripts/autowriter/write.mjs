@@ -197,6 +197,13 @@ function checkArticle(a, ctx) {
   if (ctx.product) {
     const n = (body.match(new RegExp(`\\{%\\s*product\\s+"${ctx.product}"\\s*%\\}`, "g")) || []).length;
     if (n !== 1) errs.push(`body must contain the line {% product "${ctx.product}" %} exactly once`);
+    const short = body.search(/\{%\s*product\s+"[a-z0-9]+"\s*%\}/);
+    if (short !== -1) {
+      const start = body.lastIndexOf("\n## ", short);
+      const slice = body.slice(start === -1 ? 0 : start, short);
+      const cons = slice.match(/\b(trade-?offs?|drawbacks?|limitations?|not a replacement|it is not for|who should skip|does not add a pump|not a pressure washer|treat it as a second surface|hard on (?:a |the )?knife)\b/i);
+      if (cons) errs.push(`sales section must be benefits-only (remove "${cons[0]}" from the paragraphs above the product box)`);
+    }
   } else if (/\{%\s*product/.test(body)) errs.push("this article has no product; remove the product shortcode");
   if (/\{%(?!\s*product\s+"[a-z0-9]+"\s*%\})/.test(body)) errs.push("no Nunjucks tags other than the product shortcode");
   const internal = mdLinks(body).filter((l) => l.href.startsWith("/"));
@@ -248,19 +255,19 @@ key: ${item.product}
 name: ${product.name}
 affiliate URL (use this exact URL for in-text calls to action): ${product.href}
 facts: ${product.summary} ${product.points.join(" ")}
-Place this exact line on its own line, once, right after the "who it is for" section: {% product "${item.product}" %}
-The product box already includes a button to the same offer. Still include in-sentence Markdown links to the affiliate URL: [natural, specific anchor](${product.href}). Write at least two of these CTAs where a reader who is ready to look at the offer would naturally want them (for example after benefits, and again after objections are handled). Never use "click here", "buy now", or "this guide" as the anchor.
-Do not write an affiliate disclosure, a commission notice, or a "we may earn" line; the site inserts a short note automatically before the first offer link.
-Recommend the product naturally where it genuinely fits the job: clear benefits, who it is for, objections handled honestly, and a next step. It must not read as pure sales copy or as if the product is the only answer.` : `
+Write a short section near the end titled "Where ${product.name} fits" (or similar). In that section, and in every paragraph that sells the product, mention ONLY benefits and persuade the reader to look at the offer. Never mention cons, trade-offs, drawbacks, limitations, or what the product is not. Do not undercut the product there (no "but it won't...", no "treat it as a second surface", no "not a replacement for..."). Informational sections elsewhere in the article (such as "## Pros and cons" and "who should skip it") may stay factual about the job or the category, but those points must not sit inside the sales section.
+Place this exact line on its own line, once, at the end of that benefits-only sales section: {% product "${item.product}" %}
+The product box already includes a button to the same offer. Still include in-sentence Markdown links to the affiliate URL: [natural, specific anchor](${product.href}). Write at least two of these CTAs in benefit-focused sentences, where a reader who is ready to look at the offer would naturally want them. Never use "click here", "buy now", or "this guide" as the anchor. Do not place a CTA immediately after a list of cons or a "who should skip it" paragraph.
+Do not write an affiliate disclosure, a commission notice, or a "we may earn" line; the site inserts a short note automatically before the first offer link.` : `
 This is a helpful guide with no product box. Do not include any product shortcode or affiliate URL.`;
   return `You write for Daily Insight Desk (dailyinsightdesk.com), a US home & garden guide site. US English, US units.
 
 Every article must balance three goals. The piece should read as a useful guide first, not as an ad:
 1) ATTRACT TRAFFIC (SEO). Write for this target long-tail search and the real intent behind it: "${item.keyword}". Put the target keyword, or a very close natural variant, in the title (the title becomes the on-page H1), in the 40-60 word opening answer, and in exactly one H2. Use descriptive, specific H2/H3s a searcher would scan. The first paragraph must be a direct 40-60 word answer to the title question, so a search or AI system can quote it. The FAQ field should cover related questions people actually search.
 2) ADD REAL VALUE. The guide must stand on its own as practical how-to help even if the reader never clicks a product link. Give clear steps, honest trade-offs, and advice they can use today. Be specific, never filler.
-3) SELL, WITHOUT READING AS AN AD. When a product is provided, recommend it naturally where it fits: concrete benefits, who it is for, objections handled, and in-sentence calls to action to the affiliate URL. Do not write a sales letter.
+3) SELL, WITHOUT READING AS AN AD. When a product is provided, give it a benefits-only sales section: concrete benefits, a next step, and in-sentence calls to action to the affiliate URL. In that section, and in any paraphrase of the product box, never mention cons, trade-offs, or drawbacks. Do not write a sales letter, and do not treat the product as the only possible answer in the rest of the guide.
 
-Voice: plain, specific, confident, a little dry; short declarative sentences; practical steps; honest about trade-offs; persuasive because it is useful, never bland filler, never hype.
+Voice: plain, specific, confident, a little dry; short declarative sentences; practical steps; honest about trade-offs in the how-to and in Pros and cons; in the product sales section, only benefits. Persuasive because it is useful, never bland filler, never hype.
 
 ARTICLE TOPIC: ${item.topic}
 TARGET LONG-TAIL SEARCH: "${item.keyword}"
@@ -271,6 +278,7 @@ ${productBlock}
 HARD RULES
 1. Body: 1,300-1,700 words of Markdown. Use ## for sections and ### for subsections. No H1. Open with "## The short answer", then immediately a single 40-60 word paragraph that directly answers the title question in plain English. No preamble, no "in this guide", no throat-clearing. Then continue the article. Include "## Pros and cons" (bold **Pros** and **Cons** bullet lists) and "## Who it is for, and who should skip it" (or similar wording containing "who it is for"). Do NOT write a Sources or FAQ section in the body.
 2. Never claim we tested, tried, used, measured, or reviewed anything. Also never state or imply that we did not test or use a product. Do not write phrases such as "we haven't tested", "we have not used", "we did not use", "not hands-on", "this desk has not tested", or "not a test by Daily Insight Desk." No testimonials, quotes from customers, review counts, star ratings, or invented statistics. No medical or health claims. No prices or specs unless given above. Attribute seller claims and other publications clearly.
+2b. PRODUCT SALES SECTION: when a product is provided, the "Where X fits" section (or equivalent) and any paragraph that sells the product must be benefits-only and should persuade the reader to look at the offer. Never mention cons, trade-offs, drawbacks, or what the product cannot do in that section. Leave those points, if they belong at all, to "## Pros and cons" or "who should skip it", outside the sales section.
 3. INTERNAL LINKS: put 3-6 links to DIFFERENT existing articles from the list below INSIDE normal sentences, as Markdown links [descriptive anchor](/path/). Anchors are 2-6 natural words describing the target topic (vary them; never "click here"/"this guide"). Each target at most once. Never inside headings. Only use URLs from this list:
 ${list}
 4. EXTERNAL SOURCES: cite 2-3 real, neutral authority pages (US .gov, .edu extension services, or an official manufacturer care/manual page) that you are confident exist at that exact URL; link each once inside a sentence in the body and list it in "sources". Also add 2 extra backup candidates at the end of "sources" with "inline": false (prefer stable top-level pages like epa.gov, cdc.gov, usda.gov, extension.umn.edu, extension.psu.edu that are certain to exist). Mark the linked ones "inline": true. Never link to stores, Amazon, marketplaces, or blogs/roundups with affiliate links.

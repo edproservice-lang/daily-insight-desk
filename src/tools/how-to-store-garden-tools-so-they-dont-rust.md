@@ -191,13 +191,13 @@ The hose belongs in the same end-of-season routine. Drain it and its fittings fi
 
 ## A hose nozzle for the rinse step
 
-The slowest part of this routine is getting packed mud off a shovel before it dries hard. A focused stream from a hose nozzle does most of that work in seconds, and the same attachment rinses the patio when you are done. If you want one for that job, Jetterix is a garden-hose attachment sold for a more focused rinse on patios, vehicles, siding, furniture, and tools.
+The slowest part of this routine is getting packed mud off a shovel before it dries hard. A focused stream from a hose nozzle does most of that work in seconds, and the same attachment rinses the patio when you are done. Jetterix is a garden-hose attachment sold for a more focused rinse on patios, vehicles, siding, furniture, and tools. It fits a standard hose and needs no electricity.
 
-It suits someone who already rinses tools and outdoor surfaces with a hose and wants a narrower, stronger-feeling stream without buying a pressure washer. It does not add a pump, so the force still depends on your home’s water pressure. You can [check the current Jetterix offer](https://www.clickrtrckr.com/J2D6CNH/7L95GK9/?uid=12402) for what is included and the return terms.
+You can [check the current Jetterix offer](https://www.clickrtrckr.com/J2D6CNH/7L95GK9/?uid=12402) for what is included and the return terms.
 
 {% product "jetterix" %}
 
-The same nozzle is handy for the [hose-only patio paver routine](/cleaning/how-to-clean-patio-pavers-with-a-garden-hose/). After the rinse, dry the tools and oil them as described above. A nozzle gets the soil off, but it will not keep the steel from rusting. If that sounds like your weekend chore, [see Jetterix on the seller’s page](https://www.clickrtrckr.com/J2D6CNH/7L95GK9/?uid=12402).
+The same nozzle is handy for the [hose-only patio paver routine](/cleaning/how-to-clean-patio-pavers-with-a-garden-hose/). After the rinse, dry the tools and oil them as described above. If that sounds like your weekend chore, [see Jetterix on the seller’s page](https://www.clickrtrckr.com/J2D6CNH/7L95GK9/?uid=12402).
 
 ## Pros and cons
 

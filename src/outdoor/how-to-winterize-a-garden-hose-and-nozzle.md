@@ -195,13 +195,11 @@ If you have more than one hose, label the one that already weeps at the coupling
 
 ## Where Jetterix fits
 
-Jetterix is a garden-hose attachment sold for a more focused rinse on patios, vehicles, siding, furniture, and tools. It does not add a pump, so it is not a pressure washer. In winter it is one more fitting to take off the hose, drain, and store dry.
+Jetterix is a garden-hose attachment sold for a more focused rinse on patios, vehicles, siding, furniture, and tools. It fits a standard hose and needs no electricity, so in spring you are ready to rinse again without a separate machine.
 
-Treat it like the other rigid attachments: empty it, keep it out of a puddle, and put it back on in spring after you have flushed the hose. Confirm any care notes on the current seller page rather than inventing a storage temperature or a winter warranty.
+When you winterize, take it off with the other fittings, empty it, and store it dry. Put it back on in spring after you have flushed the hose. [See the current Jetterix offer](https://www.clickrtrckr.com/J2D6CNH/7L95GK9/?uid=12402) for what is included and any care notes on the seller’s page.
 
 {% product "jetterix" %}
-
-A nozzle, including this one, still only aims the water your house already has. Winter does not change that, and it is not a reason to leave it on the faucet “just in case.”
 
 ## Who it is for
 

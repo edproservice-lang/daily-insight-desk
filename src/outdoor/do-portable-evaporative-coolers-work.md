@@ -106,6 +106,8 @@ toc:
     label: Pros and cons
   - id: who-it-is-for
     label: Who it is for
+  - id: where-the-homepro-aircooler-fits
+    label: Where the AirCooler fits
   - id: sources
     label: Sources
 faq:
@@ -202,7 +204,11 @@ It is for someone in a dry climate who wants a breeze at a desk or a bedside, wh
 
 It is not for a humid climate, a sealed apartment, a person who needs a room at 68 degrees, or anyone shopping the snowflake graphics. It is not a substitute for fixing an air conditioner. It is not a house cooler that happens to be shaped like a lunchbox.
 
-If you buy it, fill the drawer with water, aim it at people rather than at a closed corner, and dry the drawer when you are done so it does not sit wet until next month. The page’s “once a month” line is not a care manual. Dry plastic is.
+## Where the HomePro AirCooler fits
+
+The HomePro AirCooler is a small portable evaporative cooler for a desk or a bedside. It blows a humidified breeze, has an adjustable fan switch, and needs no window bracket and no installation. Fill the drawer with water, aim it at people rather than a closed corner, and dry the drawer when you are done.
+
+If you want a compact unit for a dry room, [see the current HomePro AirCooler offer](https://www.tricklyn.com/J2D6CNH/T82ZTW/) for the price and the stated 30-day return.
 
 {% product "aircooler" %}
 

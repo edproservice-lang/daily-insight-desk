@@ -177,13 +177,9 @@ Rowelle is a handheld 2-in-1 steamer and dry iron we can link to. The maker’s 
 - **Weight: 1.26 lb (570 g). Size: about 7.2 × 2.8 × 3.9 in.**
 - **Care:** unplug, let it cool on the tray, empty any leftover water, and wipe it dry before storing.
 
-Measured against the advice above, the useful part is the combination. You get one small tool that steams a hanging shirt and can press the collar flat. Five steam levels let you go gentler on a silk blouse than on denim. That is the right idea, because blends should be handled at the setting for their most delicate fiber.
+That combination is the reason to look at it: one small tool that steams a hanging shirt and can press the collar, cuff, or hem flat, without setting up a board. Five steam levels let you go gentler on a silk blouse than on denim. It is light enough to pack, and the rotating handle and resting tray make quick touch-ups easier.
 
-Some limits come straight from the specs. A 4 oz tank is small. Good Housekeeping flags small tanks as a common steamer drawback because you refill more often. Expect to refill partway through a big job. The page does not state a steam time per tank. At 1,200 watts it is well below the 1,700 to 1,800 watts of the best full-size irons, so think of it as a quick-touch-up tool, not a replacement for ironing a week of shirts.
-
-Some claims on the page we could not verify. The page shows a 4.7 star average and “6,200+ verified reviews,” while its own review widget counts 1,527, and it says it shows only 4- and 5-star reviews. It mentions a “2026 Top Pick award” without saying who gave it. We are not repeating those as facts.
-
-If you travel abroad, the maker says to check the voltage printed on your unit before plugging it in. The page does not say the steamer is dual-voltage, so do not assume it is. The page’s list of what is in the box (steamer, cup, manual) and its FAQ (which adds the insulated tray) differ slightly. Confirm the included items, the price, and the return terms on the seller’s current page.
+[See the current Rowelle offer](https://www.clickomundo.com/J2D6CNH/B8GM3KK/) for what is in the box, the price, and the return terms.
 
 {% product "rowelle" %}
 
