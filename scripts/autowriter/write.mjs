@@ -4,6 +4,7 @@ import { readFileSync, writeFileSync, readdirSync, mkdirSync, appendFileSync, mk
 import { join, dirname } from "node:path";
 import { execSync, execFileSync } from "node:child_process";
 import { tmpdir } from "node:os";
+import { createHash } from "node:crypto";
 import yaml from "js-yaml";
 import sharp from "sharp";
 
@@ -337,6 +338,125 @@ function producerMidPath(product) {
 
 // ---------- images ----------
 const usedImages = new Set();
+const REGISTRY = join(import.meta.dirname, "hero-registry.json");
+const HERO_DHASH_MAX = 8; // 64-bit dHash; this close usually means the same photo
+const usedHeroes = []; // { slug, file, sha256, dhash, sourceUrl, sourceId, role }
+
+function srcAsset(p, suffix = "") {
+  const rel = String(p || "").replace(/^\//, "");
+  if (!rel) return "";
+  if (suffix) return join(SRC, `${rel}${suffix}`);
+  return join(SRC, rel);
+}
+function pixabayId(url) {
+  const m = String(url || "").match(/-(\d+)\/?(?:[?#].*)?$/);
+  return m ? m[1] : "";
+}
+function sha256Buf(buf) {
+  return createHash("sha256").update(buf).digest("hex");
+}
+async function dhashHex(buf, size = 8) {
+  const { data } = await sharp(buf).rotate().grayscale().resize(size + 1, size, { fit: "fill" }).raw().toBuffer({ resolveWithObject: true });
+  let bits = "";
+  for (let y = 0; y < size; y++) {
+    for (let x = 0; x < size; x++) bits += data[y * (size + 1) + x] < data[y * (size + 1) + x + 1] ? "1" : "0";
+  }
+  return BigInt(`0b${bits}`).toString(16).padStart((size * size) / 4, "0");
+}
+function hammingHex(a, b) {
+  if (!a || !b) return 64;
+  return (BigInt(`0x${a}`) ^ BigInt(`0x${b}`)).toString(2).replace(/0/g, "").length;
+}
+function rememberSource(url, id) {
+  if (url) usedImages.add(url);
+  if (id) usedImages.add(`pixabay:${id}`);
+}
+function heroLooksUsed(dhash, sha) {
+  return usedHeroes.some((h) => (sha && h.sha256 === sha) || hammingHex(h.dhash, dhash) <= HERO_DHASH_MAX);
+}
+async function bufferLooksUsed(buf) {
+  const sha = sha256Buf(buf);
+  if (usedHeroes.some((h) => h.sha256 === sha)) return true;
+  const dhash = await dhashHex(buf);
+  return heroLooksUsed(dhash, sha);
+}
+function loadHeroRegistry() {
+  // Merge the on-disk registry (source URLs/IDs) with a fresh scan of published heroes.
+  let stored = [];
+  try {
+    if (existsSync(REGISTRY)) stored = JSON.parse(readFileSync(REGISTRY, "utf8")).heroes || [];
+  } catch (e) { log(`hero registry read failed: ${e.message}`); }
+  const byFile = new Map(stored.map((h) => [h.file, h]));
+  usedHeroes.length = 0;
+  for (const g of guides()) {
+    const hero = g.data?.hero;
+    if (!hero) continue;
+    const file = srcAsset(hero, "-1600.webp");
+    if (!existsSync(file)) continue;
+    const buf = readFileSync(file);
+    const rel = file.startsWith(`${ROOT}/`) ? file.slice(ROOT.length + 1) : file;
+    const prev = byFile.get(rel) || {};
+    const slug = g.data.slug || String(g.data.permalink || "").replace(/^\/|\/$/g, "").split("/").pop() || prev.slug || "";
+    usedHeroes.push({
+      slug,
+      file: rel,
+      sha256: sha256Buf(buf),
+      dhash: "",
+      sourceUrl: prev.sourceUrl || "",
+      sourceId: prev.sourceId || pixabayId(prev.sourceUrl),
+      role: "hero",
+    });
+    rememberSource(prev.sourceUrl, prev.sourceId || pixabayId(prev.sourceUrl));
+  }
+  // Keep source URLs for heroes that were replaced (file gone) so we still skip that stock photo.
+  for (const h of stored) {
+    rememberSource(h.sourceUrl, h.sourceId || pixabayId(h.sourceUrl));
+    if (h.role === "hero" && h.file && !usedHeroes.some((x) => x.file === h.file) && h.sourceUrl) {
+      /* URL already remembered */
+    }
+  }
+  // Mid-article Pixabay links must not be reused as a later hero either? Mid may reuse? Task: mid must not duplicate a hero. Seed mid source URLs into usedImages too if they appear in bodies.
+  for (const g of guides()) {
+    for (const m of String(g.raw || "").matchAll(/https:\/\/pixabay\.com\/photos\/[^"'\s)]+/g)) {
+      rememberSource(m[0], pixabayId(m[0]));
+    }
+  }
+}
+async function fillHeroDhashes() {
+  for (const h of usedHeroes) {
+    if (h.dhash) continue;
+    const abs = h.file.startsWith("/") ? h.file : join(ROOT, h.file);
+    if (!existsSync(abs)) continue;
+    h.dhash = await dhashHex(readFileSync(abs));
+  }
+}
+function writeHeroRegistry() {
+  const payload = {
+    _readme: "Hero images already used on the site. The autowriter skips these by source URL/ID and by file or perceptual hash when picking a new hero. Mid-article photos also skip any hero.",
+    heroes: usedHeroes.map((h) => ({
+      slug: h.slug,
+      file: h.file,
+      sha256: h.sha256,
+      dhash: h.dhash,
+      sourceUrl: h.sourceUrl || "",
+      sourceId: h.sourceId || "",
+      role: h.role || "hero",
+    })),
+  };
+  writeFileSync(REGISTRY, `${JSON.stringify(payload, null, 2)}\n`);
+}
+async function rememberHero({ slug, file, buf, sourceUrl, sourceId }) {
+  const sha = sha256Buf(buf);
+  const dhash = await dhashHex(buf);
+  const rel = file.startsWith(`${ROOT}/`) ? file.slice(ROOT.length + 1) : file;
+  const rec = { slug: slug || "", file: rel, sha256: sha, dhash, sourceUrl: sourceUrl || "", sourceId: sourceId || pixabayId(sourceUrl), role: "hero" };
+  const i = usedHeroes.findIndex((h) => h.file === rel || h.slug === rec.slug);
+  if (i >= 0) usedHeroes[i] = rec; else usedHeroes.push(rec);
+  rememberSource(rec.sourceUrl, rec.sourceId);
+  writeHeroRegistry();
+  return rec;
+}
+
 let openverseBlocked = false;
 const JUNK = /poster|painting|drawing|illustration|engraving|lithograph|map\b|specimen|logo|diagram|coat of arms|flag|film|movie|catalog|catalogue|page \d|book|scan|statue|temple|church|cathedral|saint|god|goddess|shrine|buddha|krishna|shiva|ganesh|idol|deity|religio|bible|cross\b|portrait of|stamp|coin|advert|\bad\b|magazine|newspaper/i;
 
@@ -378,17 +498,22 @@ async function downloadPixabayHit(hit) {
 }
 async function pixabayMidImage(query) {
   try {
-    const hits = await pixabaySearch(query, { orientation: "horizontal", perPage: 10 });
+    const hits = await pixabaySearch(query, { orientation: "horizontal", perPage: 20 });
     const ranked = hits
-      .filter((h) => (h.largeImageURL || h.webformatURL) && !usedImages.has(h.largeImageURL || h.webformatURL) && !usedImages.has(h.pageURL))
+      .filter((h) => {
+        const url = h.largeImageURL || h.webformatURL;
+        const id = String(h.id || pixabayId(h.pageURL));
+        return url && !usedImages.has(url) && !usedImages.has(h.pageURL) && !usedImages.has(`pixabay:${id}`);
+      })
       .sort((a, b) => scorePixabayHit(b, query) - scorePixabayHit(a, query));
     for (const hit of ranked) {
       const got = await downloadPixabayHit(hit);
-      if (got) {
-        usedImages.add(got.url);
-        if (hit.pageURL) usedImages.add(hit.pageURL);
-        return { ...got, source: "Pixabay", pixabay: true };
-      }
+      if (!got) continue;
+      if (await bufferLooksUsed(got.buf)) { log(`pixabay mid skipped, matches an existing hero: ${hit.pageURL || got.url}`); continue; }
+      usedImages.add(got.url);
+      if (hit.pageURL) usedImages.add(hit.pageURL);
+      rememberSource(hit.pageURL, String(hit.id || pixabayId(hit.pageURL)));
+      return { ...got, source: "Pixabay", pixabay: true };
     }
     if (!hits.length) log("pixabay: no hits for query");
   } catch (e) { log(`pixabay ${e.message}`); }
@@ -425,7 +550,8 @@ async function candidates(query, aspect, n = 4, { skipPixabay = false } = {}) {
           title: p.tags || "",
           credit: "Pixabay",
           pageURL: p.pageURL,
-        })).filter((x) => x.url));
+          sourceId: String(p.id || ""),
+        })).filter((x) => x.url && !usedImages.has(x.url) && !usedImages.has(x.pageURL) && !usedImages.has(`pixabay:${x.sourceId}`)));
       } catch (e) { log(`pixabay ${e.message}`); }
     }
     if (PEXELS) {
@@ -463,13 +589,14 @@ async function candidates(query, aspect, n = 4, { skipPixabay = false } = {}) {
     } catch (e) { log(`commons ${e.message}`); }
     for (const x of lists.flat()) {
       if (out.length >= n) break;
-      if (!x.url || usedImages.has(x.url) || out.some((o) => o.url === x.url) || JUNK.test(x.title) || Math.min(x.w || 0, x.h || 0) < 600) continue;
+      if (!x.url || usedImages.has(x.url) || usedImages.has(x.pageURL) || (x.sourceId && usedImages.has(`pixabay:${x.sourceId}`)) || out.some((o) => o.url === x.url) || JUNK.test(x.title) || Math.min(x.w || 0, x.h || 0) < 600) continue;
       try {
         const r = await fetch(x.url, { headers: { "User-Agent": UA }, signal: AbortSignal.timeout(30000) });
         if (!r.ok) continue;
         const buf = Buffer.from(await r.arrayBuffer());
         const meta = await sharp(buf).metadata();
         if (!meta.width || Math.min(meta.width, meta.height) < 540) continue;
+        if (await bufferLooksUsed(buf)) continue;
         const thumb = await sharp(buf).rotate().resize(320, 320, { fit: "inside" }).jpeg({ quality: 60 }).toBuffer();
         out.push({ ...x, buf, thumb });
       } catch { /* next */ }
@@ -595,13 +722,27 @@ async function writeArticle(item, existing) {
   }
   const silo = silos.find((x) => x.slug === item.silo);
   const fallbacks = [silo?.image, "/assets/images/hero-patio", "/assets/images/still-tools", "/assets/images/still-kitchen", "/assets/images/still-patio"].filter(Boolean)
-    .map((b) => join(SRC, `${b}-1600.webp`)).filter((f, i, arr) => arr.indexOf(f) === i && existsSync(f));
-  let fb = 0;
-  const hero = chosen.hero || { buf: readFileSync(fallbacks[fb++ % fallbacks.length]), credit: "Daily Insight Desk illustration", house: true };
+    .map((b) => srcAsset(b, "-1600.webp")).filter((f, i, arr) => arr.indexOf(f) === i && existsSync(f));
+  const unusedFallbacks = [];
+  for (const f of fallbacks) {
+    if (!(await bufferLooksUsed(readFileSync(f)))) unusedFallbacks.push(f);
+  }
+  let hero = chosen.hero && !(await bufferLooksUsed(chosen.hero.buf)) ? chosen.hero : null;
+  if (!hero && unusedFallbacks.length) {
+    hero = { buf: readFileSync(unusedFallbacks.shift()), credit: "Daily Insight Desk illustration", house: true };
+  }
+  if (!hero) throw new Error("no unused hero image available (stock and site illustrations already used)");
   for (const w of [1600, 800]) {
     await sharp(hero.buf).rotate().resize(w, Math.round((w * 9) / 16), { fit: "cover", position: "attention" }).webp({ quality: 72 }).toFile(join(imgDir, `guide-${a.slug}-${w}.webp`));
   }
-  const imageReport = [`hero: ${chosen.hero ? "stock photo" : "site illustration (no fitting stock photo)"}`];
+  await rememberHero({
+    slug: a.slug,
+    file: join(imgDir, `guide-${a.slug}-1600.webp`),
+    buf: readFileSync(join(imgDir, `guide-${a.slug}-1600.webp`)),
+    sourceUrl: hero.pageURL || "",
+    sourceId: hero.sourceId || pixabayId(hero.pageURL),
+  });
+  const imageReport = [`hero: ${hero.house ? "site illustration (no fitting stock photo)" : "stock photo"}`];
   const storyPages = [];
   const tones = ["ink", "moss"];
   for (const [i, card] of a.story.entries()) {
@@ -631,7 +772,13 @@ async function writeArticle(item, existing) {
   } else if (chosen.mid) {
     mid = { ...chosen.mid, source: "stock photo" };
   } else if (fallbacks.length) {
-    mid = { buf: readFileSync(fallbacks[fb++ % fallbacks.length]), credit: "Daily Insight Desk illustration", house: true, source: "site illustration (no fitting stock photo)" };
+    mid = unusedFallbacks.length
+      ? { buf: readFileSync(unusedFallbacks.shift()), credit: "Daily Insight Desk illustration", house: true, source: "site illustration (no fitting stock photo)" }
+      : null;
+  }
+  if (mid && await bufferLooksUsed(mid.buf)) {
+    log(`mid image skipped, matches an existing hero`);
+    mid = null;
   }
   if (mid) {
     const alt = a.midImageAlt || (mid.product && product.alt) || a.heroAlt || "Photograph illustrating this guide";
@@ -767,6 +914,9 @@ if (TEST_PIXABAY) {
   process.exit(0);
 }
 
+loadHeroRegistry();
+await fillHeroDhashes();
+writeHeroRegistry();
 const queue = JSON.parse(readFileSync(QUEUE, "utf8"));
 const results = [];
 let made = 0;
@@ -790,15 +940,17 @@ for (const item of queue.items) {
       if (err) throw Object.assign(new Error("build failed"), { buildLog: err });
       item.status = "done"; item.slug = r.a.slug; item.url = r.url; item.date = TODAY; delete item._buildError;
       writeFileSync(QUEUE, `{\n  "_readme": ${JSON.stringify(queue._readme)},\n  "items": [\n${queue.items.map((x) => `    ${JSON.stringify(x)}`).join(",\n")}\n  ]\n}\n`);
-      sh(`git add -A src scripts/autowriter/queue.json && git commit -q -m ${JSON.stringify(`Autowriter: ${r.a.title}`)}`);
+      sh(`git add -A src scripts/autowriter/queue.json scripts/autowriter/hero-registry.json && git commit -q -m ${JSON.stringify(`Autowriter: ${r.a.title}`)}`);
       results.push({ ...r, backs, model: r.a._model, sources: r.a.sources.length, images: r.a._imageReport });
       made++; ok = true;
       log(`done ${r.url} (${r.wc} words, ${r.internal} internal links, ${backs.length} backlinks)`);
     } catch (e) {
       log(`attempt ${attempt + 1} failed for ${item.id}: ${e.message}${e.buildLog ? `\n${e.buildLog}` : ""}`);
       attemptNote = e.buildLog || e.message;
-      sh("git checkout -q -- src scripts/autowriter/queue.json && git clean -fdq src");
+      sh("git checkout -q -- src scripts/autowriter/queue.json scripts/autowriter/hero-registry.json && git clean -fdq src");
       usedImages.clear();
+      loadHeroRegistry();
+      await fillHeroDhashes();
     }
   }
   if (!ok) results.push({ failed: item.id, topic: item.topic, reason: String(attemptNote).slice(0, 300) });

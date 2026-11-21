@@ -8,14 +8,14 @@ dek: "Most paver patios are dirty, not damaged. That is a brush-and-rinse job, a
 silo: cleaning
 siloName: Cleaning
 date: 2026-11-19
-updated: 2026-11-19
+updated: 2026-11-21
 readTime: 7 min read
 hero: /assets/images/guide-how-to-clean-patio-pavers-with-a-garden-hose
 heroHeight: 900
-heroAlt: Illustration of a brass outdoor spigot and a hose nozzle rinsing damp brick pavers
-heroCaption: Illustration by Daily Insight Desk.
+heroAlt: A garden path of light gray paving stones beside a lawn and a hedge
+heroCaption: "Stock photo: Pixabay."
 ogImage: /assets/images/guide-how-to-clean-patio-pavers-with-a-garden-hose-1600.webp
-ogAlt: Illustration of a brass outdoor spigot and a hose nozzle rinsing damp brick pavers
+ogAlt: A garden path of light gray paving stones beside a lawn and a hedge
 permalink: /cleaning/how-to-clean-patio-pavers-with-a-garden-hose/
 story:
   slug: how-to-clean-patio-pavers-with-a-garden-hose
