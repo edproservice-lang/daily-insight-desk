@@ -2,8 +2,8 @@
 layout: layouts/article.njk
 tags: guide
 title: How to Get Garlic Smell Out of a Cutting Board
-metaTitle: "How to Get Garlic Smell Out of Cutting Board: Easy Steps"
-description: Learn how to get garlic smell out of cutting board surfaces using natural household ingredients like lemon, salt, and baking soda without damaging wood fibers.
+metaTitle: How to Get Garlic Smell Out of a Cutting Board
+description: "How to get garlic smell out of a cutting board with salt, lemon, and baking soda. Scrub the wood safely, skip bleach, and oil the board so the odor stays out."
 dek: Garlic oils penetrate porous wood quickly and cling for days. Here is how to strip lingering odors using safe household staples without ruining your board.
 silo: kitchen
 siloName: Kitchen
@@ -12,10 +12,10 @@ updated: 2026-11-21
 readTime: 9 min read
 hero: /assets/images/guide-how-to-get-garlic-smell-out-of-cutting-board
 heroHeight: 900
-heroAlt: Illustration of a wooden cutting board, a bowl of lemons, and a linen towel on a stone counter
-heroCaption: Illustration by Daily Insight Desk.
+heroAlt: Garlic bulbs, cloves, and onions on a dark wooden cutting board
+heroCaption: "Stock photo: Pixabay."
 ogImage: /assets/images/guide-how-to-get-garlic-smell-out-of-cutting-board-1600.webp
-ogAlt: Illustration of a wooden cutting board, a bowl of lemons, and a linen towel on a stone counter
+ogAlt: Garlic bulbs, cloves, and onions on a dark wooden cutting board
 permalink: /kitchen/how-to-get-garlic-smell-out-of-cutting-board/
 story:
   slug: how-to-get-garlic-smell-out-of-cutting-board
@@ -26,7 +26,7 @@ story:
       image: /assets/images/stories/how-to-get-garlic-smell-out-of-cutting-board/p1.webp
       imageWidth: 720
       imageHeight: 960
-      alt: Illustration of home and garden tools
+      alt: Garlic bulbs and cloves on a light wooden cutting board
       tone: ink
     - id: card-2
       title: Why Smell Clings
@@ -34,7 +34,7 @@ story:
       image: /assets/images/stories/how-to-get-garlic-smell-out-of-cutting-board/p2.webp
       imageWidth: 720
       imageHeight: 960
-      alt: Illustration of home and garden tools
+      alt: Broken garlic bulbs and loose cloves on a wooden board
       tone: moss
     - id: card-3
       title: Salt and Lemon Scrub
@@ -50,7 +50,7 @@ story:
       image: /assets/images/stories/how-to-get-garlic-smell-out-of-cutting-board/p4.webp
       imageWidth: 720
       imageHeight: 960
-      alt: Illustration of home and garden tools
+      alt: A well-used wooden cutting board on a dark kitchen table
       tone: moss
     - id: card-5
       title: Avoid Harsh Bleach
@@ -58,7 +58,7 @@ story:
       image: /assets/images/stories/how-to-get-garlic-smell-out-of-cutting-board/p5.webp
       imageWidth: 720
       imageHeight: 960
-      alt: Illustration of home and garden tools
+      alt: A cut lemon on a wooden surface, a gentler option than bleach
       tone: ink
     - id: card-6
       title: Re-Oil Your Board
@@ -66,15 +66,15 @@ story:
       image: /assets/images/stories/how-to-get-garlic-smell-out-of-cutting-board/p6.webp
       imageWidth: 720
       imageHeight: 960
-      alt: Applying clear mineral oil to condition a rich hardwood cutting board.
+      alt: Lemon slices arranged on a small wooden cutting board
       tone: moss
     - id: card-7
       title: Read the Full Guide
-      text: Visit Daily Insight Desk for step-by-step wood board care instructions.
+      text: The full guide covers the salt-and-lemon scrub, baking soda, and how to oil the board.
       image: /assets/images/stories/how-to-get-garlic-smell-out-of-cutting-board/p7.webp
       imageWidth: 720
       imageHeight: 960
-      alt: A pristine, beautifully oiled wooden cutting board sitting on a clean counter.
+      alt: A baguette on a round wooden cutting board
       tone: ink
 related:
   - href: /kitchen/do-titanium-cutting-boards-dull-knives/
@@ -119,7 +119,7 @@ autowriter:
 
 ## The short answer
 
-To learn how to get garlic smell out of cutting board surfaces made of wood, scrub the board with coarse salt and half a fresh lemon. The salt mechanically lifts trapped sulfur compounds from wood pores, while lemon juice neutralizes residual odors. Wash with mild soap, rinse thoroughly, and dry upright.
+To get garlic smell out of a cutting board, scrub the wood with coarse salt and half a fresh lemon. The salt lifts sulfur compounds from the pores, and the lemon juice helps neutralize what is left. Wash with mild soap, rinse thoroughly, and stand the board on edge until it is fully dry.
 
 ## Why garlic odors cling to wood cutting boards
 
@@ -132,8 +132,8 @@ Wood is a porous matrix of cellulose and lignin fibers. End-grain boards absorb 
 Removing pungent odors from wood requires a balance between mechanical friction and mild chemical neutralization. Strong industrial chemicals can warp timber or leave toxic residues, while soft sponges merely slide across knife grooves without pulling out trapped sulfur oils.
 
 <figure class="frame mid-figure">
-<img src="/assets/images/articles/how-to-get-garlic-smell-out-of-cutting-board.jpg" alt="A person scrubbing a lemon half over coarse salt on a wooden cutting board to show how to get garlic smell out of cutting board surfaces." width="1200" height="795" loading="lazy" decoding="async">
-<figcaption>Photo: <a href="https://pixabay.com/photos/mushrooms-brown-mushrooms-cook-meal-756406/" rel="nofollow noopener" target="_blank">Pixabay</a></figcaption>
+<img src="/assets/images/articles/how-to-get-garlic-smell-out-of-cutting-board.jpg" alt="A lemon cut in half on a round wooden cutting board, ready for a salt-and-lemon scrub." width="1200" height="800" loading="lazy" decoding="async">
+<figcaption>Photo: <a href="https://pixabay.com/photos/lemon-fruit-cutting-board-citrus-6925734/" rel="nofollow noopener" target="_blank">Pixabay</a></figcaption>
 </figure>
 ### Method 1: The coarse salt and lemon scrub
 
@@ -155,7 +155,7 @@ When garlic oil has sat in dry wood fibers overnight, citric acid alone may not 
 4. **Dwell time:** Leave the paste on the surface for 15 to 20 minutes. As the baking soda dries slightly, it pulls moisture and volatile odor molecules out of the wood grain.
 5. **Rinse:** Wipe off the dry paste with warm water, scrub briefly with a soft dish brush, rinse thoroughly, and stand the board vertical while drying.
 
-If you prefer pre-portioned cleaning products around the kitchen, note that general household cleaners are not always suited for wood. For instance, people wondering [do cleaning tablets replace a closet of sprays](/cleaning/do-cleaning-tablets-replace-spray-bottles/) should keep in mind that spray chemicals meant for hard counter tiles or glass can strip protective natural oils directly out of hardwood cutting boards.
+Skip general household cleaners on a wood board. Sprays meant for counters or glass can strip the mineral oil that keeps garlic juice from soaking in.
 
 ### Method 3: Food-grade hydrogen peroxide rinse
 
@@ -178,7 +178,7 @@ Over months of daily food preparation, sharp knives leave hundreds of tiny gouge
 2. **Sand coarse to fine:** Use an orbital sander or manual sanding block with 120-grit sandpaper to remove deep knife tracks. Follow up with 180-grit and finish with 220-grit sandpaper to smooth out raised wood fibers.
 3. **Clear dust:** Wipe the board clean with a damp microfiber cloth to remove fine sawdust before applying fresh oil.
 
-Maintaining knife edges properly reduces deep gouges in the first place. Dull knives require heavy downward force that crushes wood grain, whereas sharp blades slice cleanly through fibers. Knife enthusiasts evaluating maintenance tools often ask [are rolling knife sharpeners good](/kitchen/are-rolling-knife-sharpeners-good/) for preserving edge geometry; keeping blades tuned prevents ragged cuts that tear up wood surfaces.
+Maintaining knife edges properly reduces deep gouges in the first place. Dull knives require heavy downward force that crushes wood grain, whereas sharp blades slice cleanly through fibers. A [rolling knife sharpener](/kitchen/are-rolling-knife-sharpeners-good/) is one way to keep a kitchen edge in shape, and a sharp blade is easier on the board.
 
 ### Re-seasoning with mineral oil and beeswax
 
@@ -188,7 +188,7 @@ Once the wood is smooth and odor-free, building a moisture barrier keeps smelly 
 * **Rest overnight:** Allow the oil to soak into the cellular structure of the wood overnight.
 * **Seal with wax:** Apply a commercial board cream or home mixture of melted beeswax and mineral oil. The wax hardens near the surface pores, creating a hydrophobic layer that repels water and aromatic oils.
 
-Homeowners tired of wood maintenance sometimes consider alternative cutting materials. For instance, home cooks often research [do titanium cutting boards dull knives](/kitchen/do-titanium-cutting-boards-dull-knives/) when looking for non-porous surfaces that never absorb garlic, though metal surfaces present their own trade-offs regarding blade retention. Furthermore, users should check [are titanium cutting boards dishwasher safe](/kitchen/are-titanium-cutting-boards-dishwasher-safe/) before swapping out classic wood prep blocks, as dishwashers feature high heat cycles that destroy timber completely.
+Home cooks who are tired of wood maintenance sometimes look at metal boards instead. A titanium board will not absorb garlic juice, but [titanium cutting boards dull knives](/kitchen/do-titanium-cutting-boards-dull-knives/) faster than wood, and you should [check whether they are dishwasher safe](/kitchen/are-titanium-cutting-boards-dishwasher-safe/) before you switch. A dishwasher cycle will also ruin a wooden board.
 
 ## What to avoid when cleaning a smelly wooden board
 
@@ -199,9 +199,9 @@ Improper cleaning habits can permanently ruin high-quality wooden cutting boards
 * **Never run wood through the dishwasher:** High heat combined with harsh detergent and extended water exposure destroys wood cutting boards within a single cycle.
 * **Avoid vegetable or olive oils:** Standard cooking oils will oxidize and turn rancid over time inside wood grain, replacing the garlic smell with a stale, sour grease odor.
 
-According to guidance on wood tool sanitization from the Penn State Extension, wooden cutting surfaces should be scrubbed with hot soapy water after each use and allowed to air-dry completely in a vertical position to prevent moisture entrapment.
+The [USDA Food Safety and Inspection Service](https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/cutting-boards) recommends washing cutting boards with hot, soapy water after each use, then rinsing and letting them air-dry. It also advises using a separate board, or a non-porous one, for raw meat and poultry so those juices are easier to clean up.
 
-Proper food safety procedures outlined by the USDA Food Safety and Inspection Service note that while wooden boards are safe for general prep work, non-porous surfaces or dedicated separate boards should ideally be used for raw meat and poultry to simplify sanitation routines.
+The [University of Maine Cooperative Extension](https://extension.umaine.edu/publications/3108e/) similarly warns against soaking a wooden board, notes that many glued or laminated boards will crack in the dishwasher, and lists white vinegar or 3% hydrogen peroxide among household options after the board has been washed.
 
 ## Pros and cons
 
@@ -209,7 +209,7 @@ Proper food safety procedures outlined by the USDA Food Safety and Inspection Se
 * **Natural methods preserve wood:** Salt, lemon, and baking soda clear smelly compounds without breaking down natural wood glues or drying out fibers.
 * **Budget friendly:** Most deodorizing remedies use everyday pantry supplies costing pennies per treatment.
 * **Restores board function:** Removing sulfur oils prevents flavor transfer to delicate fruits, cheeses, and bread.
-* **Safe for food contact:** Natural acids and gentle alkalis leave zero toxic residue on surfaces where you prepare meals.
+* **Everyday kitchen ingredients:** Salt, lemon, and baking soda are common pantry staples and do not leave a harsh chemical film when the board is rinsed well.
 
 **Cons:**
 * **Requires manual scrubbing:** Removing deep-set garlic oils takes physical effort and multiple treatments if the board was neglected.
@@ -230,4 +230,5 @@ Proper food safety procedures outlined by the USDA Food Safety and Inspection Se
 
 ## Sources
 
-- [University of Minnesota Extension (home page)](https://extension.umn.edu). Reference portal for university research on home food preparation and kitchen hygiene.
+- [USDA Food Safety and Inspection Service, “Cutting Boards”](https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/cutting-boards). Last updated August 27, 2024. The page covers washing with hot, soapy water, air-drying, and using a separate board for raw meat and poultry.
+- [Gulsun Akdemir Evrendilek, “Safe Cutting Boards: Materials, Usage, and Cleaning Tips,” University of Maine Cooperative Extension, Bulletin #3108](https://extension.umaine.edu/publications/3108e/). The bulletin advises against soaking wood, cautions that many wooden boards do not belong in the dishwasher, and mentions vinegar or 3% hydrogen peroxide as household follow-up options after washing.
