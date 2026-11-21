@@ -774,6 +774,7 @@ for (const item of queue.items) {
   if (made >= COUNT) break;
   if (item.status !== "todo") continue;
   if ((process.env.SKIP_IDS || "").split(",").includes(item.id)) { log(`skip ${item.id}: already drafted in an open PR`); continue; }
+  if (item.demand?.level === "none") { log(`skip ${item.id}: no search demand and no usable on-topic variant`); continue; }
   if (item.product && !PRODUCTS[item.product]) { log(`skip ${item.id}: product ${item.product} is not in products.js`); continue; }
   log(`writing ${item.id}: ${item.topic}`);
   let ok = false;
