@@ -3,7 +3,7 @@ name: Daily articles (autowriter)
 on:
   schedule:
     # 10:17 UTC = 07:17 America/Sao_Paulo, Monday-Saturday
-    - cron: "17 10 * * 1-6"
+    - cron: "17 10 * * *"
   workflow_dispatch:
     inputs:
       count:
