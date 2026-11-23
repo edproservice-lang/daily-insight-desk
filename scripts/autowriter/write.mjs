@@ -809,6 +809,7 @@ async function writeArticle(item, existing) {
   const fallbacks = [silo?.image, "/assets/images/hero-patio", "/assets/images/still-tools", "/assets/images/still-kitchen", "/assets/images/still-patio"].filter(Boolean)
     .map((b) => srcAsset(b, "-1600.webp")).filter((f, i, arr) => arr.indexOf(f) === i && existsSync(f));
   const unusedFallbacks = [];
+  let fb = 0;
   for (const f of fallbacks) {
     if (!(await bufferLooksUsed(readFileSync(f)))) unusedFallbacks.push(f);
   }
