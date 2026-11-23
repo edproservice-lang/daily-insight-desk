@@ -62,6 +62,8 @@ const PRODUCTS = productsMod.default;
 const silos = (await import(join(SRC, "_data", "silos.js"))).default;
 
 // ---------- Gemini ----------
+let GEMINI_DEAD = "";
+let OVERLOAD_HITS = 0;
 async function gemini(prompt, { json = true, temperature = 0.8, models = MODELS, parts = [] } = {}) {
   // curl instead of fetch: Node's fetch drops responses that take >5 min to start.
   const tmp = mkdtempSync(join(tmpdir(), "aw-"));
@@ -72,6 +74,7 @@ async function gemini(prompt, { json = true, temperature = 0.8, models = MODELS,
     generationConfig: { temperature, maxOutputTokens: 32000, ...(json ? { responseMimeType: "application/json" } : {}) },
   }));
   let lastErr = "";
+  if (GEMINI_DEAD) throw Object.assign(new Error("Gemini unavailable (stopped earlier this run): " + GEMINI_DEAD), { fatal: true });
   try {
     for (const model of models) {
       for (let attempt = 0; attempt < 2; attempt++) {
@@ -87,12 +90,28 @@ async function gemini(prompt, { json = true, temperature = 0.8, models = MODELS,
         if (code !== 200) {
           lastErr = `${model} HTTP ${code} ${data?.error?.status || ""}`;
           log(lastErr);
-          if ([400, 403, 404].includes(code) || (code === 429 && /limit: 0|per day|PerDay/i.test(JSON.stringify(data)))) break;
-          await sleep(15000);
+          const bodyTxt = JSON.stringify(data);
+          // daily quota exhausted: all models share it, so stop the whole run now
+          if (code === 429 && /RESOURCE_EXHAUSTED/i.test(bodyTxt) && /per ?day|PerDay|limit: 0/i.test(bodyTxt)) {
+            GEMINI_DEAD = lastErr;
+            throw Object.assign(new Error("Gemini daily quota exhausted: " + lastErr), { fatal: true });
+          }
+          if ([400, 403, 404].includes(code)) break;
+          if (code === 503 || code === 429 || code === 500) {
+            OVERLOAD_HITS++;
+            if (OVERLOAD_HITS >= 4) {
+              GEMINI_DEAD = lastErr;
+              throw Object.assign(new Error("Gemini overloaded or rate-limited repeatedly, giving up: " + lastErr), { fatal: true });
+            }
+            if (attempt === 0) { await sleep(10000 * OVERLOAD_HITS); continue; }
+            break; // try the next model
+          }
+          await sleep(5000);
           continue;
         }
         const text = (data.candidates?.[0]?.content?.parts || []).filter((p) => !p.thought).map((p) => p.text || "").join("");
         if (!text) { lastErr = `${model} empty response (${data.candidates?.[0]?.finishReason || "?"})`; log(lastErr); continue; }
+        OVERLOAD_HITS = 0;
         log(`model ${model} answered (${text.length} chars)`);
         if (!json) return { model, out: text };
         try {
@@ -106,15 +125,23 @@ async function gemini(prompt, { json = true, temperature = 0.8, models = MODELS,
 
 // ---------- link + content checks ----------
 async function urlOk(url) {
-  try {
-    const host = new URL(url).hostname;
-    if (AFFIL_HOSTS.some((h) => host.endsWith(h))) return false;
-    for (const method of ["HEAD", "GET"]) {
-      const r = await fetch(url, { method, redirect: "follow", headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36" }, signal: AbortSignal.timeout(20000) });
-      if (r.status === 200) return true;
-      if (method === "GET") return false;
-    }
-  } catch { return false; }
+  let host = "";
+  try { host = new URL(url).hostname; } catch { return false; }
+  if (AFFIL_HOSTS.some((h) => host.endsWith(h))) return false;
+  const trusted = AUTH_HOST.test(host);
+  const headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.9",
+  };
+  for (const method of ["HEAD", "GET"]) {
+    try {
+      const r = await fetch(url, { method, redirect: "follow", headers, signal: AbortSignal.timeout(20000) });
+      if (r.status >= 200 && r.status < 300) return true;
+      // known .gov/.edu hosts often block datacenter runners with 403/405: the page exists, so accept it
+      if (trusted && (r.status === 403 || r.status === 405)) return true;
+    } catch { /* try GET next */ }
+  }
   return false;
 }
 const BANNED_HOST = /(^|\.)(amazon\.|amzn\.to|walmart\.|ebay\.|target\.com|bestbuy\.|homedepot\.|lowes\.|wayfair\.|etsy\.|aliexpress\.|costco\.|temu\.|shein\.)/i;
@@ -167,6 +194,41 @@ function sameOffer(a, b) {
 }
 const words = (md) => md.replace(/\{%[\s\S]*?%\}/g, " ").replace(/\[([^\]]*)\]\([^)]*\)/g, "$1").replace(/[#*_>`|-]/g, " ").split(/\s+/).filter((w) => /[a-z0-9]/i.test(w)).length;
 const mdLinks = (md) => [...md.matchAll(/\[([^\]]+)\]\(([^)\s]+)\)/g)].map((m) => ({ full: m[0], text: m[1], href: m[2], index: m.index }));
+
+
+// Mechanical fixes done in code so we never spend a Gemini call re-prompting for them.
+function autoFix(a, ctx) {
+  if (!a || typeof a.body !== "string") return a;
+  const known = new Set(ctx.existing.map((g) => g.url));
+  const seen = new Set();
+  let internalCount = 0;
+  // drop internal links that are not existing article URLs, duplicates, and extras beyond 6
+  a.body = a.body.replace(/\[([^\]]+)\]\((\/[^)\s]*)\)/g, (m, t, href) => {
+    const target = href.split("#")[0];
+    if (!known.has(target) || seen.has(target) || internalCount >= 6) return t;
+    seen.add(target); internalCount++;
+    return m;
+  });
+  // insert one in-sentence affiliate CTA when missing
+  const product = ctx.product ? PRODUCTS[ctx.product] : null;
+  if (product && product.href) {
+    const has = mdLinks(a.body).some((l) => sameOffer(l.href, product.href));
+    if (!has) {
+      const short = a.body.search(/\{%\s*product\s+"[a-z0-9]+"\s*%\}/);
+      const limit = short === -1 ? a.body.length : short;
+      const paras = [...a.body.slice(0, limit).matchAll(/(^|\n\n)([^\n#{|>*-][^\n]*[.!?])(?=\n\n|\s*$)/g)];
+      const pick = paras.reverse().find((m) => !/^\d+\./.test(m[2]) && !/\]\(https?:/.test(m[2]));
+      if (pick) {
+        const name = product.name || "this product";
+        const sentence = ` If this sounds like what you need, [take a look at what ${name} offers](${product.href}).`;
+        const start = pick.index + pick[1].length;
+        a.body = a.body.slice(0, start) + pick[2] + sentence + a.body.slice(start + pick[2].length);
+        log("auto-inserted affiliate CTA");
+      }
+    }
+  }
+  return a;
+}
 
 function checkArticle(a, ctx) {
   const errs = [];
@@ -702,12 +764,14 @@ async function rescueSources(a) {
 
 async function writeArticle(item, existing) {
   let a = await draft(item, existing, item._buildError ? [`The site build failed on the last try; avoid whatever caused this: ${item._buildError.slice(-1200)}`] : undefined);
+  a = autoFix(a, { product: item.product, existing });
   let errs = checkArticle(a, { product: item.product, existing });
   if (!a.sources.length) a.sources = await rescueSources(a);
   if (!a.sources.length) errs.push("none of your source URLs returned HTTP 200; give real, stable .gov/.edu/manufacturer URLs");
   if (errs.length) {
     log(`draft 1 issues: ${errs.join(" | ")}`);
     a = await draft(item, existing, errs);
+    a = autoFix(a, { product: item.product, existing });
     errs = checkArticle(a, { product: item.product, existing });
     if (!a.sources.length) a.sources = await rescueSources(a);
     if (!a.sources.length) errs.push("no verified sources");
@@ -941,8 +1005,10 @@ writeHeroRegistry();
 const queue = JSON.parse(readFileSync(QUEUE, "utf8"));
 const results = [];
 let made = 0;
+let fatalStop = "";
 for (const item of queue.items) {
   if (made >= COUNT) break;
+  if (fatalStop) { log("stopping run: " + fatalStop); break; }
   if (item.status !== "todo") continue;
   if ((process.env.SKIP_IDS || "").split(",").includes(item.id)) { log(`skip ${item.id}: already drafted in an open PR`); continue; }
   if (item.demand?.level === "none") { log(`skip ${item.id}: no search demand and no usable on-topic variant`); continue; }
@@ -950,7 +1016,7 @@ for (const item of queue.items) {
   log(`writing ${item.id}: ${item.topic}`);
   let ok = false;
   let attemptNote = null;
-  for (let attempt = 0; attempt < 2 && !ok; attempt++) {
+  for (let attempt = 0; attempt < 2 && !ok && !fatalStop; attempt++) {
     try {
       const existing = guides();
       if (attemptNote) item._buildError = attemptNote;
@@ -968,6 +1034,7 @@ for (const item of queue.items) {
     } catch (e) {
       log(`attempt ${attempt + 1} failed for ${item.id}: ${e.message}${e.buildLog ? `\n${e.buildLog}` : ""}`);
       attemptNote = e.buildLog || e.message;
+      if (e.fatal) fatalStop = e.message;
       sh("git checkout -q -- src scripts/autowriter/queue.json scripts/autowriter/hero-registry.json && git clean -fdq src");
       usedImages.clear();
       loadHeroRegistry();
