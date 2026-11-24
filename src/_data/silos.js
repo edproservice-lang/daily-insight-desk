@@ -65,7 +65,6 @@ export default [
     },
     soon: [
       "How to wash a car with only a garden hose and nozzle",
-      "How to remove moss from a shady patio without a pressure washer",
       "How to clean grease off grill grates with a hose",
       "Best garden hose nozzle for low water pressure",
     ],

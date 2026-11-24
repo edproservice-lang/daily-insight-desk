@@ -117,6 +117,15 @@
       "sourceUrl": "",
       "sourceId": "",
       "role": "hero"
+    },
+    {
+      "slug": "remove-moss-from-patio-without-pressure-washer",
+      "file": "src/assets/images/guide-remove-moss-from-patio-without-pressure-washer-1600.webp",
+      "sha256": "887f8cb905c7739b4d2af43c760fc34727f5c70e0f990fdf5f6b384edc2afce1",
+      "dhash": "cc12d2d0f3caee8a",
+      "sourceUrl": "https://pixabay.com/photos/snowman-town-urban-321034/",
+      "sourceId": "321034",
+      "role": "hero"
     }
   ]
 }
