@@ -38,7 +38,6 @@ export default [
       "Those are not the same question. A surface can be easy to rinse and still be a poor place to chop. A sharpener can hold an angle and still be the wrong tool for a serrated blade. The guides below say when a point comes from a seller or from another publication.",
     ],
     soon: [
-      "Plastic, wood, or titanium for raw meat",
       "How to stop a cutting board from slipping",
       "How to oil a wood cutting board, and how often",
       "How to choose a cutting board if you hate hand-washing",

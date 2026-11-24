@@ -139,7 +139,7 @@ A solid sheet of titanium is a good candidate on paper. It is non-porous. It doe
 
 Stand the board like a plate, not flat on the rack where it blocks the spray arm. Scrape off the food first. Let it dry before you put it away if your water leaves spots. None of that is special technique. It is how you wash a tray.
 
-A dishwasher also does not make a dirty board clean by magic if you load it under a crust of food. And it does not change the reason you wash a board after raw chicken before you slice fruit on it. That is a kitchen habit. It is not a medical claim, and no metal surface cancels it.
+A dishwasher also does not make a dirty board clean by magic if you load it under a crust of food. And it does not change the reason you wash a board after [raw chicken](/kitchen/best-cutting-board-material-for-raw-meat/) before you slice fruit on it. That is a kitchen habit. It is not a medical claim, and no metal surface cancels it.
 
 ## What FSIS says — and what it does not
 

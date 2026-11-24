@@ -2,24 +2,6 @@
   "_readme": "Hero images already used on the site. The autowriter skips these by source URL/ID and by file or perceptual hash when picking a new hero. Mid-article photos also skip any hero.",
   "heroes": [
     {
-      "slug": "are-rolling-knife-sharpeners-good",
-      "file": "src/assets/images/guide-rolling-sharpener-1600.webp",
-      "sha256": "29818b15181e56c8849bae42be8ffbcc2afd0e24527cb64ceff7adfe8e0aba7a",
-      "dhash": "00189a9a9e861800",
-      "sourceUrl": "",
-      "sourceId": "",
-      "role": "hero"
-    },
-    {
-      "slug": "are-titanium-cutting-boards-dishwasher-safe",
-      "file": "src/assets/images/guide-are-titanium-cutting-boards-dishwasher-safe-1600.webp",
-      "sha256": "1c43d64f47dc820c3f42897bda7900bf50cbc451267031ebf908b806043a4f85",
-      "dhash": "707078383fe7e763",
-      "sourceUrl": "",
-      "sourceId": "",
-      "role": "hero"
-    },
-    {
       "slug": "are-window-cleaning-robots-worth-it",
       "file": "src/assets/images/guide-windobotz-1600.webp",
       "sha256": "98f1e5292b0e8ed41f5f2c23ce2f446cbd9eee83b2bfcacf892e5b3fe701f91c",
@@ -33,24 +15,6 @@
       "file": "src/assets/images/guide-tablets-1600.webp",
       "sha256": "8ea00c0b291a5d466973ff038e77495fe82f7afbcce6aa0bfe53d7a336fdeb69",
       "dhash": "0c0c4c4d4d4d0d8d",
-      "sourceUrl": "",
-      "sourceId": "",
-      "role": "hero"
-    },
-    {
-      "slug": "do-portable-evaporative-coolers-work",
-      "file": "src/assets/images/guide-cooler-1600.webp",
-      "sha256": "d7166791366f083544b981cdd441d868b6ab1723555e17eb2fc8669f96842779",
-      "dhash": "3838384c4c0c0c2c",
-      "sourceUrl": "",
-      "sourceId": "",
-      "role": "hero"
-    },
-    {
-      "slug": "do-titanium-cutting-boards-dull-knives",
-      "file": "src/assets/images/guide-boards-1600.webp",
-      "sha256": "4be7310d4adf639ac4c61a0b2d72a424cdc7d1b22e7f5badc78f19fc7a97a225",
-      "dhash": "78c0b03131337082",
       "sourceUrl": "",
       "sourceId": "",
       "role": "hero"
@@ -83,12 +47,57 @@
       "role": "hero"
     },
     {
+      "slug": "are-rolling-knife-sharpeners-good",
+      "file": "src/assets/images/guide-rolling-sharpener-1600.webp",
+      "sha256": "29818b15181e56c8849bae42be8ffbcc2afd0e24527cb64ceff7adfe8e0aba7a",
+      "dhash": "00189a9a9e861800",
+      "sourceUrl": "",
+      "sourceId": "",
+      "role": "hero"
+    },
+    {
+      "slug": "are-titanium-cutting-boards-dishwasher-safe",
+      "file": "src/assets/images/guide-are-titanium-cutting-boards-dishwasher-safe-1600.webp",
+      "sha256": "1c43d64f47dc820c3f42897bda7900bf50cbc451267031ebf908b806043a4f85",
+      "dhash": "707078383fe7e763",
+      "sourceUrl": "",
+      "sourceId": "",
+      "role": "hero"
+    },
+    {
+      "slug": "do-titanium-cutting-boards-dull-knives",
+      "file": "src/assets/images/guide-boards-1600.webp",
+      "sha256": "4be7310d4adf639ac4c61a0b2d72a424cdc7d1b22e7f5badc78f19fc7a97a225",
+      "dhash": "78c0b03131337082",
+      "sourceUrl": "",
+      "sourceId": "",
+      "role": "hero"
+    },
+    {
       "slug": "how-to-get-garlic-smell-out-of-cutting-board",
       "file": "src/assets/images/guide-how-to-get-garlic-smell-out-of-cutting-board-1600.webp",
       "sha256": "c82b6d05cca5e7d114001e242f1ee1f1629ff307e1149f7fe8627a3b7b4e55b5",
       "dhash": "6564aca4b1646b3e",
       "sourceUrl": "https://pixabay.com/photos/onion-garlic-cutting-board-food-3089199/",
       "sourceId": "3089199",
+      "role": "hero"
+    },
+    {
+      "slug": "do-portable-evaporative-coolers-work",
+      "file": "src/assets/images/guide-cooler-1600.webp",
+      "sha256": "d7166791366f083544b981cdd441d868b6ab1723555e17eb2fc8669f96842779",
+      "dhash": "3838384c4c0c0c2c",
+      "sourceUrl": "",
+      "sourceId": "",
+      "role": "hero"
+    },
+    {
+      "slug": "how-to-winterize-a-garden-hose-and-nozzle",
+      "file": "src/assets/images/guide-how-to-winterize-a-garden-hose-and-nozzle-1600.webp",
+      "sha256": "b5773b79e58b2647bac1dac7536f68bb787425f1206c0e51304f535c992d5fc0",
+      "dhash": "59f9b1f1c1c3f3f8",
+      "sourceUrl": "",
+      "sourceId": "",
       "role": "hero"
     },
     {
@@ -101,10 +110,10 @@
       "role": "hero"
     },
     {
-      "slug": "how-to-winterize-a-garden-hose-and-nozzle",
-      "file": "src/assets/images/guide-how-to-winterize-a-garden-hose-and-nozzle-1600.webp",
-      "sha256": "b5773b79e58b2647bac1dac7536f68bb787425f1206c0e51304f535c992d5fc0",
-      "dhash": "59f9b1f1c1c3f3f8",
+      "slug": "best-cutting-board-material-for-raw-meat",
+      "file": "src/assets/images/guide-best-cutting-board-material-for-raw-meat-1600.webp",
+      "sha256": "1c43d64f47dc820c3f42897bda7900bf50cbc451267031ebf908b806043a4f85",
+      "dhash": "707078383fe7e763",
       "sourceUrl": "",
       "sourceId": "",
       "role": "hero"
