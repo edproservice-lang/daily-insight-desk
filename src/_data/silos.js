@@ -16,7 +16,6 @@ export default [
       "A garden hose already does more than people give it credit for, and less than the ads claim. One guide separates a focused rinse from a pressure washer. Another covers when a steamer is enough and when you still want an iron. A third asks whether a window-cleaning robot is worth the ladder it replaces, and a fourth asks whether cleaning tablets replace the sprays under the sink.",
     ],
     soon: [
-      "How to rinse pollen and dust off outdoor furniture",
       "How to clean vinyl siding with a garden hose",
       "How to wash muddy boots and paws at the back door",
     ],

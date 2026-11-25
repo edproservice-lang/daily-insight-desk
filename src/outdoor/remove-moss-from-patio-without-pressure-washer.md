@@ -151,7 +151,7 @@ Clearing green growth by hand relies on a clear chemical-mechanical combination:
 <figcaption>Seller photo. Package details can change.</figcaption>
 </figure>
 ### Step 1: Prep and clear loose debris
-Begin by removing patio furniture, planters, grill equipment, and outdoor rugs from the work zone. Sweep away loose leaves, twigs, and loose surface dirt using a standard yard broom. Dry sweeping prevents mud formation when liquid cleaners are applied later in the process.
+Begin by removing [patio furniture, planters](/cleaning/how-to-clean-pollen-off-outdoor-furniture/), grill equipment, and outdoor rugs from the work zone. Sweep away loose leaves, twigs, and loose surface dirt using a standard yard broom. Dry sweeping prevents mud formation when liquid cleaners are applied later in the process.
 
 ### Step 2: Apply your chosen cleaning solution
 Saturate the mossy patches evenly with your selected cleaner using a pump sprayer or bucket. Ensure the liquid solution penetrates deep into the moss cushions down to the paver joints. Allow the liquid to dwell for 15 to 20 minutes. Keep the area moist during this timeframe so the chemical action breaks down the cell walls of the growth.

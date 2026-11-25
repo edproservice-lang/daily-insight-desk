@@ -128,7 +128,7 @@ autowriter:
 
 Sweep the patio dry. Wet it. Scrub it in sections with a stiff plastic brush and a bucket of water with a little mild detergent. Rinse with a wide spray held low and aimed across the pavers, toward the edge where water already drains. Let it dry, then sweep sand back into any joint that came up short.
 
-That handles dust, pollen, mud, and most of the gray film on a patio that gets used. It does not dissolve set-in oil, and it does not fix moss that keeps coming back because the spot is shady and damp. The hose is the rinse. The brush does the cleaning. Anyone selling the hose as the whole answer is selling the nozzle.
+That handles [dust, pollen, mud](/cleaning/how-to-clean-pollen-off-outdoor-furniture/), and most of the gray film on a patio that gets used. It does not dissolve set-in oil, and it does not fix moss that keeps coming back because the spot is shady and damp. The hose is the rinse. The brush does the cleaning. Anyone selling the hose as the whole answer is selling the nozzle.
 
 ## What a hose can and cannot do
 
