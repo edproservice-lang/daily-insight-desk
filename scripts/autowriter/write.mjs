@@ -18,7 +18,7 @@ const MODELS = (process.env.GEMINI_MODELS || "gemini-3.8-flash,gemini-3.5-flash,
 const LITE = (process.env.GEMINI_LITE_MODELS || "gemini-3.5-flash-lite,gemini-3.1-flash-lite,gemini-3.5-flash").split(",").map((x) => x.trim()).filter(Boolean);
 const COUNT = Number(process.argv[2] || process.env.ARTICLES || 1);
 const GROQ_KEY = (process.env.GROQ_API_KEY || "").trim();
-const GROQ_MODELS = (process.env.GROQ_MODELS || "openai/gpt-oss-120b,openai/gpt-oss-20b").split(",").map((s) => s.trim()).filter(Boolean);
+const GROQ_MODELS = (process.env.GROQ_MODELS || "openai/gpt-oss-120b,openai/gpt-oss-20b,qwen/qwen3.8-27b").split(",").map((s) => s.trim()).filter(Boolean);
 const FORCE_PROVIDER = (process.env.FORCE_PROVIDER || "").trim().toLowerCase();
 // Free-tier gpt-oss models: 8K TPM / 200K TPD. One long article draft can fill a minute.
 const GROQ_TPM = Math.max(1000, Number(process.env.GROQ_TPM || 8000) || 8000);
@@ -221,7 +221,7 @@ async function groq(prompt, { json = true, temperature = 0.8, reasoning = "low" 
         let data = {};
         try { data = JSON.parse(raw); } catch {}
         if (code !== 200) {
-          const errMsg = String(data?.error?.message || "").replace(/\s+/g, " ").slice(0, 180);
+          const errMsg = String(data?.error?.message || "").replace(/\s+/g, " ").slice(0, 400);
           lastErr = `${model} HTTP ${code} ${data?.error?.code || data?.error?.type || ""} ${errMsg}`.trim();
           log(lastErr);
           if (code === 400 && /json_validate_failed/i.test(raw) && useJsonFormat) {
@@ -230,6 +230,11 @@ async function groq(prompt, { json = true, temperature = 0.8, reasoning = "low" 
             continue;
           }
           if ([400, 401, 403, 404].includes(code)) break;
+          // Daily caps (TPD/RPD) will not reset in this run; skip this model and try the next.
+          if (code === 429 && /tokens per day|\bTPD\b|requests per day|\bRPD\b/i.test(`${errMsg} ${raw}`)) {
+            log(`${model} daily quota exhausted; skipping to the next Groq model`);
+            break;
+          }
           if (code === 503 || code === 429 || code === 500) {
             GROQ_OVERLOAD_HITS++;
             const wait = groqRetryMs(headerText, errMsg, attempt);
