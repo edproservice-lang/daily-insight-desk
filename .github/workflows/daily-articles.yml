@@ -10,6 +10,10 @@ on:
         description: "How many articles to write (blank = repo variable ARTICLES_PER_DAY, default 2)"
         required: false
         default: ""
+      force_provider:
+        description: "Force a writer: gemini, groq, or blank for Gemini then Groq fallback"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -69,11 +73,16 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODELS: ${{ vars.GEMINI_MODELS }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GROQ_MODELS: ${{ vars.GROQ_MODELS }}
+          FORCE_PROVIDER: ${{ github.event.inputs.force_provider }}
           PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
           ARTICLES: ${{ github.event.inputs.count || vars.ARTICLES_PER_DAY || '2' }}
         run: |
           [ -n "$GEMINI_MODELS" ] || unset GEMINI_MODELS
+          [ -n "$GROQ_MODELS" ] || unset GROQ_MODELS
+          [ -n "$FORCE_PROVIDER" ] || unset FORCE_PROVIDER
           node scripts/autowriter/write.mjs "$ARTICLES"
 
       - name: Open pull request (no auto-merge)

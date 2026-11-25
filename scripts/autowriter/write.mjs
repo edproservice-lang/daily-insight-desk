@@ -1,5 +1,6 @@
-// Daily Insight Desk autowriter: writes N guides with the free Gemini API.
-// Usage: GEMINI_API_KEY=... node scripts/autowriter/write.mjs [count]
+// Daily Insight Desk autowriter: writes N guides with Gemini (primary) and Groq (fallback).
+// Usage: GEMINI_API_KEY=... GROQ_API_KEY=... node scripts/autowriter/write.mjs [count]
+// FORCE_PROVIDER=groq|gemini skips the other writer (for tests).
 import { readFileSync, writeFileSync, readdirSync, mkdirSync, appendFileSync, mkdtempSync, rmSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { execSync, execFileSync } from "node:child_process";
@@ -16,6 +17,9 @@ const KEY = (process.env.GEMINI_API_KEY || "").trim();
 const MODELS = (process.env.GEMINI_MODELS || "gemini-3.8-flash,gemini-3.5-flash,gemini-3.7-flash,gemini-flash-latest").split(",").map((s) => s.trim()).filter(Boolean);
 const LITE = (process.env.GEMINI_LITE_MODELS || "gemini-3.5-flash-lite,gemini-3.1-flash-lite,gemini-3.5-flash").split(",").map((x) => x.trim()).filter(Boolean);
 const COUNT = Number(process.argv[2] || process.env.ARTICLES || 1);
+const GROQ_KEY = (process.env.GROQ_API_KEY || "").trim();
+const GROQ_MODELS = (process.env.GROQ_MODELS || "openai/gpt-oss-120b,openai/gpt-oss-20b").split(",").map((s) => s.trim()).filter(Boolean);
+const FORCE_PROVIDER = (process.env.FORCE_PROVIDER || "").trim().toLowerCase();
 const UA = "DailyInsightDeskBot/1.0 (+https://dailyinsightdesk.com/contact/)";
 const TEST_PIXABAY = process.argv[2] === "--test-pixabay";
 function loadPixabayKey() {
@@ -32,7 +36,11 @@ const PEXELS = (process.env.PEXELS_API_KEY || "").trim(); // dormant; Pexels pau
 const TODAY = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Sao_Paulo" }).format(new Date());
 const AFFIL_HOSTS = ["clickrtrckr.com", "clickomundo.com", "treejammer.com", "tricklyn.com"];
 
-if (!KEY && !TEST_PIXABAY) { console.error("GEMINI_API_KEY is missing"); process.exit(1); }
+if (!TEST_PIXABAY) {
+  if (FORCE_PROVIDER === "groq" && !GROQ_KEY) { console.error("GROQ_API_KEY is missing"); process.exit(1); }
+  else if (FORCE_PROVIDER === "gemini" && !KEY) { console.error("GEMINI_API_KEY is missing"); process.exit(1); }
+  else if (!FORCE_PROVIDER && !KEY && !GROQ_KEY) { console.error("GEMINI_API_KEY is missing (and no GROQ_API_KEY fallback)"); process.exit(1); }
+}
 const T0 = Date.now();
 const log = (...a) => console.log(`[autowriter +${Math.round((Date.now() - T0) / 1000)}s]`, ...a);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -61,9 +69,20 @@ const productsMod = await import(join(SRC, "_data", "products.js") + `?t=${Date.
 const PRODUCTS = productsMod.default;
 const silos = (await import(join(SRC, "_data", "silos.js"))).default;
 
-// ---------- Gemini ----------
+// ---------- LLM writers (Gemini primary, Groq fallback) ----------
 let GEMINI_DEAD = "";
+let GROQ_DEAD = "";
 let OVERLOAD_HITS = 0;
+let GROQ_OVERLOAD_HITS = 0;
+function canUseGroq() { return Boolean(GROQ_KEY) && !GROQ_DEAD && FORCE_PROVIDER !== "gemini"; }
+function writerProviders() {
+  if (FORCE_PROVIDER === "groq") return GROQ_KEY ? ["groq"] : [];
+  if (FORCE_PROVIDER === "gemini") return KEY ? ["gemini"] : [];
+  const list = [];
+  if (KEY && !GEMINI_DEAD) list.push("gemini");
+  if (GROQ_KEY && !GROQ_DEAD) list.push("groq");
+  return list;
+}
 async function gemini(prompt, { json = true, temperature = 0.8, models = MODELS, parts = [] } = {}) {
   // curl instead of fetch: Node's fetch drops responses that take >5 min to start.
   const tmp = mkdtempSync(join(tmpdir(), "aw-"));
@@ -74,7 +93,7 @@ async function gemini(prompt, { json = true, temperature = 0.8, models = MODELS,
     generationConfig: { temperature, maxOutputTokens: 32000, ...(json ? { responseMimeType: "application/json" } : {}) },
   }));
   let lastErr = "";
-  if (GEMINI_DEAD) throw Object.assign(new Error("Gemini unavailable (stopped earlier this run): " + GEMINI_DEAD), { fatal: true });
+  if (GEMINI_DEAD) throw Object.assign(new Error("Gemini unavailable (stopped earlier this run): " + GEMINI_DEAD), { fatal: !canUseGroq() });
   try {
     for (const model of models) {
       for (let attempt = 0; attempt < 2; attempt++) {
@@ -94,14 +113,14 @@ async function gemini(prompt, { json = true, temperature = 0.8, models = MODELS,
           // daily quota exhausted: all models share it, so stop the whole run now
           if (code === 429 && /RESOURCE_EXHAUSTED/i.test(bodyTxt) && /per ?day|PerDay|limit: 0/i.test(bodyTxt)) {
             GEMINI_DEAD = lastErr;
-            throw Object.assign(new Error("Gemini daily quota exhausted: " + lastErr), { fatal: true });
+            throw Object.assign(new Error("Gemini daily quota exhausted: " + lastErr), { fatal: !canUseGroq() });
           }
           if ([400, 403, 404].includes(code)) break;
           if (code === 503 || code === 429 || code === 500) {
             OVERLOAD_HITS++;
             if (OVERLOAD_HITS >= 4) {
               GEMINI_DEAD = lastErr;
-              throw Object.assign(new Error("Gemini overloaded or rate-limited repeatedly, giving up: " + lastErr), { fatal: true });
+              throw Object.assign(new Error("Gemini overloaded or rate-limited repeatedly, giving up: " + lastErr), { fatal: !canUseGroq() });
             }
             if (attempt === 0) { await sleep(10000 * OVERLOAD_HITS); continue; }
             break; // try the next model
@@ -112,15 +131,111 @@ async function gemini(prompt, { json = true, temperature = 0.8, models = MODELS,
         const text = (data.candidates?.[0]?.content?.parts || []).filter((p) => !p.thought).map((p) => p.text || "").join("");
         if (!text) { lastErr = `${model} empty response (${data.candidates?.[0]?.finishReason || "?"})`; log(lastErr); continue; }
         OVERLOAD_HITS = 0;
-        log(`model ${model} answered (${text.length} chars)`);
-        if (!json) return { model, out: text };
+        log(`gemini model ${model} answered (${text.length} chars)`);
+        if (!json) return { provider: "gemini", model, out: text };
         try {
-          return { model, out: JSON.parse(text.replace(/^```(?:json)?\s*/i, "").replace(/```\s*$/, "")) };
+          return { provider: "gemini", model, out: JSON.parse(text.replace(/^```(?:json)?\s*/i, "").replace(/```\s*$/, "")) };
         } catch { lastErr = `${model} returned invalid JSON`; log(lastErr); }
       }
     }
   } finally { rmSync(tmp, { recursive: true, force: true }); }
   throw new Error(`All Gemini models failed: ${lastErr}`);
+}
+
+async function groq(prompt, { json = true, temperature = 0.8 } = {}) {
+  if (!GROQ_KEY) throw new Error("GROQ_API_KEY is missing");
+  if (GROQ_DEAD) throw Object.assign(new Error("Groq unavailable (stopped earlier this run): " + GROQ_DEAD), { fatal: true });
+  const tmp = mkdtempSync(join(tmpdir(), "aw-groq-"));
+  const hdr = join(tmp, "h"), req = join(tmp, "req.json");
+  writeFileSync(hdr, `Authorization: Bearer ${GROQ_KEY}\nContent-Type: application/json\nUser-Agent: ${UA}\n`, { mode: 0o600 });
+  let lastErr = "";
+  try {
+    for (const model of GROQ_MODELS) {
+      const payload = {
+        model,
+        messages: [
+          { role: "system", content: json ? "You are a careful article writer. Return only valid JSON that matches the requested schema. No markdown fences and no commentary." : "You are a careful article writer. Follow the instructions exactly." },
+          { role: "user", content: prompt },
+        ],
+        temperature,
+        max_tokens: 32768,
+        ...(json ? { response_format: { type: "json_object" } } : {}),
+      };
+      if (/gpt-oss/i.test(model)) {
+        payload.reasoning_effort = "low";
+        payload.include_reasoning = false;
+      }
+      writeFileSync(req, JSON.stringify(payload));
+      for (let attempt = 0; attempt < 2; attempt++) {
+        let raw = "", code = 0;
+        try {
+          raw = execFileSync("curl", ["-sS", "-m", "600", "-H", `@${hdr}`, "--data-binary", `@${req}`, "-w", "\n%{http_code}",
+            "https://api.groq.com/openai/v1/chat/completions"], { encoding: "utf8", maxBuffer: 64 << 20 });
+          const cut = raw.lastIndexOf("\n");
+          code = Number(raw.slice(cut + 1)); raw = raw.slice(0, cut);
+        } catch (e) { lastErr = `${model} curl failed (${String(e.message).split("\n")[0].slice(0, 120)})`; log(lastErr); continue; }
+        let data = {};
+        try { data = JSON.parse(raw); } catch {}
+        if (code !== 200) {
+          lastErr = `${model} HTTP ${code} ${data?.error?.code || data?.error?.type || ""}`;
+          log(lastErr);
+          if ([400, 401, 403, 404].includes(code)) break;
+          if (code === 503 || code === 429 || code === 500) {
+            GROQ_OVERLOAD_HITS++;
+            if (GROQ_OVERLOAD_HITS >= 4) {
+              GROQ_DEAD = lastErr;
+              throw Object.assign(new Error("Groq overloaded or rate-limited repeatedly, giving up: " + lastErr), { fatal: true });
+            }
+            if (attempt === 0) { await sleep(10000 * GROQ_OVERLOAD_HITS); continue; }
+            break;
+          }
+          await sleep(5000);
+          continue;
+        }
+        const msg = data.choices?.[0]?.message || {};
+        const text = String(msg.content || "").trim();
+        if (!text) { lastErr = `${model} empty response (${data.choices?.[0]?.finish_reason || "?"})`; log(lastErr); continue; }
+        GROQ_OVERLOAD_HITS = 0;
+        log(`groq model ${model} answered (${text.length} chars)`);
+        if (!json) return { provider: "groq", model, out: text };
+        try {
+          return { provider: "groq", model, out: JSON.parse(text.replace(/^```(?:json)?\s*/i, "").replace(/```\s*$/, "")) };
+        } catch { lastErr = `${model} returned invalid JSON`; log(lastErr); }
+      }
+    }
+  } finally { rmSync(tmp, { recursive: true, force: true }); }
+  throw new Error(`All Groq models failed: ${lastErr}`);
+}
+
+async function complete(prompt, { json = true, temperature = 0.8, models, parts = [], provider } = {}) {
+  const order = provider ? [provider] : writerProviders();
+  if (!order.length) throw new Error("No article writer available (need GEMINI_API_KEY or GROQ_API_KEY)");
+  let lastErr;
+  for (const p of order) {
+    if (p === "gemini") {
+      if (!KEY) { lastErr = new Error("GEMINI_API_KEY is missing"); continue; }
+      try {
+        return await gemini(prompt, { json, temperature, models: models || MODELS, parts });
+      } catch (e) {
+        lastErr = e;
+        if (order.includes("groq") && GROQ_KEY && !parts.length) {
+          log(`Gemini failed (${e.message}); falling back to Groq`);
+          continue;
+        }
+        throw e;
+      }
+    }
+    if (p === "groq") {
+      if (parts.length) { lastErr = new Error("Groq fallback does not support image inputs"); continue; }
+      if (!GROQ_KEY) { lastErr = new Error("GROQ_API_KEY is missing"); continue; }
+      try {
+        return await groq(prompt, { json, temperature });
+      } catch (e) {
+        lastErr = e;
+      }
+    }
+  }
+  throw lastErr || new Error("No LLM provider produced a response");
 }
 
 // ---------- link + content checks ----------
@@ -698,6 +813,10 @@ async function pickImages(slots) {
     for (const c of s.cands) parts.push({ text: `Candidate #${c.id}:` }, { inline_data: { mime_type: "image/jpeg", data: c.thumb.toString("base64") } });
   }
   text += `\n\nReturn JSON {"picks": {"<slot key>": <candidate number or -1>}}`;
+  if (FORCE_PROVIDER === "groq" || GEMINI_DEAD || !KEY) {
+    log("image pick skipped (Gemini vision unavailable); using first unused candidate");
+    return {};
+  }
   try {
     const { out } = await gemini(text, { temperature: 0, models: LITE, parts });
     return out.picks || {};
@@ -724,13 +843,16 @@ function frontMatter(a, item, wc, heroCredit, storyPages) {
     ogImage: `/assets/images/guide-${a.slug}-1600.webp`, ogAlt: a.heroAlt, permalink: `/${item.silo}/${a.slug}/`,
     story: { slug: a.slug, ...(item.product ? { product: item.product } : {}), pages: storyPages },
     related: a.related.slice(0, 3), toc, faq: a.faq.map((f) => ({ q: f.q, a: f.a })),
-    autowriter: { model: a._model, queueId: item.id },
+    autowriter: { provider: a._provider || "gemini", model: a._model, queueId: item.id },
   };
   return yaml.dump(fm, { lineWidth: -1, noRefs: true, quotingType: '"' }).replace(/^(date|updated): ["']?(\d{4}-\d\d-\d\d)["']?$/gm, "$1: $2");
 }
 
-async function draft(item, existing, feedback) {
-  const { model, out } = process.env.AW_FAKE_DRAFT ? { model: "fake", out: JSON.parse(readFileSync(process.env.AW_FAKE_DRAFT, "utf8")) } : await gemini(buildPrompt(item, existing, feedback));
+async function draft(item, existing, feedback, provider) {
+  const { provider: usedProvider, model, out } = process.env.AW_FAKE_DRAFT
+    ? { provider: "fake", model: "fake", out: JSON.parse(readFileSync(process.env.AW_FAKE_DRAFT, "utf8")) }
+    : await complete(buildPrompt(item, existing, feedback), { provider });
+  out._provider = usedProvider;
   out._model = model;
   out.slug = slugify(out.slug || out.title || item.topic);
   out.related = (out.related || []).filter((r) => existing.some((g) => g.url === r.href));
@@ -751,7 +873,7 @@ async function draft(item, existing, feedback) {
 async function rescueSources(a) {
   log("no source verified; asking for replacement sources");
   try {
-    const { out } = await gemini(`For a US home & garden article titled "${a.title}" (${a.description}), list 8 real, stable, neutral authority web pages (specific pages, not home pages) (US .gov, .edu extension service, or official manufacturer care page) that support general advice in it. Prefer top-level pages that certainly exist. Return JSON {"sources":[{"name":"Publisher, page title","url":"https://...","note":"one sentence on what it supports"}]}`, { temperature: 0.2, models: LITE });
+    const { out } = await complete(`For a US home & garden article titled "${a.title}" (${a.description}), list 8 real, stable, neutral authority web pages (specific pages, not home pages) (US .gov, .edu extension service, or official manufacturer care page) that support general advice in it. Prefer top-level pages that certainly exist. Return JSON {"sources":[{"name":"Publisher, page title","url":"https://...","note":"one sentence on what it supports"}]}`, { temperature: 0.2, models: LITE });
     const ok = [];
     for (const s of out.sources || []) {
       if (ok.length >= 2) break;
@@ -762,21 +884,43 @@ async function rescueSources(a) {
   } catch (e) { log(`rescue failed: ${e.message}`); return []; }
 }
 
-async function writeArticle(item, existing) {
-  let a = await draft(item, existing, item._buildError ? [`The site build failed on the last try; avoid whatever caused this: ${item._buildError.slice(-1200)}`] : undefined);
+async function draftPassing(item, existing, feedback, provider) {
+  log(`drafting with ${provider}`);
+  let a = await draft(item, existing, feedback, provider);
   a = autoFix(a, { product: item.product, existing });
   let errs = checkArticle(a, { product: item.product, existing });
   if (!a.sources.length) a.sources = await rescueSources(a);
   if (!a.sources.length) errs.push("none of your source URLs returned HTTP 200; give real, stable .gov/.edu/manufacturer URLs");
   if (errs.length) {
-    log(`draft 1 issues: ${errs.join(" | ")}`);
-    a = await draft(item, existing, errs);
+    log(`draft 1 issues (${provider}): ${errs.join(" | ")}`);
+    a = await draft(item, existing, errs, provider);
     a = autoFix(a, { product: item.product, existing });
     errs = checkArticle(a, { product: item.product, existing });
     if (!a.sources.length) a.sources = await rescueSources(a);
     if (!a.sources.length) errs.push("no verified sources");
-    if (errs.length) throw new Error(`draft 2 still fails: ${errs.join(" | ")}`);
+    if (errs.length) throw new Error(`draft 2 still fails (${provider}): ${errs.join(" | ")}`);
   }
+  return a;
+}
+
+async function writeArticle(item, existing) {
+  const providers = writerProviders();
+  if (!providers.length) throw Object.assign(new Error("No article writer available (need GEMINI_API_KEY or GROQ_API_KEY)"), { fatal: true });
+  let a;
+  let lastDraftErr;
+  const initialFeedback = item._buildError ? [`The site build failed on the last try; avoid whatever caused this: ${item._buildError.slice(-1200)}`] : undefined;
+  for (const provider of providers) {
+    try {
+      a = await draftPassing(item, existing, initialFeedback, provider);
+      log(`accepted draft from ${a._provider} / ${a._model}`);
+      break;
+    } catch (e) {
+      lastDraftErr = e;
+      log(`${provider} did not produce a passing draft: ${e.message}`);
+      if (e.fatal && !writerProviders().filter((p) => p !== provider).length) throw e;
+    }
+  }
+  if (!a) throw lastDraftErr || new Error("no provider produced a passing draft");
   // images
   const imgDir = join(SRC, "assets", "images");
   const product = item.product ? PRODUCTS[item.product] : null;
@@ -940,7 +1084,7 @@ Return JSON: {"links":[{"file":"","line":0,"phrase":""}]}
 PARAGRAPHS:
 ${cands.map((c) => JSON.stringify(c)).join("\n")}`;
   let out;
-  try { out = (await gemini(prompt, { temperature: 0.2, models: LITE })).out; } catch (e) { log(`backlink call failed: ${e.message}`); return []; }
+  try { out = (await complete(prompt, { temperature: 0.2, models: LITE })).out; } catch (e) { log(`backlink call failed: ${e.message}`); return []; }
   const done = [];
   const seen = new Set();
   for (const l of (out.links || []).slice(0, 3)) {
@@ -1007,6 +1151,7 @@ const queue = JSON.parse(readFileSync(QUEUE, "utf8"));
 const results = [];
 let made = 0;
 let fatalStop = "";
+log(`writers ready: gemini=${KEY ? "yes" : "no"} groq=${GROQ_KEY ? "yes" : "no"} force=${FORCE_PROVIDER || "off"} groqModels=${GROQ_MODELS.join(",")}`);
 for (const item of queue.items) {
   if (made >= COUNT) break;
   if (fatalStop) { log("stopping run: " + fatalStop); break; }
@@ -1029,9 +1174,9 @@ for (const item of queue.items) {
       item.status = "done"; item.slug = r.a.slug; item.url = r.url; item.date = TODAY; delete item._buildError;
       writeFileSync(QUEUE, `{\n  "_readme": ${JSON.stringify(queue._readme)},\n  "items": [\n${queue.items.map((x) => `    ${JSON.stringify(x)}`).join(",\n")}\n  ]\n}\n`);
       sh(`git add -A src scripts/autowriter/queue.json scripts/autowriter/hero-registry.json && git commit -q -m ${JSON.stringify(`Autowriter: ${r.a.title}`)}`);
-      results.push({ ...r, backs, model: r.a._model, sources: r.a.sources.length, images: r.a._imageReport });
+      results.push({ ...r, backs, provider: r.a._provider, model: r.a._model, sources: r.a.sources.length, images: r.a._imageReport });
       made++; ok = true;
-      log(`done ${r.url} (${r.wc} words, ${r.internal} internal links, ${backs.length} backlinks)`);
+      log(`done ${r.url} via ${r.a._provider}/${r.a._model} (${r.wc} words, ${r.internal} internal links, ${backs.length} backlinks)`);
     } catch (e) {
       log(`attempt ${attempt + 1} failed for ${item.id}: ${e.message}${e.buildLog ? `\n${e.buildLog}` : ""}`);
       attemptNote = e.buildLog || e.message;
@@ -1045,10 +1190,10 @@ for (const item of queue.items) {
   if (!ok) results.push({ failed: item.id, topic: item.topic, reason: String(attemptNote).slice(0, 300) });
 }
 
-const lines = [`## Autowriter run ${TODAY}`, "", "Drafts written with the free Gemini API. **Review and edit before merging.** Nothing here is merged automatically.", "",
-  "| Article | Words | In-text internal links | Backlinks added | Verified sources | Model |", "|---|---|---|---|---|---|"];
+const lines = [`## Autowriter run ${TODAY}`, "", "Drafts written with Gemini (primary) or Groq (fallback). **Review and edit before merging.** Nothing here is merged automatically.", "",
+  "| Article | Words | In-text internal links | Backlinks added | Verified sources | Provider | Model |", "|---|---|---|---|---|---|---|"];
 for (const r of results.filter((x) => !x.failed)) {
-  lines.push(`| [${r.a.title}](https://dailyinsightdesk.com${r.url}) (\`${r.file.slice(ROOT.length + 1)}\`) | ${r.wc} | ${r.internal} | ${r.backs.length} | ${r.sources} | ${r.model} |`);
+  lines.push(`| [${r.a.title}](https://dailyinsightdesk.com${r.url}) (\`${r.file.slice(ROOT.length + 1)}\`) | ${r.wc} | ${r.internal} | ${r.backs.length} | ${r.sources} | ${r.provider} | ${r.model} |`);
 }
 for (const r of results.filter((x) => x.failed)) lines.push("", `Skipped **${r.topic}** (${r.failed}): ${r.reason.replace(/\n/g, " ")}`);
 const imgLines = results.filter((r) => r.images).map((r) => `- ${r.a.title}: ${r.images.join("; ")}`);
