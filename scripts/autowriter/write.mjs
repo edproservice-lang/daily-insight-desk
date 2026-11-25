@@ -142,52 +142,75 @@ async function gemini(prompt, { json = true, temperature = 0.8, models = MODELS,
   throw new Error(`All Gemini models failed: ${lastErr}`);
 }
 
-async function groq(prompt, { json = true, temperature = 0.8 } = {}) {
+function groqRetryMs(headerText, errMsg, attempt) {
+  let sec = 0;
+  const h = String(headerText || "").match(/retry-after:\s*(\d+)/i);
+  if (h) sec = Number(h[1]);
+  const m = String(errMsg || "").match(/try again in (\d+(?:\.\d+)?)\s*s/i);
+  if (m) sec = Math.max(sec, Math.ceil(Number(m[1])));
+  if (!sec) sec = Math.min(60, 12 * (attempt + 1));
+  return Math.min(90_000, Math.max(8_000, sec * 1000));
+}
+
+async function groq(prompt, { json = true, temperature = 0.8, reasoning = "low" } = {}) {
   if (!GROQ_KEY) throw new Error("GROQ_API_KEY is missing");
   if (GROQ_DEAD) throw Object.assign(new Error("Groq unavailable (stopped earlier this run): " + GROQ_DEAD), { fatal: true });
   const tmp = mkdtempSync(join(tmpdir(), "aw-groq-"));
-  const hdr = join(tmp, "h"), req = join(tmp, "req.json");
+  const hdr = join(tmp, "h"), req = join(tmp, "req.json"), respH = join(tmp, "rh"), respB = join(tmp, "rb");
   writeFileSync(hdr, `Authorization: Bearer ${GROQ_KEY}\nContent-Type: application/json\nUser-Agent: ${UA}\n`, { mode: 0o600 });
+  const system = json
+    ? "You are a careful article writer. Return only valid JSON that matches the requested schema. No markdown fences and no commentary. When a body field is requested, write a long, complete article of 1,350-1,650 words in that field; short drafts are unusable. Always include faq (4-6 items) and story (exactly 7 cards) as top-level JSON keys, never only as body sections."
+    : "You are a careful article writer. Follow the instructions exactly.";
   let lastErr = "";
   try {
     for (const model of GROQ_MODELS) {
+      let useJsonFormat = json;
       const payload = {
         model,
         messages: [
-          { role: "system", content: json ? "You are a careful article writer. Return only valid JSON that matches the requested schema. No markdown fences and no commentary." : "You are a careful article writer. Follow the instructions exactly." },
+          { role: "system", content: system },
           { role: "user", content: prompt },
         ],
         temperature,
         max_tokens: 32768,
-        ...(json ? { response_format: { type: "json_object" } } : {}),
       };
       if (/gpt-oss/i.test(model)) {
-        payload.reasoning_effort = "low";
+        payload.reasoning_effort = reasoning;
         payload.include_reasoning = false;
       }
-      writeFileSync(req, JSON.stringify(payload));
-      for (let attempt = 0; attempt < 2; attempt++) {
-        let raw = "", code = 0;
+      for (let attempt = 0; attempt < 5; attempt++) {
+        if (useJsonFormat) payload.response_format = { type: "json_object" };
+        else delete payload.response_format;
+        writeFileSync(req, JSON.stringify(payload));
+        let code = 0, raw = "", headerText = "";
         try {
-          raw = execFileSync("curl", ["-sS", "-m", "600", "-H", `@${hdr}`, "--data-binary", `@${req}`, "-w", "\n%{http_code}",
+          const printed = execFileSync("curl", ["-sS", "-m", "600", "-H", `@${hdr}`, "--data-binary", `@${req}`,
+            "-D", respH, "-o", respB, "-w", "%{http_code}",
             "https://api.groq.com/openai/v1/chat/completions"], { encoding: "utf8", maxBuffer: 64 << 20 });
-          const cut = raw.lastIndexOf("\n");
-          code = Number(raw.slice(cut + 1)); raw = raw.slice(0, cut);
+          code = Number(printed.trim());
+          raw = existsSync(respB) ? readFileSync(respB, "utf8") : "";
+          headerText = existsSync(respH) ? readFileSync(respH, "utf8") : "";
         } catch (e) { lastErr = `${model} curl failed (${String(e.message).split("\n")[0].slice(0, 120)})`; log(lastErr); continue; }
         let data = {};
         try { data = JSON.parse(raw); } catch {}
         if (code !== 200) {
-          lastErr = `${model} HTTP ${code} ${data?.error?.code || data?.error?.type || ""}`;
+          const errMsg = String(data?.error?.message || "").replace(/\s+/g, " ").slice(0, 180);
+          lastErr = `${model} HTTP ${code} ${data?.error?.code || data?.error?.type || ""} ${errMsg}`.trim();
           log(lastErr);
+          if (code === 400 && /json_validate_failed/i.test(raw) && useJsonFormat) {
+            useJsonFormat = false;
+            log(`${model} json_validate_failed; retrying without strict JSON mode`);
+            continue;
+          }
           if ([400, 401, 403, 404].includes(code)) break;
           if (code === 503 || code === 429 || code === 500) {
             GROQ_OVERLOAD_HITS++;
-            if (GROQ_OVERLOAD_HITS >= 4) {
+            if (GROQ_OVERLOAD_HITS >= 8) {
               GROQ_DEAD = lastErr;
               throw Object.assign(new Error("Groq overloaded or rate-limited repeatedly, giving up: " + lastErr), { fatal: true });
             }
-            if (attempt === 0) { await sleep(10000 * GROQ_OVERLOAD_HITS); continue; }
-            break;
+            await sleep(groqRetryMs(headerText, errMsg, attempt));
+            continue;
           }
           await sleep(5000);
           continue;
@@ -195,6 +218,7 @@ async function groq(prompt, { json = true, temperature = 0.8 } = {}) {
         const msg = data.choices?.[0]?.message || {};
         const text = String(msg.content || "").trim();
         if (!text) { lastErr = `${model} empty response (${data.choices?.[0]?.finish_reason || "?"})`; log(lastErr); continue; }
+        if (json && text.length < 400) { lastErr = `${model} response too short (${text.length} chars)`; log(lastErr); continue; }
         GROQ_OVERLOAD_HITS = 0;
         log(`groq model ${model} answered (${text.length} chars)`);
         if (!json) return { provider: "groq", model, out: text };
@@ -207,7 +231,7 @@ async function groq(prompt, { json = true, temperature = 0.8 } = {}) {
   throw new Error(`All Groq models failed: ${lastErr}`);
 }
 
-async function complete(prompt, { json = true, temperature = 0.8, models, parts = [], provider } = {}) {
+async function complete(prompt, { json = true, temperature = 0.8, models, parts = [], provider, reasoning } = {}) {
   const order = provider ? [provider] : writerProviders();
   if (!order.length) throw new Error("No article writer available (need GEMINI_API_KEY or GROQ_API_KEY)");
   let lastErr;
@@ -229,7 +253,7 @@ async function complete(prompt, { json = true, temperature = 0.8, models, parts 
       if (parts.length) { lastErr = new Error("Groq fallback does not support image inputs"); continue; }
       if (!GROQ_KEY) { lastErr = new Error("GROQ_API_KEY is missing"); continue; }
       try {
-        return await groq(prompt, { json, temperature });
+        return await groq(prompt, { json, temperature, reasoning });
       } catch (e) {
         lastErr = e;
       }
@@ -314,6 +338,11 @@ const mdLinks = (md) => [...md.matchAll(/\[([^\]]+)\]\(([^)\s]+)\)/g)].map((m) =
 // Mechanical fixes done in code so we never spend a Gemini call re-prompting for them.
 function autoFix(a, ctx) {
   if (!a || typeof a.body !== "string") return a;
+  const stripped = a.body.replace(/\n## (?:Sources|FAQ|Frequently asked questions)\b[\s\S]*?(?=\n## |$)/gi, "\n");
+  if (stripped !== a.body) {
+    a.body = stripped.trim() + "\n";
+    log("auto-removed Sources/FAQ section from body");
+  }
   const known = new Set(ctx.existing.map((g) => g.url));
   const seen = new Set();
   let internalCount = 0;
@@ -340,6 +369,11 @@ function autoFix(a, ctx) {
         a.body = a.body.slice(0, start) + pick[2] + sentence + a.body.slice(start + pick[2].length);
         log("auto-inserted affiliate CTA");
       }
+    }
+    const n = (a.body.match(new RegExp(`\\{%\\s*product\\s+"${ctx.product}"\\s*%\\}`, "g")) || []).length;
+    if (n === 0) {
+      a.body = a.body.replace(/\s*$/, `\n\n{% product "${ctx.product}" %}\n`);
+      log("auto-inserted product shortcode");
     }
   }
   return a;
@@ -848,10 +882,23 @@ function frontMatter(a, item, wc, heroCredit, storyPages) {
   return yaml.dump(fm, { lineWidth: -1, noRefs: true, quotingType: '"' }).replace(/^(date|updated): ["']?(\d{4}-\d\d-\d\d)["']?$/gm, "$1: $2");
 }
 
+const GROQ_DRAFT_HINT = `
+CRITICAL FOR THIS DRAFT:
+- The "body" field MUST be 1,350-1,650 words of markdown. Count the words before you return. A short body will be rejected.
+- Do not put "## Sources", "## FAQ", or "## Frequently asked questions" in the body; those belong in the faq and sources JSON fields.
+- Include at least one ### heading, 5+ ## sections, and open with "## The short answer" followed by a 40-60 word paragraph.
+- "faq" must have 4-6 items and "story" must have exactly 7 cards as top-level JSON fields (not body sections).
+- "description" must be 140-160 characters.
+- If a product is provided, include the exact {% product "..." %} line once and at least two in-sentence affiliate Markdown CTAs.
+- Include 3-6 in-sentence internal links to existing article URLs from the list.
+`;
+
 async function draft(item, existing, feedback, provider) {
+  let prompt = buildPrompt(item, existing, feedback);
+  if (provider === "groq" || FORCE_PROVIDER === "groq") prompt += GROQ_DRAFT_HINT;
   const { provider: usedProvider, model, out } = process.env.AW_FAKE_DRAFT
     ? { provider: "fake", model: "fake", out: JSON.parse(readFileSync(process.env.AW_FAKE_DRAFT, "utf8")) }
-    : await complete(buildPrompt(item, existing, feedback), { provider });
+    : await complete(prompt, { provider, reasoning: provider === "groq" ? "medium" : undefined });
   out._provider = usedProvider;
   out._model = model;
   out.slug = slugify(out.slug || out.title || item.topic);
@@ -884,6 +931,24 @@ async function rescueSources(a) {
   } catch (e) { log(`rescue failed: ${e.message}`); return []; }
 }
 
+async function repairDraft(a, errs, item, existing, provider) {
+  log(`repairing ${provider} draft (${errs.length} checks)`);
+  const prompt = `You previously wrote a Daily Insight Desk article as JSON. It failed these quality checks:
+- ${errs.join("\n- ")}
+
+Return the COMPLETE corrected JSON with the same schema (title, metaTitle, description, dek, slug, readTimeNote, heroQuery, heroAlt, midImageSection, midImageQuery, midImageAlt, body, toc, faq, sources, related, story).
+Rules: "body" MUST be 1,350-1,650 words of markdown (count them). Remove any "## Sources" or "## FAQ" section from the body; keep faq (4-6 items) and sources as JSON fields. story must have exactly 7 cards. description must be 140-160 characters. The first paragraph after "## The short answer" must be 40-60 words. Keep existing internal links and affiliate CTAs, and add any that are missing. ${item.product ? `Keep the exact line {% product "${item.product}" %} once, and in-sentence CTAs to ${PRODUCTS[item.product]?.href || "the product URL"}.` : "Do not add a product shortcode."}
+${provider === "groq" || FORCE_PROVIDER === "groq" ? GROQ_DRAFT_HINT : ""}
+
+PREVIOUS JSON:
+${JSON.stringify({ ...a, _model: undefined, _provider: undefined, _imageReport: undefined })}
+`;
+  const { provider: usedProvider, model, out } = await complete(prompt, { provider, temperature: 0.5, reasoning: provider === "groq" ? "medium" : undefined });
+  const merged = { ...a, ...out, _provider: usedProvider, _model: model, slug: slugify(out.slug || a.slug || item.topic) };
+  if (!Array.isArray(merged.sources) || !merged.sources.length) merged.sources = a.sources || [];
+  return merged;
+}
+
 async function draftPassing(item, existing, feedback, provider) {
   log(`drafting with ${provider}`);
   let a = await draft(item, existing, feedback, provider);
@@ -893,6 +958,18 @@ async function draftPassing(item, existing, feedback, provider) {
   if (!a.sources.length) errs.push("none of your source URLs returned HTTP 200; give real, stable .gov/.edu/manufacturer URLs");
   if (errs.length) {
     log(`draft 1 issues (${provider}): ${errs.join(" | ")}`);
+    try {
+      a = await repairDraft(a, errs, item, existing, provider);
+      a = autoFix(a, { product: item.product, existing });
+      errs = checkArticle(a, { product: item.product, existing });
+      if (!a.sources.length) a.sources = await rescueSources(a);
+      if (!a.sources.length) errs.push("no verified sources");
+    } catch (e) {
+      log(`repair failed (${provider}): ${e.message}`);
+    }
+  }
+  if (errs.length) {
+    log(`repair still has issues (${provider}): ${errs.join(" | ")}; doing a full redraft`);
     a = await draft(item, existing, errs, provider);
     a = autoFix(a, { product: item.product, existing });
     errs = checkArticle(a, { product: item.product, existing });
