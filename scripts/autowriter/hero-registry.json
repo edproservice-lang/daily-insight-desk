@@ -65,15 +65,6 @@
       "role": "hero"
     },
     {
-      "slug": "best-cutting-board-material-for-raw-meat",
-      "file": "src/assets/images/guide-best-cutting-board-material-for-raw-meat-1600.webp",
-      "sha256": "e59a6c98d9f838e151fb59fea9fd85844697ecfcfbdefc4fb27a04814a2ac76c",
-      "dhash": "143c2c64e6f6f675",
-      "sourceUrl": "https://pixabay.com/photos/meat-beef-food-herbs-raw-fresh-6393399/",
-      "sourceId": "6393399",
-      "role": "hero"
-    },
-    {
       "slug": "do-titanium-cutting-boards-dull-knives",
       "file": "src/assets/images/guide-boards-1600.webp",
       "sha256": "4be7310d4adf639ac4c61a0b2d72a424cdc7d1b22e7f5badc78f19fc7a97a225",
@@ -110,21 +101,30 @@
       "role": "hero"
     },
     {
-      "slug": "remove-moss-from-patio-without-pressure-washer",
-      "file": "src/assets/images/guide-remove-moss-from-patio-without-pressure-washer-1600.webp",
-      "sha256": "887f8cb905c7739b4d2af43c760fc34727f5c70e0f990fdf5f6b384edc2afce1",
-      "dhash": "cc12d2d0f3caee8a",
-      "sourceUrl": "https://pixabay.com/photos/snowman-town-urban-321034/",
-      "sourceId": "321034",
-      "role": "hero"
-    },
-    {
       "slug": "how-to-store-garden-tools-so-they-dont-rust",
       "file": "src/assets/images/guide-how-to-store-garden-tools-so-they-dont-rust-1600.webp",
       "sha256": "08b0f4277a5c4bd39c95bcbe25b68c5935828421938d90ebc2056ab1a1d0dca2",
       "dhash": "f068643471934857",
       "sourceUrl": "",
       "sourceId": "",
+      "role": "hero"
+    },
+    {
+      "slug": "best-cutting-board-material-for-raw-meat",
+      "file": "src/assets/images/guide-best-cutting-board-material-for-raw-meat-1600.webp",
+      "sha256": "e59a6c98d9f838e151fb59fea9fd85844697ecfcfbdefc4fb27a04814a2ac76c",
+      "dhash": "1c3c2c64e6f6f675",
+      "sourceUrl": "https://pixabay.com/photos/meat-beef-food-herbs-raw-fresh-6393399/",
+      "sourceId": "6393399",
+      "role": "hero"
+    },
+    {
+      "slug": "remove-moss-from-patio-without-pressure-washer",
+      "file": "src/assets/images/guide-remove-moss-from-patio-without-pressure-washer-1600.webp",
+      "sha256": "a66ee43ed1c4c2cc95b4fa429f3e2accfe6c4226666d5b2cb633f87a0d34448f",
+      "dhash": "6366e1d8f1b46072",
+      "sourceUrl": "https://pixabay.com/photos/pavement-paving-stones-moss-road-1856534/",
+      "sourceId": "1856534",
       "role": "hero"
     },
     {
