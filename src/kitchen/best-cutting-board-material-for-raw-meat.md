@@ -120,7 +120,7 @@ autowriter:
 
 ## The short answer
 
-The best cutting board material for raw meat is non-porous plastic or NSF-certified high-density polyethylene for easy sanitizing, while hardwood like maple works well if washed and thoroughly dried. Smooth metal boards offer low absorption for rapid cleanup without oiling routines. Choose based on knife wear and sanitation workflow.
+The best cutting board material for raw meat is non-porous plastic or NSF-certified high-density polyethylene for easy sanitizing, while hardwood like maple works well if washed and thoroughly dried. Smooth metal boards offer low absorption for rapid cleanup without [oiling routines](/kitchen/how-often-to-oil-a-wood-cutting-board/). Choose based on knife wear and sanitation workflow.
 
 ## Finding the Best Cutting Board Material for Raw Meat
 
