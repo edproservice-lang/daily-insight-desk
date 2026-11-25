@@ -39,7 +39,6 @@ export default [
     ],
     soon: [
       "How to stop a cutting board from slipping",
-      "How to oil a wood cutting board, and how often",
       "How to choose a cutting board if you hate hand-washing",
     ],
   },

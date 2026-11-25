@@ -126,6 +126,15 @@
       "sourceUrl": "https://pixabay.com/photos/pavement-paving-stones-moss-road-1856534/",
       "sourceId": "1856534",
       "role": "hero"
+    },
+    {
+      "slug": "how-often-to-oil-a-wood-cutting-board",
+      "file": "src/assets/images/guide-how-often-to-oil-a-wood-cutting-board-1600.webp",
+      "sha256": "f13ac305650eb8be53c2fe57ab91ebd0ee23166661800544a18ad1790b6c5166",
+      "dhash": "888c8498888948c8",
+      "sourceUrl": "https://pixabay.com/photos/wood-cuttingboard-grinder-spices-2631780/",
+      "sourceId": "2631780",
+      "role": "hero"
     }
   ]
 }
