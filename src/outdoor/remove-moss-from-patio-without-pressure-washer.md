@@ -8,14 +8,14 @@ dek: Clear stubborn green growth from brick, concrete, or stone pavers using eff
 silo: outdoor
 siloName: Outdoor
 date: 2026-11-24
-updated: 2026-11-24
+updated: 2026-11-25
 readTime: 7 min read
 hero: /assets/images/guide-remove-moss-from-patio-without-pressure-washer
 heroHeight: 900
-heroAlt: A shaded stone patio covered in light green moss patches near backyard foliage.
-heroCaption: "Stock photo: Pixabay"
+heroAlt: Green moss growing in the joints of gray herringbone patio pavers
+heroCaption: "Stock photo: Pixabay."
 ogImage: /assets/images/guide-remove-moss-from-patio-without-pressure-washer-1600.webp
-ogAlt: A shaded stone patio covered in light green moss patches near backyard foliage.
+ogAlt: Green moss growing in the joints of gray herringbone patio pavers
 permalink: /outdoor/remove-moss-from-patio-without-pressure-washer/
 story:
   slug: remove-moss-from-patio-without-pressure-washer
