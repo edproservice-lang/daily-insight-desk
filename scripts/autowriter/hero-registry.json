@@ -65,12 +65,30 @@
       "role": "hero"
     },
     {
+      "slug": "best-cutting-board-material-for-raw-meat",
+      "file": "src/assets/images/guide-best-cutting-board-material-for-raw-meat-1600.webp",
+      "sha256": "e59a6c98d9f838e151fb59fea9fd85844697ecfcfbdefc4fb27a04814a2ac76c",
+      "dhash": "143c2c64e6f6f675",
+      "sourceUrl": "https://pixabay.com/photos/meat-beef-food-herbs-raw-fresh-6393399/",
+      "sourceId": "6393399",
+      "role": "hero"
+    },
+    {
       "slug": "do-titanium-cutting-boards-dull-knives",
       "file": "src/assets/images/guide-boards-1600.webp",
       "sha256": "4be7310d4adf639ac4c61a0b2d72a424cdc7d1b22e7f5badc78f19fc7a97a225",
       "dhash": "78c0b03131337082",
       "sourceUrl": "",
       "sourceId": "",
+      "role": "hero"
+    },
+    {
+      "slug": "how-often-to-oil-a-wood-cutting-board",
+      "file": "src/assets/images/guide-how-often-to-oil-a-wood-cutting-board-1600.webp",
+      "sha256": "f13ac305650eb8be53c2fe57ab91ebd0ee23166661800544a18ad1790b6c5166",
+      "dhash": "888c8498888948c8",
+      "sourceUrl": "https://pixabay.com/photos/wood-cuttingboard-grinder-spices-2631780/",
+      "sourceId": "2631780",
       "role": "hero"
     },
     {
@@ -101,6 +119,15 @@
       "role": "hero"
     },
     {
+      "slug": "remove-moss-from-patio-without-pressure-washer",
+      "file": "src/assets/images/guide-remove-moss-from-patio-without-pressure-washer-1600.webp",
+      "sha256": "a66ee43ed1c4c2cc95b4fa429f3e2accfe6c4226666d5b2cb633f87a0d34448f",
+      "dhash": "6b66e1d8f1b46172",
+      "sourceUrl": "https://pixabay.com/photos/pavement-paving-stones-moss-road-1856534/",
+      "sourceId": "1856534",
+      "role": "hero"
+    },
+    {
       "slug": "how-to-store-garden-tools-so-they-dont-rust",
       "file": "src/assets/images/guide-how-to-store-garden-tools-so-they-dont-rust-1600.webp",
       "sha256": "08b0f4277a5c4bd39c95bcbe25b68c5935828421938d90ebc2056ab1a1d0dca2",
@@ -110,30 +137,12 @@
       "role": "hero"
     },
     {
-      "slug": "best-cutting-board-material-for-raw-meat",
-      "file": "src/assets/images/guide-best-cutting-board-material-for-raw-meat-1600.webp",
-      "sha256": "e59a6c98d9f838e151fb59fea9fd85844697ecfcfbdefc4fb27a04814a2ac76c",
-      "dhash": "1c3c2c64e6f6f675",
-      "sourceUrl": "https://pixabay.com/photos/meat-beef-food-herbs-raw-fresh-6393399/",
-      "sourceId": "6393399",
-      "role": "hero"
-    },
-    {
-      "slug": "remove-moss-from-patio-without-pressure-washer",
-      "file": "src/assets/images/guide-remove-moss-from-patio-without-pressure-washer-1600.webp",
-      "sha256": "a66ee43ed1c4c2cc95b4fa429f3e2accfe6c4226666d5b2cb633f87a0d34448f",
-      "dhash": "6366e1d8f1b46072",
-      "sourceUrl": "https://pixabay.com/photos/pavement-paving-stones-moss-road-1856534/",
-      "sourceId": "1856534",
-      "role": "hero"
-    },
-    {
-      "slug": "how-often-to-oil-a-wood-cutting-board",
-      "file": "src/assets/images/guide-how-often-to-oil-a-wood-cutting-board-1600.webp",
-      "sha256": "f13ac305650eb8be53c2fe57ab91ebd0ee23166661800544a18ad1790b6c5166",
-      "dhash": "888c8498888948c8",
-      "sourceUrl": "https://pixabay.com/photos/wood-cuttingboard-grinder-spices-2631780/",
-      "sourceId": "2631780",
+      "slug": "how-to-clean-pollen-off-outdoor-furniture",
+      "file": "src/assets/images/guide-how-to-clean-pollen-off-outdoor-furniture-1600.webp",
+      "sha256": "cf7736afca245a03344c98659b073a8e9c67120b93b826126deb01a6e32f2343",
+      "dhash": "c8cec6b2b486cece",
+      "sourceUrl": "https://pixabay.com/photos/poolside-chair-sunny-day-leisure-2880388/",
+      "sourceId": "2880388",
       "role": "hero"
     }
   ]
