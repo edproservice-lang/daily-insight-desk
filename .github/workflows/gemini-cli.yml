@@ -1,0 +1,57 @@
+name: Gemini CLI (free code agent)
+
+# Runs Google's free Gemini CLI on the repo with the existing GEMINI_API_KEY secret,
+# so small code changes spend the free Gemini quota instead of paid agents.
+# Manual only. dry_run=true (default) just prints the diff; false pushes it to a new branch.
+
+on:
+  workflow_dispatch:
+    inputs:
+      prompt:
+        description: "What Gemini should do in the repo"
+        required: true
+        default: "Read README.md and scripts/autowriter/write.mjs and summarize in 5 bullets what the autowriter does. Do not modify any file."
+      dry_run:
+        description: "Only show the diff (do not push)"
+        type: boolean
+        default: true
+      model:
+        description: "Gemini model"
+        required: false
+        default: "gemini-3.5-flash"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gemini-cli
+  cancel-in-progress: false
+
+jobs:
+  gemini:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Gemini CLI
+        uses: google-github-actions/run-gemini-cli@v0
+        with:
+          gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
+          prompt: ${{ inputs.prompt }}
+          settings: |
+            { "model": { "name": "${{ inputs.model }}" } }
+
+      - name: Show changes
+        run: git status --short && git diff --stat
+
+      - name: Push changes to a branch
+        if: ${{ !inputs.dry_run }}
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then echo "No changes."; exit 0; fi
+          git config user.name "gemini-cli-bot"
+          git config user.email "gemini-cli-bot@users.noreply.github.com"
+          git checkout -b "gemini/${{ github.run_id }}"
+          git add -A
+          git commit -m "Gemini CLI: ${{ inputs.prompt }}"
+          git push origin HEAD
