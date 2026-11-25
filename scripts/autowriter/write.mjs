@@ -20,6 +20,9 @@ const COUNT = Number(process.argv[2] || process.env.ARTICLES || 1);
 const GROQ_KEY = (process.env.GROQ_API_KEY || "").trim();
 const GROQ_MODELS = (process.env.GROQ_MODELS || "openai/gpt-oss-120b,openai/gpt-oss-20b").split(",").map((s) => s.trim()).filter(Boolean);
 const FORCE_PROVIDER = (process.env.FORCE_PROVIDER || "").trim().toLowerCase();
+// Free-tier gpt-oss models: 8K TPM / 200K TPD. One long article draft can fill a minute.
+const GROQ_TPM = Math.max(1000, Number(process.env.GROQ_TPM || 8000) || 8000);
+const GROQ_RATE_BUDGET_MS = Math.max(30_000, Number(process.env.GROQ_RATE_BUDGET_MS || 180_000) || 180_000);
 const UA = "DailyInsightDeskBot/1.0 (+https://dailyinsightdesk.com/contact/)";
 const TEST_PIXABAY = process.argv[2] === "--test-pixabay";
 function loadPixabayKey() {
@@ -74,6 +77,28 @@ let GEMINI_DEAD = "";
 let GROQ_DEAD = "";
 let OVERLOAD_HITS = 0;
 let GROQ_OVERLOAD_HITS = 0;
+let groqLastTokens = 0;
+let groqLastAt = 0;
+let groqRateWaitMs = 0;
+async function groqCooldown() {
+  if (!groqLastTokens || !groqLastAt) return;
+  const minInterval = Math.ceil((groqLastTokens / GROQ_TPM) * 60_000) + 1500;
+  const wait = minInterval - (Date.now() - groqLastAt);
+  if (wait > 500) {
+    log(`groq cooldown ${Math.round(wait / 1000)}s to stay under ${GROQ_TPM} TPM (last call ~${groqLastTokens} tokens)`);
+    await sleep(Math.min(wait, 90_000));
+  }
+}
+function rememberGroqUsage(data, textLen) {
+  const used = Number(data?.usage?.total_tokens) || Math.max(500, Math.ceil((textLen || 0) / 3) + 1500);
+  groqLastTokens = used;
+  groqLastAt = Date.now();
+  GROQ_OVERLOAD_HITS = 0;
+}
+function killGroq(reason) {
+  GROQ_DEAD = reason;
+  return Object.assign(new Error("Groq unavailable: " + reason), { fatal: FORCE_PROVIDER === "groq" || !KEY });
+}
 function canUseGroq() { return Boolean(GROQ_KEY) && !GROQ_DEAD && FORCE_PROVIDER !== "gemini"; }
 function writerProviders() {
   if (FORCE_PROVIDER === "groq") return GROQ_KEY ? ["groq"] : [];
@@ -178,13 +203,15 @@ async function groq(prompt, { json = true, temperature = 0.8, reasoning = "low" 
         payload.reasoning_effort = reasoning;
         payload.include_reasoning = false;
       }
-      for (let attempt = 0; attempt < 5; attempt++) {
+      for (let attempt = 0; attempt < 3; attempt++) {
+        if (GROQ_DEAD) throw killGroq(GROQ_DEAD);
+        await groqCooldown();
         if (useJsonFormat) payload.response_format = { type: "json_object" };
         else delete payload.response_format;
         writeFileSync(req, JSON.stringify(payload));
         let code = 0, raw = "", headerText = "";
         try {
-          const printed = execFileSync("curl", ["-sS", "-m", "600", "-H", `@${hdr}`, "--data-binary", `@${req}`,
+          const printed = execFileSync("curl", ["-sS", "-m", "180", "-H", `@${hdr}`, "--data-binary", `@${req}`,
             "-D", respH, "-o", respB, "-w", "%{http_code}",
             "https://api.groq.com/openai/v1/chat/completions"], { encoding: "utf8", maxBuffer: 64 << 20 });
           code = Number(printed.trim());
@@ -205,11 +232,13 @@ async function groq(prompt, { json = true, temperature = 0.8, reasoning = "low" 
           if ([400, 401, 403, 404].includes(code)) break;
           if (code === 503 || code === 429 || code === 500) {
             GROQ_OVERLOAD_HITS++;
-            if (GROQ_OVERLOAD_HITS >= 8) {
-              GROQ_DEAD = lastErr;
-              throw Object.assign(new Error("Groq overloaded or rate-limited repeatedly, giving up: " + lastErr), { fatal: true });
+            const wait = groqRetryMs(headerText, errMsg, attempt);
+            groqRateWaitMs += wait;
+            if (GROQ_OVERLOAD_HITS >= 4 || groqRateWaitMs >= GROQ_RATE_BUDGET_MS) {
+              throw killGroq(`${lastErr} (rate-limit budget exhausted)`);
             }
-            await sleep(groqRetryMs(headerText, errMsg, attempt));
+            log(`waiting ${Math.round(wait / 1000)}s for Groq rate limit (budget ${Math.round(groqRateWaitMs / 1000)}s/${Math.round(GROQ_RATE_BUDGET_MS / 1000)}s)`);
+            await sleep(wait);
             continue;
           }
           await sleep(5000);
@@ -219,8 +248,8 @@ async function groq(prompt, { json = true, temperature = 0.8, reasoning = "low" 
         const text = String(msg.content || "").trim();
         if (!text) { lastErr = `${model} empty response (${data.choices?.[0]?.finish_reason || "?"})`; log(lastErr); continue; }
         if (json && text.length < 400) { lastErr = `${model} response too short (${text.length} chars)`; log(lastErr); continue; }
-        GROQ_OVERLOAD_HITS = 0;
-        log(`groq model ${model} answered (${text.length} chars)`);
+        rememberGroqUsage(data, text.length);
+        log(`groq model ${model} answered (${text.length} chars, ${groqLastTokens} tokens)`);
         if (!json) return { provider: "groq", model, out: text };
         try {
           return { provider: "groq", model, out: JSON.parse(text.replace(/^```(?:json)?\s*/i, "").replace(/```\s*$/, "")) };
@@ -1228,14 +1257,25 @@ const queue = JSON.parse(readFileSync(QUEUE, "utf8"));
 const results = [];
 let made = 0;
 let fatalStop = "";
-log(`writers ready: gemini=${KEY ? "yes" : "no"} groq=${GROQ_KEY ? "yes" : "no"} force=${FORCE_PROVIDER || "off"} groqModels=${GROQ_MODELS.join(",")}`);
+log(`writers ready: gemini=${KEY ? "yes" : "no"} groq=${GROQ_KEY ? "yes" : "no"} force=${FORCE_PROVIDER || "off"} groqModels=${GROQ_MODELS.join(",")} groqTpm=${GROQ_TPM}`);
+let itemsStarted = 0;
+const maxStart = FORCE_PROVIDER === "groq" || !KEY ? COUNT : COUNT + 2;
 for (const item of queue.items) {
   if (made >= COUNT) break;
   if (fatalStop) { log("stopping run: " + fatalStop); break; }
+  if (GROQ_DEAD && (FORCE_PROVIDER === "groq" || !KEY || GEMINI_DEAD)) {
+    log("stopping run: Groq rate-limited, " + GROQ_DEAD);
+    break;
+  }
   if (item.status !== "todo") continue;
   if ((process.env.SKIP_IDS || "").split(",").includes(item.id)) { log(`skip ${item.id}: already drafted in an open PR`); continue; }
   if (item.demand?.level === "none") { log(`skip ${item.id}: no search demand and no usable on-topic variant`); continue; }
   if (item.product && !PRODUCTS[item.product]) { log(`skip ${item.id}: product ${item.product} is not in products.js`); continue; }
+  if (itemsStarted >= maxStart) {
+    log(`stopping after ${itemsStarted} attempted topic(s); not walking the rest of the queue`);
+    break;
+  }
+  itemsStarted++;
   log(`writing ${item.id}: ${item.topic}`);
   let ok = false;
   let attemptNote = null;
