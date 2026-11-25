@@ -8,14 +8,14 @@ dek: Choosing the right kitchen board for raw meat requires balancing sanitation
 silo: kitchen
 siloName: Kitchen
 date: 2026-11-24
-updated: 2026-11-24
+updated: 2026-11-25
 readTime: 7 min read
 hero: /assets/images/guide-best-cutting-board-material-for-raw-meat
 heroHeight: 900
-heroAlt: Illustration of a wooden cutting board, a bowl of lemons, and a linen towel on a stone counter
-heroCaption: Illustration by Daily Insight Desk.
+heroAlt: Raw beef on a round wooden cutting board with a bunch of fresh herbs
+heroCaption: "Stock photo: Pixabay."
 ogImage: /assets/images/guide-best-cutting-board-material-for-raw-meat-1600.webp
-ogAlt: Illustration of a wooden cutting board, a bowl of lemons, and a linen towel on a stone counter
+ogAlt: Raw beef on a round wooden cutting board with a bunch of fresh herbs
 permalink: /kitchen/best-cutting-board-material-for-raw-meat/
 story:
   slug: best-cutting-board-material-for-raw-meat

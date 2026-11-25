@@ -638,14 +638,59 @@ function rememberSource(url, id) {
   if (url) usedImages.add(url);
   if (id) usedImages.add(`pixabay:${id}`);
 }
+function heroSharp(buf, w = 1600) {
+  return sharp(buf).rotate().resize(w, Math.round((w * 9) / 16), { fit: "cover", position: "attention" }).webp({ quality: 72 });
+}
+const usedContentSha = new Set();
+const usedContentDhash = [];
+function rememberContent(sha, dhash) {
+  if (sha) usedContentSha.add(sha);
+  if (dhash) usedContentDhash.push(dhash);
+}
 function heroLooksUsed(dhash, sha) {
-  return usedHeroes.some((h) => (sha && h.sha256 === sha) || hammingHex(h.dhash, dhash) <= HERO_DHASH_MAX);
+  if (sha && (usedContentSha.has(sha) || usedHeroes.some((h) => h.sha256 === sha))) return true;
+  if (!dhash) return false;
+  return usedHeroes.some((h) => hammingHex(h.dhash, dhash) <= HERO_DHASH_MAX)
+    || usedContentDhash.some((h) => hammingHex(h, dhash) <= HERO_DHASH_MAX);
 }
 async function bufferLooksUsed(buf) {
-  const sha = sha256Buf(buf);
-  if (usedHeroes.some((h) => h.sha256 === sha)) return true;
-  const dhash = await dhashHex(buf);
-  return heroLooksUsed(dhash, sha);
+  const variants = [buf];
+  // Re-encode with the hero pipeline so a source file is caught when it would
+  // produce a hero already on the site (SHA of the raw file often differs).
+  try { variants.push(await heroSharp(buf, 1600).toBuffer()); } catch { /* raw-hash checks still apply */ }
+  for (const v of variants) {
+    const sha = sha256Buf(v);
+    if (usedContentSha.has(sha) || usedHeroes.some((h) => h.sha256 === sha)) return true;
+    const dhash = await dhashHex(v);
+    if (heroLooksUsed(dhash, sha)) return true;
+  }
+  return false;
+}
+async function indexPublishedImages() {
+  usedContentSha.clear();
+  usedContentDhash.length = 0;
+  for (const h of usedHeroes) rememberContent(h.sha256, h.dhash);
+  const dir = join(SRC, "assets", "images");
+  const files = [];
+  const walk = (p) => {
+    if (!existsSync(p)) return;
+    for (const ent of readdirSync(p, { withFileTypes: true })) {
+      const fp = join(p, ent.name);
+      if (ent.isDirectory()) walk(fp);
+      else if (/\.(webp|jpe?g|png)$/i.test(ent.name)) files.push(fp);
+    }
+  };
+  walk(dir);
+  for (const fp of files) {
+    const rel = (fp.startsWith(`${ROOT}/`) ? fp.slice(ROOT.length + 1) : fp).replaceAll("\\", "/");
+    const published = /(^|\/)guide-/.test(rel) || rel.includes("/articles/") || rel.includes("/stories/");
+    if (!published) continue;
+    const buf = readFileSync(fp);
+    const sha = sha256Buf(buf);
+    if (usedContentSha.has(sha)) continue;
+    usedContentSha.add(sha);
+    usedContentDhash.push(await dhashHex(buf));
+  }
 }
 function loadHeroRegistry() {
   // Merge the on-disk registry (source URLs/IDs) with a fresh scan of published heroes.
@@ -720,6 +765,7 @@ async function rememberHero({ slug, file, buf, sourceUrl, sourceId }) {
   const i = usedHeroes.findIndex((h) => h.file === rel || h.slug === rec.slug);
   if (i >= 0) usedHeroes[i] = rec; else usedHeroes.push(rec);
   rememberSource(rec.sourceUrl, rec.sourceId);
+  rememberContent(rec.sha256, rec.dhash);
   writeHeroRegistry();
   return rec;
 }
@@ -1069,13 +1115,27 @@ async function writeArticle(item, existing) {
   for (const f of fallbacks) {
     if (!(await bufferLooksUsed(readFileSync(f)))) unusedFallbacks.push(f);
   }
-  let hero = chosen.hero && !(await bufferLooksUsed(chosen.hero.buf)) ? chosen.hero : null;
+  const heroTries = [];
+  if (chosen.hero) heroTries.push(chosen.hero);
+  for (const c of (slots[0].cands || [])) {
+    if (c && !heroTries.includes(c)) heroTries.push(c);
+  }
+  let hero = null;
+  for (const c of heroTries) {
+    if (!c?.buf) continue;
+    if (await bufferLooksUsed(c.buf)) {
+      log(`hero candidate skipped, already used: ${c.pageURL || c.url || "stock"}`);
+      continue;
+    }
+    hero = c;
+    break;
+  }
   if (!hero && unusedFallbacks.length) {
     hero = { buf: readFileSync(unusedFallbacks.shift()), credit: "Daily Insight Desk illustration", house: true };
   }
   if (!hero) throw new Error("no unused hero image available (stock and site illustrations already used)");
   for (const w of [1600, 800]) {
-    await sharp(hero.buf).rotate().resize(w, Math.round((w * 9) / 16), { fit: "cover", position: "attention" }).webp({ quality: 72 }).toFile(join(imgDir, `guide-${a.slug}-${w}.webp`));
+    await heroSharp(hero.buf, w).toFile(join(imgDir, `guide-${a.slug}-${w}.webp`));
   }
   await rememberHero({
     slug: a.slug,
@@ -1258,6 +1318,7 @@ if (TEST_PIXABAY) {
 
 loadHeroRegistry();
 await fillHeroDhashes();
+await indexPublishedImages();
 writeHeroRegistry();
 const queue = JSON.parse(readFileSync(QUEUE, "utf8"));
 const results = [];
@@ -1308,6 +1369,7 @@ for (const item of queue.items) {
       usedImages.clear();
       loadHeroRegistry();
       await fillHeroDhashes();
+      await indexPublishedImages();
     }
   }
   if (!ok) results.push({ failed: item.id, topic: item.topic, reason: String(attemptNote).slice(0, 300) });
