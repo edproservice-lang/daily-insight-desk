@@ -197,7 +197,8 @@ async function groq(prompt, { json = true, temperature = 0.8, reasoning = "low" 
           { role: "user", content: prompt },
         ],
         temperature,
-        max_tokens: 32768,
+        // qwen/qwen3.8-27b caps completions at 16384; gpt-oss allows 32768.
+        max_tokens: /qwen/i.test(model) ? 16384 : 32768,
       };
       if (/gpt-oss/i.test(model)) {
         payload.reasoning_effort = reasoning;
