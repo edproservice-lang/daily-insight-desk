@@ -12,10 +12,10 @@ updated: 2026-11-25
 readTime: 8 min read
 hero: /assets/images/guide-how-often-to-oil-a-wood-cutting-board
 heroHeight: 900
-heroAlt: A person applying food-grade mineral oil to a dark wooden cutting board on a clean kitchen counter.
+heroAlt: Overhead photo of a light wooden cutting board on a dark rustic table, with a skillet, knives, spices, a mortar, and a wooden bowl of herbs, garlic, and an orange.
 heroCaption: "Stock photo: Pixabay"
 ogImage: /assets/images/guide-how-often-to-oil-a-wood-cutting-board-1600.webp
-ogAlt: A person applying food-grade mineral oil to a dark wooden cutting board on a clean kitchen counter.
+ogAlt: Overhead photo of a light wooden cutting board on a dark rustic table, with a skillet, knives, spices, a mortar, and a wooden bowl of herbs, garlic, and an orange.
 permalink: /kitchen/how-often-to-oil-a-wood-cutting-board/
 story:
   slug: how-often-to-oil-a-wood-cutting-board
@@ -171,7 +171,7 @@ Never apply vegetable oil, olive oil, canola oil, avocado oil, or corn oil to a 
 Oiling a board takes under ten minutes of active effort, followed by overnight resting time. Follow these steps for optimal results:
 
 <figure class="frame mid-figure">
-<a class="product-photo-link affiliate-link" data-product="KatuSharp rolling knife sharpener" href="https://www.clickomundo.com/J2D6CNH/B7R6P93/" rel="sponsored nofollow noopener" target="_blank"><img src="/assets/images/guide-how-often-to-oil-a-wood-cutting-board-mid-800.webp" srcset="/assets/images/guide-how-often-to-oil-a-wood-cutting-board-mid-800.webp 800w, /assets/images/guide-how-often-to-oil-a-wood-cutting-board-mid-1600.webp 1600w" sizes="(min-width: 1040px) 40rem, calc(100vw - 2.5rem)" alt="A detailed view demonstrating how often to oil a wood cutting board using mineral oil." width="1600" height="900" loading="lazy" decoding="async"></a>
+<a class="product-photo-link affiliate-link" data-product="KatuSharp rolling knife sharpener" href="https://www.clickomundo.com/J2D6CNH/B7R6P93/" rel="sponsored nofollow noopener" target="_blank"><img src="/assets/images/guide-how-often-to-oil-a-wood-cutting-board-mid-800.webp" srcset="/assets/images/guide-how-often-to-oil-a-wood-cutting-board-mid-800.webp 800w, /assets/images/guide-how-often-to-oil-a-wood-cutting-board-mid-1600.webp 1600w" sizes="(min-width: 1040px) 40rem, calc(100vw - 2.5rem)" alt="Seller photo of the KatuSharp rolling knife sharpener and its magnetic 20-degree angle base." width="1600" height="900" loading="lazy" decoding="async"></a>
 <figcaption>Seller photo. Package details can change.</figcaption>
 </figure>
 ### 1. Wash and dry completely
