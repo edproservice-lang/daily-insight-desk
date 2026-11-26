@@ -171,6 +171,15 @@
       "sourceUrl": "https://pixabay.com/photos/girl-goggles-mop-cleaning-clean-1531575/",
       "sourceId": "1531575",
       "role": "retired-hero"
+    },
+    {
+      "slug": "how-to-sharpen-knives-without-a-whetstone",
+      "file": "src/assets/images/guide-how-to-sharpen-knives-without-a-whetstone-1600.webp",
+      "sha256": "c451a7db37bbe683833d2d7d1ef863e1581f2ae0014b5c1226b8c338850c22e4",
+      "dhash": "6e6c632210e02103",
+      "sourceUrl": "https://pixabay.com/photos/vintage-knife-sharpener-tool-retro-7858279/",
+      "sourceId": "7858279",
+      "role": "hero"
     }
   ]
 }

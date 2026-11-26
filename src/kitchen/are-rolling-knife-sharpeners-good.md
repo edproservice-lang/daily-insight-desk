@@ -129,7 +129,7 @@ faq:
 
 Rolling knife sharpeners are good at the one thing most home cooks get wrong: holding a steady angle. A magnetic base clamps the knife at a fixed angle, and you roll an abrasive disc along the edge. No freehand wobble, no soaking a stone, no learning curve measured in months.
 
-That makes a rolling sharpener a genuine step up from the pull-through slot in a kitchen drawer, and a reasonable alternative to a whetstone for people who know they will never learn one. It is not magic. It is slower than a pull-through. It is less flexible than a set of stones. It struggles with very wide blades, and it cannot touch serrations.
+That makes a rolling sharpener a genuine step up from the pull-through slot in a kitchen drawer, and a reasonable [alternative to a whetstone](/kitchen/how-to-sharpen-knives-without-a-whetstone/) for people who know they will never learn one. It is not magic. It is slower than a pull-through. It is less flexible than a set of stones. It struggles with very wide blades, and it cannot touch serrations.
 
 This guide explains how the tool works, what an independent review of one actually found, and where rolling models we can link to, including KatuSharp and Cloedar Holkeem, sit in that picture. Everything we say about those offers comes from the makers’ specs and from how this type of tool works.
 
