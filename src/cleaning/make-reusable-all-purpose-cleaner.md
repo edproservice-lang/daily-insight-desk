@@ -2,8 +2,8 @@
 layout: layouts/article.njk
 tags: guide
 title: How to Make a Reusable All‑Purpose Cleaner at Home
-metaTitle: DIY All‑Purpose Cleaner Guide
-description: Learn how to craft a reusable all‑purpose cleaner with water, salt, and vinegar, plus tips, pros, and where the IonClear electric spray bottle fits.
+metaTitle: How to Make a Reusable All-Purpose Cleaner
+description: Mix a reusable all-purpose cleaner with water, salt, and vinegar, then see where an electric salt-and-water spray bottle like IonClear fits.
 dek: A practical guide to mixing, applying, and storing a homemade all‑purpose cleaner. Follow clear steps, get safety tips, and see how the IonClear electric spray bottle can simplify the process.
 silo: cleaning
 siloName: Cleaning
@@ -12,10 +12,10 @@ updated: 2026-11-26
 readTime: 7 min read
 hero: /assets/images/guide-make-reusable-all-purpose-cleaner
 heroHeight: 900
-heroAlt: A clear reusable spray bottle filled with homemade cleaning solution on a kitchen counter
+heroAlt: A reusable spray bottle silhouetted on a table in front of a sunlit window
 heroCaption: "Stock photo: Pixabay"
 ogImage: /assets/images/guide-make-reusable-all-purpose-cleaner-1600.webp
-ogAlt: A clear reusable spray bottle filled with homemade cleaning solution on a kitchen counter
+ogAlt: A reusable spray bottle silhouetted on a table in front of a sunlit window
 permalink: /cleaning/make-reusable-all-purpose-cleaner/
 story:
   slug: make-reusable-all-purpose-cleaner
@@ -138,72 +138,79 @@ autowriter:
 ---
 
 ## The short answer
-To make an all‑purpose cleaner at home, combine water, table salt, and a few drops of citrus or vinegar in a reusable spray bottle; let the salt dissolve, then spray the mixture on surfaces and wipe clean. The solution works on countertops, tiles, and appliances without harsh chemicals.
+To make a reusable all-purpose cleaner at home, mix white vinegar, table salt, and water in a labeled spray bottle, shake until the salt dissolves, then spray the surface and wipe it clean. You can refill the same bottle. A separate option is an electric bottle that, per the seller, uses only tap water and salt.
 
 ## Why make your own cleaner
-Homemade cleaners reduce packaging waste, lower cost, and let you avoid synthetic fragrances that can irritate skin. By controlling ingredients you eliminate phosphates, ammonia, and petroleum‑based solvents common in commercial sprays. The result is a greener, safer home that still tackles grease, grime, and everyday spills. If you wonder whether cleaning tablets can replace spray bottles, see the comparison in [Do Cleaning Tablets Replace a Closet of Sprays](/cleaning/do-cleaning-tablets-replace-spray-bottles/).
+Homemade cleaners reduce packaging waste, lower cost, and let you avoid synthetic fragrances that can irritate skin. By controlling ingredients you skip phosphates, ammonia, and petroleum-based solvents common in commercial sprays. The result is a greener, simpler routine that still handles grease, grime, and everyday spills. If you wonder whether cleaning tablets can replace spray bottles, see the comparison in [Do Cleaning Tablets Replace a Closet of Sprays](/cleaning/do-cleaning-tablets-replace-spray-bottles/).
 
 ## Ingredients and safety
-You need only three pantry items: tap water, table salt, and a mild acid such as white vinegar or lemon juice. Salt acts as a natural disinfectant and helps break down mineral deposits. Vinegar adds acidity that cuts grease and leaves a fresh scent. Use food‑grade salt; avoid iodized varieties with additives that may leave residues. Wear gloves if you have sensitive skin, and keep the mixture out of children’s reach. For more on safe home cleaning chemicals, the EPA provides guidelines on Homemade Cleaners. 
+You need only three pantry items: tap water, table salt, and a mild acid such as white vinegar or lemon juice. Vinegar’s acidity helps cut grease and mineral film. Salt is a common kitchen addition in extension-style surface recipes; it does not turn this mix into a registered disinfectant. Use food-grade salt, wear gloves if you have sensitive skin, and keep the bottle out of children’s reach. Label the bottle clearly so no one mistakes it for a drink.
 
 ## Mixing the solution
+### A simple vinegar-and-salt spray
+New Mexico State University Extension’s green-cleaning guide includes a general-purpose mix of vinegar, salt, and water. A convenient bottle-sized version is:
 
-<figure class="frame mid-figure">
-<a class="product-photo-link affiliate-link" data-product="IonClear Spray electric spray bottle" href="https://www.tricklyn.com/J2D6CNH/B7GTDTF/" rel="sponsored nofollow noopener" target="_blank"><img src="/assets/images/guide-make-reusable-all-purpose-cleaner-mid-800.webp" srcset="/assets/images/guide-make-reusable-all-purpose-cleaner-mid-800.webp 800w, /assets/images/guide-make-reusable-all-purpose-cleaner-mid-1600.webp 1600w" sizes="(min-width: 1040px) 40rem, calc(100vw - 2.5rem)" alt="A person mixing water, salt and citrus in a reusable bottle, illustrating how to make all purpose cleaner at home" width="1600" height="900" loading="lazy" decoding="async"></a>
-<figcaption>Seller photo. Appearance and included items can vary.</figcaption>
-</figure>
-### Standard salt ratio
-1. Fill a 300 ml reusable bottle with tap water. 2. Add the recommended amount of table salt – the standard level is 15 g (about one tablespoon). 3. Add 1‑2 teaspoons of white vinegar or a few drops of lemon juice for acidity. 4. Secure the lid and shake vigorously for 30 seconds until the salt begins to dissolve. 5. Let the bottle sit for 5‑8 minutes; the salt will fully dissolve, creating a clear, slightly cloudy solution.
+1. Pour ½ cup (120 ml) of white vinegar into a clean, reusable spray bottle.
+2. Add 2 tablespoons of table salt.
+3. Add ½ cup (120 ml) of tap water.
+4. Cap the bottle and shake until the salt dissolves.
+5. Spray the surface and wipe with a clean cloth.
 
-The same steps work with low (7.5 g) or high (22.5 g) salt levels if you prefer milder or stronger disinfecting power. Store the mixed solution in the bottle for up to two weeks; shake before each use to re‑suspend any settled particles. If this sounds like what you need, [take a look at what IonClear Spray electric spray bottle offers](https://www.tricklyn.com/J2D6CNH/B7GTDTF/).
+If you want a larger or smaller batch, keep the same 1:1 vinegar-to-water ratio and the same small amount of salt. Store the mixed solution in a labeled bottle and shake before each use if anything has settled. This pantry recipe is separate from the electric salt-and-water bottle described later; that unit follows the seller’s own steps and does not call for vinegar.
 
 ## Application tips
-Spray the solution onto countertops, stainless steel appliances, bathroom tiles, and even sealed wood surfaces. Allow a minute for the solution to act on grease, then wipe with a clean microfiber cloth. For stubborn stains, let the spray sit for 3‑5 minutes before wiping. Rinse with plain water on surfaces that contact food, such as kitchen counters, to avoid any lingering acidity.
+Spray the solution onto countertops, stainless steel appliances, bathroom tiles, and sealed wood surfaces. Give it a minute to loosen grease, then wipe with a clean microfiber cloth. For a stubborn spot, let the spray sit for 3–5 minutes before wiping. Rinse with plain water on surfaces that contact food, such as kitchen counters, so no acidity remains.
 
 ## Pros and cons
 **Pros**
-- **Eco‑friendly**: Reusable bottle eliminates single‑use plastic.
-- **Cost‑effective**: Salt and vinegar cost pennies per batch.
-- **Customizable strength**: Adjust salt level for light cleaning or deep sanitizing.
-- **Gentle on most surfaces**: No harsh solvents that damage finishes.
-- **Fast preparation**: Ready in under 10 minutes.
+- **Eco-friendly**: A reusable bottle cuts down on single-use plastic.
+- **Cost-effective**: Salt and vinegar cost pennies per batch.
+- **Easy to repeat**: The same bottle can be rinsed and refilled.
+- **Gentle on most sealed surfaces**: No harsh solvents in the pantry mix.
+- **Fast preparation**: Ready in a few minutes of shaking and dissolving.
 
 **Good to know**
 - For best results on glass, add a few drops of rubbing alcohol after the salt dissolves.
-- Store the bottle in a cool, dark place to prolong the solution’s efficacy.
-- Avoid using on natural stone such as marble or granite; the acidity may etch the surface.
-- Shake the bottle before each use to keep salt evenly distributed.
+- Store the bottle in a cool, dark place and mix a fresh batch if it has been sitting for a couple of weeks.
+- Skip vinegar on natural stone such as marble or granite; the acidity can etch the surface.
+- Shake the bottle before each use to keep any settled salt moving.
 
 ## Who it's ideal for
-Homeowners who want a sustainable cleaning routine, renters looking to avoid heavy chemicals, and DIY enthusiasts who enjoy customizing scent and strength will find this method especially useful. It also suits families with children or pets because the ingredients are non‑toxic when used as directed.
+Homeowners who want a simple cleaning routine, renters who prefer everyday pantry ingredients, and anyone happy to label and refill a bottle will get the most from this method. It also suits households that want a straightforward mix they can make without a cabinet of specialty sprays.
 
 ## Where IonClear Spray electric spray bottle fits
-The IonClear Spray electric spray bottle automates the mixing process, turning tap water and table salt into a fresh cleaning solution in about eight minutes. Its 300 ml capacity matches the batch size recommended in this guide, and the built‑in measuring scoop simplifies salt dosing. The USB‑powered unit lets you prepare solution without a separate mixer, and the trigger nozzle provides a fine, even mist for quick application. Using IonClear means you skip the shaking step and get a consistently dissolved solution every time. For effortless preparation, try the IonClear electric spray bottle that creates cleaning solution at the push of a button. Learn more about its benefits in this [electric spray bottle that creates cleaning solution](https://www.tricklyn.com/J2D6CNH/B7GTDTF/). You can also explore how a reusable electric bottle compares to traditional sprayers in our article on cleaning tablets. {% product "ionclear" %}
+
+<figure class="frame mid-figure">
+<a class="product-photo-link affiliate-link" data-product="IonClear Spray electric spray bottle" href="https://www.tricklyn.com/J2D6CNH/B7GTDTF/" rel="sponsored nofollow noopener" target="_blank"><img src="/assets/images/guide-make-reusable-all-purpose-cleaner-mid-800.webp" srcset="/assets/images/guide-make-reusable-all-purpose-cleaner-mid-800.webp 800w, /assets/images/guide-make-reusable-all-purpose-cleaner-mid-1600.webp 1600w" sizes="(min-width: 1040px) 40rem, calc(100vw - 2.5rem)" alt="Seller photo of a white electric spray bottle with a clear reservoir and a faceted power base" width="1600" height="900" loading="lazy" decoding="async"></a>
+<figcaption>Seller photo. Appearance and included items can vary.</figcaption>
+</figure>
+
+The IonClear Spray electric spray bottle is a different path to a reusable cleaner. Per the seller, you fill the 300 ml bottle with tap water, add table salt with the included scoop, press the power button, and wait about eight minutes while the unit generates a fresh solution. Three salt amounts are listed: low (7.5 g), standard (15 g), or high (22.5 g). The same bottle is reused for later batches, and a trigger nozzle handles the spraying. The offer lists a USB cable, a measuring spoon, and a 30-day money-back guarantee; see the current price and terms on the seller’s page. This process does not use vinegar, and it is not the same as shaking a pantry mix by hand. If you want that electric, salt-and-water option, [see the current IonClear Spray offer](https://www.tricklyn.com/J2D6CNH/B7GTDTF/). You can also compare a reusable bottle-and-refill habit with [cleaning tablets in a spray bottle](/cleaning/do-cleaning-tablets-replace-spray-bottles/). {% product "ionclear" %}
 
 ## Additional care and storage
-After each use, rinse the bottle with plain water and wipe the interior dry to prevent salt buildup. If you notice cloudiness after a few weeks, replace the water and repeat the mixing steps. The bottle’s battery holds a charge for several weeks of daily use; recharge via the included USB cable when the indicator flashes.
+For a homemade vinegar-and-salt spray, rinse the bottle with plain water now and then so salt does not cake around the nozzle, and make a fresh batch if the mix looks cloudy or has been sitting for a couple of weeks. If you use the IonClear bottle, follow the seller’s care steps; the unit charges with the included USB cable.
 
 ## Extending the formula
-Add a few drops of essential oil such as lavender or tea tree for a pleasant scent and extra antimicrobial properties. For a citrus boost, replace the vinegar with orange peel infusion: steep orange peels in water for 30 minutes before adding salt. These variations keep the cleaning experience fresh without compromising safety.
+Add a few drops of essential oil such as lavender or tea tree if you want a light scent. Skip this if anyone in the house is sensitive to fragrance. For a citrus note, you can steep orange peels in water for 30 minutes and use that liquid in place of some of the tap water before adding salt and vinegar. These variations change the smell of the bottle; they do not change the basic wiping routine.
 
 ## Cleaning different surfaces
-The basic salt‑vinegar mix is versatile, but a few adjustments make it safe for delicate materials. For sealed hardwood, dilute the solution 1:1 with plain water to avoid any lingering acidity that could dull the finish. On marble or granite, skip the vinegar entirely and rely on just salt and water; the neutral pH protects the stone while still loosening grime. Glass and mirrors respond well to a touch more vinegar – the extra acidity cuts film and leaves a streak‑free shine. For stainless‑steel appliances, the salt helps dissolve mineral deposits, and a final wipe with a dry microfiber cloth prevents water spots. If you prefer a hands‑free approach for large glass panes, see our review of [Are Window Cleaning Robots Worth It?](/cleaning/are-window-cleaning-robots-worth-it/).
+The basic salt-vinegar mix is versatile, but a few adjustments make it a better fit for delicate materials. For sealed hardwood, dilute the solution 1:1 with plain water to avoid lingering acidity that could dull the finish. On marble or granite, skip the vinegar entirely and use just salt and water. Glass and mirrors often respond well to a touch more vinegar, which helps cut film; finish with a dry cloth. For stainless-steel appliances, wipe dry after cleaning to limit water spots. If you prefer a hands-free approach for large glass panes, see our guide on [whether window cleaning robots are worth it](/cleaning/are-window-cleaning-robots-worth-it/).
 
 ## Troubleshooting common issues
-A cloudy or gritty solution usually means the salt hasn't fully dissolved. Let the bottle sit an extra five minutes, then shake again, or warm the water slightly before mixing. If the spray nozzle drips, check that the cap is seated tightly and that no residue blocks the tip; a quick rinse with warm water clears most clogs. Residue on surfaces can appear if the solution is too concentrated – simply add a splash of plain water and re‑apply. Should the scent become overpowering, reduce the amount of lemon juice or switch to a fragrance‑free vinegar. For persistent streaks on glass, finish with a dry lint‑free cloth to absorb any remaining liquid.
+A cloudy or gritty solution usually means the salt has not fully dissolved. Let the bottle sit an extra five minutes, then shake again, or start with slightly warm water. If the spray nozzle drips, check that the cap is seated tightly and that no residue blocks the tip; a quick rinse with warm water clears most clogs. Residue on surfaces can appear if the mix is too strong — add a splash of plain water and wipe again. If the scent becomes too strong, use less lemon juice or switch to unscented white vinegar. For streaks on glass, finish with a dry lint-free cloth.
 
 ## Environmental impact
-Switching to a homemade cleaner cuts plastic waste dramatically. A single 300 ml reusable bottle replaces dozens of single‑use spray containers that would otherwise end up in landfill. The ingredients – water, salt, and vinegar – have a minimal carbon footprint compared with petrochemical‑based commercial cleaners that require extensive manufacturing and transport. By preparing only the amount you need, you also reduce water waste; excess solution can be safely poured down the drain without harming municipal treatment systems. Over a year, a typical household can save up to $150 and prevent roughly 30 kg of plastic from being discarded, making this simple recipe a tangible step toward a greener home. For outdoor cleaning tips, check out [How to Clean Pollen Off Outdoor Furniture](/cleaning/how-to-clean-pollen-off-outdoor-furniture/).
+A reusable spray bottle you refill cuts the number of single-use plastic bottles you bring home. Water, salt, and vinegar are ordinary pantry items, and you can mix only as much as you plan to use. For outdoor cleaning tips that also rely on simple supplies, see [how to clean pollen off outdoor furniture](/cleaning/how-to-clean-pollen-off-outdoor-furniture/).
 
 ## Cost analysis
-A 500 g bag of table salt costs about $0.60, and a 500 ml bottle of white vinegar is roughly $1.20. One batch uses 15 g of salt and two teaspoons of vinegar, costing less than $0.05 per 300 ml of cleaner. In contrast, a store‑bought all‑purpose spray averages $4–$6 per 500 ml bottle, not including the plastic container. Even after accounting for the initial purchase of the IonClear electric spray bottle (around $45), the break‑even point is reached after roughly 30–40 batches, or about two months of regular use. The long‑term savings, combined with the environmental benefits, make the DIY approach financially savvy for most families.
+Table salt and white vinegar are inexpensive pantry staples, so a homemade batch costs pennies once you already own a spray bottle. A store-bought all-purpose spray is typically a few dollars per bottle once you add the container. If you are weighing the IonClear electric bottle, use the current price on the seller’s page rather than a guessed figure; the ongoing cost after that is water and salt.
 
 ## Final thoughts
-Homemade cleaners empower you to take control of the chemicals in your home while saving money and reducing waste. The simple salt‑vinegar formula works on most everyday surfaces, and the IonClear electric spray bottle streamlines preparation for busy households. Remember to adjust the strength for sensitive materials, store the solution in a cool place, and replenish the mix every two weeks for optimal performance. For readers interested in alternative dispensing methods, compare the DIY approach with cleaning tablets in our article Do Cleaning Tablets Replace a Closet of Sprays. Embrace the habit, and enjoy a fresher, greener living space.
+A homemade vinegar-and-salt spray lets you control the ingredients in an everyday cleaner while saving money and reducing leftover bottles. Use a milder mix on delicate surfaces, keep the bottle labeled, and mix a fresh batch when the old one looks tired. If you would rather have an electric bottle that, per the seller, turns tap water and salt into a fresh solution in about eight minutes, the IonClear Spray is built for that routine. For another refill approach, compare this with [whether cleaning tablets can replace a closet of sprays](/cleaning/do-cleaning-tablets-replace-spray-bottles/).
 
 ## Sources
 
-- [USDA Food Safety and Inspection Service](https://www.fsis.usda.gov/food-safety). General safety standards for household chemicals
-- [CDC Environmental Cleaning Guidelines](https://www.cdc.gov/cleaning). Background on disinfectant efficacy
+- [New Mexico State University Extension, Green Cleaning Methods for Your Home (G-315)](https://pubs.nmsu.edu/_g/G315/index.html). Includes a general-purpose vinegar, salt, and water recipe and basic handling advice.
+- [EPA, Identifying Greener Cleaning Products](https://www.epa.gov/greenerproducts/identifying-greener-cleaning-products). Background on choosing cleaner household products and reading labels.
 
 Product details come from the seller's page and can change.

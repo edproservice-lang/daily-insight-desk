@@ -157,11 +157,20 @@
     {
       "slug": "make-reusable-all-purpose-cleaner",
       "file": "src/assets/images/guide-make-reusable-all-purpose-cleaner-1600.webp",
+      "sha256": "cf8e38fa9c456d608c6b835e2851cfe825f2d96dfe451b9365eb7e970b64159f",
+      "dhash": "cecedadbdbcbcbcd",
+      "sourceUrl": "https://pixabay.com/photos/sprayer-atomizer-water-clean-2356034/",
+      "sourceId": "2356034",
+      "role": "hero"
+    },
+    {
+      "slug": "make-reusable-all-purpose-cleaner-retired",
+      "file": "",
       "sha256": "6912d0ae330d4b1133faf84988162299150512999b407119c3131a7de9390799",
       "dhash": "8ca66666c6d79392",
       "sourceUrl": "https://pixabay.com/photos/girl-goggles-mop-cleaning-clean-1531575/",
       "sourceId": "1531575",
-      "role": "hero"
+      "role": "retired-hero"
     }
   ]
 }

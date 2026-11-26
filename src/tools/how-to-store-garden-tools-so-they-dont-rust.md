@@ -185,7 +185,7 @@ The bucket is a maintenance habit, not a substitute for cleaning. Knock the big 
 
 Before the last storage of the season, give every tool the full treatment: clean, remove rust, oil the metal, and treat the handles. The University of California master gardeners’ [winter tool-care column](https://www.ucanr.edu/sites/default/files/2020-01/318392.pdf) also suggests filing nicks out of shovel and hoe edges and cleaning and lubricating pruner pivots before storage, so the tools are ready in spring.
 
-An unheated shed or garage is fine if it is dry. If yours gets damp, keep small hand tools in a closed bin with a few silica gel packs, and keep the long tools on the wall rather than in a corner on the floor.
+An unheated shed or garage is fine if it is dry. If that garage also holds boxes and pet food, pair the dry storage habit with the steps in [how to keep mice out of your garage](/outdoor/keep-mice-out-of-garage/). If yours gets damp, keep small hand tools in a closed bin with a few silica gel packs, and keep the long tools on the wall rather than in a corner on the floor.
 
 The hose belongs in the same end-of-season routine. Drain it and its fittings first, as our guide to [winterizing a garden hose and nozzle](/outdoor/how-to-winterize-a-garden-hose-and-nozzle/) explains, so you are not hanging a wet coil next to freshly oiled steel.
 

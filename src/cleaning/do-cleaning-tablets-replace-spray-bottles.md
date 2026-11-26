@@ -174,7 +174,7 @@ Keep this mix on surfaces you can wipe. A [window-cleaning robot](/cleaning/are-
 **Pros**
 
 - The format is legible. One tablet, one bottle of water, spray, wipe.
-- A reusable bottle can mean less packaging if you actually keep using it.
+- A reusable bottle can mean less packaging if you actually keep using it. The same habit applies if you [make a reusable all-purpose cleaner at home](/cleaning/make-reusable-all-purpose-cleaner/) in a bottle you already own.
 - You stop buying five pre-mixed bottles that were the same cleaner.
 - The steps do not require an app, a gadget, or a subscription we could see on the page.
 - A 30-day return is stated. The price, whatever the checkout shows today, is the number to judge against that window.
