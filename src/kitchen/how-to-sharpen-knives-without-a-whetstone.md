@@ -35,7 +35,7 @@ story:
       image: /assets/images/stories/how-to-sharpen-knives-without-a-whetstone/p2.webp
       imageWidth: 720
       imageHeight: 960
-      alt: Illustration of home and garden tools
+      alt: Two ceramic mugs, the kind whose unglazed base ring can touch up a knife edge.
       tone: moss
     - id: card-3
       title: Honing Versus Sharpening
@@ -43,7 +43,7 @@ story:
       image: /assets/images/stories/how-to-sharpen-knives-without-a-whetstone/p3.webp
       imageWidth: 720
       imageHeight: 960
-      alt: Illustration of home and garden tools
+      alt: A chef knife resting on a honing steel over a wooden cutting board.
       tone: ink
     - id: card-4
       title: Sandpaper and Flat Glass
@@ -51,7 +51,7 @@ story:
       image: /assets/images/stories/how-to-sharpen-knives-without-a-whetstone/p4.webp
       imageWidth: 720
       imageHeight: 960
-      alt: Illustration of home and garden tools
+      alt: Close-up of fine-grit sandpaper texture.
       tone: moss
     - id: card-5
       title: Meet the Rolling Sharpener
@@ -102,8 +102,8 @@ toc:
     label: Rolling Sharpener
   - id: where-cloedar-holkeem-rolling-knife-sharpener-fits
     label: Where Cloedar Holkeem rolling knife sharpener fits
-  - id: pros-and-cons
-    label: Pros and Cons
+  - id: why-it-stands-out
+    label: Why it stands out
   - id: who-its-ideal-for
     label: Who it's ideal for
   - id: sources
@@ -125,7 +125,7 @@ autowriter:
 
 ## The short answer
 
-You can sharpen knives without a whetstone by using the unglazed bottom rim of a ceramic mug, a honing steel, fine-grit sandpaper taped to a flat board, or a specialized manual rolling sharpener that locks your blade at a consistent angle.
+You can sharpen knives without a whetstone by using the unglazed bottom rim of a ceramic mug, a honing steel for quick touch-ups, fine-grit sandpaper taped to a flat board, or a manual rolling sharpener that locks your blade at a consistent angle. The rolling sharpener is the easiest way to get a consistent, razor-sharp edge at home.
 
 ## Why skipping traditional stones is easier than you think
 
@@ -142,7 +142,7 @@ If you find yourself in the kitchen with a dull chef knife and zero specialized 
 Turn the ceramic vessel upside down. Look at the very bottom ring where the clay did not receive a glaze. That unglazed ring is essentially a rough ceramic stone with enough hardness to abrade softer kitchen steel. 
 
 <figure class="frame mid-figure">
-<a class="product-photo-link affiliate-link" data-product="Cloedar Holkeem rolling knife sharpener" href="https://www.treejammer.com/J2D6CNH/B9B843W/" rel="sponsored nofollow noopener" target="_blank"><img src="/assets/images/guide-how-to-sharpen-knives-without-a-whetstone-mid-800.webp" srcset="/assets/images/guide-how-to-sharpen-knives-without-a-whetstone-mid-800.webp 800w, /assets/images/guide-how-to-sharpen-knives-without-a-whetstone-mid-1600.webp 1600w" sizes="(min-width: 1040px) 40rem, calc(100vw - 2.5rem)" alt="An unglazed ceramic mug base used for how to sharpen knives without a whetstone in a home kitchen." width="1600" height="900" loading="lazy" decoding="async"></a>
+<a class="product-photo-link affiliate-link" data-product="Cloedar Holkeem rolling knife sharpener" href="https://www.treejammer.com/J2D6CNH/B9B843W/" rel="sponsored nofollow noopener" target="_blank"><img src="/assets/images/guide-how-to-sharpen-knives-without-a-whetstone-mid-800.webp" srcset="/assets/images/guide-how-to-sharpen-knives-without-a-whetstone-mid-800.webp 800w, /assets/images/guide-how-to-sharpen-knives-without-a-whetstone-mid-1600.webp 1600w" sizes="(min-width: 1040px) 40rem, calc(100vw - 2.5rem)" alt="Seller photo of the Cloedar Holkeem rolling knife sharpener: a wood-wrapped diamond disc roller beside its magnetic angle base" width="1600" height="900" loading="lazy" decoding="async"></a>
 <figcaption>Seller photo. Package details can change.</figcaption>
 </figure>
 ### Step-by-step ceramic mug sharpening
@@ -163,7 +163,7 @@ Many home cooks confuse a honing steel with a sharpener. A honing steel does not
 
 Hold the steel vertically with the tip planted firmly on a cutting board, or hold it horizontally with a secure grip away from your body. Place the heel of your knife against the top of the rod at a twenty-degree angle. Lightly sweep the blade down and across the steel in an arc, moving from heel to tip. Alternate sides with each pass. 
 
-If your blade is completely blunt, however, a steel rod will not help. You need something that abrades steel. For more details on kitchen tool care, see how extension services recommend that you [how to store garden tools so they don't rust](/tools/how-to-store-garden-tools-so-they-dont-rust/) and keep your gear in top shape.
+If your blade is completely blunt, however, a steel rod will not help. You need something that abrades steel. The same rust-prevention habits you use when you [store garden tools so they don't rust](/tools/how-to-store-garden-tools-so-they-dont-rust/) also keep kitchen blades in top shape.
 
 According to guidelines from the [University of Illinois Extension](https://extension.illinois.edu/), proper maintenance of household utensils and tools extends their useful lifespan significantly. Taking care of your equipment means fewer replacements and safer food preparation sessions.
 
@@ -181,28 +181,26 @@ This method gives you a large flat area to work across, which makes angle contro
 
 If you want the precision of a stone system without the steep learning curve, a dedicated manual tool changes the entire process. The Cloedar Holkeem rolling knife sharpener is a rolling sharpener with a magnetic angle base and two diamond abrasive discs (400 and 10,000 grit). It is manual: no electricity, cords, or batteries. The 400-grit disc restores a worn edge and the 10,000-grit disc polishes and refines it. A magnetic angle base holds the knife for you, so you roll the disc along the edge with no whetstone technique. It works with everyday kitchen knives and includes a 14-day money-back guarantee. See the current offer and terms on the seller’s page.
 
-Because the magnetic block locks your blade at the ideal factory angle automatically, you eliminate human error. You can explore the Cloedar Holkeem rolling knife sharpener offer to see how easily it integrates into a standard kitchen drawer without taking up counter space.
+Because the magnetic block locks your blade at a consistent angle automatically, you eliminate human error. You can explore the Cloedar Holkeem rolling knife sharpener offer to see how easily it integrates into a standard kitchen drawer without taking up counter space.
 
 ## Where Cloedar Holkeem rolling knife sharpener fits
 
 The Cloedar Holkeem rolling knife sharpener fits kitchens where users want razor-sharp chef knives, utility knives, and paring blades without spending hours mastering traditional whetstone angles. Its compact footprint stores easily in a drawer, and the dual diamond discs handle both dull edge repair and mirror-finish polishing in a single setup. You can check out current availability for the rolling sharpener to upgrade your daily kitchen routine effortlessly. If this sounds like what you need, [take a look at what Cloedar Holkeem rolling knife sharpener offers](https://www.treejammer.com/J2D6CNH/B9B843W/).
 {% product "cloedar" %}
 
-## Pros and cons
+## Why it stands out
 
-* **Pros**: Restores a razor-sharp edge without requiring manual angle balancing; includes dual-grit diamond discs for heavy repair and fine polishing; operates completely manually without cords or batteries; uses a magnetic base to secure blades safely during use.
+* **Highlights**: Restores a razor-sharp edge without requiring manual angle balancing; includes dual-grit diamond discs for heavy repair and fine polishing; operates completely manually without cords or batteries; uses a magnetic base to secure blades safely during use.
 * **Good to know**: Wipe the diamond discs clean with a damp cloth after use to prevent metal dust buildup; store the sharpener in a dry drawer away from moisture; ensure your knife blade is clean and dry before placing it against the magnetic angle block for the best results.
 
 ## Who it's ideal for
 
 This sharpening approach is ideal for home cooks who love cooking with sharp chef knives but lack the time or desire to practice traditional whetstone techniques. It suits anyone who wants consistent, repeatable bevel angles across all kitchen cutlery without messy water baths or electric motor noise.
 
-According to the [National Institutes of Health](https://www.nih.gov/), maintaining clean and safe food preparation environments is essential for household wellness, which starts with properly maintained, easy-to-clean culinary tools.
 
 ## Sources
 
 - [University of Illinois Extension (home page)](https://extension.illinois.edu/). Supports general guidance on extending the useful lifespan of household tools through proper routine care.
-- [National Institutes of Health (home page)](https://www.nih.gov/). Supports maintaining clean kitchen preparation tools for safe home cooking.
 - [Environmental Protection Agency (home page)](https://www.epa.gov/). Backup authority source for general household upkeep and safety practices.
 
 Product details come from the seller's page and can change.
