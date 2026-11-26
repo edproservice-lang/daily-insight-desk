@@ -83,6 +83,9 @@ const rowelle = "https://www.clickomundo.com/J2D6CNH/B8GM3KK/";
 if (!sharpener) fail("Missing the rolling sharpener article");
 if (!steamer) fail("Missing the garment steamer article");
 if (sharpener && !sharpener.includes(`href="${katusharp}"`)) fail("KatuSharp affiliate link changed");
+const cloedar = "https://www.treejammer.com/J2D6CNH/B9B843W/";
+if (sharpener && !sharpener.includes(`href="${cloedar}"`)) fail("Cloedar Holkeem affiliate link missing from the sharpener guide");
+if (kitchen && !kitchen.includes(`href="${cloedar}"`)) fail("Cloedar Holkeem affiliate link missing from the titanium-board guide");
 if (steamer && !steamer.includes(`href="${rowelle}"`)) fail("Rowelle affiliate link changed");
 if (sharpener && !sharpener.includes("/kitchen/do-titanium-cutting-boards-dull-knives/")) {
   fail("Sharpener guide does not link to the cutting-board guide");

@@ -118,6 +118,58 @@ const products = {
     height: 616,
     caption: "Seller photo. Package details can change.",
   },
+
+  cloedar: {
+    name: "Cloedar Holkeem rolling knife sharpener",
+    summary:
+      "A rolling sharpener with a magnetic angle base and two diamond abrasive discs (400 and 10,000 grit, per the seller). It is manual: no electricity, cords, or batteries.",
+    points: [
+      "The seller says the 400-grit disc restores a worn edge and the 10,000-grit disc polishes and refines it.",
+      "A magnetic angle base holds the knife for you, so you roll the disc along the edge with no whetstone technique.",
+      "The maker says it works with everyday kitchen knives and includes a 14-day money-back guarantee. See the current offer and terms on the seller’s page.",
+    ],
+    href: "https://www.treejammer.com/J2D6CNH/B9B843W/",
+    cta: "See the current Cloedar Holkeem offer",
+    image: "/assets/images/products/cloedar-holkeem.webp",
+    alt: "Seller photo of a wood-wrapped rolling sharpener disc beside a magnetic angle base marked 20 degrees",
+    width: 800,
+    height: 800,
+    caption: "Seller photo. Package details can change.",
+  },
+  repelnest: {
+    name: "RepelNest repellent pouches",
+    summary:
+      "A pack of 10 pouches sold as a poison-free, pouch-based way to deter rodents in garages, basements, attics, and storage spaces, with no conventional trap setup.",
+    points: [
+      "The seller presents each pack as 10 individual pouches, about 2.44 × 3.62 in, that you place according to the label, with no poison baits and no trap setup.",
+      "Intended placement areas on the packaging include the home, garage, attic, warehouse, trucks, and RVs.",
+      "A 30-day money-back guarantee is stated on the offer. See the current pack options and placement instructions on the seller’s page.",
+    ],
+    href: "https://www.tricklyn.com/J2D6CNH/B6XKNQQ/",
+    cta: "See the current RepelNest offer",
+    image: "/assets/images/products/repelnest.webp",
+    alt: "Seller photo of a RepelNest box of rodent repellent pouches beside several filled pouches on a garage floor",
+    width: 710,
+    height: 710,
+    caption: "Seller photo. Appearance and included items can vary.",
+  },
+  ionclear: {
+    name: "IonClear Spray electric spray bottle",
+    summary:
+      "A reusable electric spray bottle that, per the seller, turns tap water and table salt into a freshly generated solution in about 8 minutes. The bottle holds 300 ml (about 10 fl oz).",
+    points: [
+      "The seller’s steps are: fill the 300 ml bottle with tap water, add table salt with the included scoop, press the power button, and wait about 8 minutes.",
+      "Three salt amounts are listed: low (7.5 g), standard (15 g), or high (22.5 g). The same bottle is reused for later batches, with a trigger spray nozzle for application.",
+      "The offer lists a USB cable and measuring spoon in the box, and a 30-day money-back guarantee. See the current price and terms on the seller’s page.",
+    ],
+    href: "https://www.tricklyn.com/J2D6CNH/B7GTDTF/",
+    cta: "See the current IonClear Spray offer",
+    image: "/assets/images/products/ionclear-spray.webp",
+    alt: "Seller photo of a white electric spray bottle with a clear reservoir and a faceted power base",
+    width: 650,
+    height: 650,
+    caption: "Seller photo. Appearance and included items can vary.",
+  },
 };
 
 export default products;

@@ -94,6 +94,8 @@ toc:
     label: What Serious Eats found
   - id: where-katusharp-fits
     label: Where KatuSharp fits
+  - id: where-cloedar-holkeem-fits
+    label: Where Cloedar Holkeem fits
   - id: pros-and-cons
     label: Pros and cons
   - id: who-its-ideal-for
@@ -123,7 +125,7 @@ Rolling knife sharpeners are good at the one thing most home cooks get wrong: ho
 
 That makes a rolling sharpener a genuine step up from the pull-through slot in a kitchen drawer, and a reasonable alternative to a whetstone for people who know they will never learn one. It is not magic. It is slower than a pull-through. It is less flexible than a set of stones. It struggles with very wide blades, and it cannot touch serrations.
 
-This guide explains how the tool works, what an independent review of one actually found, and where the KatuSharp rolling sharpener sits in that picture. Everything we say about it comes from the maker’s specs and from how this type of tool works.
+This guide explains how the tool works, what an independent review of one actually found, and where rolling models we can link to, including KatuSharp and Cloedar Holkeem, sit in that picture. Everything we say about those offers comes from the makers’ specs and from how this type of tool works.
 
 ## How a rolling sharpener works
 
@@ -184,6 +186,20 @@ The two-sided disc is the practical appeal: the 400-grit side, per the maker, re
 
 {% product "katusharp" %}
 
+## Where Cloedar Holkeem fits
+
+Cloedar Holkeem is another rolling sharpener we can link to. On its product page, the seller lists:
+
+- **Two diamond abrasive discs** at 400 and 10,000 grit. The seller says the 400-grit disc restores a worn edge and the 10,000-grit disc polishes and refines it.
+- **A magnetic angle base** that holds the knife so you roll the disc along the edge, with no whetstone technique.
+- **Manual use**, with no electricity, cords, or batteries.
+- **Everyday kitchen knives**, from chef’s knives to smaller utility and paring blades, per the seller.
+- **A 14-day money-back guarantee** stated on the current offer.
+
+[See the current Cloedar Holkeem offer](https://www.treejammer.com/J2D6CNH/B9B843W/) for the price, shipping, and guarantee terms.
+
+{% product "cloedar" %}
+
 ## Pros and cons
 
 ### Pros
@@ -227,3 +243,5 @@ These are general habits for the category, not results from a test.
 Taylor Murray, “This Rolling Knife Sharpener Actually Makes Sharpening Knives Fun,” Serious Eats, March 11, 2025. Cited without a link: it is a “best sharpener” review with shopping buttons. The test described above was of a Horl 3 Cruise, not KatuSharp. This desk did not repeat it.
 
 KatuSharp product page (seller), viewed November 18, 2026. Specifications, included items, and marketing claims quoted above are the seller’s.
+
+Cloedar Holkeem product page (seller), viewed November 25, 2026. Specifications and marketing claims quoted above are the seller’s.
