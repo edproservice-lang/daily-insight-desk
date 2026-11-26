@@ -128,6 +128,15 @@
       "role": "hero"
     },
     {
+      "slug": "keep-mice-out-of-garage",
+      "file": "src/assets/images/guide-keep-mice-out-of-garage-1600.webp",
+      "sha256": "058eff57133809fa85b986018029109d38c4dfdaebd18e5ccc388ab03e6c7359",
+      "dhash": "dcf8ecc4d3d5e0e0",
+      "sourceUrl": "https://pixabay.com/photos/man-car-repair-car-repair-362150/",
+      "sourceId": "362150",
+      "role": "hero"
+    },
+    {
       "slug": "remove-moss-from-patio-without-pressure-washer",
       "file": "src/assets/images/guide-remove-moss-from-patio-without-pressure-washer-1600.webp",
       "sha256": "a66ee43ed1c4c2cc95b4fa429f3e2accfe6c4226666d5b2cb633f87a0d34448f",
@@ -146,12 +155,12 @@
       "role": "hero"
     },
     {
-      "slug": "keep-mice-out-of-garage",
-      "file": "src/assets/images/guide-keep-mice-out-of-garage-1600.webp",
-      "sha256": "058eff57133809fa85b986018029109d38c4dfdaebd18e5ccc388ab03e6c7359",
-      "dhash": "dcf8ecc4d3d5e0e0",
-      "sourceUrl": "https://pixabay.com/photos/man-car-repair-car-repair-362150/",
-      "sourceId": "362150",
+      "slug": "make-reusable-all-purpose-cleaner",
+      "file": "src/assets/images/guide-make-reusable-all-purpose-cleaner-1600.webp",
+      "sha256": "6912d0ae330d4b1133faf84988162299150512999b407119c3131a7de9390799",
+      "dhash": "8ca66666c6d79392",
+      "sourceUrl": "https://pixabay.com/photos/girl-goggles-mop-cleaning-clean-1531575/",
+      "sourceId": "1531575",
       "role": "hero"
     }
   ]
