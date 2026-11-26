@@ -16,9 +16,9 @@ on:
         type: boolean
         default: true
       model:
-        description: "Gemini model"
+        description: "Gemini model (must be one the CLI lists; gemini-3.5-flash is remapped to gemini-3.8-flash and often hits the free 20/day cap)"
         required: false
-        default: "gemini-3.5-flash"
+        default: "gemini-3.5-flash-lite"
 
 permissions:
   contents: write
@@ -44,7 +44,7 @@ jobs:
           gemini_model: ${{ inputs.model }}
 
       - name: Show changes
-        run: git status --short && git diff --stat
+        run: git status --short && git diff --stat && git diff
 
       - name: Push changes to a branch
         if: ${{ !inputs.dry_run }}
