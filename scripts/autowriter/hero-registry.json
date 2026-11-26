@@ -56,6 +56,15 @@
       "role": "hero"
     },
     {
+      "slug": "make-reusable-all-purpose-cleaner",
+      "file": "src/assets/images/guide-make-reusable-all-purpose-cleaner-1600.webp",
+      "sha256": "cf8e38fa9c456d608c6b835e2851cfe825f2d96dfe451b9365eb7e970b64159f",
+      "dhash": "cecedadbdbcbcbcd",
+      "sourceUrl": "https://pixabay.com/photos/sprayer-atomizer-water-clean-2356034/",
+      "sourceId": "2356034",
+      "role": "hero"
+    },
+    {
       "slug": "are-rolling-knife-sharpeners-good",
       "file": "src/assets/images/guide-rolling-sharpener-1600.webp",
       "sha256": "29818b15181e56c8849bae42be8ffbcc2afd0e24527cb64ceff7adfe8e0aba7a",
@@ -155,22 +164,13 @@
       "role": "hero"
     },
     {
-      "slug": "make-reusable-all-purpose-cleaner",
-      "file": "src/assets/images/guide-make-reusable-all-purpose-cleaner-1600.webp",
-      "sha256": "cf8e38fa9c456d608c6b835e2851cfe825f2d96dfe451b9365eb7e970b64159f",
-      "dhash": "cecedadbdbcbcbcd",
-      "sourceUrl": "https://pixabay.com/photos/sprayer-atomizer-water-clean-2356034/",
-      "sourceId": "2356034",
+      "slug": "how-to-sharpen-knives-without-a-whetstone",
+      "file": "src/assets/images/guide-how-to-sharpen-knives-without-a-whetstone-1600.webp",
+      "sha256": "c451a7db37bbe683833d2d7d1ef863e1581f2ae0014b5c1226b8c338850c22e4",
+      "dhash": "6e6c632210e02103",
+      "sourceUrl": "https://pixabay.com/photos/vintage-knife-sharpener-tool-retro-7858279/",
+      "sourceId": "7858279",
       "role": "hero"
-    },
-    {
-      "slug": "make-reusable-all-purpose-cleaner-retired",
-      "file": "",
-      "sha256": "6912d0ae330d4b1133faf84988162299150512999b407119c3131a7de9390799",
-      "dhash": "8ca66666c6d79392",
-      "sourceUrl": "https://pixabay.com/photos/girl-goggles-mop-cleaning-clean-1531575/",
-      "sourceId": "1531575",
-      "role": "retired-hero"
     }
   ]
 }
