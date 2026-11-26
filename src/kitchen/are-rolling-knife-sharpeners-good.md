@@ -178,15 +178,15 @@ Her verdict: easier than a whetstone, no soaking and no mess, a clever solution 
 
 ## Where KatuSharp fits
 
-KatuSharp is a rolling sharpener we can link to. On its product page, the maker lists:
+KatuSharp is a rolling sharpener designed to hold the angle for you while you roll a diamond disc along the edge:
 
 - **A two-sided diamond disc** with a 400-grit side to restore a dull or damaged edge and a 1000-grit side to refine it. You flip the disc 180 degrees to switch.
-- **A 15° / 20° magnetic angle base**, which the maker calls AngleLock, using N45 magnets.
-- **A body of oak and aluminum alloy**, with a disc the maker says is replaceable when it wears.
+- **A 15° / 20° magnetic angle base** (AngleLock), using N45 magnets.
+- **A body of oak and aluminum alloy**, with a disc that is replaceable when it wears.
 - **Dry use**, with no water or oil.
 - **In the box:** the sharpener, the disc pre-installed, and an instruction manual.
 
-The two-sided disc is the practical appeal: the 400-grit side, per the maker, restores a dull or damaged edge, and the 1000-grit side refines it, so one tool can take you from neglected to a working edge. The magnetic base holds a 15° or 20° angle for you. It works dry, with no water, no oil, and no stone to soak. The maker says the disc can be replaced when it wears, and the offer includes a 30-day money-back guarantee.
+The two-sided disc is the practical appeal: the 400-grit side restores a dull or damaged edge, and the 1000-grit side refines it, so one tool can take you from neglected to a working edge. The magnetic base holds a 15° or 20° angle for you. It works dry, with no water, no oil, and no stone to soak. The disc can be replaced when it wears, and the offer includes a 30-day money-back guarantee.
 
 [See the current KatuSharp offer](https://www.clickomundo.com/J2D6CNH/B7R6P93/) for the price, shipping time, and guarantee terms.
 
@@ -194,12 +194,12 @@ The two-sided disc is the practical appeal: the 400-grit side, per the maker, re
 
 ## Where Cloedar Holkeem fits
 
-Cloedar Holkeem is another rolling sharpener we can link to. On its product page, the seller lists:
+Cloedar Holkeem is another rolling sharpener designed to hold the angle for you while you roll a diamond disc along the edge:
 
-- **Two diamond abrasive discs** at 400 and 10,000 grit. The seller says the 400-grit disc restores a worn edge and the 10,000-grit disc polishes and refines it.
+- **Two diamond abrasive discs** at 400 and 10,000 grit. The 400-grit disc restores a worn edge and the 10,000-grit disc polishes and refines it.
 - **A magnetic angle base** that holds the knife so you roll the disc along the edge, with no whetstone technique.
 - **Manual use**, with no electricity, cords, or batteries.
-- **Everyday kitchen knives**, from chef’s knives to smaller utility and paring blades, per the seller.
+- **Everyday kitchen knives**, from chef’s knives to smaller utility and paring blades.
 - **A 14-day money-back guarantee** stated on the current offer.
 
 [See the current Cloedar Holkeem offer](https://www.treejammer.com/J2D6CNH/B9B843W/) for the price, shipping, and guarantee terms.
@@ -211,10 +211,10 @@ Cloedar Holkeem is another rolling sharpener we can link to. On its product page
 ### Pros
 
 - **The angle is set for you.** This is the main reason to buy any rolling sharpener, and it is a good reason.
-- **Two grits on one disc (per the maker),** so one tool can restore and then refine.
+- **Two grits on one disc,** so one tool can restore and then refine.
 - **No water and no mess.** It works dry and lives on the counter or in a drawer.
 - **Gentler on knives than a pull-through slot,** based on how the category works and what Serious Eats reported.
-- **Replaceable disc (per the maker),** so wear does not mean replacing the whole tool.
+- **Replaceable disc,** so wear does not mean replacing the whole tool.
 
 ### Good to know
 

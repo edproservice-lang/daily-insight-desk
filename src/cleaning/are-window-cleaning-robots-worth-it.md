@@ -187,11 +187,11 @@ Clearer glass lets in more sun; it does not cool the room. Whether a [portable e
 
 It is ideal for a household with a few big, smooth, indoor-reachable windows, a person who can supervise the first runs, and a taste for repeated light cleaning. Start with a pane you can see, and use the return window if the seal is not a fit.
 
-Divided lights, heavy texture, or high exterior glass you cannot watch are better as a hand-wash or a different tool. This unit shines on the large, smooth indoor panes it is sold for.
+Divided lights, heavy texture, or high exterior glass you cannot watch are better as a hand-wash or a different tool. This unit shines on the large, smooth indoor panes it is designed for.
 
 ## Where Windobotz fits
 
-Qinux Windobotz is a window-cleaning robot sold as a suction unit with a dual water spray, wiping pads, and a remote. It is meant for repeated light cleaning on large, smooth, indoor-reachable glass: the unit holds itself on the pane while you direct the wash from the floor.
+Qinux Windobotz is a window-cleaning robot with suction, a dual water spray, wiping pads, and a remote. It is designed for repeated light cleaning on large, smooth, indoor-reachable glass: the unit holds itself on the pane while you direct the wash from the floor.
 
 If that is the job in your house, [see the current Windobotz offer](https://www.treejammer.com/J2D6CNH/B98T7C9/) for the price, what is in the box, and the return terms.
 

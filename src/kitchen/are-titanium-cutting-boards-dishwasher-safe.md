@@ -181,7 +181,7 @@ The machine does not retire the sink. A mid-cooking rinse, when you go from raw 
 
 ## Where Katori fits
 
-Katori is a titanium cutting board we can link to, sold as a smooth metal surface for people who want simple cleanup. The seller presents it as low-absorption and straightforward to wash, without the oiling a wood board wants. A non-porous face rinses with hot, soapy water and does not need a seasoning routine.
+Katori is a titanium cutting board with a smooth metal surface for people who want simple cleanup. It is low-absorption and straightforward to wash, without the oiling a wood board wants. A non-porous face rinses with hot, soapy water and does not need a seasoning routine.
 
 If easy cleanup is the reason you are considering it, read the care instructions on the [current Katori offer](https://www.clickrtrckr.com/J2D6CNH/546X6MD/?uid=7536&home) and follow those. Confirm the size and what is included before you order.
 

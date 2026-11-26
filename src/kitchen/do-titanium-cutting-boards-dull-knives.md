@@ -155,7 +155,7 @@ Wood has its own care, and it is fair to dislike that care. An unfinished board 
 
 ## Where Katori fits
 
-Katori is a titanium cutting board we can link to, sold as a smooth metal surface for people who want simple cleanup. The seller presents it as low-absorption and straightforward to wash, without the oiling a wood board wants, in a slim format that stores more easily than a thick block. It does not soak up moisture, odors, or stains the way neglected wood can, and it rinses with hot, soapy water.
+Katori is a titanium cutting board with a smooth metal surface for people who want simple cleanup. It is low-absorption and straightforward to wash, without the oiling a wood board wants, in a slim format that stores more easily than a thick block. It does not soak up moisture, odors, or stains the way neglected wood can, and it rinses with hot, soapy water.
 
 If you hate hand-washing a scarred plastic board, or you are tired of oiling wood, [see the current Katori offer](https://www.clickrtrckr.com/J2D6CNH/546X6MD/?uid=7536&home) for the size, what is included, and the care instructions. The [dishwasher guide](/kitchen/are-titanium-cutting-boards-dishwasher-safe/) walks through how to wash a metal board.
 

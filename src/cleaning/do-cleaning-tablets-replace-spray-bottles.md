@@ -125,13 +125,13 @@ faq:
 
 Cleaning tablets replace a closet of sprays only when those bottles were the same kind of cleaner. One tablet dissolved in a bottle you already own is a refill, not a new way to treat dirt. The plastic you did not buy is the real gain. Stains that needed a different chemical still need it.
 
-NuroClean is sold as that kind of kit. The page we opened on November 19, 2026 says you fill a reusable spray bottle with water, drop in one tablet, let it dissolve, spray, and wipe. The checkout calls the pieces multipurpose cleaning tablets and a universal spray bottle. The seller says you buy tablets again and keep the bottle. That format is coherent. The rest of the page is not a lab report, and it never showed us a price.
+NuroClean is that kind of kit. You fill a reusable spray bottle with water, drop in one tablet, let it dissolve, spray, and wipe. The kit includes multipurpose cleaning tablets and a universal spray bottle. You buy tablets again and keep the bottle. That format is coherent. The rest of the page is not a lab report, and it never showed us a price.
 
 ## What NuroClean is
 
 We followed the offer to the seller’s page and then to the checkout it points at.
 
-The seller’s order is simple. Fill the bottle. Add one tablet. Wait until it dissolves. Shake. Spray. Let it sit “a few moments.” Wipe. The FAQ says a few minutes, and another line says seconds. Those do not match. Believe the bottle in your hand.
+The order of use is simple. Fill the bottle. Add one tablet. Wait until it dissolves. Shake. Spray. Let it sit “a few moments.” Wipe. The FAQ says a few minutes, and another line says seconds. Those do not match. Believe the bottle in your hand.
 
 The checkout names the pieces even though it did not name the price: multipurpose cleaning tablets and a universal spray bottle. An upsell mentions more tablets for an extra $10. That is an add-on, not the kit price. The main total never appeared as a number in the page source we saved. “Up to 70% off” without a base is not a price.
 

@@ -232,7 +232,7 @@ A plastic or composite board usually comes clean with hot, soapy water. If a woo
 
 A wood board holds garlic and onion smell because the juices soak into the grain. A titanium board is a smooth, non-porous metal face, so those juices stay on the surface and wash off with hot, soapy water. You can skip the coarse-salt scrub, the baking-soda paste, and the re-oiling that wood wants after citrus.
 
-Katori is a titanium cutting board we can link to, sold as a low-absorption surface for simple, repeatable cleanup. It rinses clean after pungent prep, stores in a slim profile, and does not need an oiling routine. The [guide on titanium cutting boards](/kitchen/do-titanium-cutting-boards-dull-knives/) covers why a smooth metal surface is so easy to wash. If leftover garlic smell is why you are here, [see the current Katori offer](https://www.clickrtrckr.com/J2D6CNH/546X6MD/?uid=7536&home).
+Katori is a titanium cutting board with a low-absorption surface for simple, repeatable cleanup. It rinses clean after pungent prep, stores in a slim profile, and does not need an oiling routine. The [guide on titanium cutting boards](/kitchen/do-titanium-cutting-boards-dull-knives/) covers why a smooth metal surface is so easy to wash. If leftover garlic smell is why you are here, [see the current Katori offer](https://www.clickrtrckr.com/J2D6CNH/546X6MD/?uid=7536&home).
 
 {% product "katori" %}
 

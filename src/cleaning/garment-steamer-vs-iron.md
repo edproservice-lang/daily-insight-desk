@@ -200,9 +200,9 @@ That combination is the reason to look at it: one small tool that steams a hangi
 
 ### Pros
 
-- **Steam and dry press in one handheld (per the maker),** so small pressing jobs do not need a board.
+- **Steam and dry press in one handheld,** so small pressing jobs do not need a board.
 - **Five steam levels plus dry heat,** which suits a closet of mixed fabrics.
-- **Compact and light (1.26 lb, per the maker)**, which makes it easy to pack.
+- **Compact and light (1.26 lb)**, which makes it easy to pack.
 - **Rotating handle and a resting tray,** two details that matter more than they sound.
 
 ### Good to know

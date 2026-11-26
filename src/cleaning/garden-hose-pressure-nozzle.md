@@ -112,7 +112,7 @@ faq:
   - q: Why did my nozzle start spraying sideways?
     a: Mineral scale from hard water is a common reason a tip clogs or fans out in a ragged sheet. Sediment in an old hose does the same thing. Clearing the tip, and flushing the hose before you reattach it, is the first thing to try.
   - q: Does Jetterix need electricity?
-    a: The seller says no. It is sold as a hose attachment that uses your home’s water. Whatever the fitting, the spray still depends on the pressure you already have.
+    a: No. Jetterix is a hose attachment that uses your home’s water. Whatever the fitting, the spray still depends on the pressure you already have.
   - q: Can I wash a car with only a hose nozzle?
     a: You can rinse loose dust and rinse soap off. A nozzle does not replace a wash mitt on stuck-on film, and a tight jet held close to paint or a decal is a good way to cause damage. Keep the stream moving, and save the brush for the dirty parts.
 ---
@@ -190,7 +190,7 @@ If you are on a well, or you already know the house has low pressure indoors, a 
 
 ## Where Jetterix fits
 
-Jetterix is a hose-end attachment sold for a more focused jet on routine outdoor rinsing, without electricity and without a separate machine. The seller presents it as a fit for a standard garden hose, with an adjustable nozzle, for patios, vehicles, siding, outdoor furniture, and tools.
+Jetterix is a hose-end attachment designed for a more focused jet on routine outdoor rinsing, without electricity and without a separate machine. It fits a standard garden hose, has an adjustable nozzle, and is built for patios, vehicles, siding, outdoor furniture, and tools.
 
 That is the job this guide is about: a tighter, more useful stream from the hose you already own. Fan for broad rinsing. A tighter stream for the spots that need it. Shut it off between tasks.
 

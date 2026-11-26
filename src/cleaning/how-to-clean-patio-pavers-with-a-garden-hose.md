@@ -231,7 +231,7 @@ If pavers are loose or the joints are already empty, fix that first, then clean.
 
 ## Where Jetterix fits
 
-If you want a more focused rinse from the hose you already own, Jetterix is a hose-end attachment sold for that job. The seller presents it as a fit for a standard garden hose, with no electricity and no separate machine, for patios, vehicles, siding, furniture, and tools. A tighter stream helps you finish the rinse faster after you have already brushed the pavers.
+If you want a more focused rinse from the hose you already own, Jetterix is a hose-end attachment designed for that job. It fits a standard garden hose, uses no electricity and no separate machine, and is built for patios, vehicles, siding, furniture, and tools. A tighter stream helps you finish the rinse faster after you have already brushed the pavers.
 
 [See the current Jetterix offer](https://www.clickrtrckr.com/J2D6CNH/7L95GK9/?uid=12402) for the package, price, and return terms.
 

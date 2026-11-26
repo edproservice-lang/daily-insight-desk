@@ -356,6 +356,30 @@ function untestedHits(text) {
   }
   return [...new Set(hits)];
 }
+// Seller-benefit hedges. Care-instruction conditionals ("if the maker says so") and
+// pointers to current price/terms/care on the seller's page are allowed.
+const SELLER_HEDGES = [
+  /\baccording to the (?:seller|manufacturer|brand|maker|vendor|listing|product page)\b/i,
+  /\bper the (?:seller|maker|manufacturer|brand|vendor|listing|product(?: page)?)\b/i,
+  /\b(?:is |are |was |were )?marketed as\b/i,
+  /\bsold as\b/i,
+  /\bon its product page\b/i,
+  /\bthe (?:seller|manufacturer|brand|maker|vendor) (?:says|claims|states|lists|notes|reports|describes|presents|calls)\b/i,
+];
+function sellerHedgeHits(text) {
+  const hits = [];
+  for (const re of SELLER_HEDGES) {
+    const g = new RegExp(re.source, "gi");
+    for (const m of text.matchAll(g)) {
+      const before = text.slice(Math.max(0, m.index - 48), m.index).toLowerCase();
+      const around = text.slice(Math.max(0, m.index - 48), Math.min(text.length, m.index + m[0].length + 48)).toLowerCase();
+      if (/\b(if|unless|when|whether)\b/.test(before)) continue;
+      if (/\b(says so|says otherwise|not to soak|stay out|care instructions|care steps|placement guidance|maker allows)\b/.test(around)) continue;
+      hits.push(m[0]);
+    }
+  }
+  return [...new Set(hits)];
+}
 function sameOffer(a, b) {
   try {
     const ua = new URL(a);
@@ -494,6 +518,8 @@ function checkArticle(a, ctx) {
   if (hits.length) errs.push(`remove these claims (no tests, ratings, testimonials or medical claims): ${hits.join("; ")}`);
   const untested = untestedHits(hay);
   if (untested.length) errs.push(`do not say or imply we did not test or use the product (remove: ${untested.join("; ")})`);
+  const hedges = sellerHedgeHits(hay);
+  if (hedges.length) errs.push(`state product benefits confidently as what the product is designed to do; do not hedge with seller-attribution phrases (remove: ${hedges.join("; ")})`);
   if (!Array.isArray(a.story) || a.story.length !== 7) errs.push("story must have exactly 7 cards");
   if (a.faq.length < 4) errs.push("faq needs 4-6 items");
   if (a.metaTitle.length > 65) errs.push("metaTitle must be at most 60 characters");
@@ -513,6 +539,7 @@ key: ${item.product}
 name: ${product.name}
 affiliate URL (use this exact URL for in-text calls to action): ${product.href}
 facts: ${product.summary} ${product.points.join(" ")}
+State these facts confidently as what the product is designed to do or does. Do not hedge them with "according to the seller," "per the seller," "the manufacturer says," "the brand claims," "per the product page," "the seller presents," or "is marketed as."
 Write a short section near the end titled "Where ${product.name} fits" (or similar). In that section, and in every paragraph that sells the product, mention ONLY benefits and persuade the reader to look at the offer. Never mention cons, trade-offs, drawbacks, limitations, or what the product is not. Do not undercut the product there (no "but it won't...", no "treat it as a second surface", no "not a replacement for..."). Elsewhere in the article, keep the how-to honest, but do not undercut the product: the "## Pros and cons" section should lead with strong **Pros**, then a **Good to know** or **Best results when** list of constructive usage, care, or fit tips (not a drawback list). Frame the audience section as "## Who it's ideal for" (or similar), with a short positive fit note rather than a "who should skip it" or "it is not for" block.
 Place this exact line on its own line, once, at the end of that benefits-only sales section: {% product "${item.product}" %}
 The product box already includes a button to the same offer. Still include in-sentence Markdown links to the affiliate URL: [natural, specific anchor](${product.href}). Write at least two of these CTAs in benefit-focused sentences, where a reader who is ready to look at the offer would naturally want them. Never use "click here", "buy now", or "this guide" as the anchor. Do not place a CTA immediately after a list of drawbacks.
@@ -535,8 +562,8 @@ ${productBlock}
 
 HARD RULES
 1. Body: 1,300-1,700 words of Markdown. Use ## for sections and ### for subsections. No H1. Open with "## The short answer", then immediately a single 40-60 word paragraph that directly answers the title question in plain English. No preamble, no "in this guide", no throat-clearing. Then continue the article. Include "## Pros and cons" that leads with a strong bold **Pros** list, then a bold **Good to know** or **Best results when** list of constructive usage, care, or fit tips (never a drawback-style **Cons** list). Include "## Who it's ideal for" (or similar positive wording) with a short positive fit note; do not write a "who should skip it" or "it is not for" block. Do NOT write a Sources or FAQ section in the body.
-2. Never claim we tested, tried, used, measured, or reviewed anything. Also never state or imply that we did not test or use a product. Do not write phrases such as "we haven't tested", "we have not used", "we did not use", "not hands-on", "this desk has not tested", or "not a test by Daily Insight Desk." No testimonials, quotes from customers, review counts, star ratings, or invented statistics. No medical or health claims. No prices or specs unless given above. Attribute seller claims and other publications clearly.
-2b. PRODUCT SALES SECTION: when a product is provided, the "Where X fits" section (or equivalent) and any paragraph that sells the product must be benefits-only and should persuade the reader to look at the offer. Never mention cons, trade-offs, drawbacks, or what the product cannot do in that section.
+2. Never claim we tested, tried, used, measured, or reviewed anything. Also never state or imply that we did not test or use a product. Do not write phrases such as "we haven't tested", "we have not used", "we did not use", "not hands-on", "this desk has not tested", or "not a test by Daily Insight Desk." No testimonials, quotes from customers, review counts, star ratings, or invented statistics. No medical or health claims. No prices or specs unless given above. Attribute official publications (.gov, .edu, or a care/manual page) clearly. For the featured product, state the given benefits confidently as what the product is designed to do or does (for example, "RepelNest pouches are a poison-free deterrent you place without bait," not "according to the seller, RepelNest..."). Never write hedging phrases such as "according to the seller," "the manufacturer says," "the brand claims," "per the product page," "per the seller," "per the maker," "the seller says," "the seller presents," or "is marketed as." You may still point readers to the current offer, price, or care instructions on the seller's page.
+2b. PRODUCT SALES SECTION: when a product is provided, the "Where X fits" section (or equivalent) and any paragraph that sells the product must be benefits-only and should persuade the reader to look at the offer. Write those benefits as facts about what the product is designed to do, not as attributed claims. Never mention cons, trade-offs, drawbacks, or what the product cannot do in that section.
 2c. PROS AND AUDIENCE: do not undercut the product in "## Pros and cons" or the audience section either. Lead with strong benefits. Turn any limitations into gentle, constructive "good to know" / "best results when" tips (usage, care, or fit). Frame the audience as "who it's ideal for," not "who should skip it." Stay honest: no false claims, no medical claims, no fake testimonials, and never say or imply that we did not test or use the product.
 3. INTERNAL LINKS: put 3-6 links to DIFFERENT existing articles from the list below INSIDE normal sentences, as Markdown links [descriptive anchor](/path/). Anchors are 2-6 natural words describing the target topic (vary them; never "click here"/"this guide"). Each target at most once. Never inside headings. Only use URLs from this list:
 ${list}

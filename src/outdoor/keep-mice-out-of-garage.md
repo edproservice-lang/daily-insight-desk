@@ -178,7 +178,7 @@ Traditional snap traps and live‑catch traps can reduce an existing population,
 ### Natural deterrents
 - **Peppermint oil**: Soak cotton balls and place near entry points. Refresh weekly.
 - **Steel‑wool plugs**: Insert into small holes; mice cannot chew through.
-- **Repellent pouches**: A pack of 10 RepelNest repellent pouches can be placed in corners, on shelves, and behind stored items. They are sold as a poison-free deterrent you can place without bait or a conventional trap setup.
+- **Repellent pouches**: A pack of 10 RepelNest repellent pouches can be placed in corners, on shelves, and behind stored items. They are a poison-free deterrent designed to be placed without bait or a conventional trap setup.
 
 ## Where RepelNest repellent pouches fit
 RepelNest repellent pouches offer a hands‑free, poison‑free way to protect a garage that is already sealed and clean. The small, discreet pouches can be tucked into toolboxes, placed on top of stored boxes, or hung from shelving brackets. Because they require no bait or trap setup, they are ideal for homeowners who want continuous protection with minimal maintenance. The 30‑day money‑back guarantee lets you try the solution risk‑free, and the natural formulation means it won’t contaminate tools or paint. For an easy, ongoing deterrent, consider adding these pouches to your garage routine. [See the current RepelNest offer](https://www.tricklyn.com/J2D6CNH/B6XKNQQ/) and see how it complements sealing and sanitation steps. {% product "repelnest" %}
