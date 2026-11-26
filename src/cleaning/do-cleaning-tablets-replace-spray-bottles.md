@@ -3,7 +3,7 @@ layout: layouts/article.njk
 tags: guide
 title: Do Cleaning Tablets Replace a Closet of Sprays?
 metaTitle: Do Cleaning Tablets Replace a Closet of Sprays?
-description: Cleaning tablets plus a reusable bottle can replace a row of pre-mixed sprays. They do not make one mix right for every surface, and a “kills bacteria” label is not an EPA registration. What NuroClean’s page actually shows.
+description: Cleaning tablets plus a reusable bottle can replace a row of pre-mixed sprays. One mix is not right for every surface. See what NuroClean lists.
 dek: A tablet and a bottle you refill is a real way to own fewer jugs. It is still one formula. The NuroClean page says any surface, any stain, and the bottle label says it kills bacteria. Those are claims. The page never showed us a price or a registration number.
 silo: cleaning
 siloName: Cleaning

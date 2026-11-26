@@ -3,7 +3,7 @@ layout: layouts/article.njk
 tags: guide
 title: Do Portable Evaporative Coolers Actually Work?
 metaTitle: Do Portable Evaporative Coolers Actually Work?
-description: A portable evaporative cooler cools air by adding water to it. It helps in hot, dry air and mostly makes a humid room clammier. What the HomePro checkout actually listed on November 19, 2026.
+description: A portable evaporative cooler cools air by adding water to it. It helps in hot, dry air, and in a humid room it mostly makes the air clammier.
 dek: These little units are a fan blowing across wet material. In dry heat you can feel it. In a muggy room you get a breeze and wetter air. They are not air conditioners, and the HomePro page does not pretend to be a spec sheet.
 silo: outdoor
 siloName: Outdoor

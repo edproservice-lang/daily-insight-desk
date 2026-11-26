@@ -3,7 +3,7 @@ layout: layouts/article.njk
 tags: guide
 title: Do Titanium Cutting Boards Dull Knives?
 metaTitle: Do Titanium Cutting Boards Dull Knives?
-description: Titanium boards are easy to rinse and non-porous. They are also hard on knife edges. What Serious Eats measured, and why wood or plastic is the kinder everyday surface.
+description: Titanium cutting boards are easy to rinse and non-porous, but they are hard on knife edges. See why wood or plastic is the kinder everyday surface.
 dek: Easy to wash is a real reason to like a metal board. It is not a reason to chop on one. Serious Eats dulled a knife on titanium in minutes, and wood or plastic is still the better daily surface.
 silo: kitchen
 siloName: Kitchen

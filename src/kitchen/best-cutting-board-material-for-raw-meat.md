@@ -87,6 +87,9 @@ related:
   - href: /kitchen/how-to-get-garlic-smell-out-of-cutting-board/
     title: How to Get Garlic Smell Out of a Cutting Board
     note: Practical steps to remove stubborn food odors from wooden and plastic prep boards.
+  - href: /kitchen/are-rolling-knife-sharpeners-good/
+    title: Are Rolling Knife Sharpeners Good?
+    note: How to restore an edge after cutting on a harder surface.
 toc:
   - id: the-short-answer
     label: Short answer

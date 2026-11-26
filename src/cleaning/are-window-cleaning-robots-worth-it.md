@@ -3,7 +3,7 @@ layout: layouts/article.njk
 tags: guide
 title: Are Window Cleaning Robots Worth It?
 metaTitle: Are Window Cleaning Robots Worth It?
-description: A window robot holds on with suction and wipes one pane. Worth it for large, smooth glass you would otherwise reach by ladder. Not a spec-sheet purchase when the seller page lists neither a price nor the numbers.
+description: Window-cleaning robots are worth it for large, smooth glass you would otherwise reach by ladder. A robot holds on with suction and wipes one pane.
 dek: These machines are a suction cup with a wipe. They can keep you off a ladder on a big, smooth pane. They cannot clean a house, and the Windobotz page we opened never says what the machine actually measures.
 silo: cleaning
 siloName: Cleaning

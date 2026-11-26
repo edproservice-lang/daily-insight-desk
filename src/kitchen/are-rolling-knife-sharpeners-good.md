@@ -3,12 +3,12 @@ layout: layouts/article.njk
 tags: guide
 title: Are Rolling Knife Sharpeners Good? An Honest Look at the Magnet-and-Disc Trend
 metaTitle: Are Rolling Knife Sharpeners Good? What They Do Well and Badly
-description: Rolling knife sharpeners lock the angle with a magnet so you only have to roll. What they do better than pull-through gadgets, where whetstones still win, and where KatuSharp fits.
+description: Rolling knife sharpeners lock the angle with a magnet so you only have to roll. See how they compare with pull-through gadgets and whetstones.
 dek: A rolling sharpener takes the hardest part of sharpening, holding the angle, out of your hands. That makes it a real upgrade over a pull-through slot for most home cooks. It does not make it a whetstone, and it is not a fit for every knife in the block.
 silo: kitchen
 siloName: Kitchen
 date: 2026-11-18
-updated: 2026-11-18
+updated: 2026-11-26
 readTime: 8 min read
 hero: /assets/images/guide-rolling-sharpener
 heroHeight: 900
@@ -83,6 +83,12 @@ related:
   - href: /kitchen/do-titanium-cutting-boards-dull-knives/
     title: Do titanium cutting boards dull knives?
     note: The board under the knife decides how soon you need this sharpener.
+  - href: /kitchen/best-cutting-board-material-for-raw-meat/
+    title: Best cutting board material for raw meat
+    note: Wood or plastic keeps the edge you just restored.
+  - href: /kitchen/how-often-to-oil-a-wood-cutting-board/
+    title: How often to oil a wood cutting board
+    note: A dry wood board is harder on a freshly sharpened knife.
 toc:
   - id: the-short-answer
     label: The short answer
@@ -236,7 +242,8 @@ These are general habits for the category, not results from a test.
 - **Even strokes, both sides.** Do the same number of passes on each side, and work heel to tip so the belly of the blade gets sharpened too.
 - **Mind your fingers.** The edge faces up while you roll. Keep your hand on the disc, not near the edge, and move slowly at first.
 - **Hone between sharpenings.** A few strokes on a honing rod straighten a rolled edge and stretch the time between real sharpenings.
-- **Cut on wood or plastic.** Glass, stone, and metal boards undo the work fast. Our guide on [titanium cutting boards](/kitchen/do-titanium-cutting-boards-dull-knives/) explains why. Both pieces sit on the [kitchen shelf](/kitchen/).
+- **Cut on wood or plastic.** Glass, stone, and metal boards undo the work fast. Our guide on [whether titanium cutting boards dull knives](/kitchen/do-titanium-cutting-boards-dull-knives/) explains why. If you are picking a surface, [the best cutting board material for raw meat](/kitchen/best-cutting-board-material-for-raw-meat/) compares wood, plastic, and metal.
+- **Oil a wood board on a regular schedule.** A dry board cracks and is harder on the edge you just restored. [How often to oil a wood cutting board](/kitchen/how-often-to-oil-a-wood-cutting-board/) lays out a simple routine. These guides sit on the [kitchen shelf](/kitchen/).
 
 ## Sources
 
