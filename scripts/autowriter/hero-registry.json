@@ -47,6 +47,15 @@
       "role": "hero"
     },
     {
+      "slug": "how-to-clean-pollen-off-outdoor-furniture",
+      "file": "src/assets/images/guide-how-to-clean-pollen-off-outdoor-furniture-1600.webp",
+      "sha256": "cf7736afca245a03344c98659b073a8e9c67120b93b826126deb01a6e32f2343",
+      "dhash": "c8cec6b2b486cece",
+      "sourceUrl": "https://pixabay.com/photos/poolside-chair-sunny-day-leisure-2880388/",
+      "sourceId": "2880388",
+      "role": "hero"
+    },
+    {
       "slug": "are-rolling-knife-sharpeners-good",
       "file": "src/assets/images/guide-rolling-sharpener-1600.webp",
       "sha256": "29818b15181e56c8849bae42be8ffbcc2afd0e24527cb64ceff7adfe8e0aba7a",
@@ -137,12 +146,12 @@
       "role": "hero"
     },
     {
-      "slug": "how-to-clean-pollen-off-outdoor-furniture",
-      "file": "src/assets/images/guide-how-to-clean-pollen-off-outdoor-furniture-1600.webp",
-      "sha256": "cf7736afca245a03344c98659b073a8e9c67120b93b826126deb01a6e32f2343",
-      "dhash": "c8cec6b2b486cece",
-      "sourceUrl": "https://pixabay.com/photos/poolside-chair-sunny-day-leisure-2880388/",
-      "sourceId": "2880388",
+      "slug": "keep-mice-out-of-garage",
+      "file": "src/assets/images/guide-keep-mice-out-of-garage-1600.webp",
+      "sha256": "058eff57133809fa85b986018029109d38c4dfdaebd18e5ccc388ab03e6c7359",
+      "dhash": "dcf8ecc4d3d5e0e0",
+      "sourceUrl": "https://pixabay.com/photos/man-car-repair-car-repair-362150/",
+      "sourceId": "362150",
       "role": "hero"
     }
   ]
