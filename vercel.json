@@ -15,27 +15,15 @@
   ],
   "redirects": [
     {
-      "source": "/",
+      "source": "/(.*)",
       "has": [{ "type": "host", "value": "facelessforge.dailyinsightdesk.com" }],
-      "destination": "https://dailyinsightdesk.com/",
+      "destination": "https://dailyinsightdesk.com/$1",
       "permanent": true
     },
     {
-      "source": "/:path*",
-      "has": [{ "type": "host", "value": "facelessforge.dailyinsightdesk.com" }],
-      "destination": "https://dailyinsightdesk.com/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/",
+      "source": "/(.*)",
       "has": [{ "type": "host", "value": "daily-insight-desk.vercel.app" }],
-      "destination": "https://dailyinsightdesk.com/",
-      "permanent": true
-    },
-    {
-      "source": "/:path*",
-      "has": [{ "type": "host", "value": "daily-insight-desk.vercel.app" }],
-      "destination": "https://dailyinsightdesk.com/:path*",
+      "destination": "https://dailyinsightdesk.com/$1",
       "permanent": true
     },
     {
