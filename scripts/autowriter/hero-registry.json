@@ -38,6 +38,15 @@
       "role": "hero"
     },
     {
+      "slug": "how-to-clean-greasy-kitchen-counters",
+      "file": "src/assets/images/guide-how-to-clean-greasy-kitchen-counters-1600.webp",
+      "sha256": "fe24be594cc9426392b7f41dbf3a8e22a805115d3d49e3e2dd26105df0a90171",
+      "dhash": "c73fbbe1a0e1c0a6",
+      "sourceUrl": "https://pixabay.com/photos/kitchen-glass-bar-restaurant-rack-10005922/",
+      "sourceId": "10005922",
+      "role": "hero"
+    },
+    {
       "slug": "how-to-clean-patio-pavers-with-a-garden-hose",
       "file": "src/assets/images/guide-how-to-clean-patio-pavers-with-a-garden-hose-1600.webp",
       "sha256": "734c2a96ac47bb7f806f840fb062f876f38d2885eff0cb3c935052fb21168b61",
@@ -200,12 +209,12 @@
       "role": "hero"
     },
     {
-      "slug": "how-to-clean-greasy-kitchen-counters",
-      "file": "src/assets/images/guide-how-to-clean-greasy-kitchen-counters-1600.webp",
-      "sha256": "fe24be594cc9426392b7f41dbf3a8e22a805115d3d49e3e2dd26105df0a90171",
-      "dhash": "c73fbbe1a0e1c0a6",
-      "sourceUrl": "https://pixabay.com/photos/kitchen-glass-bar-restaurant-rack-10005922/",
-      "sourceId": "10005922",
+      "slug": "clean-high-windows-without-ladder",
+      "file": "src/assets/images/guide-clean-high-windows-without-ladder-1600.webp",
+      "sha256": "72c3fa9f24bc39d6f48a1deb7541185d35d40fb121b5b6acc034b023a7ad8883",
+      "dhash": "92b1f0f8ec2a221b",
+      "sourceUrl": "https://pixabay.com/photos/people-woman-stripes-sweatshirt-2590564/",
+      "sourceId": "2590564",
       "role": "hero"
     }
   ]
