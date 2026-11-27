@@ -401,6 +401,14 @@ for (const [urlPath, html] of pages) {
   }
 }
 
+// Web Stories are standalone AMP documents. Pairing them with rel=amphtml
+// on the long-form guide makes Search Console report "amp-story canonical error".
+for (const [urlPath, html] of pages) {
+  if (/rel=["']amphtml["']/i.test(html)) {
+    fail(`${urlPath} has rel=amphtml; Web Stories must not be declared as the AMP version of a guide`);
+  }
+}
+
 const ampValidator = await amphtmlValidator.getInstance();
 for (const [urlPath, html] of pages) {
   if (!html.includes("<html amp")) continue;
