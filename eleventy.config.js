@@ -1,3 +1,5 @@
+import { existsSync, statSync } from "node:fs";
+import { join } from "node:path";
 import markdownIt from "markdown-it";
 import markdownItAnchor from "markdown-it-anchor";
 import products from "./src/_data/products.js";
@@ -40,6 +42,20 @@ function toIsoDate(value) {
   const date = value instanceof Date ? value : new Date(value);
   if (Number.isNaN(date.getTime())) return "";
   return date.toISOString().slice(0, 10);
+}
+
+function toRfc822Date(value) {
+  if (!value) return "";
+  const date = value instanceof Date ? value : new Date(value);
+  if (Number.isNaN(date.getTime())) return "";
+  return date.toUTCString();
+}
+
+function assetPath(urlPath) {
+  const rel = String(urlPath || "").replace(/^\//, "");
+  if (!rel) return "";
+  const path = join(import.meta.dirname, "src", rel);
+  return existsSync(path) ? path : "";
 }
 
 
@@ -154,6 +170,26 @@ export default function (eleventyConfig) {
   });
   eleventyConfig.addFilter("withAffiliateNote", withAffiliateNote);
   eleventyConfig.addFilter("isoDate", toIsoDate);
+  eleventyConfig.addFilter("rfc822Date", toRfc822Date);
+  eleventyConfig.addFilter("assetMime", (urlPath) => {
+    const ext = String(urlPath || "").split(".").pop().toLowerCase();
+    return { webp: "image/webp", jpg: "image/jpeg", jpeg: "image/jpeg", png: "image/png", gif: "image/gif" }[ext] || "image/jpeg";
+  });
+  eleventyConfig.addFilter("assetLength", (urlPath) => {
+    const path = assetPath(urlPath);
+    return path ? statSync(path).size : 0;
+  });
+  eleventyConfig.addCollection("feedPosts", (api) =>
+    api.getFilteredByTag("guide")
+      .filter((item) => item.url && item.data.title)
+      .toSorted((a, b) => {
+        const ta = new Date(a.date || a.data.date || 0).getTime();
+        const tb = new Date(b.date || b.data.date || 0).getTime();
+        if (tb !== ta) return tb - ta;
+        return String(a.data.title || "").localeCompare(String(b.data.title || ""));
+      })
+      .slice(0, 20)
+  );
   eleventyConfig.addFilter("prettyDate", (value) => {
     const iso = toIsoDate(value);
     if (!iso) return "";

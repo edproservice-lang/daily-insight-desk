@@ -1,0 +1,34 @@
+---
+permalink: feed.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Daily Insight Desk</title>
+    <link>{{ site.url }}/</link>
+    <description>{{ site.description }}</description>
+    <language>en-us</language>
+    <atom:link href="{{ site.url }}/feed.xml" rel="self" type="application/rss+xml"/>
+{%- if collections.feedPosts.length %}
+    <lastBuildDate>{{ collections.feedPosts[0].date | rfc822Date }}</lastBuildDate>
+{%- endif %}
+{%- for post in collections.feedPosts %}
+{%- set imagePath = post.data.ogImage or (post.data.hero + "-1600.webp" if post.data.hero else "/assets/images/og.jpg") %}
+{%- set imageUrl = site.url + imagePath %}
+{%- set imageAlt = post.data.ogAlt or post.data.heroAlt or post.data.title %}
+{%- set summary = post.data.description or post.data.dek or "" %}
+{%- set mime = imagePath | assetMime %}
+{%- set length = imagePath | assetLength %}
+    <item>
+      <title>{{ post.data.title }}</title>
+      <link>{{ site.url }}{{ post.url }}</link>
+      <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
+      <pubDate>{{ post.date | rfc822Date }}</pubDate>
+      <description><![CDATA[<img src="{{ imageUrl }}" alt="{{ imageAlt }}" /><p>{{ summary }}</p>]]></description>
+      <media:content url="{{ imageUrl }}" type="{{ mime }}" medium="image"/>
+      <enclosure url="{{ imageUrl }}" type="{{ mime }}" length="{{ length }}"/>
+    </item>
+{%- endfor %}
+  </channel>
+</rss>

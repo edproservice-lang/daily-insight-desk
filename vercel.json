@@ -27,6 +27,26 @@
       "permanent": true
     },
     {
+      "source": "/feed",
+      "destination": "/feed.xml",
+      "permanent": true
+    },
+    {
+      "source": "/feed/",
+      "destination": "/feed.xml",
+      "permanent": true
+    },
+    {
+      "source": "/rss.xml",
+      "destination": "/feed.xml",
+      "permanent": true
+    },
+    {
+      "source": "/rss.xml/",
+      "destination": "/feed.xml",
+      "permanent": true
+    },
+    {
       "source": "/jetterix-pressure-nozzle-review",
       "destination": "/cleaning/garden-hose-pressure-nozzle/",
       "permanent": true
