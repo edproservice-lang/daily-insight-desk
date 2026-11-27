@@ -331,6 +331,17 @@ for (const [urlPath, html] of pages) {
 }
 if (sitemap.includes("404")) fail("sitemap includes the 404 page");
 
+const feed = readFileSync(join(root, "feed.xml"), "utf8");
+if (!feed.includes('<rss version="2.0"')) fail("feed.xml is not RSS 2.0");
+if (!feed.includes("<title>Daily Insight Desk</title>")) fail("feed.xml is missing the channel title");
+if (!feed.includes("<link>https://dailyinsightdesk.com/</link>")) fail("feed.xml is missing the channel link");
+const feedItems = [...feed.matchAll(/<item>/g)];
+if (!feedItems.length) fail("feed.xml has no items");
+if (feedItems.length > 20) fail(`feed.xml has ${feedItems.length} items, expected at most 20`);
+if (/<link>\//.test(feed)) fail("feed.xml has a relative <link>");
+if (!feed.includes("<enclosure ") || !feed.includes("<media:content ")) fail("feed.xml is missing hero image tags");
+if (!feed.includes("https://dailyinsightdesk.com/assets/images/")) fail("feed.xml is missing absolute image URLs");
+
 function webpSize(buffer) {
   const format = buffer.toString("ascii", 12, 16);
   if (format === "VP8X") {

@@ -8,7 +8,7 @@ npm run build
 npm run dev
 ```
 
-`npm run build` writes `_site/` and checks that internal links, canonical URLs, the sitemap, and `robots.txt` resolve. It also validates every AMP Web Story. Guides live in `src/cleaning/` and `src/kitchen/`. Shelf copy and upcoming titles live in `src/_data/silos.js`. Affiliate URLs live in `src/_data/products.js` and should stay exactly as they are.
+`npm run build` writes `_site/` and checks that internal links, canonical URLs, the sitemap, `robots.txt`, and the RSS feed at `/feed.xml` resolve. `/feed`, `/feed/`, and `/rss.xml` redirect to that feed. It also validates every AMP Web Story. Guides live in `src/cleaning/` and `src/kitchen/`. Shelf copy and upcoming titles live in `src/_data/silos.js`. Affiliate URLs live in `src/_data/products.js` and should stay exactly as they are.
 
 The `{% product "id" %}` shortcode renders the offer box. Its photo is a link to that product’s affiliate URL, with `rel="sponsored nofollow noopener"` and `target="_blank"`, the same as the button. A markdown image whose address is a product photo in that file is linked the same way. The alt text is the product name plus the photo description. Hero images, story posters, and other photos are not linked.
 
