@@ -146,7 +146,7 @@ This is not a guide to buried sprinkler lines, and it is not a reason to unscrew
 - **A dry afternoon before the first hard freeze.** Do not wait for the night the temperature actually drops.
 - **A place to stretch the hose.** A slope, a railing, or a hook high enough that gravity can do the work.
 - **A bucket** under the faucet, if you will open it when the air is already below freezing, so you are not building a sheet of ice on the step.
-- **Somewhere sheltered to store the hose and the nozzle.** A garage, a basement, or a shed is fine. An unheated garage can still drop below freezing, which is why the hose has to be empty even there.
+- **Somewhere sheltered to store the hose and the nozzle.** A garage, a [basement](/outdoor/how-to-keep-mice-out-of-basement/), or a shed is fine. An unheated garage can still drop below freezing, which is why the hose has to be empty even there.
 - **An insulating faucet cover,** if you use one. Missouri Extension mentions a foam dome as an extra step, not as a substitute for disconnecting the hose.
 
 If this is also the last outdoor rinse of the year, finish the patio first and put the hose away after. The [guide to cleaning pavers with a hose](/cleaning/how-to-clean-patio-pavers-with-a-garden-hose/) is that rinse. Winterizing is what you do when the rinse is over.

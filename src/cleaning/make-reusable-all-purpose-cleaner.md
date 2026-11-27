@@ -176,7 +176,7 @@ Spray the solution onto countertops, stainless steel appliances, bathroom tiles,
 - Shake the bottle before each use to keep any settled salt moving.
 
 ## Who it's ideal for
-Homeowners who want a simple cleaning routine, renters who prefer everyday pantry ingredients, and anyone happy to label and refill a bottle will get the most from this method. It also suits households that want a straightforward mix they can make without a cabinet of specialty sprays.
+Homeowners who want a simple cleaning routine, renters who prefer everyday pantry ingredients, and anyone happy to label and refill a bottle will get the most from this method. It also suits households that want a straightforward mix they can make without [a cabinet of specialty sprays](/cleaning/how-to-stop-buying-cleaning-sprays/).
 
 ## Where IonClear Spray electric spray bottle fits
 

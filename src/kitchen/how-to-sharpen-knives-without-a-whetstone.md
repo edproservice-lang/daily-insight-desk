@@ -157,7 +157,7 @@ While this method works well in a pinch, keep in mind that ceramic rings are sma
 
 ## Honing Rods Versus Sharpening Stones
 
-Many home cooks confuse a honing steel with a sharpener. A honing steel does not actually remove metal to create a brand-new edge. Instead, it straightens microscopic teeth that bend sideways during normal chopping on wood or plastic. If your knife is only slightly dull, a steel rod brings it back to life in seconds.
+Many home cooks [confuse a honing steel with a sharpener](/kitchen/how-often-should-you-sharpen-kitchen-knives/). A honing steel does not actually remove metal to create a brand-new edge. Instead, it straightens microscopic teeth that bend sideways during normal chopping on wood or plastic. If your knife is only slightly dull, a steel rod brings it back to life in seconds.
 
 ### How to use a honing steel correctly
 
