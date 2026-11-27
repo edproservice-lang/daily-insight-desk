@@ -189,6 +189,15 @@
       "sourceUrl": "https://pixabay.com/photos/knife-food-cooking-3163578/",
       "sourceId": "3163578",
       "role": "hero"
+    },
+    {
+      "slug": "how-to-stop-buying-cleaning-sprays",
+      "file": "src/assets/images/guide-how-to-stop-buying-cleaning-sprays-1600.webp",
+      "sha256": "fe24be594cc9426392b7f41dbf3a8e22a805115d3d49e3e2dd26105df0a90171",
+      "dhash": "c73fbbe1a0e1c0a6",
+      "sourceUrl": "https://pixabay.com/photos/kitchen-glass-bar-restaurant-rack-10005922/",
+      "sourceId": "10005922",
+      "role": "hero"
     }
   ]
 }
