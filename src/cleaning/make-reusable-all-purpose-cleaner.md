@@ -159,7 +159,7 @@ New Mexico State University Extension’s green-cleaning guide includes a genera
 If you want a larger or smaller batch, keep the same 1:1 vinegar-to-water ratio and the same small amount of salt. Store the mixed solution in a labeled bottle and shake before each use if anything has settled. This pantry recipe is separate from the electric salt-and-water bottle described later; that unit has its own steps and does not call for vinegar.
 
 ## Application tips
-Spray the solution onto countertops, stainless steel appliances, bathroom tiles, and sealed wood surfaces. Give it a minute to loosen grease, then wipe with a clean microfiber cloth. For a stubborn spot, let the spray sit for 3–5 minutes before wiping. Rinse with plain water on surfaces that contact food, such as kitchen counters, so no acidity remains.
+Spray the solution onto countertops, stainless steel appliances, bathroom tiles, and sealed wood surfaces. Give it a minute to [loosen grease, then wipe](/cleaning/how-to-clean-greasy-kitchen-counters/) with a clean microfiber cloth. For a stubborn spot, let the spray sit for 3–5 minutes before wiping. Rinse with plain water on surfaces that contact food, such as kitchen counters, so no acidity remains.
 
 ## Pros and cons
 **Pros**

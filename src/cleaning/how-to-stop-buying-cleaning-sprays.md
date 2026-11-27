@@ -150,7 +150,7 @@ Keeping these basics on hand lets you mix solutions as you need them, without a 
 You do not need a complicated setup to stop buying cleaning sprays. A few basic formulas cover nearly every room in the home.
 
 ### 1. All-Purpose Surface Spray
-Mix 1 cup of warm tap water, 1 cup of white distilled vinegar, and 1/2 teaspoon of mild dish soap in a reusable spray bottle. Shake gently before use. This mixture cuts grease on laminate counters, appliance exteriors, painted wood trim, and tile backsplashes. If you want a stone-safe option, skip the vinegar and use warm water with 1 teaspoon of dish soap. For a fuller walk-through of bottle choice and pantry mixes, see how to [make a reusable all-purpose cleaner](/cleaning/make-reusable-all-purpose-cleaner/).
+Mix 1 cup of warm tap water, 1 cup of white distilled vinegar, and 1/2 teaspoon of mild dish soap in a reusable spray bottle. Shake gently before use. This mixture [cuts grease on laminate counters](/cleaning/how-to-clean-greasy-kitchen-counters/), appliance exteriors, painted wood trim, and tile backsplashes. If you want a stone-safe option, skip the vinegar and use warm water with 1 teaspoon of dish soap. For a fuller walk-through of bottle choice and pantry mixes, see how to [make a reusable all-purpose cleaner](/cleaning/make-reusable-all-purpose-cleaner/).
 
 ### 2. Streak-Free Glass and Mirror Cleaner
 Combine 1 cup of water, 1 cup of rubbing alcohol, and 1 tablespoon of white vinegar. The alcohol helps the mix dry quickly without leaving film on windows, glass tabletops, or bathroom mirrors.

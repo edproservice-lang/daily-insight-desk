@@ -56,6 +56,15 @@
       "role": "hero"
     },
     {
+      "slug": "how-to-stop-buying-cleaning-sprays",
+      "file": "src/assets/images/guide-how-to-stop-buying-cleaning-sprays-1600.webp",
+      "sha256": "00275182f775f1ac47505479b978b8beac1080ce4462f6b43aeee99651f7deed",
+      "dhash": "c098101828303030",
+      "sourceUrl": "https://pixabay.com/photos/spray-bottle-cleaning-supplies-2754171/",
+      "sourceId": "2754171",
+      "role": "hero"
+    },
+    {
       "slug": "make-reusable-all-purpose-cleaner",
       "file": "src/assets/images/guide-make-reusable-all-purpose-cleaner-1600.webp",
       "sha256": "cf8e38fa9c456d608c6b835e2851cfe825f2d96dfe451b9365eb7e970b64159f",
@@ -101,6 +110,15 @@
       "role": "hero"
     },
     {
+      "slug": "how-often-should-you-sharpen-kitchen-knives",
+      "file": "src/assets/images/guide-how-often-should-you-sharpen-kitchen-knives-1600.webp",
+      "sha256": "85aa4cf38e535c9a1eafa2d0045f480adc2003f8cfe2c2589846289b9984902c",
+      "dhash": "d1ec1b173b2db0f8",
+      "sourceUrl": "https://pixabay.com/photos/knife-kitchen-cook-wooden-board-464879/",
+      "sourceId": "464879",
+      "role": "hero"
+    },
+    {
       "slug": "how-often-to-oil-a-wood-cutting-board",
       "file": "src/assets/images/guide-how-often-to-oil-a-wood-cutting-board-1600.webp",
       "sha256": "f13ac305650eb8be53c2fe57ab91ebd0ee23166661800544a18ad1790b6c5166",
@@ -134,6 +152,15 @@
       "dhash": "3838384c4c0c0c2c",
       "sourceUrl": "",
       "sourceId": "",
+      "role": "hero"
+    },
+    {
+      "slug": "how-to-keep-mice-out-of-basement",
+      "file": "src/assets/images/guide-how-to-keep-mice-out-of-basement-1600.webp",
+      "sha256": "a7708b902127d225b20d0c47d9ab1e81450e20f0e76401b274582020210d112b",
+      "dhash": "c849b1c9c9c9c8c9",
+      "sourceUrl": "https://pixabay.com/photos/base-plate-construction-site-2834507/",
+      "sourceId": "2834507",
       "role": "hero"
     },
     {
@@ -173,30 +200,12 @@
       "role": "hero"
     },
     {
-      "slug": "how-to-keep-mice-out-of-basement",
-      "file": "src/assets/images/guide-how-to-keep-mice-out-of-basement-1600.webp",
-      "sha256": "a7708b902127d225b20d0c47d9ab1e81450e20f0e76401b274582020210d112b",
-      "dhash": "c849b1c9c9c9c8c9",
-      "sourceUrl": "https://pixabay.com/photos/base-plate-construction-site-2834507/",
-      "sourceId": "2834507",
-      "role": "hero"
-    },
-    {
-      "slug": "how-often-should-you-sharpen-kitchen-knives",
-      "file": "src/assets/images/guide-how-often-should-you-sharpen-kitchen-knives-1600.webp",
-      "sha256": "85aa4cf38e535c9a1eafa2d0045f480adc2003f8cfe2c2589846289b9984902c",
-      "dhash": "d1ec1b173b2db0f8",
-      "sourceUrl": "https://pixabay.com/photos/knife-kitchen-cook-wooden-board-464879/",
-      "sourceId": "464879",
-      "role": "hero"
-    },
-    {
-      "slug": "how-to-stop-buying-cleaning-sprays",
-      "file": "src/assets/images/guide-how-to-stop-buying-cleaning-sprays-1600.webp",
-      "sha256": "00275182f775f1ac47505479b978b8beac1080ce4462f6b43aeee99651f7deed",
-      "dhash": "c098101828303030",
-      "sourceUrl": "https://pixabay.com/photos/spray-bottle-cleaning-supplies-2754171/",
-      "sourceId": "2754171",
+      "slug": "how-to-clean-greasy-kitchen-counters",
+      "file": "src/assets/images/guide-how-to-clean-greasy-kitchen-counters-1600.webp",
+      "sha256": "fe24be594cc9426392b7f41dbf3a8e22a805115d3d49e3e2dd26105df0a90171",
+      "dhash": "c73fbbe1a0e1c0a6",
+      "sourceUrl": "https://pixabay.com/photos/kitchen-glass-bar-restaurant-rack-10005922/",
+      "sourceId": "10005922",
       "role": "hero"
     }
   ]
