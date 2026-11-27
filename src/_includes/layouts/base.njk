@@ -7,9 +7,6 @@
   <meta name="description" content="{{ description }}">
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
   <link rel="alternate" type="application/rss+xml" title="Daily Insight Desk" href="{{ site.url }}/feed.xml">
-  {% if story and story.slug %}
-  <link rel="amphtml" href="{{ site.url }}/stories/{{ story.slug }}/">
-  {% endif %}
   {% if robots %}<meta name="robots" content="{{ robots }}">{% endif %}
   {% if site.googleSiteVerification %}
   <meta name="google-site-verification" content="{{ site.googleSiteVerification }}">
