@@ -135,7 +135,7 @@ This guide explains how the tool works, what an independent review of one actual
 
 ## How a rolling sharpener works
 
-Sharpening means grinding a little steel off both sides of the edge until they meet in a clean, thin apex. The angle of each side, usually around 15 or 20 degrees, decides how keen and how durable that edge is. Keeping that angle the same on every stroke is the skill. It is why whetstones take practice.
+[Sharpening means grinding a little steel](/kitchen/how-often-should-you-sharpen-kitchen-knives/) off both sides of the edge until they meet in a clean, thin apex. The angle of each side, usually around 15 or 20 degrees, decides how keen and how durable that edge is. Keeping that angle the same on every stroke is the skill. It is why whetstones take practice.
 
 A rolling sharpener splits the job into two parts:
 

@@ -180,6 +180,15 @@
       "sourceUrl": "https://pixabay.com/photos/base-plate-construction-site-2834507/",
       "sourceId": "2834507",
       "role": "hero"
+    },
+    {
+      "slug": "how-often-should-you-sharpen-kitchen-knives",
+      "file": "src/assets/images/guide-how-often-should-you-sharpen-kitchen-knives-1600.webp",
+      "sha256": "f463efd6e966b2e4091096966f33fdf630e0f11c525f0485bf92ce3934addcf0",
+      "dhash": "c93b30b2e0c1c258",
+      "sourceUrl": "https://pixabay.com/photos/knife-food-cooking-3163578/",
+      "sourceId": "3163578",
+      "role": "hero"
     }
   ]
 }
