@@ -184,19 +184,19 @@
     {
       "slug": "how-often-should-you-sharpen-kitchen-knives",
       "file": "src/assets/images/guide-how-often-should-you-sharpen-kitchen-knives-1600.webp",
-      "sha256": "f463efd6e966b2e4091096966f33fdf630e0f11c525f0485bf92ce3934addcf0",
-      "dhash": "c93b30b2e0c1c258",
-      "sourceUrl": "https://pixabay.com/photos/knife-food-cooking-3163578/",
-      "sourceId": "3163578",
+      "sha256": "85aa4cf38e535c9a1eafa2d0045f480adc2003f8cfe2c2589846289b9984902c",
+      "dhash": "d1ec1b173b2db0f8",
+      "sourceUrl": "https://pixabay.com/photos/knife-kitchen-cook-wooden-board-464879/",
+      "sourceId": "464879",
       "role": "hero"
     },
     {
       "slug": "how-to-stop-buying-cleaning-sprays",
       "file": "src/assets/images/guide-how-to-stop-buying-cleaning-sprays-1600.webp",
-      "sha256": "fe24be594cc9426392b7f41dbf3a8e22a805115d3d49e3e2dd26105df0a90171",
-      "dhash": "c73fbbe1a0e1c0a6",
-      "sourceUrl": "https://pixabay.com/photos/kitchen-glass-bar-restaurant-rack-10005922/",
-      "sourceId": "10005922",
+      "sha256": "00275182f775f1ac47505479b978b8beac1080ce4462f6b43aeee99651f7deed",
+      "dhash": "c098101828303030",
+      "sourceUrl": "https://pixabay.com/photos/spray-bottle-cleaning-supplies-2754171/",
+      "sourceId": "2754171",
       "role": "hero"
     }
   ]

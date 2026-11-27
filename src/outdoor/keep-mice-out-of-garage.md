@@ -139,7 +139,7 @@ autowriter:
 Mice enter garages through tiny openings, food scraps, and clutter; to keep them out, seal every gap, remove attractants, store items in rodent‑proof containers, and add non‑toxic deterrents such as RepelNest repellent pouches. Follow these steps and you will maintain a mouse‑free garage year‑round.
 
 ## Identify entry points
-Mice can squeeze through holes the size of a dime. Walk the perimeter of your garage and inspect walls, foundation, doors, and windows. Look for gnaw marks, shredded insulation, and small holes around utility lines. Pay special attention to the space under the garage door, as the weather‑strip can wear thin and create a gap. Use a flashlight at night to spot fresh droppings that often indicate hidden pathways.
+Mice can squeeze through holes the size of a dime. Walk the perimeter of your garage and inspect walls, foundation, doors, and windows. If the garage shares a wall with the house, continue that inspection along the foundation and into any [basement](/outdoor/how-to-keep-mice-out-of-basement/) on the same slab. Look for gnaw marks, shredded insulation, and small holes around utility lines. Pay special attention to the space under the garage door, as the weather‑strip can wear thin and create a gap. Use a flashlight at night to spot fresh droppings that often indicate hidden pathways.
 
 ## Seal gaps and entry points
 **Inspect and repair**: Use steel‑wool or copper mesh to fill holes larger than 1/4 inch, then cover with expanding spray foam or cement. For gaps around pipes, install metal flashing. Replace damaged door sweeps and weather‑stripping.
