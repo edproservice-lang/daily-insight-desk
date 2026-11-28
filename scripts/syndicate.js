@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
  * Syndicate new items from https://dailyinsightdesk.com/feed.xml to Tumblr
- * (photo posts), Bluesky (text post + external embed card), and a public
- * Google Doc (append title, summary, link).
+ * (photo posts), Bluesky (text post + external embed card), Instapaper
+ * (Simple API bookmark), and a public Google Doc (append title, summary, link).
  *
  * Each destination is skipped with a warning — not a failure — when its
  * secrets are missing. A failure on one platform does not block the others.
@@ -11,6 +11,7 @@
  * Secrets:
  *   TUMBLR_CONSUMER_KEY, TUMBLR_CONSUMER_SECRET, TUMBLR_TOKEN, TUMBLR_TOKEN_SECRET
  *   BSKY_HANDLE, BSKY_APP_PASSWORD (Bluesky app password, not the account password)
+ *   INSTAPAPER_USERNAME, INSTAPAPER_PASSWORD (Instapaper account login)
  *   GOOGLE_SA_JSON (raw service-account JSON) or GOOGLE_SA_JSON_FILE (path)
  *
  * Usage:
@@ -123,10 +124,10 @@ function parseFeed(xml) {
 
 function loadState() {
   if (!fs.existsSync(STATE_PATH)) {
-    return { tumblr: [], docs: [], bluesky: [], diigo: [] };
+    return { tumblr: [], docs: [], bluesky: [], instapaper: [], diigo: [] };
   }
   const raw = JSON.parse(fs.readFileSync(STATE_PATH, "utf8"));
-  for (const key of ["tumblr", "docs", "bluesky", "diigo"]) {
+  for (const key of ["tumblr", "docs", "bluesky", "instapaper", "diigo"]) {
     if (!Array.isArray(raw[key])) raw[key] = [];
   }
   return raw;
@@ -483,6 +484,45 @@ async function bskyCreatePost(item, session) {
 }
 
 
+function instapaperCreds() {
+  const username = (process.env.INSTAPAPER_USERNAME || "").trim();
+  const password = (process.env.INSTAPAPER_PASSWORD || "").trim();
+  if (!username || !password) {
+    throw new SkipDestination(
+      "instapaper",
+      "skipped (INSTAPAPER_USERNAME or INSTAPAPER_PASSWORD not set)"
+    );
+  }
+  return { username, password };
+}
+
+async function instapaperAdd(item, creds) {
+  const endpoint = "https://www.instapaper.com/api/add";
+  const basic = Buffer.from(`${creds.username}:${creds.password}`).toString(
+    "base64"
+  );
+  const res = await fetch(endpoint, {
+    method: "POST",
+    headers: {
+      Authorization: `Basic ${basic}`,
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: new URLSearchParams({
+      url: item.link,
+      title: item.title,
+    }),
+  });
+  // Instapaper Simple API: 201 = saved. Log the status only — never secrets.
+  const body = await res.text();
+  if (res.status !== 201) {
+    const snippet = body.replace(/\s+/g, " ").trim().slice(0, 200);
+    throw new Error(
+      snippet ? `HTTP ${res.status}: ${snippet}` : `HTTP ${res.status}`
+    );
+  }
+  return { status: res.status };
+}
+
 async function maybe(dest, fn) {
   try {
     return await fn();
@@ -510,12 +550,14 @@ async function main() {
     tumblr: new Set(state.tumblr),
     docs: new Set(state.docs),
     bluesky: new Set(state.bluesky),
+    instapaper: new Set(state.instapaper),
   };
 
   let failures = 0;
   const tumblr = await maybe("tumblr", () => tumblrCreds());
   const sa = await maybe("docs", () => loadServiceAccount());
   const bskyCred = await maybe("bluesky", () => bskyCreds());
+  const instapaper = await maybe("instapaper", () => instapaperCreds());
   warn(
     "diigo",
     "hook disabled (Diigo API keys are premium-only); not posting"
@@ -552,7 +594,7 @@ async function main() {
   // Oldest first so the Doc is appended in publish order.
   const chronological = [...items].reverse();
   let stateDirty = false;
-  const already = { tumblr: 0, docs: 0, bluesky: 0 };
+  const already = { tumblr: 0, docs: 0, bluesky: 0, instapaper: 0 };
 
   for (const item of chronological) {
     if (tumblr && tumblr !== "skipped") {
@@ -611,6 +653,25 @@ async function main() {
         }
       }
     }
+
+    if (instapaper && instapaper !== "skipped") {
+      if (posted.instapaper.has(item.guid)) {
+        already.instapaper += 1;
+      } else if (DRY_RUN) {
+        log("instapaper", `dry-run would save ${item.guid}`);
+      } else {
+        try {
+          const result = await instapaperAdd(item, instapaper);
+          posted.instapaper.add(item.guid);
+          state.instapaper = [...posted.instapaper];
+          stateDirty = true;
+          log("instapaper", `saved ${item.guid} (HTTP ${result.status})`);
+        } catch (err) {
+          failures += 1;
+          warn("instapaper", `failed ${item.guid}: ${err.message}`);
+        }
+      }
+    }
   }
 
   if (tumblr && tumblr !== "skipped") {
@@ -621,6 +682,9 @@ async function main() {
   }
   if (bskySession) {
     log("bluesky", `${already.bluesky} feed item(s) already in state`);
+  }
+  if (instapaper && instapaper !== "skipped") {
+    log("instapaper", `${already.instapaper} feed item(s) already in state`);
   }
 
   if (stateDirty && !DRY_RUN) {
