@@ -1,13 +1,16 @@
 #!/usr/bin/env node
 /**
  * Syndicate new items from https://dailyinsightdesk.com/feed.xml to Tumblr
- * (photo posts) and a public Google Doc (append title, summary, link).
+ * (photo posts), Bluesky (text post + external embed card), and a public
+ * Google Doc (append title, summary, link).
  *
  * Each destination is skipped with a warning — not a failure — when its
- * secrets are missing. Diigo is a disabled hook (its API keys are premium-only).
+ * secrets are missing. A failure on one platform does not block the others.
+ * Diigo is a disabled hook (its API keys are premium-only).
  *
  * Secrets:
  *   TUMBLR_CONSUMER_KEY, TUMBLR_CONSUMER_SECRET, TUMBLR_TOKEN, TUMBLR_TOKEN_SECRET
+ *   BSKY_HANDLE, BSKY_APP_PASSWORD (Bluesky app password, not the account password)
  *   GOOGLE_SA_JSON (raw service-account JSON) or GOOGLE_SA_JSON_FILE (path)
  *
  * Usage:
@@ -120,10 +123,10 @@ function parseFeed(xml) {
 
 function loadState() {
   if (!fs.existsSync(STATE_PATH)) {
-    return { tumblr: [], docs: [], diigo: [] };
+    return { tumblr: [], docs: [], bluesky: [], diigo: [] };
   }
   const raw = JSON.parse(fs.readFileSync(STATE_PATH, "utf8"));
-  for (const key of ["tumblr", "docs", "diigo"]) {
+  for (const key of ["tumblr", "docs", "bluesky", "diigo"]) {
     if (!Array.isArray(raw[key])) raw[key] = [];
   }
   return raw;
@@ -353,6 +356,133 @@ async function docsAppend(item, token) {
   });
 }
 
+const BSKY_PDS = (process.env.BSKY_PDS || "https://bsky.social").replace(/\/$/, "");
+const BSKY_MAX_GRAPHEMES = 300;
+
+function graphemeSegments(text) {
+  if (typeof Intl !== "undefined" && Intl.Segmenter) {
+    return [...new Intl.Segmenter("en", { granularity: "grapheme" }).segment(text)].map(
+      (s) => s.segment
+    );
+  }
+  return [...String(text)];
+}
+
+function graphemeCount(text) {
+  return graphemeSegments(text).length;
+}
+
+function trimToGraphemes(text, max) {
+  const segs = graphemeSegments(text);
+  if (segs.length <= max) return text;
+  return segs.slice(0, Math.max(0, max)).join("");
+}
+
+function bskyApiError(data, res) {
+  if (data && typeof data === "object") {
+    return data.message || data.error || `HTTP ${res.status}`;
+  }
+  return `HTTP ${res.status}`;
+}
+
+function bskyCreds() {
+  const handle = (process.env.BSKY_HANDLE || "").trim();
+  const password = (process.env.BSKY_APP_PASSWORD || "").trim();
+  if (!handle || !password) {
+    throw new SkipDestination(
+      "bluesky",
+      "skipped (BSKY_HANDLE or BSKY_APP_PASSWORD not set)"
+    );
+  }
+  return { handle, password };
+}
+
+async function bskyCreateSession(creds) {
+  const res = await fetch(`${BSKY_PDS}/xrpc/com.atproto.server.createSession`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      identifier: creds.handle,
+      password: creds.password,
+    }),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || !data.accessJwt || !data.did) {
+    throw new Error(`session failed: ${bskyApiError(data, res)}`);
+  }
+  return {
+    accessJwt: data.accessJwt,
+    did: data.did,
+    handle: data.handle || creds.handle,
+  };
+}
+
+function bskyPostText(item) {
+  const link = item.link;
+  const linkGraphemes = graphemeCount(link);
+  let title = (item.title || "").trim();
+  let summary = (item.summary || "").trim();
+  // title + newline + link must fit; trim the title if needed
+  const titleMax = Math.max(0, BSKY_MAX_GRAPHEMES - 1 - linkGraphemes);
+  title = trimToGraphemes(title, titleMax).trimEnd();
+  const afterTitle = graphemeCount(title) + 1 + linkGraphemes;
+  const summaryMax = Math.max(0, BSKY_MAX_GRAPHEMES - afterTitle - 1);
+  summary = trimToGraphemes(summary, summaryMax).trimEnd();
+  const beforeLink = summary ? `${title}\n${summary}\n` : `${title}\n`;
+  const text = `${beforeLink}${link}`;
+  const byteStart = Buffer.byteLength(beforeLink, "utf8");
+  const byteEnd = Buffer.byteLength(text, "utf8");
+  return { text, byteStart, byteEnd };
+}
+
+async function bskyCreatePost(item, session) {
+  const { text, byteStart, byteEnd } = bskyPostText(item);
+  const description = trimToGraphemes((item.summary || "").trim(), 300).trim();
+  const record = {
+    $type: "app.bsky.feed.post",
+    text,
+    createdAt: new Date().toISOString(),
+    langs: ["en"],
+    facets: [
+      {
+        index: { byteStart, byteEnd },
+        features: [
+          {
+            $type: "app.bsky.richtext.facet#link",
+            uri: item.link,
+          },
+        ],
+      },
+    ],
+    embed: {
+      $type: "app.bsky.embed.external",
+      external: {
+        uri: item.link,
+        title: item.title || item.link,
+        description: description || item.title || "",
+      },
+    },
+  };
+  const res = await fetch(`${BSKY_PDS}/xrpc/com.atproto.repo.createRecord`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${session.accessJwt}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      repo: session.did,
+      collection: "app.bsky.feed.post",
+      record,
+    }),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    throw new Error(`createRecord failed: ${bskyApiError(data, res)}`);
+  }
+  return data;
+}
+
+
 async function maybe(dest, fn) {
   try {
     return await fn();
@@ -379,10 +509,13 @@ async function main() {
   const posted = {
     tumblr: new Set(state.tumblr),
     docs: new Set(state.docs),
+    bluesky: new Set(state.bluesky),
   };
 
+  let failures = 0;
   const tumblr = await maybe("tumblr", () => tumblrCreds());
   const sa = await maybe("docs", () => loadServiceAccount());
+  const bskyCred = await maybe("bluesky", () => bskyCreds());
   warn(
     "diigo",
     "hook disabled (Diigo API keys are premium-only); not posting"
@@ -405,11 +538,21 @@ async function main() {
     }
   }
 
+  let bskySession = null;
+  if (bskyCred && bskyCred !== "skipped") {
+    try {
+      bskySession = await bskyCreateSession(bskyCred);
+      log("bluesky", `authenticated as ${bskySession.handle}`);
+    } catch (err) {
+      failures += 1;
+      warn("bluesky", `session failed: ${err.message}`);
+    }
+  }
+
   // Oldest first so the Doc is appended in publish order.
   const chronological = [...items].reverse();
   let stateDirty = false;
-  let failures = 0;
-  const already = { tumblr: 0, docs: 0 };
+  const already = { tumblr: 0, docs: 0, bluesky: 0 };
 
   for (const item of chronological) {
     if (tumblr && tumblr !== "skipped") {
@@ -449,6 +592,25 @@ async function main() {
         }
       }
     }
+
+    if (bskySession) {
+      if (posted.bluesky.has(item.guid)) {
+        already.bluesky += 1;
+      } else if (DRY_RUN) {
+        log("bluesky", `dry-run would post ${item.guid}`);
+      } else {
+        try {
+          await bskyCreatePost(item, bskySession);
+          posted.bluesky.add(item.guid);
+          state.bluesky = [...posted.bluesky];
+          stateDirty = true;
+          log("bluesky", `posted ${item.guid}`);
+        } catch (err) {
+          failures += 1;
+          warn("bluesky", `failed ${item.guid}: ${err.message}`);
+        }
+      }
+    }
   }
 
   if (tumblr && tumblr !== "skipped") {
@@ -456,6 +618,9 @@ async function main() {
   }
   if (docsToken) {
     log("docs", `${already.docs} feed item(s) already in state`);
+  }
+  if (bskySession) {
+    log("bluesky", `${already.bluesky} feed item(s) already in state`);
   }
 
   if (stateDirty && !DRY_RUN) {
