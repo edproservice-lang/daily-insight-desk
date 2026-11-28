@@ -37,3 +37,7 @@ story:
 Use 5 to 10 pages. `id` values must be unique. `tone` is `ink`, `moss`, or `clay`. Each page should set `image`, `imageWidth`, `imageHeight`, and `alt`. Portrait card photos live at `src/assets/images/stories/<slug>/pN.webp` (720×960). If a page omits `image`, the template uses the guide hero, then the product photo named by `product` in the story block, so a card is not left blank. The build fails if a rendered story page still has no image. The first page is the cover and is the only `h1`. The last page’s button links to the guide. Do not put affiliate URLs in `story`.
 
 Add a portrait poster at `src/assets/images/stories/<slug>.webp`, at least 640×853 (the ones in the repo are 720×960 crops of the guide image). The article page then shows “View as a story” on its own.
+
+## Syndication
+
+New articles in `/feed.xml` are copied to [Tumblr](https://dailyinsightdesk.tumblr.com/) and a public [Google Doc](https://docs.google.com/document/d/1vtwoqbey3vkbpaHhMqteDq7p7if_yjSCbi_TRik2wq8/edit) by `.github/workflows/syndicate.yml`, which runs every six hours or on demand. Posted GUIDs are stored in `syndication/state.json` so items are not sent twice. Tumblr needs `TUMBLR_CONSUMER_KEY`, `TUMBLR_CONSUMER_SECRET`, `TUMBLR_TOKEN`, and `TUMBLR_TOKEN_SECRET`. The Doc needs `GOOGLE_SA_JSON` (the `ga-reader@` service account, shared on the document as an editor). A destination is skipped when its secrets are missing. Diigo is left as a disabled hook because its API is paid.
