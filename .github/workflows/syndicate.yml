@@ -2,7 +2,7 @@ name: Syndicate RSS
 
 on:
   schedule:
-    # Every 6 hours; new dailyinsightdesk.com/feed.xml items go to Tumblr and the public Google Doc.
+    # Every 6 hours; new dailyinsightdesk.com/feed.xml items go to Tumblr, Bluesky, and the public Google Doc.
     - cron: "0 */6 * * *"
   workflow_dispatch:
 
@@ -31,6 +31,8 @@ jobs:
           TUMBLR_TOKEN: ${{ secrets.TUMBLR_TOKEN }}
           TUMBLR_TOKEN_SECRET: ${{ secrets.TUMBLR_TOKEN_SECRET }}
           GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SA_JSON }}
+          BSKY_HANDLE: ${{ secrets.BSKY_HANDLE }}
+          BSKY_APP_PASSWORD: ${{ secrets.BSKY_APP_PASSWORD }}
         run: node scripts/syndicate.js
 
       - name: Commit syndication state
