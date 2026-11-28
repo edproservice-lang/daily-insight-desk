@@ -202,7 +202,7 @@ If that is the job in your house, [see the current Windobotz offer](https://www.
 This is category practice, not a procedure we timed on Windobotz.
 
 1. Read the paper that comes in the box before you wet a pad. If it conflicts with the ad, follow the paper.
-2. Wash the pane’s loose grit by hand on the first run, or you will grind it. A robot is a polisher of whatever is already there.
+2. [Wash the pane’s loose grit by hand](/cleaning/clean-high-windows-without-ladder/) on the first run, or you will grind it. A robot is a polisher of whatever is already there.
 3. Use water unless the manual names something else. Do not improvise a mix.
 4. Attach the tether to a point that can hold the unit, not to a curtain rod you do not trust.
 5. Put it on a pane you can watch. Keep the cord out of the pad’s path. Stay under it only if you are clear of a fall.
