@@ -40,10 +40,10 @@
     {
       "slug": "how-to-clean-greasy-kitchen-counters",
       "file": "src/assets/images/guide-how-to-clean-greasy-kitchen-counters-1600.webp",
-      "sha256": "fe24be594cc9426392b7f41dbf3a8e22a805115d3d49e3e2dd26105df0a90171",
-      "dhash": "c73fbbe1a0e1c0a6",
-      "sourceUrl": "https://pixabay.com/photos/kitchen-glass-bar-restaurant-rack-10005922/",
-      "sourceId": "10005922",
+      "sha256": "b1cdc38817354a75c9ab41428aca75f203901a7d2e1f3121ce9f57e4ff44be59",
+      "dhash": "e0e0f0387391e3f2",
+      "sourceUrl": "https://pixabay.com/photos/cleanliness-maid-maintains-cleaning-2799475/",
+      "sourceId": "2799475",
       "role": "hero"
     },
     {
@@ -211,10 +211,10 @@
     {
       "slug": "clean-high-windows-without-ladder",
       "file": "src/assets/images/guide-clean-high-windows-without-ladder-1600.webp",
-      "sha256": "72c3fa9f24bc39d6f48a1deb7541185d35d40fb121b5b6acc034b023a7ad8883",
-      "dhash": "92b1f0f8ec2a221b",
-      "sourceUrl": "https://pixabay.com/photos/people-woman-stripes-sweatshirt-2590564/",
-      "sourceId": "2590564",
+      "sha256": "c85df3f0b8b84f475d19ed1051afae56763f1b62ae6f2220331aba92d721efc7",
+      "dhash": "d8d8ececac6c6cec",
+      "sourceUrl": "https://pixabay.com/photos/woman-window-cleaning-person-5928694/",
+      "sourceId": "5928694",
       "role": "hero"
     }
   ]
